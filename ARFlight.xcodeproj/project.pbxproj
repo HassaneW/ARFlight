@@ -113,8 +113,77 @@
 				A73F904F43C3B276888913F5 /* Pods-ARFlightTests.debug.xcconfig */,
 				9D5A33196C1890E6C98F8482 /* Pods-ARFlightTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FB4EEB4025E17E3B00B85423 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		FB4EEB4125E17E4800B85423 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FB4EEB4225E17E5200B85423 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FB98700E25E17B52000CF44A /* Main.storyboard */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FB4EEB4325E17E5F00B85423 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				FB98701425E17B57000CF44A /* Assets.xcassets */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		FB4EEB4425E17E6A00B85423 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB98700825E17B52000CF44A /* AppDelegate.swift */,
+				FB98700A25E17B52000CF44A /* SceneDelegate.swift */,
+				FB98701625E17B57000CF44A /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB4EEB4525E17E8C00B85423 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB4EEB4625E17E9500B85423 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FB4EEB4725E17EA100B85423 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB98700C25E17B52000CF44A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB4EEB4825E17EAD00B85423 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FB986FFC25E17B52000CF44A = {
@@ -142,14 +211,16 @@
 		FB98700725E17B52000CF44A /* ARFlight */ = {
 			isa = PBXGroup;
 			children = (
-				FB98700825E17B52000CF44A /* AppDelegate.swift */,
-				FB98700A25E17B52000CF44A /* SceneDelegate.swift */,
-				FB98700C25E17B52000CF44A /* ViewController.swift */,
-				FB98700E25E17B52000CF44A /* Main.storyboard */,
-				FB98701425E17B57000CF44A /* Assets.xcassets */,
-				FB98701625E17B57000CF44A /* LaunchScreen.storyboard */,
+				FB4EEB4725E17EA100B85423 /* Controller */,
+				FB4EEB4025E17E3B00B85423 /* Database */,
+				FB4EEB4125E17E4800B85423 /* Extension */,
+				FB4EEB4525E17E8C00B85423 /* Model */,
+				FB4EEB4625E17E9500B85423 /* Networking */,
+				FB4EEB4325E17E5F00B85423 /* Ressources */,
+				FB4EEB4425E17E6A00B85423 /* Supporting Files */,
+				FB4EEB4225E17E5200B85423 /* Utilities */,
+				FB4EEB4825E17EAD00B85423 /* View */,
 				FB98701925E17B57000CF44A /* Info.plist */,
-				FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */,
 			);
 			path = ARFlight;
 			sourceTree = "<group>";
