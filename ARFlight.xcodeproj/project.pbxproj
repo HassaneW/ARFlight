@@ -10,6 +10,11 @@
 		1E7B55B1BF7528BDC9F73D34 /* Pods_ARFlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03757EB2F29452C8AE6A501F /* Pods_ARFlightTests.framework */; };
 		9F5600121E419CAD976E696B /* Pods_ARFlight_ARFlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECEC1744CD1F2DD5CF5EEC /* Pods_ARFlight_ARFlightUITests.framework */; };
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
+		FB4EEB5325E1802900B85423 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB4F25E1802800B85423 /* Config.swift */; };
+		FB4EEB5425E1802900B85423 /* NetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB5025E1802900B85423 /* NetworkServiceFlight.swift */; };
+		FB4EEB5525E1802900B85423 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB5125E1802900B85423 /* APIKey.swift */; };
+		FB4EEB5625E1802900B85423 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB5225E1802900B85423 /* Service.swift */; };
+		FB4EEB5E25E18B7A00B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB5D25E18B7A00B85423 /* Flight.swift */; };
 		FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700825E17B52000CF44A /* AppDelegate.swift */; };
 		FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700A25E17B52000CF44A /* SceneDelegate.swift */; };
 		FB98700D25E17B52000CF44A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700C25E17B52000CF44A /* ViewController.swift */; };
@@ -48,6 +53,11 @@
 		B1079DDA915EAAE0CA662F2E /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7C804CFCC8F24299375150 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.release.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
+		FB4EEB4F25E1802800B85423 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		FB4EEB5025E1802900B85423 /* NetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceFlight.swift; sourceTree = "<group>"; };
+		FB4EEB5125E1802900B85423 /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		FB4EEB5225E1802900B85423 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		FB4EEB5D25E18B7A00B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		FB98700525E17B52000CF44A /* ARFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB98700825E17B52000CF44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB98700A25E17B52000CF44A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */,
+				FB4EEB5D25E18B7A00B85423 /* Flight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,6 +178,10 @@
 		FB4EEB4625E17E9500B85423 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				FB4EEB5125E1802900B85423 /* APIKey.swift */,
+				FB4EEB4F25E1802800B85423 /* Config.swift */,
+				FB4EEB5025E1802900B85423 /* NetworkServiceFlight.swift */,
+				FB4EEB5225E1802900B85423 /* Service.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -445,8 +460,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB4EEB5E25E18B7A00B85423 /* Flight.swift in Sources */,
+				FB4EEB5625E1802900B85423 /* Service.swift in Sources */,
 				FB98700D25E17B52000CF44A /* ViewController.swift in Sources */,
+				FB4EEB5525E1802900B85423 /* APIKey.swift in Sources */,
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
+				FB4EEB5425E1802900B85423 /* NetworkServiceFlight.swift in Sources */,
+				FB4EEB5325E1802900B85423 /* Config.swift in Sources */,
 				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
 			);
