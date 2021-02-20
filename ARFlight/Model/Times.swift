@@ -1,0 +1,14 @@
+//
+//  Times.swift
+//  ARFlight
+//
+//  Created by Wandianga hassane on 20/02/2021.
+//
+
+import Foundation
+
+
+struct Times: Decodable {
+    let scheduled: Date?
+    
+}
