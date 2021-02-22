@@ -7,9 +7,15 @@
 
 import Foundation
 
+enum DateError: String, Error {
+    case invalidDateFormat
+}
+
 
 class NetworkServiceFlight {
     static var shared = NetworkServiceFlight()
+    //    let flightParameters: FlightParameters
+    let formatter = DateFormatter()
     private init() {}
     private var apiUrl = ConfigNetworkingService.AirFranceKlm.baseUrl
     private var task: URLSessionDataTask?
@@ -20,17 +26,6 @@ class NetworkServiceFlight {
     }
     init(flightSession: URLSession) {
         self.flightSession = flightSession
-    }
-    
-    struct FlightParameters {
-        let startRange: String
-        let endRange: String
-        let departureCity: String
-        let arrivalCity: String
-        let origin: String
-        let destination: String
-        let pageSize: String
-        let pageNumber: String
     }
     
     func getflight(flightParameters: FlightParameters,startRange : String, endRange : String,departureCity : String,arrivalCity : String, origin: String, destination: String, pageSize: String, pageNumber: String, completion: @escaping (Result<Flight,Service>) -> Void) {
@@ -75,7 +70,27 @@ class NetworkServiceFlight {
             }
             do {
                 let flight = try JSONDecoder().decode(Flight.self, from: data)
+                
+                let decoder = JSONDecoder()
+                
+                decoder.dateDecodingStrategy = .custom({ decoder -> Date in
+                    
+                    let container = try decoder.singleValueContainer()
+                    let dateString = try container.decode(String.self)
+                    
+                    self.formatter.dateFormat = "yyyy-MM-dd"
+                    if let date = self.formatter.date(from: dateString) {
+                        return date
+                    }
+                    self.formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+                    if let date = self.formatter.date(from: dateString) {
+                        return date
+                    }
+                    throw DateError.invalidDateFormat
+                })
+                
                 print(flight)
+                
                 completion(.success(flight))
             } catch let error {
                 print(error.localizedDescription)

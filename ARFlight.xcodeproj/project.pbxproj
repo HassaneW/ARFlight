@@ -24,6 +24,7 @@
 		FB98701825E17B57000CF44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB98701625E17B57000CF44A /* LaunchScreen.storyboard */; };
 		FB98702325E17B57000CF44A /* ARFlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702225E17B57000CF44A /* ARFlightTests.swift */; };
 		FB98702E25E17B57000CF44A /* ARFlightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702D25E17B57000CF44A /* ARFlightUITests.swift */; };
+		FB9DF4E925E3B9CF00CEF1E2 /* FlightParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DF4E825E3B9CF00CEF1E2 /* FlightParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		FB98702925E17B57000CF44A /* ARFlightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARFlightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB98702D25E17B57000CF44A /* ARFlightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFlightUITests.swift; sourceTree = "<group>"; };
 		FB98702F25E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB9DF4E825E3B9CF00CEF1E2 /* FlightParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				FB4EEB5125E1802900B85423 /* APIKey.swift */,
 				FB4EEB4F25E1802800B85423 /* Config.swift */,
 				FB4EEB5025E1802900B85423 /* NetworkServiceFlight.swift */,
+				FB9DF4E825E3B9CF00CEF1E2 /* FlightParameters.swift */,
 				FB4EEB5225E1802900B85423 /* Service.swift */,
 			);
 			path = Networking;
@@ -467,6 +470,7 @@
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
 				FB4EEB5425E1802900B85423 /* NetworkServiceFlight.swift in Sources */,
 				FB4EEB5325E1802900B85423 /* Config.swift in Sources */,
+				FB9DF4E925E3B9CF00CEF1E2 /* FlightParameters.swift in Sources */,
 				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
 			);
