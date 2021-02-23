@@ -1,0 +1,868 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		59FDDF5107882D43945502E462CBC62A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5DC6DB975BD60D2D5C39DFE58C7C156F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6440BA1373B0FB9CCDC769FDCB0657A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6CFFC701A9B3FF88254FE89ABC3323FC /* Pods-ARFlightTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4975158C7ACFBC571D4B657D9C399C43 /* Pods-ARFlightTests-dummy.m */; };
+		6FD620C7BF862C90D8B950BB4F880790 /* Pods-ARFlight-ARFlightUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 133D5F542DECEF6AA0133A23468B97CB /* Pods-ARFlight-ARFlightUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF750AF3EE11954EF88BD364DD1DDBC6 /* Pods-ARFlight-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5909F891C8CDF91AD37665461A874703 /* Pods-ARFlight-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0D8894F984B2BF655670F439891935B /* Pods-ARFlight-ARFlightUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ADF4091262364E6B2DD9BB8D4CE9 /* Pods-ARFlight-ARFlightUITests-dummy.m */; };
+		D3F0B7B567E019356BAC9923DD25A039 /* Pods-ARFlight-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0170E5EBBDDBCF22F31BFB919858DD70 /* Pods-ARFlight-dummy.m */; };
+		EAA95E309FE4CC772F7D9F38C3933ED2 /* Pods-ARFlightTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2362C071A580D73B108D4626BD549F17 /* Pods-ARFlightTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		298D03B6ABD5844FDAD0C67EED649E1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 781FFB555B93C3F6BB3ECB0F2C1DA95C;
+			remoteInfo = "Pods-ARFlight";
+		};
+		928285303E57E50E9D767AE3E06CBB49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		9407B77D752DFA34394953B68C1A0814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0170E5EBBDDBCF22F31BFB919858DD70 /* Pods-ARFlight-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARFlight-dummy.m"; sourceTree = "<group>"; };
+		0ACEEFDE8F9B0715792DBC0E760F1837 /* Pods-ARFlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlight.release.xcconfig"; sourceTree = "<group>"; };
+		126E04BFFE4DDBCDE825B5ED90AA62DA /* Pods-ARFlight-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARFlight-acknowledgements.markdown"; sourceTree = "<group>"; };
+		133D5F542DECEF6AA0133A23468B97CB /* Pods-ARFlight-ARFlightUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARFlight-ARFlightUITests-umbrella.h"; sourceTree = "<group>"; };
+		1754485BDBC5410E407AE767629FE1E9 /* Pods-ARFlight-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlight-Info.plist"; sourceTree = "<group>"; };
+		2362C071A580D73B108D4626BD549F17 /* Pods-ARFlightTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARFlightTests-umbrella.h"; sourceTree = "<group>"; };
+		36311AD7E53A136C472A811CFBA2F9C0 /* Pods_ARFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARFlight.framework; path = "Pods-ARFlight.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		365A03AF61CD5E78978505E9AF44BBC0 /* Pods-ARFlightTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlightTests-Info.plist"; sourceTree = "<group>"; };
+		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		4356844A9942A14F5C01D20E7DE847B9 /* Pods-ARFlightTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARFlightTests.modulemap"; sourceTree = "<group>"; };
+		4975158C7ACFBC571D4B657D9C399C43 /* Pods-ARFlightTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARFlightTests-dummy.m"; sourceTree = "<group>"; };
+		5835EA23AF1BCC3ACDD5F2F75F1196FA /* Pods-ARFlight-ARFlightUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlight-ARFlightUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5909F891C8CDF91AD37665461A874703 /* Pods-ARFlight-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARFlight-umbrella.h"; sourceTree = "<group>"; };
+		6480ADF4091262364E6B2DD9BB8D4CE9 /* Pods-ARFlight-ARFlightUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARFlight-ARFlightUITests-dummy.m"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		73BB963298526C1EE939094564287190 /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlight-ARFlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
+		85E3A7B1696E77286F7BAAD101D4D9BB /* Pods_ARFlightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARFlightTests.framework; path = "Pods-ARFlightTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AB7193898620D8DBE16C5ABF9C2A1D49 /* Pods-ARFlight.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARFlight.modulemap"; sourceTree = "<group>"; };
+		AE8AC8B3A0F002161BAB064342DCB094 /* Pods-ARFlight-ARFlightUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARFlight-ARFlightUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B295A7321E2216E280F204A7D9AD124D /* Pods-ARFlightTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlightTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B52587FB5F272C58173BB31CF4F8B261 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlight-ARFlightUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B9BD2AE5EF1606646C91AB2FEB044DFA /* Pods-ARFlightTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARFlightTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BCD262D2E9E47B873FDFF677B6EC141E /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
+		BE1955BBCE2D99B9DD4D59DB0A794D9B /* Pods-ARFlightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlightTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF04D3610A2581E92A97147EDD5C536A /* Pods-ARFlightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARFlightTests.release.xcconfig"; sourceTree = "<group>"; };
+		DBA04E969F3D9E814F828D6A13757F43 /* Pods-ARFlight-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlight-acknowledgements.plist"; sourceTree = "<group>"; };
+		E66C6A64C49CD12B7262F3508D6324D5 /* Pods_ARFlight_ARFlightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARFlight_ARFlightUITests.framework; path = "Pods-ARFlight-ARFlightUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F758D1E196C906B7DF420312FB3E9D2E /* Pods-ARFlight-ARFlightUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARFlight-ARFlightUITests-Info.plist"; sourceTree = "<group>"; };
+		FE2157F3BE8A2FD5121B911A68E38869 /* Pods-ARFlight-ARFlightUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARFlight-ARFlightUITests.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		59D58EEA40E4AB13C40B4CA27291CB96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6440BA1373B0FB9CCDC769FDCB0657A2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F1F36A2858353F5955B893F594C433E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC6DB975BD60D2D5C39DFE58C7C156F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB99EBCC490881B6BC8A19D8137759E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59FDDF5107882D43945502E462CBC62A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E99CE2C7F86DD06C6A0CA249C0E315C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B55BF0CD25AFC91E37F548A89176F887 /* Pods-ARFlight */,
+				BE6B9475EFD036F4266C780450740B1A /* Pods-ARFlight-ARFlightUITests */,
+				763CBCDA5FAEC80C19A3F82509975ED1 /* Pods-ARFlightTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		763CBCDA5FAEC80C19A3F82509975ED1 /* Pods-ARFlightTests */ = {
+			isa = PBXGroup;
+			children = (
+				4356844A9942A14F5C01D20E7DE847B9 /* Pods-ARFlightTests.modulemap */,
+				B9BD2AE5EF1606646C91AB2FEB044DFA /* Pods-ARFlightTests-acknowledgements.markdown */,
+				B295A7321E2216E280F204A7D9AD124D /* Pods-ARFlightTests-acknowledgements.plist */,
+				4975158C7ACFBC571D4B657D9C399C43 /* Pods-ARFlightTests-dummy.m */,
+				365A03AF61CD5E78978505E9AF44BBC0 /* Pods-ARFlightTests-Info.plist */,
+				2362C071A580D73B108D4626BD549F17 /* Pods-ARFlightTests-umbrella.h */,
+				BE1955BBCE2D99B9DD4D59DB0A794D9B /* Pods-ARFlightTests.debug.xcconfig */,
+				BF04D3610A2581E92A97147EDD5C536A /* Pods-ARFlightTests.release.xcconfig */,
+			);
+			name = "Pods-ARFlightTests";
+			path = "Target Support Files/Pods-ARFlightTests";
+			sourceTree = "<group>";
+		};
+		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */,
+				7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		8A8CFE68B8E0E2BD0D4530726387563B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36311AD7E53A136C472A811CFBA2F9C0 /* Pods_ARFlight.framework */,
+				E66C6A64C49CD12B7262F3508D6324D5 /* Pods_ARFlight_ARFlightUITests.framework */,
+				85E3A7B1696E77286F7BAAD101D4D9BB /* Pods_ARFlightTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D96179D43A67C5D5323B0682D32C133C /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B55BF0CD25AFC91E37F548A89176F887 /* Pods-ARFlight */ = {
+			isa = PBXGroup;
+			children = (
+				AB7193898620D8DBE16C5ABF9C2A1D49 /* Pods-ARFlight.modulemap */,
+				126E04BFFE4DDBCDE825B5ED90AA62DA /* Pods-ARFlight-acknowledgements.markdown */,
+				DBA04E969F3D9E814F828D6A13757F43 /* Pods-ARFlight-acknowledgements.plist */,
+				0170E5EBBDDBCF22F31BFB919858DD70 /* Pods-ARFlight-dummy.m */,
+				1754485BDBC5410E407AE767629FE1E9 /* Pods-ARFlight-Info.plist */,
+				5909F891C8CDF91AD37665461A874703 /* Pods-ARFlight-umbrella.h */,
+				BCD262D2E9E47B873FDFF677B6EC141E /* Pods-ARFlight.debug.xcconfig */,
+				0ACEEFDE8F9B0715792DBC0E760F1837 /* Pods-ARFlight.release.xcconfig */,
+			);
+			name = "Pods-ARFlight";
+			path = "Target Support Files/Pods-ARFlight";
+			sourceTree = "<group>";
+		};
+		BE6B9475EFD036F4266C780450740B1A /* Pods-ARFlight-ARFlightUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE2157F3BE8A2FD5121B911A68E38869 /* Pods-ARFlight-ARFlightUITests.modulemap */,
+				AE8AC8B3A0F002161BAB064342DCB094 /* Pods-ARFlight-ARFlightUITests-acknowledgements.markdown */,
+				5835EA23AF1BCC3ACDD5F2F75F1196FA /* Pods-ARFlight-ARFlightUITests-acknowledgements.plist */,
+				6480ADF4091262364E6B2DD9BB8D4CE9 /* Pods-ARFlight-ARFlightUITests-dummy.m */,
+				F758D1E196C906B7DF420312FB3E9D2E /* Pods-ARFlight-ARFlightUITests-Info.plist */,
+				133D5F542DECEF6AA0133A23468B97CB /* Pods-ARFlight-ARFlightUITests-umbrella.h */,
+				73BB963298526C1EE939094564287190 /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */,
+				B52587FB5F272C58173BB31CF4F8B261 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */,
+			);
+			name = "Pods-ARFlight-ARFlightUITests";
+			path = "Target Support Files/Pods-ARFlight-ARFlightUITests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				965877409E01FB3D85D85E90E6B30185 /* Pods */,
+				8A8CFE68B8E0E2BD0D4530726387563B /* Products */,
+				0E99CE2C7F86DD06C6A0CA249C0E315C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D96179D43A67C5D5323B0682D32C133C /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8E72A742F1CC8B471D58E6C4A0959EF9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA95E309FE4CC772F7D9F38C3933ED2 /* Pods-ARFlightTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4F835F870274F54CEC1790807600397 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FD620C7BF862C90D8B950BB4F880790 /* Pods-ARFlight-ARFlightUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97BFCD473B909152AA4F646937D68E3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF750AF3EE11954EF88BD364DD1DDBC6 /* Pods-ARFlight-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		38E563E746FFA589C6985F54170B2B83 /* Pods-ARFlightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A75C9BB5A63439F499E8273A42873BF2 /* Build configuration list for PBXNativeTarget "Pods-ARFlightTests" */;
+			buildPhases = (
+				8E72A742F1CC8B471D58E6C4A0959EF9 /* Headers */,
+				06BC5BF0E4B5A0A12A806C32BC57C4D8 /* Sources */,
+				9F1F36A2858353F5955B893F594C433E /* Frameworks */,
+				6BE1C72F39249A746476C5C402D01D16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43F2266BA82E3F332ECA92033D11E37D /* PBXTargetDependency */,
+			);
+			name = "Pods-ARFlightTests";
+			productName = "Pods-ARFlightTests";
+			productReference = 85E3A7B1696E77286F7BAAD101D4D9BB /* Pods_ARFlightTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		781FFB555B93C3F6BB3ECB0F2C1DA95C /* Pods-ARFlight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5D7C4F326BEAA46C2F84F61D095BEB9 /* Build configuration list for PBXNativeTarget "Pods-ARFlight" */;
+			buildPhases = (
+				D97BFCD473B909152AA4F646937D68E3 /* Headers */,
+				C881028C4BF680CE0F322CA14890A4C9 /* Sources */,
+				59D58EEA40E4AB13C40B4CA27291CB96 /* Frameworks */,
+				328A83A4E66791160C229A391B37B710 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E58E5D675F0C0D57FC656814A07D731 /* PBXTargetDependency */,
+			);
+			name = "Pods-ARFlight";
+			productName = "Pods-ARFlight";
+			productReference = 36311AD7E53A136C472A811CFBA2F9C0 /* Pods_ARFlight.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AFB9BE6C8F361B2D57A4E208EBF3A81E /* Pods-ARFlight-ARFlightUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36A9065826886587E5888E170AF5B046 /* Build configuration list for PBXNativeTarget "Pods-ARFlight-ARFlightUITests" */;
+			buildPhases = (
+				D4F835F870274F54CEC1790807600397 /* Headers */,
+				25570C82F2665809220DC1D1CA13B411 /* Sources */,
+				BB99EBCC490881B6BC8A19D8137759E7 /* Frameworks */,
+				1029C9050E7944689ED36BD8EFAE5989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E6CC21C8D4A0295284FB94B6EA6A80A /* PBXTargetDependency */,
+			);
+			name = "Pods-ARFlight-ARFlightUITests";
+			productName = "Pods-ARFlight-ARFlightUITests";
+			productReference = E66C6A64C49CD12B7262F3508D6324D5 /* Pods_ARFlight_ARFlightUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 8A8CFE68B8E0E2BD0D4530726387563B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				781FFB555B93C3F6BB3ECB0F2C1DA95C /* Pods-ARFlight */,
+				AFB9BE6C8F361B2D57A4E208EBF3A81E /* Pods-ARFlight-ARFlightUITests */,
+				38E563E746FFA589C6985F54170B2B83 /* Pods-ARFlightTests */,
+				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1029C9050E7944689ED36BD8EFAE5989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		328A83A4E66791160C229A391B37B710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BE1C72F39249A746476C5C402D01D16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06BC5BF0E4B5A0A12A806C32BC57C4D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CFFC701A9B3FF88254FE89ABC3323FC /* Pods-ARFlightTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25570C82F2665809220DC1D1CA13B411 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D8894F984B2BF655670F439891935B /* Pods-ARFlight-ARFlightUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C881028C4BF680CE0F322CA14890A4C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3F0B7B567E019356BAC9923DD25A039 /* Pods-ARFlight-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3E58E5D675F0C0D57FC656814A07D731 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 928285303E57E50E9D767AE3E06CBB49 /* PBXContainerItemProxy */;
+		};
+		43F2266BA82E3F332ECA92033D11E37D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ARFlight";
+			target = 781FFB555B93C3F6BB3ECB0F2C1DA95C /* Pods-ARFlight */;
+			targetProxy = 298D03B6ABD5844FDAD0C67EED649E1A /* PBXContainerItemProxy */;
+		};
+		7E6CC21C8D4A0295284FB94B6EA6A80A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 9407B77D752DFA34394953B68C1A0814 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		082BA81B75035E25F89D9933E5052370 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCD262D2E9E47B873FDFF677B6EC141E /* Pods-ARFlight.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlight/Pods-ARFlight-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlight/Pods-ARFlight.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		125C51B0F88E28C868DC90BD45E4E727 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3B0CDECEFE2E7A47E71313C8DB0DC9ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ACEEFDE8F9B0715792DBC0E760F1837 /* Pods-ARFlight.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlight/Pods-ARFlight-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlight/Pods-ARFlight.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		46359F47EB48604A70378F86530847E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73BB963298526C1EE939094564287190 /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		55FB5994EC635038DDF1F2CF87CEA32E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52587FB5F272C58173BB31CF4F8B261 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		92A3E9AC052A7345115439021B218E3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFA4A5898F721FCAD9C80ACBFC50D110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF04D3610A2581E92A97147EDD5C536A /* Pods-ARFlightTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlightTests/Pods-ARFlightTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlightTests/Pods-ARFlightTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D727EA503390B60E946C0E4D621B9F11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1955BBCE2D99B9DD4D59DB0A794D9B /* Pods-ARFlightTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ARFlightTests/Pods-ARFlightTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ARFlightTests/Pods-ARFlightTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		36A9065826886587E5888E170AF5B046 /* Build configuration list for PBXNativeTarget "Pods-ARFlight-ARFlightUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46359F47EB48604A70378F86530847E6 /* Debug */,
+				55FB5994EC635038DDF1F2CF87CEA32E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				125C51B0F88E28C868DC90BD45E4E727 /* Debug */,
+				92A3E9AC052A7345115439021B218E3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5D7C4F326BEAA46C2F84F61D095BEB9 /* Build configuration list for PBXNativeTarget "Pods-ARFlight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				082BA81B75035E25F89D9933E5052370 /* Debug */,
+				3B0CDECEFE2E7A47E71313C8DB0DC9ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A75C9BB5A63439F499E8273A42873BF2 /* Build configuration list for PBXNativeTarget "Pods-ARFlightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D727EA503390B60E946C0E4D621B9F11 /* Debug */,
+				AFA4A5898F721FCAD9C80ACBFC50D110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */,
+				AD81E62ACCB0B7A923FC8AA288F9921E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
