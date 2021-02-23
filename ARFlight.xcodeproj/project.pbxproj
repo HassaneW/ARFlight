@@ -10,9 +10,12 @@
 		1E7B55B1BF7528BDC9F73D34 /* Pods_ARFlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03757EB2F29452C8AE6A501F /* Pods_ARFlightTests.framework */; };
 		9F5600121E419CAD976E696B /* Pods_ARFlight_ARFlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECEC1744CD1F2DD5CF5EEC /* Pods_ARFlight_ARFlightUITests.framework */; };
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
+		FB3585DC25E52223005C60EF /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3585DB25E52223005C60EF /* ResultTableViewController.swift */; };
+		FB3585E125E522E9005C60EF /* GeocoderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3585E025E522E9005C60EF /* GeocoderViewController.swift */; };
+		FB3585E625E52335005C60EF /* DetailsFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3585E525E52335005C60EF /* DetailsFlightViewController.swift */; };
 		FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700825E17B52000CF44A /* AppDelegate.swift */; };
 		FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700A25E17B52000CF44A /* SceneDelegate.swift */; };
-		FB98700D25E17B52000CF44A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700C25E17B52000CF44A /* ViewController.swift */; };
+		FB98700D25E17B52000CF44A /* SearchFlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700C25E17B52000CF44A /* SearchFlightController.swift */; };
 		FB98701025E17B52000CF44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB98700E25E17B52000CF44A /* Main.storyboard */; };
 		FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */; };
 		FB98701525E17B57000CF44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB98701425E17B57000CF44A /* Assets.xcassets */; };
@@ -48,10 +51,13 @@
 		B1079DDA915EAAE0CA662F2E /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7C804CFCC8F24299375150 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.release.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
+		FB3585DB25E52223005C60EF /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		FB3585E025E522E9005C60EF /* GeocoderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderViewController.swift; sourceTree = "<group>"; };
+		FB3585E525E52335005C60EF /* DetailsFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFlightViewController.swift; sourceTree = "<group>"; };
 		FB98700525E17B52000CF44A /* ARFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB98700825E17B52000CF44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB98700A25E17B52000CF44A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FB98700C25E17B52000CF44A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB98700C25E17B52000CF44A /* SearchFlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightController.swift; sourceTree = "<group>"; };
 		FB98700F25E17B52000CF44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB98701225E17B52000CF44A /* ARFlight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARFlight.xcdatamodel; sourceTree = "<group>"; };
 		FB98701425E17B57000CF44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,7 +180,10 @@
 		FB4EEB4725E17EA100B85423 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FB98700C25E17B52000CF44A /* ViewController.swift */,
+				FB98700C25E17B52000CF44A /* SearchFlightController.swift */,
+				FB3585E025E522E9005C60EF /* GeocoderViewController.swift */,
+				FB3585E525E52335005C60EF /* DetailsFlightViewController.swift */,
+				FB3585DB25E52223005C60EF /* ResultTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -445,9 +454,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB98700D25E17B52000CF44A /* ViewController.swift in Sources */,
+				FB3585E625E52335005C60EF /* DetailsFlightViewController.swift in Sources */,
+				FB98700D25E17B52000CF44A /* SearchFlightController.swift in Sources */,
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
+				FB3585DC25E52223005C60EF /* ResultTableViewController.swift in Sources */,
 				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
+				FB3585E125E522E9005C60EF /* GeocoderViewController.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
