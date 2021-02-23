@@ -17,6 +17,7 @@
 		FB35860F25E5328D005C60EF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860A25E5328D005C60EF /* Service.swift */; };
 		FB35861025E5328D005C60EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860B25E5328D005C60EF /* Config.swift */; };
 		FB35861125E5328D005C60EF /* FlightParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860C25E5328D005C60EF /* FlightParameters.swift */; };
+		FB35862225E534E9005C60EF /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35862125E534E9005C60EF /* DatabaseService.swift */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
 		FB4EEB8425E195A700B85423 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8325E195A700B85423 /* Airline.swift */; };
 		FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8825E195C400B85423 /* FlightLegs.swift */; };
@@ -71,6 +72,7 @@
 		FB35860A25E5328D005C60EF /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		FB35860B25E5328D005C60EF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FB35860C25E5328D005C60EF /* FlightParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightParameters.swift; sourceTree = "<group>"; };
+		FB35862125E534E9005C60EF /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		FB4EEB8325E195A700B85423 /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		FB4EEB8825E195C400B85423 /* FlightLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightLegs.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 				FB35860A25E5328D005C60EF /* Service.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		FB35862725E5350B005C60EF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				FB35862125E534E9005C60EF /* DatabaseService.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		FB4EEB4125E17E4800B85423 /* Extension */ = {
@@ -252,6 +262,7 @@
 		FB98700725E17B52000CF44A /* ARFlight */ = {
 			isa = PBXGroup;
 			children = (
+				FB35862725E5350B005C60EF /* Database */,
 				FB35860725E53277005C60EF /* Networking */,
 				FB4EEB4725E17EA100B85423 /* Controller */,
 				FB4EEB4125E17E4800B85423 /* Extension */,
@@ -492,6 +503,7 @@
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
 				FB4EEB8425E195A700B85423 /* Airline.swift in Sources */,
 				FB35861025E5328D005C60EF /* Config.swift in Sources */,
+				FB35862225E534E9005C60EF /* DatabaseService.swift in Sources */,
 				FB98700D25E17B52000CF44A /* ViewController.swift in Sources */,
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
 				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
