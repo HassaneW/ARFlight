@@ -24,8 +24,8 @@ class DatabaseService {
     }
     
     // MARK: - private function Core Data
-    func save(flight: Flight) throws {
-        let flightEntity = FlightEntity(context: viewContext)
+//    func save(flight: Flight) throws {
+//        let flightEntity = FlightEntity(context: viewContext)
         
 //        flightEntity.companyCode = flight.companyCode
 //
@@ -84,31 +84,31 @@ class DatabaseService {
 //        return flightEntities.map { Flight(from: $0) }
 //    }
 //
-    func delete(flight: Flight) throws {
-        let fetchRequest: NSFetchRequest<FlightEntity> = FlightEntity.fetchRequest()
+//    func delete(flight: Flight) throws {
+//        let fetchRequest: NSFetchRequest<FlightEntity> = FlightEntity.fetchRequest()
 //        let titlePredicate = NSPredicate(format: "title == %@", recipe.title)
 //        let urlPredicate = NSPredicate(format: "url == %@", recipe.url)
 //        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [titlePredicate, urlPredicate])
 
-        let managedObject = try viewContext.fetch(fetchRequest)
-
-        
-         for entity in managedObject {
-             viewContext.delete(entity)
-         }
-        
-        
-        managedObject.forEach { (entity) in
-            viewContext.delete(entity)
-        }
-    
-        managedObject.forEach { viewContext.delete($0)}
-        
-        do {
-            try viewContext.save()
-//            print("Recipe \(recipe.title) deleted")
-        } catch let error {
-            throw error
-        }
-    }
-}
+//        let managedObject = try viewContext.fetch(fetchRequest)
+//
+//
+//         for entity in managedObject {
+//             viewContext.delete(entity)
+//         }
+//
+//
+//        managedObject.forEach { (entity) in
+//            viewContext.delete(entity)
+//        }
+//
+//        managedObject.forEach { viewContext.delete($0)}
+//
+//        do {
+//            try viewContext.save()
+////            print("Recipe \(recipe.title) deleted")
+//        } catch let error {
+//            throw error
+//        }
+//    }
+//}

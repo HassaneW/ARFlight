@@ -79,9 +79,9 @@ struct Flight: Decodable {
     }
 }
 
-enum DateError: String, Error {
-    case invalidDateFormat
-}
+//enum DateError: String, Error {
+//    case invalidDateFormat
+//}
 
 
 extension Flight : CustomStringConvertible {
