@@ -12,6 +12,7 @@
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
 		FB301CBC25E55C3C00BC433F /* ResultFlightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */; };
 		FB301CC125E55C6400BC433F /* DetailsFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */; };
+		FB301CCC25E55D9700BC433F /* aircraft-details.json in Resources */ = {isa = PBXBuildFile; fileRef = FB301CCB25E55D9700BC433F /* aircraft-details.json */; };
 		FB3585D025E51E1E005C60EF /* code-airport.json in Resources */ = {isa = PBXBuildFile; fileRef = FB3585CE25E51E1E005C60EF /* code-airport.json */; };
 		FB35860D25E5328D005C60EF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860825E5328C005C60EF /* APIKey.swift */; };
 		FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */; };
@@ -68,6 +69,7 @@
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
 		FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFlightsTableViewController.swift; sourceTree = "<group>"; };
 		FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFlightViewController.swift; sourceTree = "<group>"; };
+		FB301CCB25E55D9700BC433F /* aircraft-details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "aircraft-details.json"; sourceTree = "<group>"; };
 		FB3585CE25E51E1E005C60EF /* code-airport.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "code-airport.json"; sourceTree = "<group>"; };
 		FB35860825E5328C005C60EF /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceFlight.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		FB4EEB4325E17E5F00B85423 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				FB301CCB25E55D9700BC433F /* aircraft-details.json */,
 				FB3585CE25E51E1E005C60EF /* code-airport.json */,
 				FB98701425E17B57000CF44A /* Assets.xcassets */,
 			);
@@ -405,6 +408,7 @@
 			files = (
 				FB98701825E17B57000CF44A /* LaunchScreen.storyboard in Resources */,
 				FB98701525E17B57000CF44A /* Assets.xcassets in Resources */,
+				FB301CCC25E55D9700BC433F /* aircraft-details.json in Resources */,
 				FB3585D025E51E1E005C60EF /* code-airport.json in Resources */,
 				FB98701025E17B52000CF44A /* Main.storyboard in Resources */,
 			);
