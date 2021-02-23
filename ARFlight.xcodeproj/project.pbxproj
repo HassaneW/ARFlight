@@ -10,6 +10,8 @@
 		1E7B55B1BF7528BDC9F73D34 /* Pods_ARFlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03757EB2F29452C8AE6A501F /* Pods_ARFlightTests.framework */; };
 		9F5600121E419CAD976E696B /* Pods_ARFlight_ARFlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECEC1744CD1F2DD5CF5EEC /* Pods_ARFlight_ARFlightUITests.framework */; };
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
+		FB3585D025E51E1E005C60EF /* code-airport.json in Resources */ = {isa = PBXBuildFile; fileRef = FB3585CE25E51E1E005C60EF /* code-airport.json */; };
+		FB3585D125E51E1E005C60EF /* aircraft-details.json in Resources */ = {isa = PBXBuildFile; fileRef = FB3585CF25E51E1E005C60EF /* aircraft-details.json */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
 		FB4EEB8425E195A700B85423 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8325E195A700B85423 /* Airline.swift */; };
 		FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8825E195C400B85423 /* FlightLegs.swift */; };
@@ -57,6 +59,8 @@
 		B1079DDA915EAAE0CA662F2E /* Pods-ARFlight-ARFlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7C804CFCC8F24299375150 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.release.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
+		FB3585CE25E51E1E005C60EF /* code-airport.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "code-airport.json"; sourceTree = "<group>"; };
+		FB3585CF25E51E1E005C60EF /* aircraft-details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "aircraft-details.json"; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		FB4EEB8325E195A700B85423 /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		FB4EEB8825E195C400B85423 /* FlightLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightLegs.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		FB4EEB4325E17E5F00B85423 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				FB3585CF25E51E1E005C60EF /* aircraft-details.json */,
+				FB3585CE25E51E1E005C60EF /* code-airport.json */,
 				FB98701425E17B57000CF44A /* Assets.xcassets */,
 			);
 			path = Ressources;
@@ -378,6 +384,8 @@
 			files = (
 				FB98701825E17B57000CF44A /* LaunchScreen.storyboard in Resources */,
 				FB98701525E17B57000CF44A /* Assets.xcassets in Resources */,
+				FB3585D125E51E1E005C60EF /* aircraft-details.json in Resources */,
+				FB3585D025E51E1E005C60EF /* code-airport.json in Resources */,
 				FB98701025E17B52000CF44A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
