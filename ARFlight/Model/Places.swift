@@ -16,7 +16,7 @@ struct Places: Decodable {
         case gateNumber
         case terminal = "boardingTerminal"
     }
-    
+    // Decoding gate number array in string
 //    init(from decoder: Decoder) throws {
 //        // decoding
 //        // decoder un tablea

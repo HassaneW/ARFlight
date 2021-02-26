@@ -16,7 +16,7 @@
 		FB3585D025E51E1E005C60EF /* code-airport.json in Resources */ = {isa = PBXBuildFile; fileRef = FB3585CE25E51E1E005C60EF /* code-airport.json */; };
 		FB35860D25E5328D005C60EF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860825E5328C005C60EF /* APIKey.swift */; };
 		FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */; };
-		FB35860F25E5328D005C60EF /* NetworkErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860A25E5328D005C60EF /* NetworkErrorService.swift */; };
+		FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860A25E5328D005C60EF /* NetworkError.swift */; };
 		FB35861025E5328D005C60EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860B25E5328D005C60EF /* Config.swift */; };
 		FB35861125E5328D005C60EF /* FlightParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860C25E5328D005C60EF /* FlightParameters.swift */; };
 		FB35862225E534E9005C60EF /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35862125E534E9005C60EF /* DatabaseService.swift */; };
@@ -73,7 +73,7 @@
 		FB3585CE25E51E1E005C60EF /* code-airport.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "code-airport.json"; sourceTree = "<group>"; };
 		FB35860825E5328C005C60EF /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceFlight.swift; sourceTree = "<group>"; };
-		FB35860A25E5328D005C60EF /* NetworkErrorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorService.swift; sourceTree = "<group>"; };
+		FB35860A25E5328D005C60EF /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FB35860B25E5328D005C60EF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FB35860C25E5328D005C60EF /* FlightParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightParameters.swift; sourceTree = "<group>"; };
 		FB35862125E534E9005C60EF /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -154,20 +154,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FB301CA925E5588300BC433F /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		FB301CAA25E5589B00BC433F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		FB35860725E53277005C60EF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +161,7 @@
 				FB35860B25E5328D005C60EF /* Config.swift */,
 				FB35860C25E5328D005C60EF /* FlightParameters.swift */,
 				FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */,
-				FB35860A25E5328D005C60EF /* NetworkErrorService.swift */,
+				FB35860A25E5328D005C60EF /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -191,7 +177,6 @@
 		FB4EEB4225E17E5200B85423 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				FB98700E25E17B52000CF44A /* Main.storyboard */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -270,14 +255,13 @@
 			children = (
 				FB4EEB4725E17EA100B85423 /* Controller */,
 				FB35862725E5350B005C60EF /* Database */,
-				FB301CA925E5588300BC433F /* Extension */,
 				FB98701925E17B57000CF44A /* Info.plist */,
 				FB4EEB4525E17E8C00B85423 /* Model */,
 				FB35860725E53277005C60EF /* Networking */,
 				FB4EEB4325E17E5F00B85423 /* Ressources */,
 				FB4EEB4425E17E6A00B85423 /* Supporting Files */,
+				FBAC215025E92A0C00C0B074 /* View */,
 				FB4EEB4225E17E5200B85423 /* Utilities */,
-				FB301CAA25E5589B00BC433F /* View */,
 			);
 			path = ARFlight;
 			sourceTree = "<group>";
@@ -298,6 +282,14 @@
 				FB98702F25E17B57000CF44A /* Info.plist */,
 			);
 			path = ARFlightUITests;
+			sourceTree = "<group>";
+		};
+		FBAC215025E92A0C00C0B074 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB98700E25E17B52000CF44A /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,7 +509,7 @@
 				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
 				FB4EEB9825E1965700B85423 /* Airport.swift in Sources */,
 				FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */,
-				FB35860F25E5328D005C60EF /* NetworkErrorService.swift in Sources */,
+				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
 				FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,

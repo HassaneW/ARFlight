@@ -53,68 +53,75 @@ class NetworkServiceFlight {
     }
     
     // MARK: - Requests
-    
-    
-    
-    func getflightDetails(with flightParameters: FlightParameters, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
-        
-        let arguments = [
-            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            "startRange": flightParameters.startRange,
-            "endRange": flightParameters.endRange,
-            "departureCity": flightParameters.departureCity,
-            "arrivalCity": flightParameters.arrivalCity,
-            "origin": flightParameters.origin,
-            "destination": flightParameters.destination,
-            "pageSize": flightParameters.pageSize,
-            "pageNumber": flightParameters.pageNumber
-            
-        ]
-
-        var urlComponents = URLComponents(string: apiUrl)
-        var queryItems = [URLQueryItem]()
-        for (key, value) in arguments {
-            queryItems.append(URLQueryItem(name: key, value: value))
-        }
-        urlComponents?.queryItems = queryItems
-        
-        guard let url = urlComponents?.url else {
-            completion(.failure(.invalidUrl))
-            return
-        }
-        
-        task = flightSession.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion(.failure(.requestError(error.localizedDescription)))
-            }
-            
-            guard let response = response as? HTTPURLResponse else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            let status = response.statusCode
-            guard (200...299).contains(status) else {
-                completion(.failure(.errorStatusCode(status)))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-            
-            do {
-                let flight = try self.jsonDecoder.decode(Flight.self, from: data)
-                
-                print(flight)
-                
-                completion(.success(flight))
-            } catch let error {
-                print(error.localizedDescription)
-                completion(.failure(.decodingError))
-            }
-        }
-        task?.resume()
+    // avec les parameters, (voir le design UI pour chercher un vol, récupérer  un tableau de Flight)
+    func searchForFlight(from origin: String, to destination: String) {
+        //tableau flight
     }
+    // flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
+    func getflightStatus(flightId: String) {
+        
+    }
+    
+    //bad name
+//    func getflightDetails(with flightParameters: FlightParameters, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
+//        
+//        let arguments = [
+//            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
+//            "startRange": flightParameters.startRange,
+//            "endRange": flightParameters.endRange,
+//            "departureCity": flightParameters.departureCity,
+//            "arrivalCity": flightParameters.arrivalCity,
+//            "origin": flightParameters.origin,
+//            "destination": flightParameters.destination,
+//            "pageSize": flightParameters.pageSize,
+//            "pageNumber": flightParameters.pageNumber
+//            
+//        ]
+//
+//        var urlComponents = URLComponents(string: apiUrl)
+//        var queryItems = [URLQueryItem]()
+//        for (key, value) in arguments {
+//            queryItems.append(URLQueryItem(name: key, value: value))
+//        }
+//        urlComponents?.queryItems = queryItems
+//        
+//        guard let url = urlComponents?.url else {
+//            completion(.failure(.invalidUrl))
+//            return
+//        }
+//        
+//        task = flightSession.dataTask(with: url) { (data, response, error) in
+//            if let error = error {
+//                completion(.failure(.requestError(error.localizedDescription)))
+//            }
+//            
+//            guard let response = response as? HTTPURLResponse else {
+//                completion(.failure(.invalidResponse))
+//                return
+//            }
+//            
+//            let status = response.statusCode
+//            guard (200...299).contains(status) else {
+//                completion(.failure(.errorStatusCode(status)))
+//                return
+//            }
+//            
+//            guard let data = data else {
+//                completion(.failure(.invalidData))
+//                return
+//            }
+//            
+//            do {
+//                let flight = try self.jsonDecoder.decode(Flight.self, from: data)
+//                
+//                print(flight)
+//                
+//                completion(.success(flight))
+//            } catch let error {
+//                print(error.localizedDescription)
+//                completion(.failure(.decodingError))
+//            }
+//        }
+//        task?.resume()
+//    }
 }
