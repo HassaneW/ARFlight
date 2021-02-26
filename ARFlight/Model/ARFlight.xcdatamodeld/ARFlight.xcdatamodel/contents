@@ -3,8 +3,23 @@
     <entity name="FlightEntity" representedClassName="FlightEntity" syncable="YES" codeGenerationType="class">
         <attribute name="companyCode" optional="YES" attributeType="String"/>
         <attribute name="companyName" optional="YES" attributeType="String"/>
+        <attribute name="departAircraftModel" optional="YES" attributeType="String"/>
+        <attribute name="departAircraftNumber" optional="YES" attributeType="String"/>
+        <attribute name="departAirportName" optional="YES" attributeType="String"/>
+        <attribute name="departCityName" optional="YES" attributeType="String"/>
+        <attribute name="departCountryName" optional="YES" attributeType="String"/>
+        <attribute name="departLocationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="departLocationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="departPlacesGateNumber" optional="YES" attributeType="Binary"/>
+        <attribute name="departPlacesTerminal" optional="YES" attributeType="String"/>
+        <attribute name="departTimesScheduled" optional="YES" attributeType="String"/>
+        <attribute name="departureDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="flightNumber" optional="YES" attributeType="String"/>
+        <attribute name="flightTypeLong" optional="YES" attributeType="String"/>
+        <attribute name="flightTypeMedium" optional="YES" attributeType="String"/>
+        <attribute name="identifiantPlane" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="FlightEntity" positionX="-45" positionY="0" width="128" height="73"/>
+        <element name="FlightEntity" positionX="-45" positionY="0" width="128" height="298"/>
     </elements>
 </model>
