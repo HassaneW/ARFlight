@@ -24,8 +24,10 @@ class DatabaseService {
     }
     
     // MARK: - private function Core Data
-//    func save(flight: Flight) throws {
-//        let flightEntity = FlightEntity(context: viewContext)
+    func save(flight: Flight) throws {
+        let flightEntity = FlightEntity(context: viewContext)
+        
+        flightEntity.companyCode = flight.company?.code
         
 //        flightEntity.companyCode = flight.companyCode
 //
@@ -111,4 +113,4 @@ class DatabaseService {
 //            throw error
 //        }
 //    }
-//}
+}

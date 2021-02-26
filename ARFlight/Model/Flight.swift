@@ -85,6 +85,7 @@ struct Flight: Decodable {
 
 
 extension Flight : CustomStringConvertible {
+    
     var description: String {
         return """
 Info Vol
@@ -151,6 +152,36 @@ Number Model Avion :
     }
 }
 
+// MARK: - Decode FlightEntity Model
+
+extension Flight {
+    
+    init(from flightEntity: FlightEntity) {
+        flightNumber = flightEntity.flightNumber ?? ""
+//        imageUrl = flightEntity.imageUrl ?? ""
+//        url = flightEntity.url ?? ""
+//        portions = flightEntity.portions
+//        totalTime = flightEntity.totalTime
+        
+//        if let ingredientsData = recipeEntity.ingredients,
+//            let unwrappedIngredients = try? JSONDecoder().decode([String].self, from: ingredientsData) {
+//            ingredients = unwrappedIngredients
+//        } else {
+//            ingredients = []
+//        }
+    }
+}
+
+// MARK: - Reciplease
+
+struct Flights: Decodable {
+
+    let flight: [Flight]
+
+//    enum CodingKeys: String, CodingKey {
+//        case recipes = "hits"
+//    }
+}
 
 
 
