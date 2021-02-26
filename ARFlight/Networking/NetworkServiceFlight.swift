@@ -7,87 +7,105 @@
 
 import Foundation
 
-enum DateError: String, Error {
-    case invalidDateFormat
-}
-
-
 class NetworkServiceFlight {
-    static var shared = NetworkServiceFlight()
-    //    let flightParameters: FlightParameters
-    let formatter = DateFormatter()
+    static let shared = NetworkServiceFlight()
+    
     private init() {}
+    
+    private enum DateError: String, Error {
+        case invalidDateFormat
+    }
+    
+    private var jsonDecoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        
+        let formatter = DateFormatter()
+        decoder.dateDecodingStrategy = .custom({ decoder -> Date in
+            let container = try decoder.singleValueContainer()
+            let dateString = try container.decode(String.self)
+            
+            // Date format for departure date
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
+            // Date format for flight informations
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
+            throw DateError.invalidDateFormat
+        })
+        return decoder
+    }
+    
     private var apiUrl = ConfigNetworkingService.AirFranceKlm.baseUrl
     private var task: URLSessionDataTask?
     private var flightSession = URLSession(configuration: .default)
-    init(flightSession: URLSession, apiUrl : String) {
+    
+    init(flightSession: URLSession, apiUrl: String) {
         self.flightSession = flightSession
         self.apiUrl = apiUrl
     }
+    
     init(flightSession: URLSession) {
         self.flightSession = flightSession
     }
     
-    func getflight(flightParameters: FlightParameters,startRange : String, endRange : String,departureCity : String,arrivalCity : String, origin: String, destination: String, pageSize: String, pageNumber: String, completion: @escaping (Result<Flight,Service>) -> Void) {
+    // MARK: - Requests
+    
+    
+    
+    func getflightDetails(with flightParameters: FlightParameters, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
+        
         let arguments = [
             "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            startRange: flightParameters.startRange,
-            endRange: flightParameters.endRange,
-            departureCity: flightParameters.departureCity,
-            arrivalCity: flightParameters.arrivalCity,
-            origin: flightParameters.origin,
-            destination: flightParameters.destination,
-            pageSize: flightParameters.pageSize,
-            pageNumber: flightParameters.pageNumber
+            "startRange": flightParameters.startRange,
+            "endRange": flightParameters.endRange,
+            "departureCity": flightParameters.departureCity,
+            "arrivalCity": flightParameters.arrivalCity,
+            "origin": flightParameters.origin,
+            "destination": flightParameters.destination,
+            "pageSize": flightParameters.pageSize,
+            "pageNumber": flightParameters.pageNumber
             
         ]
+
         var urlComponents = URLComponents(string: apiUrl)
         var queryItems = [URLQueryItem]()
         for (key, value) in arguments {
             queryItems.append(URLQueryItem(name: key, value: value))
         }
         urlComponents?.queryItems = queryItems
+        
         guard let url = urlComponents?.url else {
             completion(.failure(.invalidUrl))
             return
         }
+        
         task = flightSession.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(.requestError(error.localizedDescription)))
             }
+            
             guard let response = response as? HTTPURLResponse else {
                 completion(.failure(.invalidResponse))
                 return
             }
+            
             let status = response.statusCode
             guard (200...299).contains(status) else {
                 completion(.failure(.errorStatusCode(status)))
                 return
             }
+            
             guard let data = data else {
                 completion(.failure(.invalidData))
                 return
             }
+            
             do {
-                let flight = try JSONDecoder().decode(Flight.self, from: data)
-                
-                let decoder = JSONDecoder()
-                
-                decoder.dateDecodingStrategy = .custom({ decoder -> Date in
-                    
-                    let container = try decoder.singleValueContainer()
-                    let dateString = try container.decode(String.self)
-                    
-                    self.formatter.dateFormat = "yyyy-MM-dd"
-                    if let date = self.formatter.date(from: dateString) {
-                        return date
-                    }
-                    self.formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-                    if let date = self.formatter.date(from: dateString) {
-                        return date
-                    }
-                    throw DateError.invalidDateFormat
-                })
+                let flight = try self.jsonDecoder.decode(Flight.self, from: data)
                 
                 print(flight)
                 

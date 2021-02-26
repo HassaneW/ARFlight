@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Places: Decodable {
-    let gateNumber: [String]?
+    let gateNumber: String?
     let terminal : String?
     
     private enum CodingKeys : String, CodingKey {
@@ -17,10 +17,17 @@ struct Places: Decodable {
         case terminal = "boardingTerminal"
     }
     
-    func formatGateNumber(gateNumber: [String]?) -> String? {
-        
-        return gateNumber?.joined(separator: ", ")
-        
-    }
+//    init(from decoder: Decoder) throws {
+//        // decoding
+//        // decoder un tablea
+//        let gateNumberArray = [String]() 
+//        gateNumber = gateNumberArray.joined(separator: ", ")
+//    }
+    
+//    func formatGateNumber(gateNumber: [String]?) -> String? {
+//
+//        return gateNumber?
+//
+//    }
     
 }

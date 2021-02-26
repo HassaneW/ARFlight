@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-enum Service: Error {
+enum NetworkError: Error {
     case invalidResponse
     case errorStatusCode(Int)
     case decodingError
@@ -16,7 +15,7 @@ enum Service: Error {
     case requestError(String)
     case invalidUrl
 }
-extension Service : LocalizedError {
+extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .errorStatusCode(let statusCode):

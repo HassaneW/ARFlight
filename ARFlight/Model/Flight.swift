@@ -55,28 +55,29 @@ struct Flight: Decodable {
         flightInformations = try container.decode([FlightLegs].self, forKey: .flightInformations)
     }
     
-    func formatDepartureDate(decoder : JSONDecoder, formatter: DateFormatter) {
-        //        let decoder = JSONDecoder()
-        //        let formatter = DateFormatter()
-        
-        decoder.dateDecodingStrategy = .custom({ decoder -> Date in
-            
-            let container = try decoder.singleValueContainer()
-            let dateString = try container.decode(String.self)
-            
-            
-            formatter.dateFormat = "yyyy-MM-dd"
-            if let date = formatter.date(from: dateString) {
-                return date
-            }
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-            if let date = formatter.date(from: dateString) {
-                return date
-            }
-            throw DateError.invalidDateFormat
-        })
-        
-    }
+//    func formatDepartureDate(decoder : JSONDecoder, formatter: DateFormatter)
+//    {
+//        //        let decoder = JSONDecoder()
+//        //        let formatter = DateFormatter()
+//
+//        decoder.dateDecodingStrategy = .custom({ decoder -> Date in
+//
+//            let container = try decoder.singleValueContainer()
+//            let dateString = try container.decode(String.self)
+//
+//
+//            formatter.dateFormat = "yyyy-MM-dd"
+//            if let date = formatter.date(from: dateString) {
+//                return date
+//            }
+//            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+//            if let date = formatter.date(from: dateString) {
+//                return date
+//            }
+//            throw DateError.invalidDateFormat
+//        })
+//
+//    }
 }
 
 //enum DateError: String, Error {
@@ -154,10 +155,10 @@ Number Model Avion :
 
 // MARK: - Decode FlightEntity Model
 
-extension Flight {
-    
-    init(from flightEntity: FlightEntity) {
-        flightNumber = flightEntity.flightNumber ?? ""
+//extension Flight {
+//
+//    init(from flightEntity: FlightEntity) {
+//        flightNumber = flightEntity.flightNumber ?? ""
 //        imageUrl = flightEntity.imageUrl ?? ""
 //        url = flightEntity.url ?? ""
 //        portions = flightEntity.portions
@@ -169,8 +170,8 @@ extension Flight {
 //        } else {
 //            ingredients = []
 //        }
-    }
-}
+//    }
+//}
 
 // MARK: - Reciplease
 
