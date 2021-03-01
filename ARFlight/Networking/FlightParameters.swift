@@ -9,6 +9,7 @@ import Foundation
 
 
 struct FlightParameters {
+    let id: String
     let startRange: String
     let endRange: String
     let departureCity: String

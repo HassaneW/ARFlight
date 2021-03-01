@@ -9,25 +9,29 @@ import Foundation
 
 
 struct Places: Decodable {
-    let gateNumber: String?
+    var gateNumber: String?
     let terminal : String?
     
     private enum CodingKeys : String, CodingKey {
         case gateNumber
         case terminal = "boardingTerminal"
     }
-    // Decoding gate number array in string
-//    init(from decoder: Decoder) throws {
-//        // decoding
-//        // decoder un tablea
-//        let gateNumberArray = [String]() 
-//        gateNumber = gateNumberArray.joined(separator: ", ")
-//    }
     
-//    func formatGateNumber(gateNumber: [String]?) -> String? {
-//
-//        return gateNumber?
-//
-//    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Recupérer un Tableau de String et le transformer en String
+        
+        let gateNumberStr = try container.decode([String].self, forKey: .gateNumber)
+        // Recuperer un String et
+        
+        gateNumber = gateNumberStr.joined(separator: ",")
+        
+        gateNumber = try container.decode(String.self, forKey: .gateNumber)
+        
+        terminal = try container.decode(String.self, forKey: .terminal)
+        
+    }
     
 }

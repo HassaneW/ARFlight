@@ -7,7 +7,8 @@
 
 import Foundation
 
-// a revoir
+// a revoir :
+// Format : "scheduled": "2021-01-15T18:30:00.000+01:00"
 struct Times: Decodable {
     let scheduled: Date?
     
