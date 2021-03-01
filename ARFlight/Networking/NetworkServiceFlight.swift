@@ -116,7 +116,7 @@ class NetworkServiceFlight {
     }
     
 //     flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
-    func getflightStatus(with flightParameters: FlightParameters,flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
+    func getflightId(with flightParameters: FlightParameters,flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
     
     
         let arguments = [
