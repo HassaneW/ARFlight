@@ -24,3 +24,19 @@ extension Aircraft: CustomStringConvertible {
         return "Aircraft number \(number), model: \(model)"
     }
 }
+
+/*
+let aircraft = Aircraft()
+            let aircraftDetail = aircraftDetails.first(where: $0.id == aircraft.typeName )
+aircraftDetails.json
+
+[
+    {
+        "id": String, //  AIRBUS A330-900 NEO
+        "image" = String // airbus-a330-900
+        "speed" = String
+
+    }
+
+]
+*/

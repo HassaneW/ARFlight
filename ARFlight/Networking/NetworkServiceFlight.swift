@@ -55,19 +55,21 @@ class NetworkServiceFlight {
     // MARK: - Requests
     // avec les parameters, (voir le design UI pour chercher un vol, récupérer  un tableau de Flight)
     
-//    with flightParameters: FlightParameters,startRange: String, endRange: String, origin: String, destination: String,
+    func getsearchForFlight(with flightParameters: FlightParameters) {
+        
+    }
     
-    func getsearchForFlight(completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
+    func searchForFlight(startRange: String, endRange: String, origin: String, destination: String, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
         //tableau flight
         
         let arguments = [
             "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            "startRange": flightParameters.startRange,
-            "endRange": flightParameters.endRange,
-            "origin": flightParameters.origin,
-            "destination": flightParameters.destination,
-            "pageSize": flightParameters.pageSize,
-            "pageNumber": flightParameters.pageNumber
+            "startRange": startRange,
+            "endRange": endRange,
+            "origin": origin,
+            "destination": destination,
+//            "pageSize": flightParameters.pageSize,
+//            "pageNumber": flightParameters.pageNumber
             
         ]
         
@@ -120,12 +122,12 @@ class NetworkServiceFlight {
     
 //     flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
 //    with flightParameters: FlightParameters,flightId: String,
-    func getflight(completion: @escaping (Result<Flight, NetworkError>) -> Void) {
+    func getflight(with flightId: String,completion: @escaping (Result<Flight, NetworkError>) -> Void) {
     
     
         let arguments = [
             "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            "flightId": flightParameters.id
+            "flightId": flightId
         ]
     
         var urlComponents = URLComponents(string: apiUrl)
