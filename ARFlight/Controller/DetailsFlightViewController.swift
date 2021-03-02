@@ -9,7 +9,32 @@ import UIKit
 
 class DetailsFlightViewController: UIViewController {
 
+    // Infos Avions
+    @IBOutlet weak var flightType : UILabel!
+    @IBOutlet weak var id : UILabel!
+    @IBOutlet weak var motorType : UILabel!
+    @IBOutlet weak var numberOfSeats : UILabel!
+    @IBOutlet weak var length : UILabel!
+    @IBOutlet weak var cruisingSpeed : UILabel!
+    @IBOutlet weak var image : UILabel!
+    
+    // Infos Vol
+    /*
+     "aircraftDetails": [
+         {
+             "flightType": "longHaul",
+             "id": "AIRBUS A330-200",
+             "motorType": "CF6-80E1A3",
+             "numberOfSeats": "224",
+             "length": 58.36,
+             "cruisingSpeed": "M 0,82",
+             "image": "a330-200"
+         },
+     */
+    
+    
     var flight: Flight?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpId()
