@@ -8,9 +8,9 @@
 import Foundation
 
 class NetworkServiceFlight {
-    static let shared = NetworkServiceFlight()
-    
+    static var shared = NetworkServiceFlight()
     private init() {}
+    let flightParameters = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
     
     private enum DateError: String, Error {
         case invalidDateFormat
@@ -54,15 +54,18 @@ class NetworkServiceFlight {
     
     // MARK: - Requests
     // avec les parameters, (voir le design UI pour chercher un vol, récupérer  un tableau de Flight)
-    func searchForFlight(with flightParameters: FlightParameters,startRange: String, endRange: String, origin: String, destination: String, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
+    
+//    with flightParameters: FlightParameters,startRange: String, endRange: String, origin: String, destination: String,
+    
+    func getsearchForFlight(completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
         //tableau flight
         
         let arguments = [
             "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            startRange: flightParameters.startRange,
-            endRange: flightParameters.endRange,
-            origin: flightParameters.origin,
-            destination: flightParameters.destination,
+            "startRange": flightParameters.startRange,
+            "endRange": flightParameters.endRange,
+            "origin": flightParameters.origin,
+            "destination": flightParameters.destination,
             "pageSize": flightParameters.pageSize,
             "pageNumber": flightParameters.pageNumber
             
@@ -116,12 +119,13 @@ class NetworkServiceFlight {
     }
     
 //     flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
-    func getflightId(with flightParameters: FlightParameters,flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
+//    with flightParameters: FlightParameters,flightId: String,
+    func getflight(completion: @escaping (Result<Flight, NetworkError>) -> Void) {
     
     
         let arguments = [
             "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            flightId: flightParameters.id
+            "flightId": flightParameters.id
         ]
     
         var urlComponents = URLComponents(string: apiUrl)
