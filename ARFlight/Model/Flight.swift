@@ -17,7 +17,7 @@ struct Flight: Decodable {
     let flightNumber: String?
     var departureDate: Date?
     let identifiantPlane : String?
-    let flightType: FlightType
+    //let flightType: FlightType
     let company : Airline?
     let flightStatus : String?
     let flightInformations : [FlightLegs]?
@@ -25,7 +25,7 @@ struct Flight: Decodable {
     private enum CodingKeys : String, CodingKey {
         
         case departureDate = "flightScheduleDate"
-        case flightType = "haul"
+       // case flightType = "haul"
         case company = "airline"
         case flightStatus = "flightStatusPublicLangTransl"
         case flightInformations = "flightLegs"
@@ -36,7 +36,7 @@ struct Flight: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        flightType = try container.decode(FlightType.self, forKey: .flightType)
+       // flightType = try container.decode(FlightType.self, forKey: .flightType)
         
         departureDate = try container.decode(Date.self, forKey: .departureDate)
         
@@ -85,6 +85,7 @@ struct Flight: Decodable {
 extension Flight : CustomStringConvertible {
     
     var description: String {
+        //  Flight type : \(flightType),
         return """
 Info Vol
  Flight number : \(flightNumber),
@@ -93,7 +94,7 @@ Info Vol
  Flight statut : \(flightStatus),
  Company code : \(company?.code),
  Company name : \(company?.name),
- Flight type : \(flightType),
+
 
 Info Depart
 departure time: \(flightInformations?[0].departure?.times),

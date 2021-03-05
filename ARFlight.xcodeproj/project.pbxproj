@@ -32,11 +32,11 @@
 		FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700825E17B52000CF44A /* AppDelegate.swift */; };
 		FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700A25E17B52000CF44A /* SceneDelegate.swift */; };
 		FB98700D25E17B52000CF44A /* SearchFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700C25E17B52000CF44A /* SearchFlightViewController.swift */; };
-		FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */; };
 		FB98701525E17B57000CF44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB98701425E17B57000CF44A /* Assets.xcassets */; };
 		FB98701825E17B57000CF44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB98701625E17B57000CF44A /* LaunchScreen.storyboard */; };
 		FB98702325E17B57000CF44A /* ARFlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702225E17B57000CF44A /* ARFlightTests.swift */; };
 		FB98702E25E17B57000CF44A /* ARFlightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702D25E17B57000CF44A /* ARFlightUITests.swift */; };
+		FBE1F32C25EF9E19003B45AD /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1F32B25EF9E19003B45AD /* testViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +89,6 @@
 		FB98700825E17B52000CF44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB98700A25E17B52000CF44A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FB98700C25E17B52000CF44A /* SearchFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightViewController.swift; sourceTree = "<group>"; };
-		FB98701225E17B52000CF44A /* ARFlight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARFlight.xcdatamodel; sourceTree = "<group>"; };
 		FB98701425E17B57000CF44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB98701725E17B57000CF44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB98701925E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		FB98702925E17B57000CF44A /* ARFlightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARFlightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB98702D25E17B57000CF44A /* ARFlightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFlightUITests.swift; sourceTree = "<group>"; };
 		FB98702F25E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBE1F32B25EF9E19003B45AD /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +194,6 @@
 		FB4EEB4525E17E8C00B85423 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */,
 				FB4EEB7E25E1955700B85423 /* Flight.swift */,
 				FB4EEB8325E195A700B85423 /* Airline.swift */,
 				FB0855AE25EE59D400DDA5F6 /* ModelPlanes.swift */,
@@ -213,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				FB98700C25E17B52000CF44A /* SearchFlightViewController.swift */,
+				FBE1F32B25EF9E19003B45AD /* testViewController.swift */,
 				FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */,
 				FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */,
 			);
@@ -513,8 +513,8 @@
 				FB0855AF25EE59D400DDA5F6 /* ModelPlanes.swift in Sources */,
 				FB35861025E5328D005C60EF /* Config.swift in Sources */,
 				FB98700D25E17B52000CF44A /* SearchFlightViewController.swift in Sources */,
+				FBE1F32C25EF9E19003B45AD /* testViewController.swift in Sources */,
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
-				FB98701325E17B52000CF44A /* ARFlight.xcdatamodeld in Sources */,
 				FB4EEB9825E1965700B85423 /* Airport.swift in Sources */,
 				FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */,
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
@@ -853,19 +853,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FB98701125E17B52000CF44A /* ARFlight.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FB98701225E17B52000CF44A /* ARFlight.xcdatamodel */,
-			);
-			currentVersion = FB98701225E17B52000CF44A /* ARFlight.xcdatamodel */;
-			path = ARFlight.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FB986FFD25E17B52000CF44A /* Project object */;
 }

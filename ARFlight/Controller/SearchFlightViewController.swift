@@ -22,21 +22,26 @@ class SearchFlightViewController: UIViewController {
     private let textField = UITextField()
     
     var flightArray : [Flight]?
-    
 //    var state
     
     //MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        configureDelegates()
+//        setupView()
+//        configureDelegates()
+        
+        print("SEARCH1")
+        
         setUp()
         
-        print("SEARCH")
+        print("SEARCH2")
+        
+//        print(flightArray?.count)
+
         
 //
-//       
+//
         //        NetworkServiceFlight.shared.getflightDetails(with: flightParams) { (result) in
         // TPODO
         //        }
@@ -48,20 +53,59 @@ class SearchFlightViewController: UIViewController {
     //MARK: - Private methods
 
     private func setUp() {
-        NetworkServiceFlight.shared.getflight(with: "20210302+AT+0789") { (result) in
+        
+        // 4
+        NetworkServiceFlight.shared.searchForFlight(startRange: "Date Depart", endRange: "2021-01-20T23:59:00Z", origin: "CDG", destination: "Airport Arrivée") { [weak self] (resultFight) in
+            
+            switch resultFight  {
+            case .success(let flights) where
+                    flights.isEmpty:
+                print("No Flight")
+            case .success(let flights):
+                print(flights)
+                self?.flightArray = flights
+            case .failure(let error):
+                print("Error searching for flights: \(error.localizedDescription)")
+            }
+        }
+        
+        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210302+AT+0789") { (result) in
             switch result {
             case .success(let flight):
                 print(flight)
             case .failure(let error):
-            print("error")
+                print("Error getting flight details: \(error.localizedDescription)")
             }
         }
-        let startLabel = Date().timeIntervalSinceNow
-        NetworkServiceFlight.shared.searchForFlight(startRange: "textField.text", endRange: "2021-03-03..", origin: "CDG", destination: "CMN") { (result) in
-            // TEST
-        }
-        let flightParam = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
-        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
+    }
+        
+        // 1
+        
+        
+        // 2
+//        let startLabel = Date().timeIntervalSinceNow
+//        let startLabel = "dateDepart"
+//        let endLabel = "datearrivée"
+//        let originLabel = "aeroportDepart"
+//        let destinationLabel = "aeroportArrivée"
+//        
+//        NetworkServiceFlight.shared.searchForFlight(startRange: startLabel, endRange: endLabel, origin: originLabel, destination: destinationLabel) { (result) in
+//            switch result {
+//            case .success(let flight):
+//                print(flight)
+//            case .failure(let error):
+//            print("error")
+//            }
+//        }
+        
+//        NetworkServiceFlight.shared.searchForFlight(startRange: "textField.text", endRange: "2021-03-03..", origin: "CDG", destination: "CMN") { (result) in
+//            // TEST
+//        }
+        
+        // 3
+//        let flightParam = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
+//        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
+        
 //        NetworkServiceFlight.shared.getsearchForFlight{ [weak self] (flightArray) in
 //            switch flightArray {
 //            case .success(let flightArray):
@@ -71,11 +115,12 @@ class SearchFlightViewController: UIViewController {
 //                print(error.localizedDescription)
 //            }
 //        }
-    }
+        
+
     
-    private func configureDelegates() {
-        //textField.delegate = self
-    }
+//    private func configureDelegates() {
+//        //textField.delegate = self
+//    }
     
     
     

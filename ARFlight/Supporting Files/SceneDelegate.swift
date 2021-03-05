@@ -12,11 +12,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let searchFlightVC = SearchFlightViewController()
-        let navigationController = UINavigationController(rootViewController: searchFlightVC)
+    
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        // Créer un controleur
+        // Set up window
+        // Assigner le controleur au windo
+        let viewController = SearchFlightViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         window?.rootViewController = navigationController
-        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

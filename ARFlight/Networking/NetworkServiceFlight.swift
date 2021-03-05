@@ -10,12 +10,10 @@ import Foundation
 class NetworkServiceFlight {
     static var shared = NetworkServiceFlight()
     private init() {}
-    let flightParameters = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
     
     private enum DateError: String, Error {
         case invalidDateFormat
     }
-    
     private var jsonDecoder: JSONDecoder {
         let decoder = JSONDecoder()
         
@@ -53,12 +51,6 @@ class NetworkServiceFlight {
     }
     
     // MARK: - Requests
-    // avec les parameters, (voir le design UI pour chercher un vol, récupérer  un tableau de Flight)
-    
-    func getsearchForFlight(with flightParameters: FlightParameters) {
-        
-    }
-    
     func searchForFlight(startRange: String, endRange: String, origin: String, destination: String, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
         //tableau flight
         
@@ -68,9 +60,6 @@ class NetworkServiceFlight {
             "endRange": endRange,
             "origin": origin,
             "destination": destination,
-//            "pageSize": flightParameters.pageSize,
-//            "pageNumber": flightParameters.pageNumber
-            
         ]
         
         var urlComponents = URLComponents(string: apiUrl)
@@ -86,6 +75,7 @@ class NetworkServiceFlight {
         }
         
         task = flightSession.dataTask(with: url) { (data, response, error) in
+            
             if let error = error {
                 completion(.failure(.requestError(error.localizedDescription)))
             }
@@ -120,63 +110,72 @@ class NetworkServiceFlight {
         task?.resume()
     }
     
-//     flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
-//    with flightParameters: FlightParameters,flightId: String,
-    func getflight(with flightId: String,completion: @escaping (Result<Flight, NetworkError>) -> Void) {
+    //     flight id (Voir Postamn récupérer id vol, voir le design UI pour récupérer un vol, récupérer un flight)
+    //    with flightParameters: FlightParameters,flightId: String,
+        func getFlightDetailsFor(flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
     
     
-        let arguments = [
-            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            "flightId": flightId
-        ]
+            let arguments = [
+                "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
+                "flightId": flightId
+            ]
     
-        var urlComponents = URLComponents(string: apiUrl)
-        var queryItems = [URLQueryItem]()
-        for (key, value) in arguments {
-            queryItems.append(URLQueryItem(name: key, value: value))
-        }
-        urlComponents?.queryItems = queryItems
-    
-        guard let url = urlComponents?.url else {
-            completion(.failure(.invalidUrl))
-            return
-        }
-    
-        task = flightSession.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion(.failure(.requestError(error.localizedDescription)))
+            var urlComponents = URLComponents(string: apiUrl)
+            var queryItems = [URLQueryItem]()
+            for (key, value) in arguments {
+                queryItems.append(URLQueryItem(name: key, value: value))
             }
+            urlComponents?.queryItems = queryItems
     
-            guard let response = response as? HTTPURLResponse else {
-                completion(.failure(.invalidResponse))
+            guard let url = urlComponents?.url else {
+                completion(.failure(.invalidUrl))
                 return
             }
     
-            let status = response.statusCode
-            guard (200...299).contains(status) else {
-                completion(.failure(.errorStatusCode(status)))
-                return
+            var urlRequest = URLRequest(url: url)
+            
+            urlRequest.httpMethod = "GET"
+            urlRequest.addValue(ConfigNetworkingService.AirFranceKlm.apiKey, forHTTPHeaderField: "Api-Key")
+            urlRequest.addValue("application/hal+json", forHTTPHeaderField: "Accept")
+            // Rajouter langue
+            task = flightSession.dataTask(with: urlRequest) { (data, response, error) in
+                if let error = error {
+                    completion(.failure(.requestError(error.localizedDescription)))
+                }
+    
+                guard let response = response as? HTTPURLResponse else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+    
+                let status = response.statusCode
+                guard (200...299).contains(status) else {
+                    completion(.failure(.errorStatusCode(status)))
+                    return
+                }
+    
+                guard let data = data else {
+                    completion(.failure(.invalidData))
+                    return
+                }
+    
+                do {
+                    let flightId = try self.jsonDecoder.decode(Flight.self, from: data)
+    
+                    print(flightId)
+    
+                    completion(.success(flightId))
+                } catch let error as DecodingError {
+                    completion(.failure(.decodingError))
+                } catch {
+                    completion(.failure(.requestError(error.localizedDescription)))
+                }
             }
-    
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-    
-            do {
-                let flightId = try self.jsonDecoder.decode(Flight.self, from: data)
-    
-                print(flightId)
-    
-                completion(.success(flightId))
-            } catch let error {
-                print(error.localizedDescription)
-                completion(.failure(.decodingError))
-            }
+            task?.resume()
         }
-        task?.resume()
-    }
-
+    
+    
+    
     //bad name
     //    func getflightDetails(with flightParameters: FlightParameters, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
     //
