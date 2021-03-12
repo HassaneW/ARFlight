@@ -8,30 +8,49 @@
 import Foundation
 
 
+// ModelFlight OK
 struct Places: Decodable {
-    var gateNumber: String?
-    let terminal : String?
+    let terminalCode: String?
+    let gateNumbers: String?
     
-    private enum CodingKeys : String, CodingKey {
-        case gateNumber
-        case terminal = "boardingTerminal"
+    enum CodingKeys: String, CodingKey {
+        case gateNumbers = "gateNumber"
+        case terminalCode
     }
-    
-    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        terminalCode = try container.decode(String.self, forKey: .terminalCode)
         
-        // Recupérer un Tableau de String et le transformer en String
-        
-        let gateNumberStr = try container.decode([String].self, forKey: .gateNumber)
-        // Recuperer un String et
-        
-        gateNumber = gateNumberStr.joined(separator: ",")
-        
-        gateNumber = try container.decode(String.self, forKey: .gateNumber)
-        
-        terminal = try container.decode(String.self, forKey: .terminal)
-        
+        let gateNumbersArray = try container.decode([String].self, forKey: .gateNumbers)
+        gateNumbers = gateNumbersArray == [""] ? nil : gateNumbersArray.joined(separator: " ,")
     }
-    
 }
+
+extension Places: CustomStringConvertible {
+    var description: String {
+        guard let terminalCode = terminalCode else { return "Missing infos for place"}
+        let result = "Terminal: \(terminalCode)"
+        guard let gateNumbers = gateNumbers  else { return result }
+        return "\(result), gate numbers: \(gateNumbers)"
+    }
+}
+
+
+/*
+ Places Flights (Array) : OK
+ 
+ struct Places: Decodable {
+     let terminalCode: String?
+     let gateNumber: [String]?
+ }
+ 
+ extension Places: CustomStringConvertible {
+     var description: String {
+         guard let terminalCode = terminalCode else { return "Missing infos for TerminalCode"}
+         let result = "Terminal: \(terminalCode)"
+         guard let gateNumber = gateNumber else { return result }
+         return "\(result), gate numbers: \(gateNumber)"
+     }
+ }
+ 
+ */

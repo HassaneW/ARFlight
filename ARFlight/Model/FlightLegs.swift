@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct FlightLegs: Decodable {
     let departure: Information?
     let arrival: Information?
@@ -22,3 +20,11 @@ struct FlightLegs: Decodable {
         case aircraft
     }
 }
+
+extension FlightLegs: CustomStringConvertible {
+    var description: String {
+        guard let departure = departure, let arrival = arrival, let duration = duration, let aircraft = aircraft else { return "Missing infos for aircraft"}
+        return "FlightLegs: departure:\(departure), arrival: \(arrival), duration \(duration), aircraft : \(aircraft)"
+    }
+}
+

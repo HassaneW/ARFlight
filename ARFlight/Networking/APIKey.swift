@@ -9,5 +9,4 @@ import Foundation
 
 enum APIKey {
     static let airFranceKlm = "nwrc2as5t9qz6wtyngn5ezq7"
-   
 }

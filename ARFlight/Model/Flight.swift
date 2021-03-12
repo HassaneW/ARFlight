@@ -7,28 +7,34 @@
 
 import Foundation
 
-
 enum FlightType: String, Decodable {
     case medium = "MEDIUM"
     case long = "LONG"
 }
 
 struct Flight: Decodable {
+    let flightNumber: Int?
+    let flightScheduleDate: String?
+    let id: String?
+    let haul: String?
+    /*
     let flightNumber: String?
-    var departureDate: Date?
+//    let departureDate: Date?
+    let flightScheduleDate: String?
     let identifiantPlane : String?
+    
     //let flightType: FlightType
-    let company : Airline?
+    //let company : Airline?
     let flightStatus : String?
-    let flightInformations : [FlightLegs]?
+    //let flightInformations : [FlightLegs]?
     
     private enum CodingKeys : String, CodingKey {
-        
-        case departureDate = "flightScheduleDate"
+//        case departureDate = "flightScheduleDate"
+        case flightScheduleDate
        // case flightType = "haul"
-        case company = "airline"
+      //  case company = "airline"
         case flightStatus = "flightStatusPublicLangTransl"
-        case flightInformations = "flightLegs"
+      //  case flightInformations = "flightLegs"
         case identifiantPlane = "id"
         case flightNumber
     }
@@ -36,155 +42,50 @@ struct Flight: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-       // flightType = try container.decode(FlightType.self, forKey: .flightType)
+        //flightType = try container.decode(FlightType.self, forKey: .flightType)
         
-        departureDate = try container.decode(Date.self, forKey: .departureDate)
+//        departureDate = try container.decode(Date.self, forKey: .departureDate)
+        
+        flightScheduleDate = try container.decode(String.self, forKey: .flightScheduleDate)
         
         flightStatus = try container.decode(String.self, forKey: .flightStatus)
         
-        company = try container.decode(Airline.self, forKey: .company)
+//        company = try container.decode(Airline.self, forKey: .company)
         
         identifiantPlane = try container.decode(String.self, forKey: .identifiantPlane)
         
         let intFlightNumber = try container.decode(Int.self, forKey: .flightNumber)
         flightNumber = String(intFlightNumber)
         
-        flightInformations = try container.decode([FlightLegs].self, forKey: .flightInformations)
+//        flightInformations = try container.decode([FlightLegs].self, forKey: .flightInformations)
     }
-    
-//    func formatDepartureDate(decoder : JSONDecoder, formatter: DateFormatter)
-//    {
-//        //        let decoder = JSONDecoder()
-//        //        let formatter = DateFormatter()
-//
-//        decoder.dateDecodingStrategy = .custom({ decoder -> Date in
-//
-//            let container = try decoder.singleValueContainer()
-//            let dateString = try container.decode(String.self)
-//
-//
-//            formatter.dateFormat = "yyyy-MM-dd"
-//            if let date = formatter.date(from: dateString) {
-//                return date
-//            }
-//            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-//            if let date = formatter.date(from: dateString) {
-//                return date
-//            }
-//            throw DateError.invalidDateFormat
-//        })
-//
-//    }
+    */
 }
 
-//enum DateError: String, Error {
-//    case invalidDateFormat
+
+/*
+ - Type: \(flightType)
+ - Airline: \(company?.description ?? "Not available")
+ */
+//extension Flight: CustomStringConvertible {
+//    var description: String {
+//        var description = """
+//    - Flight:
+//        - Number: \(flightNumber ?? "Not available")
+//        - Departure Date: \(flightScheduleDate ?? String())
+//        
+//        - Status: \(flightStatus ?? "Missing")
+//
+//"""
+////        if let departureInfo = flightInformations?[0].departure {
+////            description.append("\n        - Departure infos: \(departureInfo)")
+////        }
+////        if let arrivalInfo = flightInformations?[0].arrival {
+////            description.append("\n        - Arrival infos: \(arrivalInfo)")
+////        }
+//        return description
+//    }
+//     
 //}
-
-
-extension Flight : CustomStringConvertible {
-    
-    var description: String {
-        //  Flight type : \(flightType),
-        return """
-Info Vol
- Flight number : \(flightNumber),
- Departure Date : \(departureDate),
- identifiant vol : \(identifiantPlane),
- Flight statut : \(flightStatus),
- Company code : \(company?.code),
- Company name : \(company?.name),
-
-
-Info Depart
-departure time: \(flightInformations?[0].departure?.times),
-Code airport :
-\(flightInformations?[0].departure?.airport?.code),
-Name Airport :
-\(flightInformations?[0].departure?.airport?.name),
-City Airport :
-\(flightInformations?[0].departure?.airport?.city),
-Country Airport :
-\(flightInformations?[0].departure?.airport?.country),
-Coordonnées Airport :
-    Latitude :
-\(flightInformations?[0].departure?.airport?.location?.latitude),
-        Longitude:
-\(flightInformations?[0].departure?.airport?.location?.longitude),
-Places :
-        GateNumber :
-\(flightInformations?[0].departure?.airport?.places?.gateNumber),
-        Terminal :
-\(flightInformations?[0].departure?.airport?.places?.terminal)/n,
-
-Info Arrivée :
-
-Arrival time: \(flightInformations?[0].arrival?.times),
-Code airport :
-\(flightInformations?[0].arrival?.airport?.code),
-Name Airport :
-\(flightInformations?[0].arrival?.airport?.name),
-City Airport :
-\(flightInformations?[0].arrival?.airport?.city),
-Country Airport :
-\(flightInformations?[0].arrival?.airport?.country),
-Coordonnées Airport :
-    Latitude :
-\(flightInformations?[0].arrival?.airport?.location?.latitude),
-        Longitude:
-\(flightInformations?[0].arrival?.airport?.location?.longitude),
-Places :
-        GateNumber :
-\(flightInformations?[0].arrival?.airport?.places?.gateNumber),
-        Terminal :
-\(flightInformations?[0].arrival?.airport?.places?.terminal)/n,
-
-Info Avion
-
-Model Avion :
-\(flightInformations?[0].aircraft?.model)
-
-Number Model Avion :
-\(flightInformations?[0].aircraft?.number)
-
-"""
-    }
-}
-
-// MARK: - Decode FlightEntity Model
-
-//extension Flight {
-//
-//    init(from flightEntity: FlightEntity) {
-//        flightNumber = flightEntity.flightNumber ?? ""
-//        imageUrl = flightEntity.imageUrl ?? ""
-//        url = flightEntity.url ?? ""
-//        portions = flightEntity.portions
-//        totalTime = flightEntity.totalTime
-        
-//        if let ingredientsData = recipeEntity.ingredients,
-//            let unwrappedIngredients = try? JSONDecoder().decode([String].self, from: ingredientsData) {
-//            ingredients = unwrappedIngredients
-//        } else {
-//            ingredients = []
-//        }
-//    }
-//}
-
-// MARK: - Reciplease
-
-struct Flights: Decodable {
-
-    let flight: [Flight]
-
-//    enum CodingKeys: String, CodingKey {
-//        case recipes = "hits"
-//    }
-}
-
-
-
-
-
 
 

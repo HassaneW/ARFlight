@@ -6,124 +6,60 @@
 //
 
 import UIKit
-// netoyer core data
-// swift lint
-// 0 warning
-// ajouter les 3 requetes get list of flight 2 airport / 2 villes
-// exemple basic hardcoder de 2 requetes dans le vc qui marchent
 
 class SearchFlightViewController: UIViewController {
     
-//    @IBOutlet weak var departTown : UITextField!
-//    @IBOutlet weak var arriveTown : UITextField!
-//    @IBOutlet weak var departDate : UITextField!
-//    @IBOutlet weak var arriveDate : UITextField!
+    //    @IBOutlet weak var departTown : UITextField!
+    //    @IBOutlet weak var arriveTown : UITextField!
+    //    @IBOutlet weak var departDate : UITextField!
+    //    @IBOutlet weak var arriveDate : UITextField!
     
-    private let textField = UITextField()
+    //    private let textField = UITextField()
+    //    var flightArray : [Flight]?
+    //    var state
     
-    var flightArray : [Flight]?
-//    var state
+    var flight : Flight?
+//    var flights : Flights?
     
     //MARK: - View lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupView()
-//        configureDelegates()
+        setupView()
+        //                configureDelegates()
         
         print("SEARCH1")
-        
         setUp()
-        
         print("SEARCH2")
         
-//        print(flightArray?.count)
-
-        
-//
-//
-        //        NetworkServiceFlight.shared.getflightDetails(with: flightParams) { (result) in
-        // TPODO
-        //        }
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     //MARK: - Private methods
-
+    
     private func setUp() {
         
-        // 4
-        NetworkServiceFlight.shared.searchForFlight(startRange: "Date Depart", endRange: "2021-01-20T23:59:00Z", origin: "CDG", destination: "Airport Arrivée") { [weak self] (resultFight) in
-            
-            switch resultFight  {
-            case .success(let flights) where
-                    flights.isEmpty:
-                print("No Flight")
-            case .success(let flights):
-                print(flights)
-                self?.flightArray = flights
-            case .failure(let error):
-                print("Error searching for flights: \(error.localizedDescription)")
-            }
-        }
-        
-        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210302+AT+0789") { (result) in
+        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210115+AF+1496") { (result) in
             switch result {
             case .success(let flight):
                 print(flight)
+                self.flight = flight
             case .failure(let error):
                 print("Error getting flight details: \(error.localizedDescription)")
             }
         }
+        
+//        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DKR", destination: "PAR") { (resultFlights) in
+//            switch resultFlights {
+//            case .success(let flights):
+//                print(flights)
+//                self.flights = flights
+////                self.flights?.flights[0]
+//
+//            case .failure(let error):
+//                print("Error getting flight details: \(error.localizedDescription)")
+//            }
+//        }
     }
-        
-        // 1
-        
-        
-        // 2
-//        let startLabel = Date().timeIntervalSinceNow
-//        let startLabel = "dateDepart"
-//        let endLabel = "datearrivée"
-//        let originLabel = "aeroportDepart"
-//        let destinationLabel = "aeroportArrivée"
-//        
-//        NetworkServiceFlight.shared.searchForFlight(startRange: startLabel, endRange: endLabel, origin: originLabel, destination: destinationLabel) { (result) in
-//            switch result {
-//            case .success(let flight):
-//                print(flight)
-//            case .failure(let error):
-//            print("error")
-//            }
-//        }
-        
-//        NetworkServiceFlight.shared.searchForFlight(startRange: "textField.text", endRange: "2021-03-03..", origin: "CDG", destination: "CMN") { (result) in
-//            // TEST
-//        }
-        
-        // 3
-//        let flightParam = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
-//        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
-        
-//        NetworkServiceFlight.shared.getsearchForFlight{ [weak self] (flightArray) in
-//            switch flightArray {
-//            case .success(let flightArray):
-//                print(flightArray)
-//                self?.flightArray = flightArray
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-        
-
-    
-//    private func configureDelegates() {
-//        //textField.delegate = self
-//    }
-    
-    
-    
 }
 
 extension SearchFlightViewController {
@@ -150,3 +86,83 @@ extension SearchFlightViewController {
         ])
     }
 }
+
+
+/*
+ Controller
+ 
+ // 1
+ 
+ 
+ // 2
+ //        let startLabel = Date().timeIntervalSinceNow
+ //        let startLabel = "dateDepart"
+ //        let endLabel = "datearrivée"
+ //        let originLabel = "aeroportDepart"
+ //        let destinationLabel = "aeroportArrivée"
+ //
+ //        NetworkServiceFlight.shared.searchForFlight(startRange: startLabel, endRange: endLabel, origin: originLabel, destination: destinationLabel) { (result) in
+ //            switch result {
+ //            case .success(let flight):
+ //                print(flight)
+ //            case .failure(let error):
+ //            print("error")
+ //            }
+ //        }
+ 
+ //        NetworkServiceFlight.shared.searchForFlight(startRange: "textField.text", endRange: "2021-03-03..", origin: "CDG", destination: "CMN") { (result) in
+ //            // TEST
+ //        }
+ 
+ // 3
+ //        let flightParam = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
+ //        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
+ 
+ //        NetworkServiceFlight.shared.getsearchForFlight{ [weak self] (flightArray) in
+ //            switch flightArray {
+ //            case .success(let flightArray):
+ //                print(flightArray)
+ //                self?.flightArray = flightArray
+ //            case .failure(let error):
+ //                print(error.localizedDescription)
+ //            }
+ //        }
+ 
+ 
+ 
+ //    private func configureDelegates() {
+ //        //textField.delegate = self
+ //    }
+ 
+ 
+ // 4
+ //        NetworkServiceFlight.shared.searchForFlight(startRange: "Date Depart", endRange: "2021-01-20T23:59:00Z", origin: "CDG", destination: "Airport Arrivée") { [weak self] (resultFight) in
+ //
+ //            switch resultFight  {
+ //            case .success(let flights) where
+ //                    flights.isEmpty:
+ //                print("No Flight")
+ //            case .success(let flights):
+ //                print(flights)
+ //                self?.flightArray = flights
+ //            case .failure(let error):
+ //                print("Error searching for flights: \(error.localizedDescription)")
+ //            }
+ //        }
+ 
+ //                let flightParam = FlightParameters(id: "20210115+AF+1496", startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", departureCity: "DKR", arrivalCity: "PAR")
+ //        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
+ 
+ //        print(flightArray?.count)
+ 
+ 
+ //
+ //
+ //        NetworkServiceFlight.shared.getflightDetails(with: flightParams) { (result) in
+ // TPODO
+ //        }
+ 
+ 
+ // Do any additional setup after loading the view.
+ 
+ */
