@@ -17,12 +17,12 @@ class NetworkServiceFlight {
     }
     private var jsonDecoder: JSONDecoder {
         let decoder = JSONDecoder()
-        
+
         let formatter = DateFormatter()
         decoder.dateDecodingStrategy = .custom({ decoder -> Date in
             let container = try decoder.singleValueContainer()
             let dateString = try container.decode(String.self)
-            
+
             // Date format for departure date
             formatter.dateFormat = "yyyy-MM-dd"
             if let date = formatter.date(from: dateString) {
@@ -119,32 +119,37 @@ class NetworkServiceFlight {
     
     func getFlightDetailsFor(flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
         
-        let arguments = [
-            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-            "flightId": flightId
-        ]
+//        let arguments = [
+//            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
+//            "flightId": flightId
+//        ]
+//
+//        var urlComponents = URLComponents(string: apiUrl)
+//        var queryItems = [URLQueryItem]()
+//        for (key, value) in arguments {
+//            queryItems.append(URLQueryItem(name: key, value: value))
+//        }
+//        urlComponents?.queryItems = queryItems
+//
+//        guard let url = urlComponents?.url else {
+//            completion(.failure(.invalidUrl))
+//            return
+//        }
         
-        var urlComponents = URLComponents(string: apiUrl)
-        var queryItems = [URLQueryItem]()
-        for (key, value) in arguments {
-            queryItems.append(URLQueryItem(name: key, value: value))
-        }
-        urlComponents?.queryItems = queryItems
-        
-        guard let url = urlComponents?.url else {
+        let finalURL = "\(apiUrl)/\(flightId)"
+        guard let url = URL(string: finalURL) else {
             completion(.failure(.invalidUrl))
             return
         }
-        
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.addValue(ConfigNetworkingService.AirFranceKlm.apiKey, forHTTPHeaderField: "Api-Key")
         urlRequest.addValue("application/hal+json", forHTTPHeaderField: "Accept")
-        urlRequest.addValue("fr-FR", forHTTPHeaderField: "Accept-Language")
+        urlRequest.addValue("en-EN", forHTTPHeaderField: "Accept-Language")
         
         flightSession.dataTask(with: urlRequest) { (data, response, error) in
             
-            DispatchQueue.main.async { // bouger vers le controlleur
+            DispatchQueue.main.async { [self] in // bouger vers le controlleur
                 
                 if let error = error {
                     completion(.failure(.requestError(error.localizedDescription)))
@@ -167,7 +172,7 @@ class NetworkServiceFlight {
                 }
                 
                 do {
-                    let flight = try JSONDecoder().decode(Flight.self, from: data)
+                    let flight = try self.jsonDecoder.decode(Flight.self, from: data)
                     print(flight)
                     completion(.success(flight))
                 } catch let error {

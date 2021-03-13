@@ -37,6 +37,7 @@
 		FB98702325E17B57000CF44A /* ARFlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702225E17B57000CF44A /* ARFlightTests.swift */; };
 		FB98702E25E17B57000CF44A /* ARFlightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702D25E17B57000CF44A /* ARFlightUITests.swift */; };
 		FB9F241C25FB719500EC9104 /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F241B25FB719500EC9104 /* Flights.swift */; };
+		FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		FB98702D25E17B57000CF44A /* ARFlightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFlightUITests.swift; sourceTree = "<group>"; };
 		FB98702F25E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB9F241B25FB719500EC9104 /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
+		FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthmaneNetworkServiceFlight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				FB35860B25E5328D005C60EF /* Config.swift */,
 				FB35860C25E5328D005C60EF /* FlightParameters.swift */,
 				FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */,
+				FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */,
 				FB35860A25E5328D005C60EF /* NetworkError.swift */,
 			);
 			path = Networking;
@@ -510,6 +513,7 @@
 				FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */,
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
+				FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,
 				FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
