@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 enum FlightType: String, Decodable {
     case medium = "MEDIUM"
     case long = "LONG"

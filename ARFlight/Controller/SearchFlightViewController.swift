@@ -19,7 +19,7 @@ class SearchFlightViewController: UIViewController {
     //    var state
     
     var flight : Flight?
-//    var flights : Flights?
+    var flightArray : [Flight]?
     
     //MARK: - View lifecycle
     
@@ -42,23 +42,23 @@ class SearchFlightViewController: UIViewController {
             switch result {
             case .success(let flight):
                 print(flight)
+                DispatchQueue.main.async {
                 self.flight = flight
+                }
             case .failure(let error):
                 print("Error getting flight details: \(error.localizedDescription)")
             }
         }
         
-//        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DKR", destination: "PAR") { (resultFlights) in
-//            switch resultFlights {
-//            case .success(let flights):
-//                print(flights)
-//                self.flights = flights
-////                self.flights?.flights[0]
-//
-//            case .failure(let error):
-//                print("Error getting flight details: \(error.localizedDescription)")
+//            NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
+//                switch resultflight {
+//                case .success(let flights):
+//                    print(flights)
+//                    self?.flightArray = flights
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
 //            }
-//        }
     }
 }
 
