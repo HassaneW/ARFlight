@@ -38,6 +38,7 @@
 		FB98702E25E17B57000CF44A /* ARFlightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702D25E17B57000CF44A /* ARFlightUITests.swift */; };
 		FB9F241C25FB719500EC9104 /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F241B25FB719500EC9104 /* Flights.swift */; };
 		FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */; };
+		FBD5FCA72600CFFD00DE519E /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5FCA62600CFFD00DE519E /* Bundle-Decodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		FB98702F25E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB9F241B25FB719500EC9104 /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
 		FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthmaneNetworkServiceFlight.swift; sourceTree = "<group>"; };
+		FBD5FCA62600CFFD00DE519E /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				FB4EEB4325E17E5F00B85423 /* Ressources */,
 				FB4EEB4425E17E6A00B85423 /* Supporting Files */,
 				FBAC215025E92A0C00C0B074 /* View */,
+				FBD5FCA62600CFFD00DE519E /* Bundle-Decodable.swift */,
 			);
 			path = ARFlight;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				FB35861025E5328D005C60EF /* Config.swift in Sources */,
 				FB98700D25E17B52000CF44A /* SearchFlightViewController.swift in Sources */,
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
+				FBD5FCA72600CFFD00DE519E /* Bundle-Decodable.swift in Sources */,
 				FB4EEB9825E1965700B85423 /* Airport.swift in Sources */,
 				FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */,
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,

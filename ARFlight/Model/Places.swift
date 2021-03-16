@@ -19,9 +19,10 @@ struct Places: Decodable {
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        terminalCode = try container.decode(String.self, forKey: .terminalCode)
+
+        terminalCode = try? container.decode(String.self, forKey: .terminalCode)
         
-        let gateNumbersArray = try container.decode([String].self, forKey: .gateNumbers)
+        let gateNumbersArray = (try? container.decode([String].self, forKey: .gateNumbers)) ?? [""]
         gateNumbers = gateNumbersArray == [""] ? nil : gateNumbersArray.joined(separator: " ,")
     }
 }

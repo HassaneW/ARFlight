@@ -53,81 +53,91 @@ class NetworkServiceFlight {
     }
     
     // MARK: - Requests
-    //    func searchForFlight(startRange: String, endRange: String, origin: String, destination: String, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
-    //
-    //        let arguments = [
-    ////            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
-    //            "startRange": startRange,
-    //            "endRange": endRange,
-    //            "origin": origin,
-    //            "destination": destination
-    
-//                "departureCity" : departureCity,
-//                "arrivalCity" : arrivalCity
-//
-    //        ]
-    //        var urlComponents = URLComponents(string: apiUrl)
-    //        var queryItems = [URLQueryItem]()
-    //        for (key, value) in arguments {
-    //            queryItems.append(URLQueryItem(name: key, value: value))
-    //        }
-    //        urlComponents?.queryItems = queryItems
-    //
-    //        guard let url = urlComponents?.url else {
-    //            completion(.failure(.invalidUrl))
-    //            return
-    //        }
-    //
-    //        //        https://api.airfranceklm.com/opendata/flightstatus?startRange=2021-01-14T10:00:00Z&endRange=2021-01-20T23:59:00Z&departureCity=DKR&arrivalCity=PAR
-    ////                let finalURL = "\(apiUrl)/\(flightId)"
-    ////                guard let url = URL(string: finalURL) else {
-    ////                    completion(.failure(.invalidUrl))
-    ////                    return
-    ////                }
-    //
-    //        var urlRequest = URLRequest(url: url)
-    //        urlRequest.httpMethod = "GET"
-    //        urlRequest.addValue(ConfigNetworkingService.AirFranceKlm.apiKey, forHTTPHeaderField: "Api-Key")
-    //        urlRequest.addValue("application/hal+json", forHTTPHeaderField: "Accept")
-    //        urlRequest.addValue("en-EN", forHTTPHeaderField: "Accept-Language")
-    //
-    //        flightSession.dataTask(with: url) { (data, response, error) in
-    //
-    //            DispatchQueue.main.async {
-    //                if let error = error {
-    //                    completion(.failure(.requestError(error.localizedDescription)))
-    //                }
-    //
-    //                guard let response = response as? HTTPURLResponse else {
-    //                    completion(.failure(.invalidResponse))
-    //                    return
-    //                }
-    //
-    //                let status = response.statusCode
-    //                guard (200...299).contains(status) else {
-    //                    completion(.failure(.errorStatusCode(status)))
-    //                    return
-    //                }
-    //
-    //                guard let data = data else {
-    //                    completion(.failure(.invalidData))
-    //                    return
-    //                }
-    //
-    //                do {
-    //                    let flights = try self.jsonDecoder.decode(Flights.self, from: data)
-    //
-    //                    print(flights)
-    //
-    //                    completion(.success(flights.flights))
-    //
-    //                } catch let error {
-    //                    print(error)
-    //                    completion(.failure(.decodingError))
-    //                }
-    //            }
-    //        }.resume()
-    //    }
+    func searchForFlight(startRange: String, endRange: String, origin: String, destination: String, completion: @escaping (Result<[Flight], NetworkError>) -> Void) {
+        
+        let arguments = [
+            //            "appId" : ConfigNetworkingService.AirFranceKlm.apiKey,
+            "startRange": startRange,
+            "endRange": endRange,
+            "origin": origin,
+            "destination": destination
+            
+            //                "departureCity" : departureCity,
+            //                "arrivalCity" : arrivalCity
+            
+        ]
+        var urlComponents = URLComponents(string: apiUrl)
+        var queryItems = [URLQueryItem]()
+        for (key, value) in arguments {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        urlComponents?.queryItems = queryItems
+        
+        guard let url = urlComponents?.url else {
+            completion(.failure(.invalidUrl))
+            return
+        }
+        
+        //        https://api.airfranceklm.com/opendata/flightstatus?startRange=2021-01-14T10:00:00Z&endRange=2021-01-20T23:59:00Z&departureCity=DKR&arrivalCity=PAR
+        //                let finalURL = "\(apiUrl)/\(flightId)"
+        //                guard let url = URL(string: finalURL) else {
+        //                    completion(.failure(.invalidUrl))
+        //                    return
+        //                }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.addValue(ConfigNetworkingService.AirFranceKlm.apiKey, forHTTPHeaderField: "Api-Key")
+        urlRequest.addValue("application/hal+json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("en-EN", forHTTPHeaderField: "Accept-Language")
+        
+        flightSession.dataTask(with: urlRequest) { (data, response, error) in
+            
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(.requestError(error.localizedDescription)))
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                
+                let status = response.statusCode
+                guard (200...299).contains(status) else {
+                    completion(.failure(.errorStatusCode(status)))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(.invalidData))
+                    return
+                }
+                
+                do {
+                    let flights = try self.jsonDecoder.decode(Flights.self, from: data)
+                    completion(.success(flights.flights))
+                    
+                } catch DecodingError.keyNotFound(let key, let context) {
+                    print("Failed to decode due to missing key `\(key.stringValue)` - \(context.debugDescription)")
+                    completion(.failure(.decodingError))
+                } catch DecodingError.typeMismatch(_, let context) {
+                    print("Failed to decode due to type mismatch - \(context.debugDescription)")
+                    completion(.failure(.decodingError))
+                } catch DecodingError.valueNotFound(let type, let context) {
+                    print("Failed to decode due to missing \(type) value - \(context.debugDescription)")
+                    completion(.failure(.decodingError))
+                } catch DecodingError.dataCorrupted(_) {
+                    print("Failed to decode data because it appears to be invalid JSON")
+                    completion(.failure(.decodingError))
+                } catch {
+                    print("Failed to decode \(error.localizedDescription)")
+                    
+                    completion(.failure(.decodingError))
+                }
+            }
+        }.resume()
+    }
     
     func getFlightDetailsFor(flightId: String, completion: @escaping (Result<Flight, NetworkError>) -> Void) {
         
@@ -168,11 +178,22 @@ class NetworkServiceFlight {
             
             do {
                 let flight = try self.jsonDecoder.decode(Flight.self, from: data)
-                print(flight)
                 completion(.success(flight))
-            } catch let error {
-                print(error.localizedDescription)
-                print(error)
+            } catch DecodingError.keyNotFound(let key, let context) {
+                print("Failed to decode due to missing key `\(key.stringValue)` - \(context.debugDescription)")
+                completion(.failure(.decodingError))
+            } catch DecodingError.typeMismatch(_, let context) {
+                print("Failed to decode due to type mismatch - \(context.debugDescription)")
+                completion(.failure(.decodingError))
+            } catch DecodingError.valueNotFound(let type, let context) {
+                print("Failed to decode due to missing \(type) value - \(context.debugDescription)")
+                completion(.failure(.decodingError))
+            } catch DecodingError.dataCorrupted(_) {
+                print("Failed to decode data because it appears to be invalid JSON")
+                completion(.failure(.decodingError))
+            } catch {
+                print("Failed to decode \(error.localizedDescription)")
+                
                 completion(.failure(.decodingError))
             }
             

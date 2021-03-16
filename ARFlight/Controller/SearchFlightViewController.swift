@@ -38,10 +38,15 @@ class SearchFlightViewController: UIViewController {
     
     private func setUp() {
         
+        let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
+        print(planes.first)
+        
+       
+        
         NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210115+AF+1496") { (result) in
             switch result {
             case .success(let flight):
-                print(flight)
+                print("Flight detail: \(flight)")
                 DispatchQueue.main.async {
                 self.flight = flight
                 }
@@ -50,15 +55,15 @@ class SearchFlightViewController: UIViewController {
             }
         }
         
-//            NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
-//                switch resultflight {
-//                case .success(let flights):
-//                    print(flights)
-//                    self?.flightArray = flights
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
+            NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
+                switch resultflight {
+                case .success(let flights):
+                    print("Flights found: \(flights)")
+                    self?.flightArray = flights
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
     }
 }
 
@@ -76,13 +81,25 @@ extension SearchFlightViewController {
         titleLabel.textColor = .cyan
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
-        // setup les views
         
+        
+        let textField = UITextField()
+        textField.placeholder = "PLACEHOLDER"
+        
+        let contentStackView = UIStackView(arrangedSubviews: [titleLabel, textField])
+        contentStackView.axis = .vertical
+        contentStackView.alignment = .fill
+        contentStackView.spacing = UIStackView.spacingUseSystem
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(contentStackView)
+        // setup les views(
+
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 1.0),
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 1.0),
+            
+            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3.0),
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
         ])
     }
 }

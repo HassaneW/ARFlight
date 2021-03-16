@@ -1,158 +1,155 @@
-{
-    "aircraftDetails": [
-        {
-            "flightType": "longHaul",
-            "id": "AIRBUS A330-200",
-            "motorType": "CF6-80E1A3",
-            "numberOfSeats": "224",
-            "length": 58.36,
-            "cruisingSpeed": "M 0,82",
-            "image": "a330-200"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "AIRBUS A350-900",
-            "motorType": "Trent XWB Rolls Royce",
-            "numberOfSeats": "324",
-            "length": 66.80,
-            "cruisingSpeed": "M 0,85",
-            "image": "a350-900"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "AIRBUS A380-800",
-            "motorType": "Engine Alliance GP 7200",
-            "numberOfSeats": "516",
-            "length": 72.73,
-            "cruisingSpeed": "M 0,85",
-            "image": "a380-800"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 777-200ER",
-            "motorType": "GE 90-94B",
-            "numberOfSeats": "280/312",
-            "length": 63.73,
-            "cruisingSpeed": "M 0,84",
-            "image": "aBOEING 777-200ER"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 777-300ER",
-            "motorType": "GE 90-115B",
-            "numberOfSeats": "296/468",
-            "length": 73.86,
-            "cruisingSpeed": "M 0,84",
-            "image": "aBOEING 777-300ER"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 787-9 DREAMLINER",
-            "motorType": "-",
-            "numberOfSeats": "279",
-            "length": 62.82,
-            "cruisingSpeed": "M 0,85",
-            "image": "aBOEING 787-9 DREAMLINER"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "AIRBUS A330-300",
-            "motorType": "CF6-80E1A3",
-            "numberOfSeats": "292",
-            "length": 63.69,
-            "cruisingSpeed": "M 0,82",
-            "image": "klmAIRBUS A330-300"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 747-400",
-            "motorType": "CF6-80C2B5F",
-            "numberOfSeats": "408",
-            "length": 70.67,
-            "cruisingSpeed": "M 0,85",
-            "image": "klmBOEING 747-400"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 747-400 COMBI",
-            "motorType": "CF6-80C2B5F",
-            "numberOfSeats": "268",
-            "length": 70.67,
-            "cruisingSpeed": "M 0,85",
-            "image": "klmBOEING 747-400 COMBI"
-        },
-        {
-            "flightType": "longHaul",
-            "id": "BOEING 787-10 DREAMLINER",
-            "motorType": "-",
-            "numberOfSeats": "344",
-            "length": 68.3,
-            "cruisingSpeed": "903 km/h",
-            "image": "klmBOEING 787-10 DREAMLINER"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "AIRBUS A318-100",
-            "motorType": "CFM56-5B",
-            "numberOfSeats": "131",
-            "length": 31.45,
-            "cruisingSpeed": "M 0,79",
-            "image": "klmBOEING 787-10 DREAMLINER"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "AIRBUS A319-100",
-            "motorType": "CFM56-5A et B",
-            "numberOfSeats": "142-143",
-            "length": 33.84,
-            "cruisingSpeed": "M 0,79",
-            "image": "aAIRBUS A319-100"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "AIRBUS A320-200",
-            "motorType": "CFM56-5A et B",
-            "numberOfSeats": "174-178",
-            "length": 37.57,
-            "cruisingSpeed": "M 0,79",
-            "image": "aAIRBUS A320-200"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "AIRBUS A321",
-            "motorType": "CFM56-5B",
-            "numberOfSeats": "212",
-            "length": 44.51,
-            "cruisingSpeed": "M 0,79",
-            "image": "aAIRBUS A321"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "BOEING 737-700",
-            "motorType": "CFM56-7B24/26/27",
-            "numberOfSeats": "142",
-            "length": 33.62,
-            "cruisingSpeed": "M 0,79",
-            "image": "klmBOEING 737-700"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "BOEING 737-800",
-            "motorType": "CFM56-7B 26",
-            "numberOfSeats": "186",
-            "length": 39.47,
-            "cruisingSpeed": "M 0,79",
-            "image": "klmBOEING 737-800"
-        },
-        {
-            "flightType": "mediumHaul",
-            "id": "BOEING 737-900",
-            "motorType": "CFM56-7B 27",
-            "numberOfSeats": "188",
-            "length": 42.12,
-            "cruisingSpeed": "M 0,79",
-            "image": "klmBOEING 737-900"
-        }
-        
-    ]
-}
+[
+   {
+      "flightType":"longHaul",
+      "id":"AIRBUS A330-200",
+      "motorType":"CF6-80E1A3",
+      "numberOfSeats":"224",
+      "length":58.36,
+      "cruisingSpeed":"M 0,82",
+      "image":"a330-200"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"AIRBUS A350-900",
+      "motorType":"Trent XWB Rolls Royce",
+      "numberOfSeats":"324",
+      "length":66.80,
+      "cruisingSpeed":"M 0,85",
+      "image":"a350-900"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"AIRBUS A380-800",
+      "motorType":"Engine Alliance GP 7200",
+      "numberOfSeats":"516",
+      "length":72.73,
+      "cruisingSpeed":"M 0,85",
+      "image":"a380-800"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 777-200ER",
+      "motorType":"GE 90-94B",
+      "numberOfSeats":"280/312",
+      "length":63.73,
+      "cruisingSpeed":"M 0,84",
+      "image":"aBOEING 777-200ER"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 777-300ER",
+      "motorType":"GE 90-115B",
+      "numberOfSeats":"296/468",
+      "length":73.86,
+      "cruisingSpeed":"M 0,84",
+      "image":"aBOEING 777-300ER"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 787-9 DREAMLINER",
+      "motorType":"-",
+      "numberOfSeats":"279",
+      "length":62.82,
+      "cruisingSpeed":"M 0,85",
+      "image":"aBOEING 787-9 DREAMLINER"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"AIRBUS A330-300",
+      "motorType":"CF6-80E1A3",
+      "numberOfSeats":"292",
+      "length":63.69,
+      "cruisingSpeed":"M 0,82",
+      "image":"klmAIRBUS A330-300"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 747-400",
+      "motorType":"CF6-80C2B5F",
+      "numberOfSeats":"408",
+      "length":70.67,
+      "cruisingSpeed":"M 0,85",
+      "image":"klmBOEING 747-400"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 747-400 COMBI",
+      "motorType":"CF6-80C2B5F",
+      "numberOfSeats":"268",
+      "length":70.67,
+      "cruisingSpeed":"M 0,85",
+      "image":"klmBOEING 747-400 COMBI"
+   },
+   {
+      "flightType":"longHaul",
+      "id":"BOEING 787-10 DREAMLINER",
+      "motorType":"-",
+      "numberOfSeats":"344",
+      "length":68.3,
+      "cruisingSpeed":"903 km/h",
+      "image":"klmBOEING 787-10 DREAMLINER"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"AIRBUS A318-100",
+      "motorType":"CFM56-5B",
+      "numberOfSeats":"131",
+      "length":31.45,
+      "cruisingSpeed":"M 0,79",
+      "image":"klmBOEING 787-10 DREAMLINER"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"AIRBUS A319-100",
+      "motorType":"CFM56-5A et B",
+      "numberOfSeats":"142-143",
+      "length":33.84,
+      "cruisingSpeed":"M 0,79",
+      "image":"aAIRBUS A319-100"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"AIRBUS A320-200",
+      "motorType":"CFM56-5A et B",
+      "numberOfSeats":"174-178",
+      "length":37.57,
+      "cruisingSpeed":"M 0,79",
+      "image":"aAIRBUS A320-200"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"AIRBUS A321",
+      "motorType":"CFM56-5B",
+      "numberOfSeats":"212",
+      "length":44.51,
+      "cruisingSpeed":"M 0,79",
+      "image":"aAIRBUS A321"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"BOEING 737-700",
+      "motorType":"CFM56-7B24/26/27",
+      "numberOfSeats":"142",
+      "length":33.62,
+      "cruisingSpeed":"M 0,79",
+      "image":"klmBOEING 737-700"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"BOEING 737-800",
+      "motorType":"CFM56-7B 26",
+      "numberOfSeats":"186",
+      "length":39.47,
+      "cruisingSpeed":"M 0,79",
+      "image":"klmBOEING 737-800"
+   },
+   {
+      "flightType":"mediumHaul",
+      "id":"BOEING 737-900",
+      "motorType":"CFM56-7B 27",
+      "numberOfSeats":"188",
+      "length":42.12,
+      "cruisingSpeed":"M 0,79",
+      "image":"klmBOEING 737-900"
+   }
+]
