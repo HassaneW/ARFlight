@@ -41,7 +41,8 @@ class SearchFlightViewController: UIViewController {
         let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
         print(planes.first)
         
-       
+        let codeAirport = Bundle.main.decode(CodeAirport.self, from: "code-airport.json")
+        print(codeAirport)
         
         NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210115+AF+1496") { (result) in
             switch result {
