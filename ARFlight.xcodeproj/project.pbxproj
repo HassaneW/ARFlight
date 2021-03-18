@@ -20,7 +20,7 @@
 		FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860A25E5328D005C60EF /* NetworkError.swift */; };
 		FB35861025E5328D005C60EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860B25E5328D005C60EF /* Config.swift */; };
 		FB35861125E5328D005C60EF /* FlightParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860C25E5328D005C60EF /* FlightParameters.swift */; };
-		FB3793D02602AA710043888F /* CodeAirport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3793CF2602AA710043888F /* CodeAirport.swift */; };
+		FB3793D02602AA710043888F /* AirportName.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3793CF2602AA710043888F /* AirportName.swift */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
 		FB4EEB8425E195A700B85423 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8325E195A700B85423 /* Airline.swift */; };
 		FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8825E195C400B85423 /* FlightLegs.swift */; };
@@ -79,7 +79,7 @@
 		FB35860A25E5328D005C60EF /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FB35860B25E5328D005C60EF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FB35860C25E5328D005C60EF /* FlightParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightParameters.swift; sourceTree = "<group>"; };
-		FB3793CF2602AA710043888F /* CodeAirport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAirport.swift; sourceTree = "<group>"; };
+		FB3793CF2602AA710043888F /* AirportName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportName.swift; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		FB4EEB8325E195A700B85423 /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		FB4EEB8825E195C400B85423 /* FlightLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightLegs.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				FB4EEB7E25E1955700B85423 /* Flight.swift */,
 				FB4EEB8325E195A700B85423 /* Airline.swift */,
 				FB0855AE25EE59D400DDA5F6 /* Plane.swift */,
-				FB3793CF2602AA710043888F /* CodeAirport.swift */,
+				FB3793CF2602AA710043888F /* AirportName.swift */,
 				FB4EEB8825E195C400B85423 /* FlightLegs.swift */,
 				FB4EEB8D25E195C900B85423 /* Places.swift */,
 				FB4EEB9225E1963A00B85423 /* Information.swift */,
@@ -521,7 +521,7 @@
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
 				FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */,
-				FB3793D02602AA710043888F /* CodeAirport.swift in Sources */,
+				FB3793D02602AA710043888F /* AirportName.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,
 				FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
