@@ -18,7 +18,7 @@ struct Flight: Decodable {
     var departureDate: Date?
     let identifiantPlane : String?
     let flightType: FlightType
-    let company : Airline?
+    let company : Airline? //Company
     let flightStatus : String?
     let flightInformations : [FlightLegs]?
     

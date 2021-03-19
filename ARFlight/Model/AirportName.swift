@@ -51,6 +51,11 @@ struct Countries: Decodable {
         destinations = destinationsArray.joined(separator: ",\n")
         
         areas = try container.decode( [Areas].self, forKey: .areas)
+        
+//        let changed = areas
+//            .compactMap { $0.countries.first?.cities }
+//            .first?
+//            .compactMap{ $0.code}
     }
 
     

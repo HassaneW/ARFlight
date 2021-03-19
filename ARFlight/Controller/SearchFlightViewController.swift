@@ -29,7 +29,7 @@ class SearchFlightViewController: UIViewController {
         //                configureDelegates()
         
         print("SEARCH1")
-        setUp()
+        //setUp()
         print("SEARCH2")
         
     }
@@ -49,22 +49,22 @@ class SearchFlightViewController: UIViewController {
             case .success(let flight):
                 print("Flight detail: \(flight)")
                 DispatchQueue.main.async {
-                self.flight = flight
+                    self.flight = flight
                 }
             case .failure(let error):
                 print("Error getting flight details: \(error.localizedDescription)")
             }
         }
         
-            NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
-                switch resultflight {
-                case .success(let flights):
-                    print("Flights found: \(flights)")
-                    self?.flightArray = flights
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
+            switch resultflight {
+            case .success(let flights):
+                print("Flights found: \(flights)")
+                self?.flightArray = flights
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
     }
 }
 
@@ -73,114 +73,135 @@ extension SearchFlightViewController {
     private func setupView() {
         title = "Rechercher un vol"
         
-        view.backgroundColor = UIColor.purple
+        view.backgroundColor = UIColor.lightGray
         
+        // Créér Image
+        let imagePlane = UIImage(systemName: "airplane")
+        let myImagePlane:UIImageView = UIImageView()
+        myImagePlane.contentMode = UIView.ContentMode.left
+        myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
+        //        myImagePlane.frame.size.width = 150
+        //        myImagePlane.frame.size.height = 150
+        //        myImagePlane.center = self.view.center
+        myImagePlane.image = imagePlane
+        //        view.addSubview(myImagePlane)
+        
+        // Title Label Depart
+        let titleLabelDepart = UILabel()
+        titleLabelDepart.text = "Depart"
+        titleLabelDepart.numberOfLines = 0
+        titleLabelDepart.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        titleLabelDepart.textAlignment = .center
+        titleLabelDepart.textColor = .black
+        titleLabelDepart.adjustsFontForContentSizeCategory = true
+        titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
+        
+        // StackView Image Plane + Title Label Depart
+        let contentStackViewDepart = UIStackView(arrangedSubviews: [myImagePlane, titleLabelDepart])
+        contentStackViewDepart.axis = .horizontal
+        contentStackViewDepart.alignment = .fill
+        contentStackViewDepart.distribution = .fill
+        contentStackViewDepart.spacing = UIStackView.spacingUseSystem
+        contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(contentStackViewDepart)
+        
+        NSLayoutConstraint.activate([
+            //            https://dev.to/andrewlawlerdev/programmatic-constraints-in-swift-kj
+            
+            //         TOP
+            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+            //            contentStackViewImageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            
+            //           LEADING
+            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            // TRAILING
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0)
+            //            contentStackViewImageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            //            CenterX Anchor / CenterY Anchor
+            //            contentStackViewImageTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            // contentStackViewImageTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30)
+            
+            //            Width Anchor / Height Anchor
+            //            contentStackViewImageTitle.heightAnchor.constraint(equalToConstant: 50),
+            //            contentStackViewImageTitle.widthAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        // Label Ville
         let titleLabel = UILabel()
-        titleLabel.text = "Lieu de départ"
+        titleLabel.text = "Ville"
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         titleLabel.textColor = .cyan
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        
+        // TextField
         let textField = UITextField()
-        textField.placeholder = "PLACEHOLDER"
+        textField.placeholder = "Depart"
         
+        // StackView Label Ville + Textfield Depart
         let contentStackView = UIStackView(arrangedSubviews: [titleLabel, textField])
-        contentStackView.axis = .vertical
+        contentStackView.axis = .horizontal
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(contentStackView)
         // setup les views(
-
+        
         NSLayoutConstraint.activate([
             
-            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3.0),
+            //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewImageTitle.topAnchor, multiplier: 3.0)
+            
+            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
+            
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
             view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
         ])
+        
+        let textOr = UILabel()
+        textOr.text = "OR"
+        textOr.font = UIFont.preferredFont(forTextStyle: .headline)
+        textOr.textColor = .black
+        textOr.textAlignment = .center
+        textOr.adjustsFontForContentSizeCategory = true
+        textOr.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(textOr)
+        
+        // Debug colors
+        textOr.backgroundColor = .red
+        titleLabel.backgroundColor = .purple
+        textField.backgroundColor = .orange
+        
+        NSLayoutConstraint.activate([
+            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
+            
+            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
+        ])
+        
+        // Current Location
+        let imageLocation = UIImage(systemName: "magnifyingglass")
+        let myImageLocation:UIImageView = UIImageView()
+        myImageLocation.contentMode = UIView.ContentMode.left
+        myImageLocation.contentMode = UIView.ContentMode.scaleAspectFit
+        myImageLocation.image = imageLocation
+
+        // Title Label Arrive
+        let titleLabelArrive = UILabel()
+        titleLabelArrive.text = "Arrive"
+        titleLabelArrive.numberOfLines = 0
+        titleLabelArrive.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        titleLabelArrive.textAlignment = .center
+        titleLabelArrive.textColor = .black
+        titleLabelArrive.adjustsFontForContentSizeCategory = true
+        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
+        
     }
 }
 
-
-/*
- Controller
- 
- // 1
- 
- 
- // 2
- //        let startLabel = Date().timeIntervalSinceNow
- //        let startLabel = "dateDepart"
- //        let endLabel = "datearrivée"
- //        let originLabel = "aeroportDepart"
- //        let destinationLabel = "aeroportArrivée"
- //
- //        NetworkServiceFlight.shared.searchForFlight(startRange: startLabel, endRange: endLabel, origin: originLabel, destination: destinationLabel) { (result) in
- //            switch result {
- //            case .success(let flight):
- //                print(flight)
- //            case .failure(let error):
- //            print("error")
- //            }
- //        }
- 
- //        NetworkServiceFlight.shared.searchForFlight(startRange: "textField.text", endRange: "2021-03-03..", origin: "CDG", destination: "CMN") { (result) in
- //            // TEST
- //        }
- 
- // 3
- //        let flightParam = FlightParameters(id: "", startRange: "", endRange: "", departureCity: "", arrivalCity: "", origin: "", destination: "", pageSize: "", pageNumber: "")
- //        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
- 
- //        NetworkServiceFlight.shared.getsearchForFlight{ [weak self] (flightArray) in
- //            switch flightArray {
- //            case .success(let flightArray):
- //                print(flightArray)
- //                self?.flightArray = flightArray
- //            case .failure(let error):
- //                print(error.localizedDescription)
- //            }
- //        }
- 
- 
- 
- //    private func configureDelegates() {
- //        //textField.delegate = self
- //    }
- 
- 
- // 4
- //        NetworkServiceFlight.shared.searchForFlight(startRange: "Date Depart", endRange: "2021-01-20T23:59:00Z", origin: "CDG", destination: "Airport Arrivée") { [weak self] (resultFight) in
- //
- //            switch resultFight  {
- //            case .success(let flights) where
- //                    flights.isEmpty:
- //                print("No Flight")
- //            case .success(let flights):
- //                print(flights)
- //                self?.flightArray = flights
- //            case .failure(let error):
- //                print("Error searching for flights: \(error.localizedDescription)")
- //            }
- //        }
- 
- //                let flightParam = FlightParameters(id: "20210115+AF+1496", startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", departureCity: "DKR", arrivalCity: "PAR")
- //        NetworkServiceFlight.shared.getsearchForFlight(with: flightParam)
- 
- //        print(flightArray?.count)
- 
- 
- //
- //
- //        NetworkServiceFlight.shared.getflightDetails(with: flightParams) { (result) in
- // TPODO
- //        }
- 
- 
- // Do any additional setup after loading the view.
- 
- */
