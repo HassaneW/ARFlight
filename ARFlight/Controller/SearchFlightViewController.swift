@@ -29,7 +29,7 @@ class SearchFlightViewController: UIViewController {
         //                configureDelegates()
         
         print("SEARCH1")
-        //setUp()
+        setUp()
         print("SEARCH2")
         
     }

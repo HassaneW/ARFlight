@@ -8,312 +8,119 @@
 import Foundation
 
 
-struct AirportName: Decodable {
-    let countries : [Countries]
-//    let codeAirport : [String]
-//    let cities : [Cities]
-//    let nameAirport : [Stopovers]
-    
-//    private enum CodingKeys : String, CodingKey {
-//        case codeAirport = "origins"
-//        case cities
-//        case nameAirport = "stopovers"
-//
-//
-//    }
-    
-//    Origin : CodeAirport/Countries/origins
-//    cities : CodeAirport/Countries/Areas/CountriesTranslate or countries/ cities
-//    nameAirport : CodeAirport/Countries/Areas/CountriesTranslate or countries/ cities/ Stopovers
+struct AirportName : Decodable {
+    let market: String
+    let countries: [Countries]
+}
+extension AirportName: CustomStringConvertible {
+    var description: String {
+
+        let description = """
+    - Market: \(market)
+    - countries:\n \(countries)
+"""
+        return description
+    }
 }
 
-//struct CodeAirport: Decodable {
-//    let countries : [Countries]
-//}
-
 struct Countries: Decodable {
-    let origins : String
-    let destinations : String
-    let areas : [Areas]
+    var code: String
+    var name: String
+    let cities: [Cities]
+
+//    let stopovers: [Stopovers]
     
-    enum CodingKeys: String, CodingKey {
-        case origins
-        case destinations
-        case areas
+    enum CodingKeys : String, CodingKey {
+        case code
+        case cities
+        case name = "label"
+        
+        enum CitiesKeys : String, CodingKey {
+            case code
+            case name = "label"
+            case stopovers
+            
+            enum StopoversKeys : String, CodingKey {
+                case code
+                case type
+                case name = "label"
+            }
+        }
+
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let originsArray = try container.decode([String].self, forKey: .origins)
-        origins = originsArray.joined(separator: ",\n")
+        code = try container.decode(String.self, forKey: .code)
+        name = try container.decode(String.self, forKey: .name)
+        cities = try container.decode([Cities].self, forKey: .cities)
         
-        let destinationsArray = try container.decode([String].self, forKey: .destinations)
-        destinations = destinationsArray.joined(separator: ",\n")
+//        let citiesContainer = try container.nestedContainer(keyedBy: CodingKeys.CitiesKeys.self, forKey: .cities)
+//        code = try citiesContainer.decode(String.self, forKey: .code)
+//        name = try citiesContainer.decode(String.self, forKey: .name)
         
-        areas = try container.decode( [Areas].self, forKey: .areas)
-        
-//        let changed = areas
-//            .compactMap { $0.countries.first?.cities }
-//            .first?
-//            .compactMap{ $0.code}
+//        let stopoversContainer = try citiesContainer.nestedContainer(keyedBy: CodingKeys.SecondStageKeys.StopoversKeys.self, forKey: .stopovers)
+//        code = try stopoversContainer.decode(String.self, forKey: .code)
+//        name = try stopoversContainer.decode(String.self, forKey: .name)
+//        type = try stopoversContainer.decode(String.self, forKey: .type)
     }
-
-    
 }
 extension Countries: CustomStringConvertible {
     var description: String {
 
-//        let originsString = origins.joined(separator: ",\n")
-
-        let description = """
-                \n
-- Origins:\n\(origins)
-- Destinations:\n\(destinations)
-- Areas:\n\(areas)
-"""
-        return description
-    }
-}
-struct Areas: Decodable {
-    let code : String
-    let countries : [CountriesTranslate] // changename and CountriesTranslate avec private enum CodingKey
-}
-extension Areas: CustomStringConvertible {
-    var description: String {
-
         let description = """
     - Code: \(code)
-    - Countries: \(countries)
+    - Name: \(name)
+    - Cities:\n \(cities)
 """
         return description
     }
 }
-struct CountriesTranslate: Decodable {
-    let code: String
-    let label : String
-    let cities : [Cities]
-}
-extension CountriesTranslate: CustomStringConvertible {
-    var description: String {
-
-        let description = """
-            \n
-    - Code: \(code)
-        - Label: \(label)
-        - Cities:\n\(cities)\n
-"""
-        return description
-    }
-}
-
 
 struct Cities: Decodable {
-    let code :String
-    let label : String
-    let stopovers : [Stopovers]
+    let code: String
+    let name: String
+    let stopovers: [Stopovers]
+    
+    private enum CodingKeys : String, CodingKey {
+        case code
+        case stopovers
+        case name = "label"
+
+    }
 }
+
+struct Stopovers: Decodable {
+    let code: String
+    let name: String
+    let type: String
+    
+    private enum CodingKeys : String, CodingKey {
+        case code
+        case type
+        case name = "label"
+    }
+}
+
 extension Cities: CustomStringConvertible {
     var description: String {
 
         let description = """
             - Code: \(code)
-            - Label: \(label)\n
+            - Name:\(name)\n
             - Stopovers:\n\(stopovers)
 """
         return description
     }
 }
-struct Stopovers: Decodable {
-    let code: String
-    let label: String
-}
+
 extension Stopovers: CustomStringConvertible {
     var description: String {
 
         let description = """
                 - Code:\(code)
-                - Label:\(label)\n
+                - Name:\(name)\n
 """
         return description
     }
 }
-
-
-//
-//struct CodeAirport: Decodable {
-//    let market : String
-//    let countries : [Countries]
-//
-//    private enum CodingKeys : String, CodingKey {
-//        case market
-//        case countries
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        market = try container.decode(String.self, forKey: .market)
-//
-//        countries = try container.decode([Countries].self, forKey: .countries)
-//    }
-//}
-//
-//extension CodeAirport: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//- Market: \(market)
-//- Countries: \(countries)\n
-//"""
-//        return description
-//    }
-//}
-//
-//struct Countries: Decodable {
-//    let code : String
-//    let label: String
-//    let maximumNumberOfSeats: Int
-//    let minimumNumberOfAdults: Int
-//    let origins : [String]
-//    let destinations : [String]
-//    let passengerTypes : [PassengerTypes]
-//    let areas : [Areas]
-//    let defaultAirport: String
-//    let commercialCabins : [CommercialCabins]
-//}
-//
-//
-//extension Countries: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//            - Code: \(code)\n
-//            - Label: \(label)\n
-//            - MaximumNumberOfSeats: \(maximumNumberOfSeats)\n
-//            - MinimumNumberOfAdults: \(minimumNumberOfAdults)\n
-//            - Origins: \(origins)\n
-//            - Destinations: \(destinations)\n
-//            - PassengerTypes: \(passengerTypes)\n
-//            - Areas: \(areas)\n
-//            - DefaultAirport: \(defaultAirport)\n
-//            - CommercialCabins: \(commercialCabins)\n
-//"""
-//        return description
-//    }
-//}
-//
-//struct CommercialCabins: Decodable {
-//    let code : String
-//    let label : String
-//}
-//
-//extension CommercialCabins: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//                - Code: \(code)
-//                - Label: \(label)
-//"""
-//        return description
-//    }
-//}
-//
-//struct Areas: Decodable {
-//    let code : String
-//    let countries : [CountriesAreas]
-//}
-//
-//extension Areas: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//            - Code: \(code)
-//            - Countries: \(countries)
-//"""
-//        return description
-//    }
-//}
-//
-//struct CountriesAreas: Decodable {
-//    let code: String
-//    let label : String
-//    let cities : [Cities]
-//}
-//
-//extension CountriesAreas: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//            - Code: \(code)
-//            - Label: \(label)
-//            - Cities: \(cities)\n
-//"""
-//        return description
-//    }
-//}
-//
-//struct Cities: Decodable {
-//    let code :String
-//    let label : String
-//    let stopovers : [Stopovers]
-//}
-//
-//extension Cities: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//                \n
-//                - Code: \(code)
-//                - Label: \(label)
-//                - Stopovers: \(stopovers)
-//"""
-//        return description
-//    }
-//}
-//
-//struct Stopovers: Decodable {
-//    let code: String
-//    let label: String
-//    let type: String
-//}
-//
-//extension Stopovers: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//                \n
-//                    - Code: \(code)
-//                    - Label: \(label)
-//                    - Type: \(type)"\n
-//"""
-//        return description
-//    }
-//}
-//
-//struct PassengerTypes: Decodable {
-//    let code: String
-//    let label: String
-//    let minAge: Int
-//    let displayOrder: Int
-//    let adult: Bool
-//}
-//
-//extension PassengerTypes: CustomStringConvertible {
-//    var description: String {
-//
-//        let description = """
-//            \n
-//                - Code: \(code)
-//                - Label: \(label)
-//                - minAge: \(minAge)
-//                - displayOrder: \(displayOrder)
-//                - adult: \(adult)
-//"""
-//        return description
-//    }
-//}
