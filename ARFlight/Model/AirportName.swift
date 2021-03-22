@@ -54,15 +54,6 @@ struct Countries: Decodable {
         code = try container.decode(String.self, forKey: .code)
         name = try container.decode(String.self, forKey: .name)
         cities = try container.decode([Cities].self, forKey: .cities)
-        
-//        let citiesContainer = try container.nestedContainer(keyedBy: CodingKeys.CitiesKeys.self, forKey: .cities)
-//        code = try citiesContainer.decode(String.self, forKey: .code)
-//        name = try citiesContainer.decode(String.self, forKey: .name)
-        
-//        let stopoversContainer = try citiesContainer.nestedContainer(keyedBy: CodingKeys.SecondStageKeys.StopoversKeys.self, forKey: .stopovers)
-//        code = try stopoversContainer.decode(String.self, forKey: .code)
-//        name = try stopoversContainer.decode(String.self, forKey: .name)
-//        type = try stopoversContainer.decode(String.self, forKey: .type)
     }
 }
 extension Countries: CustomStringConvertible {

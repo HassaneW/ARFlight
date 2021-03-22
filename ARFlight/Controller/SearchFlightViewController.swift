@@ -75,6 +75,8 @@ extension SearchFlightViewController {
         
         view.backgroundColor = UIColor.lightGray
         
+        // 1) StackView Depart
+        
         // Créér Image
         let imagePlane = UIImage(systemName: "airplane")
         let myImagePlane:UIImageView = UIImageView()
@@ -97,7 +99,7 @@ extension SearchFlightViewController {
         titleLabelDepart.adjustsFontForContentSizeCategory = true
         titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
         
-        // StackView Image Plane + Title Label Depart
+        //  StackView Depart
         let contentStackViewDepart = UIStackView(arrangedSubviews: [myImagePlane, titleLabelDepart])
         contentStackViewDepart.axis = .horizontal
         contentStackViewDepart.alignment = .fill
@@ -106,30 +108,7 @@ extension SearchFlightViewController {
         contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentStackViewDepart)
         
-        NSLayoutConstraint.activate([
-            //            https://dev.to/andrewlawlerdev/programmatic-constraints-in-swift-kj
-            
-            //         TOP
-            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-            //            contentStackViewImageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-            
-            //           LEADING
-            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
-            // TRAILING
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0)
-            //            contentStackViewImageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            //            CenterX Anchor / CenterY Anchor
-            //            contentStackViewImageTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            // contentStackViewImageTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30)
-            
-            //            Width Anchor / Height Anchor
-            //            contentStackViewImageTitle.heightAnchor.constraint(equalToConstant: 50),
-            //            contentStackViewImageTitle.widthAnchor.constraint(equalToConstant: 80)
-        ])
-        
+        // 2) StackView Ville Depart
         // Label Ville
         let titleLabel = UILabel()
         titleLabel.text = "Ville"
@@ -143,7 +122,7 @@ extension SearchFlightViewController {
         let textField = UITextField()
         textField.placeholder = "Depart"
         
-        // StackView Label Ville + Textfield Depart
+        // StackView Ville Depart
         let contentStackView = UIStackView(arrangedSubviews: [titleLabel, textField])
         contentStackView.axis = .horizontal
         contentStackView.alignment = .fill
@@ -151,18 +130,8 @@ extension SearchFlightViewController {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(contentStackView)
-        // setup les views(
         
-        NSLayoutConstraint.activate([
-            
-            //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewImageTitle.topAnchor, multiplier: 3.0)
-            
-            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
-            
-            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
-        ])
-        
+        // 3) text OR
         let textOr = UILabel()
         textOr.text = "OR"
         textOr.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -172,17 +141,109 @@ extension SearchFlightViewController {
         textOr.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textOr)
         
-        // Debug colors
-        textOr.backgroundColor = .red
-        titleLabel.backgroundColor = .purple
-        textField.backgroundColor = .orange
+        // 3 StackView Current Location
+        
+        // Créér Image
+        let imageSearch = UIImage(systemName: "magnifyingglass.circle.fill")
+        let myImageSearch:UIImageView = UIImageView()
+        myImageSearch.contentMode = UIView.ContentMode.left
+        myImageSearch.contentMode = UIView.ContentMode.scaleAspectFit
+        myImageSearch.image = imageSearch
+        
+        // Title Label Current
+        let currentLabelDepart = UILabel()
+        currentLabelDepart.text = "Current"
+        currentLabelDepart.numberOfLines = 0
+        currentLabelDepart.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        currentLabelDepart.textAlignment = .center
+        currentLabelDepart.textColor = .black
+        currentLabelDepart.adjustsFontForContentSizeCategory = true
+        
+        // Switch Current
+        
+        let currentSwitch = UISwitch()
+        currentSwitch.setOn(false, animated: false)
+        currentSwitch.tintColor = UIColor.blue
+        currentSwitch.onTintColor = UIColor.cyan
+        currentSwitch.thumbTintColor = UIColor.red
+        
+//               currentSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: UIControlEvents.valueChanged)
+
+        let stackViewCurrentLocation = UIStackView(arrangedSubviews: [myImageSearch, currentLabelDepart, currentSwitch])
+        stackViewCurrentLocation.axis = .horizontal
+        stackViewCurrentLocation.alignment = .fill
+        stackViewCurrentLocation.spacing = UIStackView.spacingUseSystem
+        stackViewCurrentLocation.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackViewCurrentLocation)
+        
+        // setup les views(
         
         NSLayoutConstraint.activate([
+            
+            // Stack 1
+            
+            //            https://dev.to/andrewlawlerdev/programmatic-constraints-in-swift-kj
+            
+            //         TOP
+            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+            //            contentStackViewImageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            
+            //           LEADING
+            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            // TRAILING
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0),
+            //            contentStackViewImageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            //            CenterX Anchor / CenterY Anchor
+            //            contentStackViewImageTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            // contentStackViewImageTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30)
+            
+            //            Width Anchor / Height Anchor
+            //            contentStackViewImageTitle.heightAnchor.constraint(equalToConstant: 50),
+            //            contentStackViewImageTitle.widthAnchor.constraint(equalToConstant: 80)
+            
+            //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewImageTitle.topAnchor, multiplier: 3.0)
+            
+            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
+            
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
+            
+            // Text OR
+            
             textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
             
             textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
             view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
+            
+            // stackViewCurrentLocation
+            
+            stackViewCurrentLocation.topAnchor.constraint(equalToSystemSpacingBelow: textOr.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+            
+            stackViewCurrentLocation.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+            
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCurrentLocation.trailingAnchor, multiplier: 3.0),
+            
         ])
+        
+        // Debug colors
+        textOr.backgroundColor = .red
+        titleLabel.backgroundColor = .purple
+        textField.backgroundColor = .orange
+        currentSwitch.backgroundColor = UIColor.yellow
+        currentLabelDepart.backgroundColor = UIColor.green
+        
+        
+//        NSLayoutConstraint.activate([
+//            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
+//
+//            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
+//        ])
         
         // Current Location
         let imageLocation = UIImage(systemName: "magnifyingglass")
