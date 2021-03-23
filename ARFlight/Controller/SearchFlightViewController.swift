@@ -7,6 +7,32 @@
 
 import UIKit
 
+class ActionButton: UIButton {
+    
+    var title: String? {
+        didSet {
+            setTitle(title, for: .normal)
+        }
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        sharedInit()
+    }
+    
+    private func sharedInit() {
+        clipsToBounds = true
+        layer.cornerRadius = 12
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.red.cgColor
+        backgroundColor = UIColor.purple
+    }
+}
+
 class SearchFlightViewController: UIViewController {
     
     //    @IBOutlet weak var departTown : UITextField!
@@ -17,6 +43,8 @@ class SearchFlightViewController: UIViewController {
     //    private let textField = UITextField()
     //    var flightArray : [Flight]?
     //    var state
+    
+    private let textOr = UILabel()
     
     var flight : Flight?
     var flightArray : [Flight]?
@@ -106,7 +134,7 @@ extension SearchFlightViewController {
         contentStackViewDepart.distribution = .fill
         contentStackViewDepart.spacing = UIStackView.spacingUseSystem
         contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(contentStackViewDepart)
+         
         
         // 2) StackView Ville Depart
         // Label Ville
@@ -120,26 +148,26 @@ extension SearchFlightViewController {
         
         // TextField
         let textField = UITextField()
+        textField.delegate = self
         textField.placeholder = "Depart"
         
         // StackView Ville Depart
-        let contentStackView = UIStackView(arrangedSubviews: [titleLabel, textField])
-        contentStackView.axis = .horizontal
-        contentStackView.alignment = .fill
-        contentStackView.spacing = UIStackView.spacingUseSystem
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackViewCityStart = UIStackView(arrangedSubviews: [titleLabel, textField])
+        stackViewCityStart.axis = .horizontal
+        stackViewCityStart.alignment = .fill
+        stackViewCityStart.spacing = UIStackView.spacingUseSystem
+        stackViewCityStart.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(contentStackView)
+        
         
         // 3) text OR
-        let textOr = UILabel()
         textOr.text = "OR"
         textOr.font = UIFont.preferredFont(forTextStyle: .headline)
         textOr.textColor = .black
         textOr.textAlignment = .center
         textOr.adjustsFontForContentSizeCategory = true
         textOr.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textOr)
+         
         
         // 3 StackView Current Location
         
@@ -176,57 +204,222 @@ extension SearchFlightViewController {
         stackViewCurrentLocation.spacing = UIStackView.spacingUseSystem
         stackViewCurrentLocation.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(stackViewCurrentLocation)
+         
+        
+        
+        // 1) StackView Arrive
+        
+        // Créér Image
+        let imagePlaneArrive = UIImage(systemName: "airplane")
+        let myImagePlaneArrive:UIImageView = UIImageView()
+        myImagePlaneArrive.contentMode = UIView.ContentMode.left
+        myImagePlaneArrive.contentMode = UIView.ContentMode.scaleAspectFit
+        myImagePlaneArrive.image = imagePlaneArrive
+        
+        // Title Label Depart
+        let titleLabelArrive = UILabel()
+        titleLabelArrive.text = "Arrive"
+        titleLabelArrive.numberOfLines = 0
+        titleLabelArrive.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        titleLabelArrive.textAlignment = .center
+        titleLabelArrive.textColor = .black
+        titleLabelArrive.adjustsFontForContentSizeCategory = true
+        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        //  StackView Depart
+        let contentStackViewArrive = UIStackView(arrangedSubviews: [myImagePlaneArrive, titleLabelArrive])
+        contentStackViewArrive.axis = .horizontal
+        contentStackViewArrive.alignment = .fill
+        contentStackViewArrive.distribution = .fill
+        contentStackViewArrive.spacing = UIStackView.spacingUseSystem
+        contentStackViewArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        // 2) StackView VilleArrive
+        // Label Ville
+        let titleLabelVilleArrive = UILabel()
+        titleLabelVilleArrive.text = "Ville"
+        titleLabelVilleArrive.numberOfLines = 0
+        titleLabelVilleArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabelVilleArrive.textColor = .cyan
+        titleLabelVilleArrive.adjustsFontForContentSizeCategory = true
+        titleLabelVilleArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        // TextField
+        let textFieldVilleArrive = UITextField()
+        textFieldVilleArrive.placeholder = "Arrive"
+        
+        // StackView Ville Depart
+        let contentStackViewVilleArrive = UIStackView(arrangedSubviews: [titleLabelVilleArrive, textFieldVilleArrive])
+        contentStackViewVilleArrive.axis = .horizontal
+        contentStackViewVilleArrive.alignment = .fill
+        contentStackViewVilleArrive.spacing = UIStackView.spacingUseSystem
+        contentStackViewVilleArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        //view.addSubview(contentStackViewVilleArrive)
+        
+        // StackView Calendar
+        
+        // Créér Image
+        let imageCalendar = UIImage(systemName: "calendar.circle")
+        let myImageCalendar:UIImageView = UIImageView()
+        myImageCalendar.contentMode = UIView.ContentMode.left
+        myImageCalendar.contentMode = UIView.ContentMode.scaleAspectFit
+        myImageCalendar.image = imageCalendar
+        
+        // Title Label Current
+        let currentLabelCalendar = UILabel()
+        currentLabelCalendar.text = "Calendar "
+        currentLabelCalendar.numberOfLines = 0
+        currentLabelCalendar.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        currentLabelCalendar.textAlignment = .center
+        currentLabelCalendar.textColor = .black
+        currentLabelCalendar.adjustsFontForContentSizeCategory = true
+        
+        let stackViewCalendar = UIStackView(arrangedSubviews: [myImageCalendar, currentLabelCalendar])
+        stackViewCalendar.axis = .horizontal
+        stackViewCalendar.alignment = .fill
+        stackViewCalendar.spacing = UIStackView.spacingUseSystem
+        stackViewCalendar.translatesAutoresizingMaskIntoConstraints = false
+        
+        //view.addSubview(stackViewCalendar)
+        
+        
+        // StackView Date
+        
+        // Label Ville
+        let titleLabelDate = UILabel()
+        titleLabelDate.text = "Date entre le "
+        titleLabelDate.numberOfLines = 0
+        titleLabelDate.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabelDate.textColor = .cyan
+        titleLabelDate.adjustsFontForContentSizeCategory = true
+        titleLabelDate.translatesAutoresizingMaskIntoConstraints = false
+        
+        // TextField
+        let textFieldDate = UITextField()
+        textFieldDate.placeholder = "Date"
+        
+        // StackView Ville Depart
+        let contentStackViewDate = UIStackView(arrangedSubviews: [titleLabelDate, textFieldDate])
+        contentStackViewDate.axis = .horizontal
+        contentStackViewDate.alignment = .fill
+        contentStackViewDate.spacing = UIStackView.spacingUseSystem
+        contentStackViewDate.translatesAutoresizingMaskIntoConstraints = false
+        
+        //let mapView = MKMapKit() // tiale fixe
+        //let tableView = UITableView() // le tout dans stackView
+        // custom cell
+        //
+        let myButton = ActionButton()
+        myButton.title = "My button"
+        
+        let contentStackView = UIStackView(arrangedSubviews: [contentStackViewDepart, stackViewCityStart, textOr, stackViewCurrentLocation, contentStackViewArrive, contentStackViewVilleArrive , stackViewCalendar, myButton])
+        contentStackView.axis = .vertical
+        contentStackView.alignment = .fill
+        contentStackView.spacing = UIStackView.spacingUseSystem
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentStackView.setCustomSpacing(20, after: textOr)
+        contentStackView.setCustomSpacing(20, after: stackViewCurrentLocation)
+        //view.addSubview(contentStackView)
         
         // setup les views(
+        let scrollView = UIScrollView()
+        scrollView.addSubview(contentStackView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            contentStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5),
+            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
+            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 3.0)
+//            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+//            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 1.5),
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
+//            view.safeAreaLayoutGuide.bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 3.0)
             
             // Stack 1
             
             //            https://dev.to/andrewlawlerdev/programmatic-constraints-in-swift-kj
             
             //         TOP
-            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-            //            contentStackViewImageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+//            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+//
+//            //           LEADING
+//            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//
+//
+//            // TRAILING
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0),
+//
+//            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
+//
+//            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
+//
+//            // Text OR
+//
+//            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
+//
+//            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
+//
+//            // stackViewCurrentLocation
+//
+//            stackViewCurrentLocation.topAnchor.constraint(equalToSystemSpacingBelow: textOr.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+//
+//            stackViewCurrentLocation.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCurrentLocation.trailingAnchor, multiplier: 3.0),
+//
+//            // Stack View Arrive
+////            contentStackViewArrive
+////            contentStackViewVilleArrive
+//
+//            //         TOP
+//            contentStackViewArrive.topAnchor.constraint(equalToSystemSpacingBelow: stackViewCurrentLocation.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+//
+//            //           LEADING
+//            contentStackViewArrive.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//
+//            // TRAILING
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewArrive.trailingAnchor, multiplier: 3.0),
+//
+//            contentStackViewVilleArrive.topAnchor.constraint(equalTo: contentStackViewArrive.topAnchor, constant: 40),
+//
+//            contentStackViewVilleArrive.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewVilleArrive.trailingAnchor, multiplier: 3.0),
+//
+//            // StackView Calendar
+//
+//            stackViewCalendar.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewVilleArrive.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+//
+//            stackViewCalendar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCalendar.trailingAnchor, multiplier: 3.0),
+//
+//            // contentStackViewDate
+//
+//            contentStackViewDate.topAnchor.constraint(equalToSystemSpacingBelow: stackViewCalendar.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+//
+//            //           LEADING
+//            contentStackViewDate.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
+//
+//            // TRAILING
+//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDate.trailingAnchor, multiplier: 3.0),
+//
             
-            //           LEADING
-            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
-            // TRAILING
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0),
-            //            contentStackViewImageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            //            CenterX Anchor / CenterY Anchor
-            //            contentStackViewImageTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            // contentStackViewImageTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30)
-            
-            //            Width Anchor / Height Anchor
-            //            contentStackViewImageTitle.heightAnchor.constraint(equalToConstant: 50),
-            //            contentStackViewImageTitle.widthAnchor.constraint(equalToConstant: 80)
-            
-            //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewImageTitle.topAnchor, multiplier: 3.0)
-            
-            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
-            
-            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
-            
-            // Text OR
-            
-            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
-            
-            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
-            
-            // stackViewCurrentLocation
-            
-            stackViewCurrentLocation.topAnchor.constraint(equalToSystemSpacingBelow: textOr.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-            
-            stackViewCurrentLocation.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-            
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCurrentLocation.trailingAnchor, multiplier: 3.0),
             
         ])
         
@@ -253,16 +446,42 @@ extension SearchFlightViewController {
         myImageLocation.image = imageLocation
 
         // Title Label Arrive
-        let titleLabelArrive = UILabel()
-        titleLabelArrive.text = "Arrive"
-        titleLabelArrive.numberOfLines = 0
-        titleLabelArrive.font = UIFont
+        let titleLabelArrived = UILabel()
+        titleLabelArrived.text = "Arrive"
+        titleLabelArrived.numberOfLines = 0
+        titleLabelArrived.font = UIFont
             .preferredFont(forTextStyle: .headline)
-        titleLabelArrive.textAlignment = .center
-        titleLabelArrive.textColor = .black
-        titleLabelArrive.adjustsFontForContentSizeCategory = true
-        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
+        titleLabelArrived.textAlignment = .center
+        titleLabelArrived.textColor = .black
+        titleLabelArrived.adjustsFontForContentSizeCategory = true
+        titleLabelArrived.translatesAutoresizingMaskIntoConstraints = false
         
     }
 }
 
+
+
+/*
+ Constraints
+ //            contentStackViewImageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+ 
+ //            CenterX Anchor / CenterY Anchor
+ //            contentStackViewImageTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+ // contentStackViewImageTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30)
+ 
+ //            Width Anchor / Height Anchor
+ //            contentStackViewImageTitle.heightAnchor.constraint(equalToConstant: 50),
+ //            contentStackViewImageTitle.widthAnchor.constraint(equalToConstant: 80)
+ 
+ //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewImageTitle.topAnchor, multiplier: 3.0)
+ 
+ //            contentStackViewImageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+ 
+ //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+ 
+ */
+extension SearchFlightViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textOr.isHidden = true
+    }
+}

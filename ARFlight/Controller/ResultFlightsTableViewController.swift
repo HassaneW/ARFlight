@@ -7,16 +7,18 @@
 
 import UIKit
 
+
+// 2) Distance dans les layout
+// 3) Créer storyboard pour result
+// 4) Creer Maps Programmaticaly pour result
+// 5) Créer tableView Programmaticaly pour result
+
+
 class ResultFlightsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
