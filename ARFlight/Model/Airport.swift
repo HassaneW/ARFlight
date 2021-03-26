@@ -57,3 +57,14 @@ extension Airport: CustomStringConvertible {
         return "Airport : code \(code), name: \(name),  location : \(location) city \(city), country: \(country), places : \(places) "
     }
 }
+
+extension Airport {
+    init(name: String, code: String, latitude: Double, longitude: Double) {
+        self.name = name
+        self.code = code
+        self.location = Location(latitude: latitude, longitude: longitude)
+        self.city = nil
+        self.country = nil
+        self.places = nil
+    }
+}

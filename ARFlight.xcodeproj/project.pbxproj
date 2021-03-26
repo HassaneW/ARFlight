@@ -11,6 +11,7 @@
 		9F5600121E419CAD976E696B /* Pods_ARFlight_ARFlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAECEC1744CD1F2DD5CF5EEC /* Pods_ARFlight_ARFlightUITests.framework */; };
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
 		FB0855AF25EE59D400DDA5F6 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0855AE25EE59D400DDA5F6 /* Plane.swift */; };
+		FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB289A77260DF52700F55F07 /* ListResultViewController.swift */; };
 		FB301CBC25E55C3C00BC433F /* ResultFlightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */; };
 		FB301CC125E55C6400BC433F /* DetailsFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */; };
 		FB301CCC25E55D9700BC433F /* aircraft-details.json in Resources */ = {isa = PBXBuildFile; fileRef = FB301CCB25E55D9700BC433F /* aircraft-details.json */; };
@@ -70,6 +71,7 @@
 		DE7C804CFCC8F24299375150 /* Pods-ARFlight-ARFlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight-ARFlightUITests.release.xcconfig"; path = "Target Support Files/Pods-ARFlight-ARFlightUITests/Pods-ARFlight-ARFlightUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
 		FB0855AE25EE59D400DDA5F6 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		FB289A77260DF52700F55F07 /* ListResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResultViewController.swift; sourceTree = "<group>"; };
 		FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFlightsTableViewController.swift; sourceTree = "<group>"; };
 		FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFlightViewController.swift; sourceTree = "<group>"; };
 		FB301CCB25E55D9700BC433F /* aircraft-details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "aircraft-details.json"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				FB98700C25E17B52000CF44A /* SearchFlightViewController.swift */,
 				FB301CBB25E55C3C00BC433F /* ResultFlightsTableViewController.swift */,
+				FB289A77260DF52700F55F07 /* ListResultViewController.swift */,
 				FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */,
 			);
 			path = Controller;
@@ -510,6 +513,7 @@
 				FB4EEBA725E196C300B85423 /* Aircraft.swift in Sources */,
 				FB4EEB9325E1963A00B85423 /* Information.swift in Sources */,
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
+				FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */,
 				FB4EEB8425E195A700B85423 /* Airline.swift in Sources */,
 				FB0855AF25EE59D400DDA5F6 /* Plane.swift in Sources */,
 				FB35861025E5328D005C60EF /* Config.swift in Sources */,

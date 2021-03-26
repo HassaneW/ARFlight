@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Créer un controleur
         // Set up window
         // Assigner le controleur au windo
-        let viewController = SearchFlightViewController()
+        let viewController = ListResultViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         
         window = UIWindow(windowScene: windowScene)

@@ -287,27 +287,50 @@ extension SearchFlightViewController {
         //view.addSubview(stackViewCalendar)
         
         
-        // StackView Date
+        // StackView Date Depart
         
         // Label Ville
-        let titleLabelDate = UILabel()
-        titleLabelDate.text = "Date entre le "
-        titleLabelDate.numberOfLines = 0
-        titleLabelDate.font = UIFont.preferredFont(forTextStyle: .headline)
-        titleLabelDate.textColor = .cyan
-        titleLabelDate.adjustsFontForContentSizeCategory = true
-        titleLabelDate.translatesAutoresizingMaskIntoConstraints = false
+        let titleLabelDateDepart = UILabel()
+        titleLabelDateDepart.text = "Date entre le "
+        titleLabelDateDepart.numberOfLines = 0
+        titleLabelDateDepart.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabelDateDepart.textColor = .cyan
+        titleLabelDateDepart.adjustsFontForContentSizeCategory = true
+        titleLabelDateDepart.translatesAutoresizingMaskIntoConstraints = false
         
         // TextField
-        let textFieldDate = UITextField()
-        textFieldDate.placeholder = "Date"
+        let textFieldDateDepart = UITextField()
+        textFieldDateDepart.placeholder = "Date"
         
         // StackView Ville Depart
-        let contentStackViewDate = UIStackView(arrangedSubviews: [titleLabelDate, textFieldDate])
-        contentStackViewDate.axis = .horizontal
-        contentStackViewDate.alignment = .fill
-        contentStackViewDate.spacing = UIStackView.spacingUseSystem
-        contentStackViewDate.translatesAutoresizingMaskIntoConstraints = false
+        let contentStackViewDateDepart = UIStackView(arrangedSubviews: [titleLabelDateDepart, textFieldDateDepart])
+        contentStackViewDateDepart.axis = .horizontal
+        contentStackViewDateDepart.alignment = .fill
+        contentStackViewDateDepart.spacing = UIStackView.spacingUseSystem
+        contentStackViewDateDepart.translatesAutoresizingMaskIntoConstraints = false
+        
+        // StackView Date Arrive
+        
+        // Label Ville
+        let titleLabelDateArrive = UILabel()
+        titleLabelDateArrive.text = "Et le "
+        titleLabelDateArrive.numberOfLines = 0
+        titleLabelDateArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabelDateArrive.textColor = .cyan
+        titleLabelDateArrive.adjustsFontForContentSizeCategory = true
+        titleLabelDateArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        // TextField
+        let textFieldDateArrive = UITextField()
+        textFieldDateArrive.placeholder = "Date"
+        
+        // StackView Ville Depart
+        let contentStackViewDateArrive = UIStackView(arrangedSubviews: [titleLabelDateArrive, textFieldDateArrive])
+        contentStackViewDateArrive.axis = .horizontal
+        contentStackViewDateArrive.alignment = .fill
+        contentStackViewDateArrive.spacing = UIStackView.spacingUseSystem
+        contentStackViewDateArrive.translatesAutoresizingMaskIntoConstraints = false
+        
         
         //let mapView = MKMapKit() // tiale fixe
         //let tableView = UITableView() // le tout dans stackView
@@ -316,7 +339,7 @@ extension SearchFlightViewController {
         let myButton = ActionButton()
         myButton.title = "My button"
         
-        let contentStackView = UIStackView(arrangedSubviews: [contentStackViewDepart, stackViewCityStart, textOr, stackViewCurrentLocation, contentStackViewArrive, contentStackViewVilleArrive , stackViewCalendar, myButton])
+        let contentStackView = UIStackView(arrangedSubviews: [contentStackViewDepart, stackViewCityStart, textOr, stackViewCurrentLocation, contentStackViewArrive, contentStackViewVilleArrive , stackViewCalendar, contentStackViewDateDepart,contentStackViewDateArrive, myButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem
@@ -341,85 +364,11 @@ extension SearchFlightViewController {
             contentStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5),
+
+            
             scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
             scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 3.0)
-//            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
-//            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 1.5),
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
-//            view.safeAreaLayoutGuide.bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 3.0)
-            
-            // Stack 1
-            
-            //            https://dev.to/andrewlawlerdev/programmatic-constraints-in-swift-kj
-            
-            //         TOP
-//            contentStackViewDepart.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-//
-//            //           LEADING
-//            contentStackViewDepart.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//
-//
-//            // TRAILING
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDepart.trailingAnchor, multiplier: 3.0),
-//
-//            contentStackView.topAnchor.constraint(equalTo: contentStackViewDepart.topAnchor, constant: 40),
-//
-//            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 3.0),
-//
-//            // Text OR
-//
-//            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
-//
-//            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
-//
-//            // stackViewCurrentLocation
-//
-//            stackViewCurrentLocation.topAnchor.constraint(equalToSystemSpacingBelow: textOr.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-//
-//            stackViewCurrentLocation.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCurrentLocation.trailingAnchor, multiplier: 3.0),
-//
-//            // Stack View Arrive
-////            contentStackViewArrive
-////            contentStackViewVilleArrive
-//
-//            //         TOP
-//            contentStackViewArrive.topAnchor.constraint(equalToSystemSpacingBelow: stackViewCurrentLocation.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-//
-//            //           LEADING
-//            contentStackViewArrive.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//            //            contentStackViewImageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//
-//            // TRAILING
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewArrive.trailingAnchor, multiplier: 3.0),
-//
-//            contentStackViewVilleArrive.topAnchor.constraint(equalTo: contentStackViewArrive.topAnchor, constant: 40),
-//
-//            contentStackViewVilleArrive.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewVilleArrive.trailingAnchor, multiplier: 3.0),
-//
-//            // StackView Calendar
-//
-//            stackViewCalendar.topAnchor.constraint(equalToSystemSpacingBelow: contentStackViewVilleArrive.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-//
-//            stackViewCalendar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: stackViewCalendar.trailingAnchor, multiplier: 3.0),
-//
-//            // contentStackViewDate
-//
-//            contentStackViewDate.topAnchor.constraint(equalToSystemSpacingBelow: stackViewCalendar.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-//
-//            //           LEADING
-//            contentStackViewDate.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//
-//            // TRAILING
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackViewDate.trailingAnchor, multiplier: 3.0),
-//
-            
+
             
         ])
         
@@ -429,6 +378,7 @@ extension SearchFlightViewController {
         textField.backgroundColor = .orange
         currentSwitch.backgroundColor = UIColor.yellow
         currentLabelDepart.backgroundColor = UIColor.green
+        
         
         
 //        NSLayoutConstraint.activate([
