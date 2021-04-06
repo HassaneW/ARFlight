@@ -34,7 +34,7 @@ class ActionButton: UIButton {
 }
 
 class SearchFlightViewController: UIViewController {
-    
+    weak var coordinator: MainCoordinator?
     //    @IBOutlet weak var departTown : UITextField!
     //    @IBOutlet weak var arriveTown : UITextField!
     //    @IBOutlet weak var departDate : UITextField!
@@ -337,6 +337,8 @@ extension SearchFlightViewController {
         // custom cell
         //
         let myButton = ActionButton()
+        myButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
+       // myButton.addTarget(self, selector: #selector)
         myButton.title = "My button"
         
         let contentStackView = UIStackView(arrangedSubviews: [contentStackViewDepart, stackViewCityStart, textOr, stackViewCurrentLocation, contentStackViewArrive, contentStackViewVilleArrive , stackViewCalendar, contentStackViewDateDepart,contentStackViewDateArrive, myButton])
@@ -407,8 +409,26 @@ extension SearchFlightViewController {
         titleLabelArrived.translatesAutoresizingMaskIntoConstraints = false
         
     }
+    
+    @objc
+    func submitSearch() {
+        let testFlight = Flight(code: "ABC", name: "COMPANY")
+        let flights: [Flight] = [testFlight, testFlight,testFlight]
+        coordinator?.showListResultController(with: flights)
+    }
 }
 
+extension Flight {
+    init(code: String?, name: String?) {
+        self.company = Airline(code: code, name: name)
+        self.flightNumber = nil
+        self.departureDate = nil
+        self.identifiantPlane = nil
+        self.flightType = .long
+        self.flightStatus = nil
+        self.flightInformations = nil
+    }
+}
 
 
 /*
