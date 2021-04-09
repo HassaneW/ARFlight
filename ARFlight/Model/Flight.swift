@@ -21,7 +21,7 @@ struct Flight: Decodable {
     let company : Airline? //Company
     let flightStatus : String?
     let flightInformations : [FlightLegs]?
-    
+
     private enum CodingKeys : String, CodingKey {
         case departureDate = "flightScheduleDate"
         case flightType = "haul"
@@ -52,6 +52,32 @@ struct Flight: Decodable {
     }
 }
 
+// MARK: - Helper properties
+extension Flight {
+    var firstFlightLeg: FlightLegs? {
+        flightInformations?.first
+    }
+    
+    var lastFlightLeg: FlightLegs? {
+        flightInformations?.last
+    }
+    
+    var departureDateTime: Date? {
+        firstFlightLeg?.departureDateTime
+    }
+    
+    var arrivalDateTime: Date? {
+        lastFlightLeg?.arrivalDateTime
+    }
+    
+    var departureAirportName: String? {
+        firstFlightLeg?.departureAirportName
+    }
+    
+    var arrivalAirportName: String? {
+        lastFlightLeg?.arrivalAirportName
+    }
+}
 //
 extension Flight: CustomStringConvertible {
     var description: String {

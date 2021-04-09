@@ -7,47 +7,15 @@
 
 import UIKit
 
-//class ActionButton: UIButton {
-//    
-//    var title: String? {
-//        didSet {
-//            setTitle(title, for: .normal)
-//        }
-//    }
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        sharedInit()
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        sharedInit()
-//    }
-//    
-//    private func sharedInit() {
-//        clipsToBounds = true
-//        layer.cornerRadius = 12
-//        layer.borderWidth = 1.0
-//        layer.borderColor = UIColor.red.cgColor
-//        backgroundColor = UIColor.purple
-//    }
-//}
+
 
 class SearchFlightViewController: UIViewController {
     weak var coordinator: MainCoordinator?
-    //    @IBOutlet weak var departTown : UITextField!
-    //    @IBOutlet weak var arriveTown : UITextField!
-    //    @IBOutlet weak var departDate : UITextField!
-    //    @IBOutlet weak var arriveDate : UITextField!
-    
-    //    private let textField = UITextField()
-    //    var flightArray : [Flight]?
-    //    var state
-    
+  
     let myButton = ActionButton()
-//    let myViewFlight = UIViewFlight()
-    private let stateViewDepart = StateView()
-    private let stateViewArrive = StateView()
+    
+    let stateViewDepart = StateView(title: "depart")
+    let stateViewArrive = StateView(title: "arrive")
     
     private let textOr = UILabel()
     
@@ -109,62 +77,10 @@ extension SearchFlightViewController {
         view.backgroundColor = UIColor.lightGray
         
         // 1) StackView Depart
-        
-        // Créér Image
-//        let imagePlane = UIImage(systemName: "airplane")
-//        let myImagePlane:UIImageView = UIImageView()
-//        myImagePlane.contentMode = UIView.ContentMode.left
-//        myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
-//        //        myImagePlane.frame.size.width = 150
-//        //        myImagePlane.frame.size.height = 150
-//        //        myImagePlane.center = self.view.center
-//        myImagePlane.image = imagePlane
-//        //        view.addSubview(myImagePlane)
-//
-//        // Title Label Depart
-//        let titleLabelDepart = UILabel()
-//        titleLabelDepart.text = "Depart"
-//        titleLabelDepart.numberOfLines = 0
-//        titleLabelDepart.font = UIFont
-//            .preferredFont(forTextStyle: .headline)
-//        titleLabelDepart.textAlignment = .center
-//        titleLabelDepart.textColor = .black
-//        titleLabelDepart.adjustsFontForContentSizeCategory = true
-//        titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
-//
-//        //  StackView Depart
-//        let contentStackViewDepart = UIStackView(arrangedSubviews: [myImagePlane, titleLabelDepart])
-//        contentStackViewDepart.axis = .horizontal
-//        contentStackViewDepart.alignment = .fill
-//        contentStackViewDepart.distribution = .fill
-//        contentStackViewDepart.spacing = UIStackView.spacingUseSystem
-//        contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        // 2) StackView Ville Depart
-//        // Label Ville
-//        let titleLabel = UILabel()
-//        titleLabel.text = "Ville"
-//        titleLabel.numberOfLines = 0
-//        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-//        titleLabel.textColor = .cyan
-//        titleLabel.adjustsFontForContentSizeCategory = true
-//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//        // TextField
-//        let textField = UITextField()
-//        textField.delegate = self
-//        textField.placeholder = "Depart"
-//
-//        // StackView Ville Depart
-//        let stackViewCityStart = UIStackView(arrangedSubviews: [titleLabel, textField])
-//        stackViewCityStart.axis = .horizontal
-//        stackViewCityStart.alignment = .fill
-//        stackViewCityStart.spacing = UIStackView.spacingUseSystem
-//        stackViewCityStart.translatesAutoresizingMaskIntoConstraints = false
-        
-        stateViewDepart.titleFlight = "Depart"
-//        stateViewDepart.title = "Ville"
+
+        stateViewDepart.textField.delegate = self
+        //stateViewDepart.titleFlight = "Depart"
+
         
         // 3) text OR
         textOr.text = "OR"
@@ -213,58 +129,7 @@ extension SearchFlightViewController {
          
         stateViewArrive.titleFlight = "Arrive"
         
-        // 1) StackView Arrive
-//
-//        // Créér Image
-//        let imagePlaneArrive = UIImage(systemName: "airplane")
-//        let myImagePlaneArrive:UIImageView = UIImageView()
-//        myImagePlaneArrive.contentMode = UIView.ContentMode.left
-//        myImagePlaneArrive.contentMode = UIView.ContentMode.scaleAspectFit
-//        myImagePlaneArrive.image = imagePlaneArrive
-//
-//        // Title Label Depart
-//        let titleLabelArrive = UILabel()
-//        titleLabelArrive.text = "Arrive"
-//        titleLabelArrive.numberOfLines = 0
-//        titleLabelArrive.font = UIFont
-//            .preferredFont(forTextStyle: .headline)
-//        titleLabelArrive.textAlignment = .center
-//        titleLabelArrive.textColor = .black
-//        titleLabelArrive.adjustsFontForContentSizeCategory = true
-//        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
-//
-//        //  StackView Depart
-//        let contentStackViewArrive = UIStackView(arrangedSubviews: [myImagePlaneArrive, titleLabelArrive])
-//        contentStackViewArrive.axis = .horizontal
-//        contentStackViewArrive.alignment = .fill
-//        contentStackViewArrive.distribution = .fill
-//        contentStackViewArrive.spacing = UIStackView.spacingUseSystem
-//        contentStackViewArrive.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        // 2) StackView VilleArrive
-//        // Label Ville
-//        let titleLabelVilleArrive = UILabel()
-//        titleLabelVilleArrive.text = "Ville"
-//        titleLabelVilleArrive.numberOfLines = 0
-//        titleLabelVilleArrive.font = UIFont.preferredFont(forTextStyle: .headline)
-//        titleLabelVilleArrive.textColor = .cyan
-//        titleLabelVilleArrive.adjustsFontForContentSizeCategory = true
-//        titleLabelVilleArrive.translatesAutoresizingMaskIntoConstraints = false
-//
-//        // TextField
-//        let textFieldVilleArrive = UITextField()
-//        textFieldVilleArrive.placeholder = "Arrive"
-//
-//        // StackView Ville Depart
-//        let contentStackViewVilleArrive = UIStackView(arrangedSubviews: [titleLabelVilleArrive, textFieldVilleArrive])
-//        contentStackViewVilleArrive.axis = .horizontal
-//        contentStackViewVilleArrive.alignment = .fill
-//        contentStackViewVilleArrive.spacing = UIStackView.spacingUseSystem
-//        contentStackViewVilleArrive.translatesAutoresizingMaskIntoConstraints = false
-//
-        //view.addSubview(contentStackViewVilleArrive)
-        
+ 
         // StackView Calendar
         
         // Créér Image
@@ -461,3 +326,144 @@ extension SearchFlightViewController: UITextFieldDelegate {
         textOr.isHidden = true
     }
 }
+
+
+/*
+ Depart
+ // Créér Image
+//        let imagePlane = UIImage(systemName: "airplane")
+//        let myImagePlane:UIImageView = UIImageView()
+//        myImagePlane.contentMode = UIView.ContentMode.left
+//        myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
+//        //        myImagePlane.frame.size.width = 150
+//        //        myImagePlane.frame.size.height = 150
+//        //        myImagePlane.center = self.view.center
+//        myImagePlane.image = imagePlane
+//        //        view.addSubview(myImagePlane)
+//
+//        // Title Label Depart
+//        let titleLabelDepart = UILabel()
+//        titleLabelDepart.text = "Depart"
+//        titleLabelDepart.numberOfLines = 0
+//        titleLabelDepart.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        titleLabelDepart.textAlignment = .center
+//        titleLabelDepart.textColor = .black
+//        titleLabelDepart.adjustsFontForContentSizeCategory = true
+//        titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
+//
+//        //  StackView Depart
+//        let contentStackViewDepart = UIStackView(arrangedSubviews: [myImagePlane, titleLabelDepart])
+//        contentStackViewDepart.axis = .horizontal
+//        contentStackViewDepart.alignment = .fill
+//        contentStackViewDepart.distribution = .fill
+//        contentStackViewDepart.spacing = UIStackView.spacingUseSystem
+//        contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        // 2) StackView Ville Depart
+//        // Label Ville
+//        let titleLabel = UILabel()
+//        titleLabel.text = "Ville"
+//        titleLabel.numberOfLines = 0
+//        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabel.textColor = .cyan
+//        titleLabel.adjustsFontForContentSizeCategory = true
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // TextField
+//        let textField = UITextField()
+//        textField.delegate = self
+//        textField.placeholder = "Depart"
+//
+//        // StackView Ville Depart
+//        let stackViewCityStart = UIStackView(arrangedSubviews: [titleLabel, textField])
+//        stackViewCityStart.axis = .horizontal
+//        stackViewCityStart.alignment = .fill
+//        stackViewCityStart.spacing = UIStackView.spacingUseSystem
+//        stackViewCityStart.translatesAutoresizingMaskIntoConstraints = false
+ 
+ */
+
+/*
+ // 1) StackView Arrive
+//
+//        // Créér Image
+//        let imagePlaneArrive = UIImage(systemName: "airplane")
+//        let myImagePlaneArrive:UIImageView = UIImageView()
+//        myImagePlaneArrive.contentMode = UIView.ContentMode.left
+//        myImagePlaneArrive.contentMode = UIView.ContentMode.scaleAspectFit
+//        myImagePlaneArrive.image = imagePlaneArrive
+//
+//        // Title Label Depart
+//        let titleLabelArrive = UILabel()
+//        titleLabelArrive.text = "Arrive"
+//        titleLabelArrive.numberOfLines = 0
+//        titleLabelArrive.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        titleLabelArrive.textAlignment = .center
+//        titleLabelArrive.textColor = .black
+//        titleLabelArrive.adjustsFontForContentSizeCategory = true
+//        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
+//
+//        //  StackView Depart
+//        let contentStackViewArrive = UIStackView(arrangedSubviews: [myImagePlaneArrive, titleLabelArrive])
+//        contentStackViewArrive.axis = .horizontal
+//        contentStackViewArrive.alignment = .fill
+//        contentStackViewArrive.distribution = .fill
+//        contentStackViewArrive.spacing = UIStackView.spacingUseSystem
+//        contentStackViewArrive.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        // 2) StackView VilleArrive
+//        // Label Ville
+//        let titleLabelVilleArrive = UILabel()
+//        titleLabelVilleArrive.text = "Ville"
+//        titleLabelVilleArrive.numberOfLines = 0
+//        titleLabelVilleArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabelVilleArrive.textColor = .cyan
+//        titleLabelVilleArrive.adjustsFontForContentSizeCategory = true
+//        titleLabelVilleArrive.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // TextField
+//        let textFieldVilleArrive = UITextField()
+//        textFieldVilleArrive.placeholder = "Arrive"
+//
+//        // StackView Ville Depart
+//        let contentStackViewVilleArrive = UIStackView(arrangedSubviews: [titleLabelVilleArrive, textFieldVilleArrive])
+//        contentStackViewVilleArrive.axis = .horizontal
+//        contentStackViewVilleArrive.alignment = .fill
+//        contentStackViewVilleArrive.spacing = UIStackView.spacingUseSystem
+//        contentStackViewVilleArrive.translatesAutoresizingMaskIntoConstraints = false
+//
+ //view.addSubview(contentStackViewVilleArrive)
+ 
+ */
+
+/*
+ //class ActionButton: UIButton {
+ //
+ //    var title: String? {
+ //        didSet {
+ //            setTitle(title, for: .normal)
+ //        }
+ //    }
+ //    override init(frame: CGRect) {
+ //        super.init(frame: frame)
+ //        sharedInit()
+ //    }
+ //
+ //    required init?(coder: NSCoder) {
+ //        super.init(coder: coder)
+ //        sharedInit()
+ //    }
+ //
+ //    private func sharedInit() {
+ //        clipsToBounds = true
+ //        layer.cornerRadius = 12
+ //        layer.borderWidth = 1.0
+ //        layer.borderColor = UIColor.red.cgColor
+ //        backgroundColor = UIColor.purple
+ //    }
+ //}
+ */

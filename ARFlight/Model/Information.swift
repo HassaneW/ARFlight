@@ -12,6 +12,8 @@ import Foundation
 struct Information: Decodable {
     let airport : Airport?
     let times: Times?
+    
+    // scheduled 
 }
 
 extension Information: CustomStringConvertible {

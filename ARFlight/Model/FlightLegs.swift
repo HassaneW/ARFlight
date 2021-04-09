@@ -19,6 +19,22 @@ struct FlightLegs: Decodable {
         case duration = "scheduledFlightDuration"
         case aircraft
     }
+    
+    var departureAirportName: String? {
+        departure?.airport?.name
+    }
+    
+    var arrivalAirportName: String? {
+        arrival?.airport?.name
+    }
+    
+    var departureDateTime: Date? {
+        departure?.times?.scheduled
+    }
+    
+    var arrivalDateTime: Date? {
+        arrival?.times?.scheduled
+    }
 }
 
 extension FlightLegs: CustomStringConvertible {
