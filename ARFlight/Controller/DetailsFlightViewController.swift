@@ -9,6 +9,8 @@ import UIKit
 
 class DetailsFlightViewController: UIViewController {
 
+    let companyView = CompanyView()
+    
     // Infos Avions : ModelPlanes
     @IBOutlet weak var id : UILabel!
     @IBOutlet weak var motorType : UILabel!
@@ -124,6 +126,9 @@ class DetailsFlightViewController: UIViewController {
     
 
     func setUpId() {
+        title = "Details Flight"
+        
+        view.backgroundColor = UIColor.lightGray
 //        NetworkServiceFlight.shared.getflight{ [weak self] (flight) in
 //            switch flight {
 //            case .success(let flight):

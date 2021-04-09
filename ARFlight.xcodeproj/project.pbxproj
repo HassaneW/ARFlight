@@ -45,6 +45,8 @@
 		FBE9B64C26209ED100F197A4 /* DateRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B64B26209ED100F197A4 /* DateRouteView.swift */; };
 		FBE9B6512620A54A00F197A4 /* CurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6502620A54A00F197A4 /* CurrentLocationView.swift */; };
 		FBE9B6562620AAA800F197A4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6552620AAA800F197A4 /* CalendarView.swift */; };
+		FBE9B66A2620D22500F197A4 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6692620D22500F197A4 /* CompanyView.swift */; };
+		FBE9B6772620DAE600F197A4 /* FlightInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6762620DAE600F197A4 /* FlightInfoView.swift */; };
 		FBF2C4D5261C7B6F00D8DB5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4D4261C7B6F00D8DB5E /* Coordinator.swift */; };
 		FBF2C4DE261C7C0A00D8DB5E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4DD261C7C0A00D8DB5E /* MainCoordinator.swift */; };
 		FBF2C4E6261C821500D8DB5E /* FlightResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */; };
@@ -118,6 +120,8 @@
 		FBE9B64B26209ED100F197A4 /* DateRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRouteView.swift; sourceTree = "<group>"; };
 		FBE9B6502620A54A00F197A4 /* CurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationView.swift; sourceTree = "<group>"; };
 		FBE9B6552620AAA800F197A4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FBE9B6692620D22500F197A4 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		FBE9B6762620DAE600F197A4 /* FlightInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInfoView.swift; sourceTree = "<group>"; };
 		FBF2C4D4261C7B6F00D8DB5E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FBF2C4DD261C7C0A00D8DB5E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,14 +297,40 @@
 		FBAC215025E92A0C00C0B074 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBE9B6622620D16100F197A4 /* DetailsFlight */,
+				FBE9B65E2620D13B00F197A4 /* ListResult */,
+				FBE9B65A2620D0C000F197A4 /* SearchFlight */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FBE9B65A2620D0C000F197A4 /* SearchFlight */ = {
+			isa = PBXGroup;
+			children = (
 				FB4EDC77261F261A00BF94B5 /* ActionButton.swift */,
 				FBE9B6502620A54A00F197A4 /* CurrentLocationView.swift */,
 				FBE9B6552620AAA800F197A4 /* CalendarView.swift */,
 				FBE9B64B26209ED100F197A4 /* DateRouteView.swift */,
 				FB316127261F9BD60004387D /* RouteView.swift */,
+			);
+			path = SearchFlight;
+			sourceTree = "<group>";
+		};
+		FBE9B65E2620D13B00F197A4 /* ListResult */ = {
+			isa = PBXGroup;
+			children = (
 				FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */,
 			);
-			path = View;
+			path = ListResult;
+			sourceTree = "<group>";
+		};
+		FBE9B6622620D16100F197A4 /* DetailsFlight */ = {
+			isa = PBXGroup;
+			children = (
+				FBE9B6692620D22500F197A4 /* CompanyView.swift */,
+				FBE9B6762620DAE600F197A4 /* FlightInfoView.swift */,
+			);
+			path = DetailsFlight;
 			sourceTree = "<group>";
 		};
 		FBF2C4D3261C7B5900D8DB5E /* Application */ = {
@@ -551,6 +581,7 @@
 				FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */,
 				FBD5FCA72600CFFD00DE519E /* Bundle-Decodable.swift in Sources */,
 				FB4EEB9825E1965700B85423 /* Airport.swift in Sources */,
+				FBE9B66A2620D22500F197A4 /* CompanyView.swift in Sources */,
 				FB4EEB8925E195C400B85423 /* FlightLegs.swift in Sources */,
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
@@ -568,6 +599,7 @@
 				FBF2C4DE261C7C0A00D8DB5E /* MainCoordinator.swift in Sources */,
 				FB4EEB9D25E1967000B85423 /* Times.swift in Sources */,
 				FB35861125E5328D005C60EF /* FlightParameters.swift in Sources */,
+				FBE9B6772620DAE600F197A4 /* FlightInfoView.swift in Sources */,
 				FB4EDC78261F261A00BF94B5 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

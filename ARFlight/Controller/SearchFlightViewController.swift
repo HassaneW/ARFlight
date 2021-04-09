@@ -144,37 +144,9 @@ extension SearchFlightViewController {
         
         // Debug colors
         text.backgroundColor = .red
-//        titleLabel.backgroundColor = .purple
-//        textField.backgroundColor = .orange
-//        currentSwitch.backgroundColor = UIColor.yellow
-//        currentLabelDepart.backgroundColor = UIColor.green
-        
-        
-        
-//        NSLayoutConstraint.activate([
-//            textOr.topAnchor.constraint(equalToSystemSpacingBelow: contentStackView.topAnchor, multiplier: 3.0),
-//
-//            textOr.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 3.0),
-//            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: textOr.trailingAnchor, multiplier: 3.0),
-//        ])
-        
-        // Current Location
-        let imageLocation = UIImage(systemName: "magnifyingglass")
-        let myImageLocation:UIImageView = UIImageView()
-        myImageLocation.contentMode = UIView.ContentMode.left
-        myImageLocation.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageLocation.image = imageLocation
 
-        // Title Label Arrive
-        let titleLabelArrived = UILabel()
-        titleLabelArrived.text = "Arrive"
-        titleLabelArrived.numberOfLines = 0
-        titleLabelArrived.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        titleLabelArrived.textAlignment = .center
-        titleLabelArrived.textColor = .black
-        titleLabelArrived.adjustsFontForContentSizeCategory = true
-        titleLabelArrived.translatesAutoresizingMaskIntoConstraints = false
+        // Current Location
+
         
     }
     
