@@ -86,11 +86,11 @@ class FlightResultTableViewCell: UITableViewCell {
     var flight: Flight? {
         didSet {
             companyCode.text = flight?.company?.code
-            codeVol.text = flight?.flightNumber
-            hourDepart.text = flight?.departureDate?.timeString()
-            scheduled.text = flight?.arrivalDateTime?.timeString()
-            airportDepart.text = flight?.departureAirportName
-            airportArrive.text = flight?.arrivalAirportName
+            flightCode.text = flight?.flightNumber
+            departureTime.text = flight?.departureDate?.timeString()
+            timeArrived.text = flight?.arrivalDateTime?.timeString()
+            departureAirport.text = flight?.departureAirportName
+            airportArrival.text = flight?.arrivalAirportName
         }
     }
     
@@ -98,59 +98,15 @@ class FlightResultTableViewCell: UITableViewCell {
 //        companyCode.text = flightCompanyCode?.company?.code
 //        codeVol.text = flightcodeVol?.flightNumber
 //    }
-    var flightCompanyCode: Flight? {
-        didSet {
-            
-            // configure toi
-        }
-    }
-    
-    var flightcodeVol: Flight? {
-        didSet {
-            
-            // configure toi
-        }
-    }
-    
-
-    var flightHourDepart: Flight? {
-        didSet {
-            
-            // configure toi
-        }
-    }
-    
-    var flightscheduled: Flight? {
-        didSet {
-            
-            //flightscheduled?.flightInformations?.first?.arrival?.times?.scheduled
-            // configure toi
-        }
-    }
-    
-    
-    var flightairportDepart: Flight? {
-        didSet {
-            
-            // configure toi
-        }
-    }
-    
-    var flightairportArrive: Flight? {
-        didSet {
-           
-            // configure toi
-        }
-    }
-    
-    
+ 
     
     private let companyCode = UILabel()
-    private let codeVol = UILabel()
-    private let hourDepart = UILabel()
-    private let airportDepart = UILabel()
-    private let airportArrive = UILabel()
-    private let scheduled = UILabel()
+    private let
+        flightCode = UILabel()
+    private let departureTime = UILabel()
+    private let departureAirport = UILabel()
+    private let airportArrival = UILabel()
+    private let timeArrived = UILabel()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -163,37 +119,38 @@ class FlightResultTableViewCell: UITableViewCell {
         companyCode.translatesAutoresizingMaskIntoConstraints = false
         
         // codeVol
-        codeVol.font = UIFont.preferredFont(forTextStyle: .body)
-        codeVol.textColor = UIColor.label
-        codeVol.adjustsFontForContentSizeCategory = true
-        codeVol.translatesAutoresizingMaskIntoConstraints = false
+        flightCode.font = UIFont.preferredFont(forTextStyle: .body)
+        flightCode.textColor = UIColor.label
+        flightCode.adjustsFontForContentSizeCategory = true
+        flightCode.translatesAutoresizingMaskIntoConstraints = false
         
         // Hour Depart
-        hourDepart.font = UIFont.preferredFont(forTextStyle: .body)
-        hourDepart.textColor = UIColor.label
-        hourDepart.adjustsFontForContentSizeCategory = true
-        hourDepart.translatesAutoresizingMaskIntoConstraints = false
+        departureTime.font = UIFont.preferredFont(forTextStyle: .body)
+        departureTime.textColor = UIColor.label
+        departureTime.adjustsFontForContentSizeCategory = true
+        departureTime.translatesAutoresizingMaskIntoConstraints = false
         
         // airport Depart
-        airportDepart.font = UIFont.preferredFont(forTextStyle: .body)
-        airportDepart.textColor = UIColor.label
-        airportDepart.adjustsFontForContentSizeCategory = true
-        airportDepart.translatesAutoresizingMaskIntoConstraints = false
+        departureAirport.font = UIFont.preferredFont(forTextStyle: .body)
+        departureAirport.textColor = UIColor.label
+        departureAirport.adjustsFontForContentSizeCategory = true
+        departureAirport.translatesAutoresizingMaskIntoConstraints = false
         
         // Aiport Arrive
-        airportArrive.font = UIFont.preferredFont(forTextStyle: .body)
-        airportArrive.textColor = UIColor.label
-        airportArrive.adjustsFontForContentSizeCategory = true
-        airportArrive.translatesAutoresizingMaskIntoConstraints = false
+        
+        airportArrival.font = UIFont.preferredFont(forTextStyle: .body)
+        airportArrival.textColor = UIColor.label
+        airportArrival.adjustsFontForContentSizeCategory = true
+        airportArrival.translatesAutoresizingMaskIntoConstraints = false
         
         // scheduled
-        scheduled.font = UIFont.preferredFont(forTextStyle: .body)
-        scheduled.textColor = UIColor.label
-        scheduled.adjustsFontForContentSizeCategory = true
-        scheduled.translatesAutoresizingMaskIntoConstraints = false
+        timeArrived.font = UIFont.preferredFont(forTextStyle: .body)
+        timeArrived.textColor = UIColor.label
+        timeArrived.adjustsFontForContentSizeCategory = true
+        timeArrived.translatesAutoresizingMaskIntoConstraints = false
         
         
-        let contentStackView = UIStackView(arrangedSubviews: [companyCode,codeVol,hourDepart, airportDepart, airportArrive, scheduled])
+        let contentStackView = UIStackView(arrangedSubviews: [companyCode,flightCode,departureTime, departureAirport, airportArrival, timeArrived])
         contentStackView.alignment = .fill
         contentStackView.distribution = .fill
         contentStackView.axis = .vertical
