@@ -13,11 +13,13 @@ class SearchFlightViewController: UIViewController {
     weak var coordinator: MainCoordinator?
   
     let myButton = ActionButton()
+    let stateViewDepart = RouteView(title: "depart")
+    let stateViewArrive = RouteView(title: "arrive")
+    let dateRouteView = DateRouteView()
+    let currentLocationView = CurrentLocationView()
+    let calendarView = CalendarView()
     
-    let stateViewDepart = StateView(title: "depart")
-    let stateViewArrive = StateView(title: "arrive")
-    
-    private let textOr = UILabel()
+    private let text = UILabel()
     
     var flight : Flight?
     var flightArray : [Flight]?
@@ -79,129 +81,24 @@ extension SearchFlightViewController {
         // 1) StackView Depart
 
         stateViewDepart.textField.delegate = self
-        //stateViewDepart.titleFlight = "Depart"
+        stateViewDepart.textField.placeholder = "Depart"
 
-        
         // 3) text OR
-        textOr.text = "OR"
-        textOr.font = UIFont.preferredFont(forTextStyle: .headline)
-        textOr.textColor = .black
-        textOr.textAlignment = .center
-        textOr.adjustsFontForContentSizeCategory = true
-        textOr.translatesAutoresizingMaskIntoConstraints = false
+        text.text = "OR"
+        text.font = UIFont.preferredFont(forTextStyle: .headline)
+        text.textColor = .black
+        text.textAlignment = .center
+        text.adjustsFontForContentSizeCategory = true
+        text.translatesAutoresizingMaskIntoConstraints = false
          
-        
         // 3 StackView Current Location
-        
-        // Créér Image
-        let imageSearch = UIImage(systemName: "magnifyingglass.circle.fill")
-        let myImageSearch:UIImageView = UIImageView()
-        myImageSearch.contentMode = UIView.ContentMode.left
-        myImageSearch.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageSearch.image = imageSearch
-        
-        // Title Label Current
-        let currentLabelDepart = UILabel()
-        currentLabelDepart.text = "Current"
-        currentLabelDepart.numberOfLines = 0
-        currentLabelDepart.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        currentLabelDepart.textAlignment = .center
-        currentLabelDepart.textColor = .black
-        currentLabelDepart.adjustsFontForContentSizeCategory = true
-        
-        // Switch Current
-        
-        let currentSwitch = UISwitch()
-        currentSwitch.setOn(false, animated: false)
-        currentSwitch.tintColor = UIColor.blue
-        currentSwitch.onTintColor = UIColor.cyan
-        currentSwitch.thumbTintColor = UIColor.red
-        
-//               currentSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: UIControlEvents.valueChanged)
 
-        let stackViewCurrentLocation = UIStackView(arrangedSubviews: [myImageSearch, currentLabelDepart, currentSwitch])
-        stackViewCurrentLocation.axis = .horizontal
-        stackViewCurrentLocation.alignment = .fill
-        stackViewCurrentLocation.spacing = UIStackView.spacingUseSystem
-        stackViewCurrentLocation.translatesAutoresizingMaskIntoConstraints = false
-        
-         
-        stateViewArrive.titleFlight = "Arrive"
-        
+        stateViewArrive.textField.delegate = self
+        stateViewArrive.textField.placeholder = "Arrive"
  
         // StackView Calendar
         
-        // Créér Image
-        let imageCalendar = UIImage(systemName: "calendar.circle")
-        let myImageCalendar:UIImageView = UIImageView()
-        myImageCalendar.contentMode = UIView.ContentMode.left
-        myImageCalendar.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageCalendar.image = imageCalendar
-        
-        // Title Label Current
-        let currentLabelCalendar = UILabel()
-        currentLabelCalendar.text = "Calendar "
-        currentLabelCalendar.numberOfLines = 0
-        currentLabelCalendar.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        currentLabelCalendar.textAlignment = .center
-        currentLabelCalendar.textColor = .black
-        currentLabelCalendar.adjustsFontForContentSizeCategory = true
-        
-        let stackViewCalendar = UIStackView(arrangedSubviews: [myImageCalendar, currentLabelCalendar])
-        stackViewCalendar.axis = .horizontal
-        stackViewCalendar.alignment = .fill
-        stackViewCalendar.spacing = UIStackView.spacingUseSystem
-        stackViewCalendar.translatesAutoresizingMaskIntoConstraints = false
-        
-        //view.addSubview(stackViewCalendar)
-        
-        
-        // StackView Date Depart
-        
-        // Label Ville
-        let titleLabelDateDepart = UILabel()
-        titleLabelDateDepart.text = "Date entre le "
-        titleLabelDateDepart.numberOfLines = 0
-        titleLabelDateDepart.font = UIFont.preferredFont(forTextStyle: .headline)
-        titleLabelDateDepart.textColor = .cyan
-        titleLabelDateDepart.adjustsFontForContentSizeCategory = true
-        titleLabelDateDepart.translatesAutoresizingMaskIntoConstraints = false
-        
-        // TextField
-        let textFieldDateDepart = UITextField()
-        textFieldDateDepart.placeholder = "Date"
-        
-        // StackView Ville Depart
-        let contentStackViewDateDepart = UIStackView(arrangedSubviews: [titleLabelDateDepart, textFieldDateDepart])
-        contentStackViewDateDepart.axis = .horizontal
-        contentStackViewDateDepart.alignment = .fill
-        contentStackViewDateDepart.spacing = UIStackView.spacingUseSystem
-        contentStackViewDateDepart.translatesAutoresizingMaskIntoConstraints = false
-        
-        // StackView Date Arrive
-        
-        // Label Ville
-        let titleLabelDateArrive = UILabel()
-        titleLabelDateArrive.text = "Et le "
-        titleLabelDateArrive.numberOfLines = 0
-        titleLabelDateArrive.font = UIFont.preferredFont(forTextStyle: .headline)
-        titleLabelDateArrive.textColor = .cyan
-        titleLabelDateArrive.adjustsFontForContentSizeCategory = true
-        titleLabelDateArrive.translatesAutoresizingMaskIntoConstraints = false
-        
-        // TextField
-        let textFieldDateArrive = UITextField()
-        textFieldDateArrive.placeholder = "Date"
-        
-        // StackView Ville Depart
-        let contentStackViewDateArrive = UIStackView(arrangedSubviews: [titleLabelDateArrive, textFieldDateArrive])
-        contentStackViewDateArrive.axis = .horizontal
-        contentStackViewDateArrive.alignment = .fill
-        contentStackViewDateArrive.spacing = UIStackView.spacingUseSystem
-        contentStackViewDateArrive.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         
         //let mapView = MKMapKit() // tiale fixe
         //let tableView = UITableView() // le tout dans stackView
@@ -212,14 +109,14 @@ extension SearchFlightViewController {
        // myButton.addTarget(self, selector: #selector)
         myButton.title = "My button"
         
-        let contentStackView = UIStackView(arrangedSubviews: [stateViewDepart, textOr, stackViewCurrentLocation, stateViewArrive , stackViewCalendar, contentStackViewDateDepart,contentStackViewDateArrive, myButton])
+        let contentStackView = UIStackView(arrangedSubviews: [stateViewDepart, text, currentLocationView, stateViewArrive , calendarView, dateRouteView, myButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentStackView.setCustomSpacing(20, after: textOr)
-        contentStackView.setCustomSpacing(20, after: stackViewCurrentLocation)
+        contentStackView.setCustomSpacing(20, after: text)
+        contentStackView.setCustomSpacing(20, after: currentLocationView)
         //view.addSubview(contentStackView)
         
         // setup les views(
@@ -240,17 +137,17 @@ extension SearchFlightViewController {
 
             
             scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
-            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 3.0)
+            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0)
 
             
         ])
         
         // Debug colors
-        textOr.backgroundColor = .red
+        text.backgroundColor = .red
 //        titleLabel.backgroundColor = .purple
 //        textField.backgroundColor = .orange
-        currentSwitch.backgroundColor = UIColor.yellow
-        currentLabelDepart.backgroundColor = UIColor.green
+//        currentSwitch.backgroundColor = UIColor.yellow
+//        currentLabelDepart.backgroundColor = UIColor.green
         
         
         
@@ -323,7 +220,7 @@ extension Flight {
  */
 extension SearchFlightViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textOr.isHidden = true
+        text.isHidden = true
     }
 }
 
@@ -466,4 +363,56 @@ extension SearchFlightViewController: UITextFieldDelegate {
  //        backgroundColor = UIColor.purple
  //    }
  //}
+ */
+
+
+/*
+ //view.addSubview(stackViewCalendar)
+ 
+ 
+ // StackView Date Depart
+ 
+ // Label Ville
+//        let titleLabelDateDepart = UILabel()
+//        titleLabelDateDepart.text = "Date entre le "
+//        titleLabelDateDepart.numberOfLines = 0
+//        titleLabelDateDepart.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabelDateDepart.textColor = .cyan
+//        titleLabelDateDepart.adjustsFontForContentSizeCategory = true
+//        titleLabelDateDepart.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // TextField
+//        let textFieldDateDepart = UITextField()
+//        textFieldDateDepart.placeholder = "Date"
+//
+//        // StackView Ville Depart
+//        let contentStackViewDateDepart = UIStackView(arrangedSubviews: [titleLabelDateDepart, textFieldDateDepart])
+//        contentStackViewDateDepart.axis = .horizontal
+//        contentStackViewDateDepart.alignment = .fill
+//        contentStackViewDateDepart.spacing = UIStackView.spacingUseSystem
+//        contentStackViewDateDepart.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // StackView Date Arrive
+//
+//        // Label Ville
+//        let titleLabelDateArrive = UILabel()
+//        titleLabelDateArrive.text = "Et le "
+//        titleLabelDateArrive.numberOfLines = 0
+//        titleLabelDateArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabelDateArrive.textColor = .cyan
+//        titleLabelDateArrive.adjustsFontForContentSizeCategory = true
+//        titleLabelDateArrive.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // TextField
+//        let textFieldDateArrive = UITextField()
+//        textFieldDateArrive.placeholder = "Date"
+//
+//        // StackView Ville Depart
+//        let contentStackViewDateArrive = UIStackView(arrangedSubviews: [titleLabelDateArrive, textFieldDateArrive])
+//        contentStackViewDateArrive.axis = .horizontal
+//        contentStackViewDateArrive.alignment = .fill
+//        contentStackViewDateArrive.spacing = UIStackView.spacingUseSystem
+//        contentStackViewDateArrive.translatesAutoresizingMaskIntoConstraints = false
+ 
+
  */

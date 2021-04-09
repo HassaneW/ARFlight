@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class StateView: UIView  {
+final class RouteView: UIView  {
     
     var titleFlight: String? {
         didSet {
@@ -18,7 +18,6 @@ final class StateView: UIView  {
     
     let textField = UITextField()
 
-    // supprimer
     private let titleLabel = UILabel()
 
     init(title: String?) {
@@ -35,14 +34,8 @@ final class StateView: UIView  {
         
         let imagePlane = UIImage(systemName: "airplane")
         let myImagePlane = UIImageView(image: imagePlane)
-        //myImagePlane.contentMode = UIView.ContentMode.left
         myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
-       // myImagePlane.image = imagePlane
-        //        view.addSubview(myImagePlane)
-    
-        // Title Label Depart
         
-//        titleLabelDepart.text = "Depart"
         titleLabel.text = title
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont
@@ -52,43 +45,35 @@ final class StateView: UIView  {
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
-        //  StackView Depart
-        let contentStackViewDepart = UIStackView(arrangedSubviews: [myImagePlane, titleLabel])
-        contentStackViewDepart.axis = .horizontal
-        contentStackViewDepart.alignment = .fill
-        contentStackViewDepart.distribution = .fill
-        contentStackViewDepart.spacing = UIStackView.spacingUseSystem
-        contentStackViewDepart.translatesAutoresizingMaskIntoConstraints = false
-    
-    
-        // 2) StackView Ville Depart
+        let routeStackView = UIStackView(arrangedSubviews: [myImagePlane, titleLabel])
+        routeStackView.axis = .horizontal
+        routeStackView.alignment = .fill
+        routeStackView.distribution = .fill
+        routeStackView.spacing = UIStackView.spacingUseSystem
+        routeStackView.translatesAutoresizingMaskIntoConstraints = false
+
         // Label Ville
-        /// cityLabel
-        let titleLabel = UILabel()
-        titleLabel.text = "Ville"
-        titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        titleLabel.textColor = .cyan
-        titleLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let cityLabel = UILabel()
+        cityLabel.text = "Ville"
+        cityLabel.numberOfLines = 0
+        cityLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        cityLabel.textColor = .cyan
+        cityLabel.adjustsFontForContentSizeCategory = true
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // hugging ressitance priperoty
         //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     
-        // TextField
-        //textField.delegate = self
-        //textField.placeholder = "Flight"
-//        textField.placeholder = "\(titleLabelDepart.text)"
-    
         // StackView Ville Depart
-        let stackViewCityStart = UIStackView(arrangedSubviews: [titleLabel, textField])
-        stackViewCityStart.axis = .horizontal
-        stackViewCityStart.alignment = .fill
-        stackViewCityStart.spacing = UIStackView.spacingUseSystem
-        stackViewCityStart.translatesAutoresizingMaskIntoConstraints = false
+        let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
+        citystackView.axis = .horizontal
+        citystackView.alignment = .fill
+        citystackView.spacing = UIStackView.spacingUseSystem
+        citystackView.translatesAutoresizingMaskIntoConstraints = false
     
-    let contentView = UIStackView(arrangedSubviews: [contentStackViewDepart, stackViewCityStart])
+    let contentView = UIStackView(arrangedSubviews: [routeStackView, citystackView])
     
     contentView.axis = .vertical
     contentView.alignment = .fill
@@ -98,8 +83,10 @@ final class StateView: UIView  {
         addSubview(contentView)
         
         // Debug colors
-        titleLabel.backgroundColor = .red
-        
+        cityLabel.backgroundColor = .red
+        myImagePlane.backgroundColor = .yellow
+        titleLabel.backgroundColor = .tertiaryLabel
+        textField.backgroundColor = .brown
         
         NSLayoutConstraint.activate([
 
