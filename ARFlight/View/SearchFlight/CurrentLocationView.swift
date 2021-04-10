@@ -31,12 +31,15 @@ final class CurrentLocationView: UIView  {
         myImageSearch.contentMode = UIView.ContentMode.scaleAspectFit
         myImageSearch.image = imageSearch
         
+//        myImageSearch.setContentHuggingPriority(.defaultHigh, for: .vertical)
+//        myImageSearch.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         // Title Label Current
         let labelTitle = UILabel()
         labelTitle.text = "Current"
         labelTitle.numberOfLines = 0
         labelTitle.font = UIFont
-            .preferredFont(forTextStyle: .headline)
+            .preferredFont(forTextStyle: .title1)
         labelTitle.textAlignment = .center
         labelTitle.textColor = .black
         labelTitle.adjustsFontForContentSizeCategory = true
@@ -53,7 +56,8 @@ final class CurrentLocationView: UIView  {
 
         let contentView = UIStackView(arrangedSubviews: [myImageSearch, labelTitle, currentSwitch])
         contentView.axis = .horizontal
-        contentView.alignment = .fill
+        contentView.alignment = .leading
+        contentView.distribution = .fill
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false
         

@@ -13,8 +13,8 @@ class SearchFlightViewController: UIViewController {
     weak var coordinator: MainCoordinator?
   
     let myButton = ActionButton()
-    let stateViewDepart = RouteView(title: "depart")
-    let stateViewArrive = RouteView(title: "arrive")
+    let stateViewDepart = RouteView(title: "Depart")
+    let stateViewArrive = RouteView(title: "Arrive")
     let dateRouteView = DateRouteView()
     let currentLocationView = CurrentLocationView()
     let calendarView = CalendarView()
@@ -81,11 +81,12 @@ extension SearchFlightViewController {
         // 1) StackView Depart
 
         stateViewDepart.textField.delegate = self
+        stateViewDepart.textField.textAlignment = .center
         stateViewDepart.textField.placeholder = "Depart"
 
         // 3) text OR
         text.text = "OR"
-        text.font = UIFont.preferredFont(forTextStyle: .headline)
+        text.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         text.textColor = .black
         text.textAlignment = .center
         text.adjustsFontForContentSizeCategory = true
@@ -94,6 +95,7 @@ extension SearchFlightViewController {
         // 3 StackView Current Location
 
         stateViewArrive.textField.delegate = self
+        stateViewArrive.textField.textAlignment = .center
         stateViewArrive.textField.placeholder = "Arrive"
  
         // StackView Calendar

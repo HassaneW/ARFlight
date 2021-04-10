@@ -35,7 +35,8 @@ final class DateRouteView: UIView  {
         titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
         
         let textFieldDepart = UITextField()
-        textFieldDepart.placeholder = "Date de Départ"
+        textFieldDepart.textAlignment = .center
+        textFieldDepart.placeholder = "Date de Depart"
         
         let dateDepartStackView = UIStackView(arrangedSubviews: [titleLabelDepart,textFieldDepart])
         
@@ -59,6 +60,7 @@ final class DateRouteView: UIView  {
         
         // TextField
         let textFieldDateArrive = UITextField()
+        textFieldDateArrive.textAlignment = .center
         textFieldDateArrive.placeholder = "Date d'arrivee"
         
         // StackView Ville Depart

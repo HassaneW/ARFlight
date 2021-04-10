@@ -36,10 +36,13 @@ final class RouteView: UIView  {
         let myImagePlane = UIImageView(image: imagePlane)
         myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
         
+//        myImagePlane.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        myImagePlane.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         titleLabel.text = title
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont
-            .preferredFont(forTextStyle: .headline)
+            .preferredFont(forTextStyle: .largeTitle)
         titleLabel.textAlignment = .center
         titleLabel.textColor = .label
         titleLabel.adjustsFontForContentSizeCategory = true
@@ -47,8 +50,8 @@ final class RouteView: UIView  {
     
         let routeStackView = UIStackView(arrangedSubviews: [myImagePlane, titleLabel])
         routeStackView.axis = .horizontal
-        routeStackView.alignment = .fill
-        routeStackView.distribution = .fill
+        routeStackView.alignment = .leading
+        routeStackView.distribution = .fillProportionally
         routeStackView.spacing = UIStackView.spacingUseSystem
         routeStackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -56,8 +59,9 @@ final class RouteView: UIView  {
 
         let cityLabel = UILabel()
         cityLabel.text = "Ville"
+        cityLabel.textAlignment = .center
         cityLabel.numberOfLines = 0
-        cityLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        cityLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         cityLabel.textColor = .cyan
         cityLabel.adjustsFontForContentSizeCategory = true
         cityLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -34,14 +34,15 @@ final class CalendarView: UIView  {
         labelCalendar.text = "Calendar "
         labelCalendar.numberOfLines = 0
         labelCalendar.font = UIFont
-            .preferredFont(forTextStyle: .headline)
+            .preferredFont(forTextStyle: .largeTitle)
         labelCalendar.textAlignment = .center
         labelCalendar.textColor = .black
         labelCalendar.adjustsFontForContentSizeCategory = true
         
         let contentView = UIStackView(arrangedSubviews: [myImageCalendar, labelCalendar])
         contentView.axis = .horizontal
-        contentView.alignment = .fill
+        contentView.alignment = .leading
+        contentView.distribution = .fillProportionally
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
