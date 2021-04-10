@@ -52,6 +52,8 @@
 		FBE9B6862620EE4200F197A4 /* ArrivalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6852620EE4200F197A4 /* ArrivalView.swift */; };
 		FBE9B68E2620EFA300F197A4 /* ArrivalTerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B68D2620EFA300F197A4 /* ArrivalTerminalView.swift */; };
 		FBE9B6932620F06A00F197A4 /* PlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6922620F06A00F197A4 /* PlaneView.swift */; };
+		FBE9B6982621C70200F197A4 /* InfoPlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6972621C70200F197A4 /* InfoPlaneView.swift */; };
+		FBE9B6BE26221F8300F197A4 /* NotificationCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6BD26221F8300F197A4 /* NotificationCalendarView.swift */; };
 		FBF2C4D5261C7B6F00D8DB5E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4D4261C7B6F00D8DB5E /* Coordinator.swift */; };
 		FBF2C4DE261C7C0A00D8DB5E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4DD261C7C0A00D8DB5E /* MainCoordinator.swift */; };
 		FBF2C4E6261C821500D8DB5E /* FlightResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */; };
@@ -132,6 +134,8 @@
 		FBE9B6852620EE4200F197A4 /* ArrivalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalView.swift; sourceTree = "<group>"; };
 		FBE9B68D2620EFA300F197A4 /* ArrivalTerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalTerminalView.swift; sourceTree = "<group>"; };
 		FBE9B6922620F06A00F197A4 /* PlaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneView.swift; sourceTree = "<group>"; };
+		FBE9B6972621C70200F197A4 /* InfoPlaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaneView.swift; sourceTree = "<group>"; };
+		FBE9B6BD26221F8300F197A4 /* NotificationCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCalendarView.swift; sourceTree = "<group>"; };
 		FBF2C4D4261C7B6F00D8DB5E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FBF2C4DD261C7C0A00D8DB5E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -341,9 +345,11 @@
 				FBE9B6762620DAE600F197A4 /* FlightInfoView.swift */,
 				FBE9B67B2620EAB800F197A4 /* DepartView.swift */,
 				FBE9B6922620F06A00F197A4 /* PlaneView.swift */,
+				FBE9B6972621C70200F197A4 /* InfoPlaneView.swift */,
 				FBE9B6802620ECE200F197A4 /* DepartTerminalView.swift */,
 				FBE9B68D2620EFA300F197A4 /* ArrivalTerminalView.swift */,
 				FBE9B6852620EE4200F197A4 /* ArrivalView.swift */,
+				FBE9B6BD26221F8300F197A4 /* NotificationCalendarView.swift */,
 			);
 			path = DetailsFlight;
 			sourceTree = "<group>";
@@ -610,7 +616,9 @@
 				FBE9B67C2620EAB800F197A4 /* DepartView.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,
 				FBE9B64C26209ED100F197A4 /* DateRouteView.swift in Sources */,
+				FBE9B6BE26221F8300F197A4 /* NotificationCalendarView.swift in Sources */,
 				FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */,
+				FBE9B6982621C70200F197A4 /* InfoPlaneView.swift in Sources */,
 				FBE9B6512620A54A00F197A4 /* CurrentLocationView.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
 				FB4EEB8E25E195C900B85423 /* Places.swift in Sources */,

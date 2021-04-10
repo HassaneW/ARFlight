@@ -17,20 +17,26 @@ final class PlaneView: UIView  {
         }
     }
     
-    var plane: Plane? {
+//    var plane: Plane? {
+//        didSet {
+//
+//            imageTitleLabel.text = plane?.image
+//        }
+//    }
+    
+    var image: UIImage? {
         didSet {
-            
-            imageTitleLabel.text = plane?.image
+            imageView.image = image
         }
     }
-    
     
     
 //    let textField = UITextField()
 
     private let titleLabel = UILabel()
     private let imageTitleLabel = UILabel()
-    
+    private let imageView = UIImageView()
+
     
 
     init(title: String?) {
@@ -52,10 +58,13 @@ final class PlaneView: UIView  {
 //        let imagePlane = UIImage(named: imageAir)
 //        let myImagePlane = UIImageView(image: imagePlane)
 //        myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 //
-        imageTitleLabel.adjustsFontForContentSizeCategory = true
-        imageTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        imageTitleLabel.contentMode = UIView.ContentMode.scaleAspectFill
+//        imageTitleLabel.adjustsFontForContentSizeCategory = true
+//        imageTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        imageTitleLabel.contentMode = UIView.ContentMode.scaleAspectFill
         
         titleLabel.text = title
         titleLabel.numberOfLines = 0
@@ -68,7 +77,7 @@ final class PlaneView: UIView  {
     
        
 
-    let contentView = UIStackView(arrangedSubviews: [imageTitleLabel, titleLabel])
+    let contentView = UIStackView(arrangedSubviews: [imageView, titleLabel])
     
     contentView.axis = .vertical
     contentView.alignment = .fill
