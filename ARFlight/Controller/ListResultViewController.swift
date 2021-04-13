@@ -69,14 +69,14 @@ class ListResultViewController: UIViewController {
 
     var flights: [Flight]?
 
-    let resultTableView = UITableView()
+    let tableView = UITableView()
     let mapView = MKMapView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         
-        resultTableView.reloadData()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,14 +134,14 @@ extension ListResultViewController {
         
         // tableview config
         
-        resultTableView.delegate = self
-        resultTableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         //resultTableView.isHidden = true
-        resultTableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        resultTableView.register(FlightResultTableViewCell.self, forCellReuseIdentifier: Constant.flightCellId)
-        resultTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(resultTableView)
+        tableView.register(FlightResultTableViewCell.self, forCellReuseIdentifier: Constant.flightCellId)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
         
         
         NSLayoutConstraint.activate([
@@ -150,10 +150,10 @@ extension ListResultViewController {
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.heightAnchor.constraint(equalToConstant: Constant.mapHeight),
         
-            resultTableView.topAnchor.constraint(equalTo: mapView.bottomAnchor),
-            resultTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            resultTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            resultTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: mapView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
@@ -192,6 +192,7 @@ extension ListResultViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFlight = flights?[indexPath.row]
+        let selectedFlightId = selectedFlight?.flightNumber
         coordinator?.showFlightDetailFor(flight: selectedFlight)
     }
 }

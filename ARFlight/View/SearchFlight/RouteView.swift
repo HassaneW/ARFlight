@@ -34,24 +34,24 @@ final class RouteView: UIView  {
         
         let imagePlane = UIImage(systemName: "airplane")
         let myImagePlane = UIImageView(image: imagePlane)
+        myImagePlane.clipsToBounds = true
         myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
         
 //        myImagePlane.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        myImagePlane.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
+//        myImagePlane.setContentCompressionResistancePriority(.required, for: .horizontal)
         titleLabel.text = title
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont
             .preferredFont(forTextStyle: .largeTitle)
-        titleLabel.textAlignment = .center
+        titleLabel.textAlignment = .left
         titleLabel.textColor = .label
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
-        let routeStackView = UIStackView(arrangedSubviews: [myImagePlane, titleLabel])
+        let routeStackView = UIStackView(arrangedSubviews: [UIView(),myImagePlane, titleLabel, UIView()])
         routeStackView.axis = .horizontal
-        routeStackView.alignment = .leading
-        routeStackView.distribution = .fillProportionally
+        routeStackView.alignment = .center
+        routeStackView.distribution = .equalSpacing
         routeStackView.spacing = UIStackView.spacingUseSystem
         routeStackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -70,10 +70,13 @@ final class RouteView: UIView  {
         //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     
+        //cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+       // textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         // StackView Ville Depart
         let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
         citystackView.axis = .horizontal
-        citystackView.alignment = .fill
+        citystackView.alignment = .leading
         citystackView.spacing = UIStackView.spacingUseSystem
         citystackView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -81,7 +84,8 @@ final class RouteView: UIView  {
     
     contentView.axis = .vertical
     contentView.alignment = .fill
-    contentView.spacing = UIStackView.spacingUseSystem
+        contentView.distribution = .fill
+    contentView.spacing = 50
     contentView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(contentView)
@@ -94,6 +98,8 @@ final class RouteView: UIView  {
         
         NSLayoutConstraint.activate([
 
+            myImagePlane.widthAnchor.constraint(equalToConstant: 50),
+            
             
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             

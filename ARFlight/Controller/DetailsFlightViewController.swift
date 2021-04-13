@@ -8,136 +8,143 @@
 import UIKit
 
 class DetailsFlightViewController: UIViewController {
-
+    weak var coordinator: MainCoordinator?
+    
     let companyView = CompanyView()
+    let flightInfoView = FlightInfoView()
+    let departView = DepartView()
+    let planeView = PlaneView() // Flight id
+    let infoPlaneView = InfoPlaneView()
+    let departTerminalView = DepartTerminalView()
+    let arrivalTerminalView = ArrivalTerminalView()
+    let arrivalView = ArrivalView()
+    let notificationCalendarView = NotificationCalendarView()
+
+ 
+    let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: nil, cruisingSpeed: "", image: "a330-200")
+    var flight: Flight? {
+        didSet {
+            configureView()
+        }
+    }
     
-    // Infos Avions : ModelPlanes
-    @IBOutlet weak var id : UILabel!
-    @IBOutlet weak var motorType : UILabel!
-    @IBOutlet weak var numberOfSeats : UILabel!
-    @IBOutlet weak var length : UILabel!
-    @IBOutlet weak var cruisingSpeed : UILabel!
-    @IBOutlet weak var image : UILabel!
-    
-    // Infos Vol
-    @IBOutlet weak var flightNumber : UILabel!
-    @IBOutlet weak var departureDate : UILabel!
-    @IBOutlet weak var identifiantPlane : UILabel!
-    @IBOutlet weak var flightType : UILabel!
-    @IBOutlet weak var companyCode : UILabel!
-    @IBOutlet weak var companyName : UILabel!
-    @IBOutlet weak var flightStatus : UILabel!
-   
-    // Depart
-    @IBOutlet weak var departureTtimes : UILabel!
-    @IBOutlet weak var departureAirportCode : UILabel!
-    @IBOutlet weak var departureAirportName : UILabel!
-    @IBOutlet weak var departureAirportCity : UILabel!
-    @IBOutlet weak var departureAirportCountry : UILabel!
-    @IBOutlet weak var departureLocation : UILabel!
-    @IBOutlet weak var departurePlaces : UILabel!
-    
-    // Arrived
-    @IBOutlet weak var arrivedTtimes : UILabel!
-    @IBOutlet weak var arrivedAirportCode : UILabel!
-    @IBOutlet weak var arrivedAirportName : UILabel!
-    @IBOutlet weak var arrivedAirportCity : UILabel!
-    @IBOutlet weak var arrivedAirportCountry : UILabel!
-    @IBOutlet weak var arrivedLocation : UILabel!
-    @IBOutlet weak var arrivedPlaces : UILabel!
-    
-    @IBOutlet weak var duration : UILabel!
-
-    
-    /*
-     Info Vol
-      Flight number : \(flightNumber),
-      Departure Date : \(departureDate),
-      identifiant vol : \(identifiantPlane),
-      Flight statut : \(flightStatus),
-      Company code : \(company?.code),
-      Company name : \(company?.name),
-      Flight type : \(flightType),
-
-     Info Depart
-     departure time: \(flightInformations?[0].departure?.times),
-     Code airport :
-     \(flightInformations?[0].departure?.airport?.code),
-     Name Airport :
-     \(flightInformations?[0].departure?.airport?.name),
-     City Airport :
-     \(flightInformations?[0].departure?.airport?.city),
-     Country Airport :
-     \(flightInformations?[0].departure?.airport?.country),
-     Coordonnées Airport :
-         Latitude :
-     \(flightInformations?[0].departure?.airport?.location?.latitude),
-             Longitude:
-     \(flightInformations?[0].departure?.airport?.location?.longitude),
-     Places :
-             GateNumber :
-     \(flightInformations?[0].departure?.airport?.places?.gateNumber),
-             Terminal :
-     \(flightInformations?[0].departure?.airport?.places?.terminal)/n,
-
-     Info Arrivée :
-
-     Arrival time: \(flightInformations?[0].arrival?.times),
-     Code airport :
-     \(flightInformations?[0].arrival?.airport?.code),
-     Name Airport :
-     \(flightInformations?[0].arrival?.airport?.name),
-     City Airport :
-     \(flightInformations?[0].arrival?.airport?.city),
-     Country Airport :
-     \(flightInformations?[0].arrival?.airport?.country),
-     Coordonnées Airport :
-         Latitude :
-     \(flightInformations?[0].arrival?.airport?.location?.latitude),
-             Longitude:
-     \(flightInformations?[0].arrival?.airport?.location?.longitude),
-     Places :
-             GateNumber :
-     \(flightInformations?[0].arrival?.airport?.places?.gateNumber),
-             Terminal :
-     \(flightInformations?[0].arrival?.airport?.places?.terminal)/n,
-
-     Info Avion
-
-     Model Avion :
-     \(flightInformations?[0].aircraft?.model)
-
-     Number Model Avion :
-     \(flightInformations?[0].aircraft?.number)
-
-     """
-         }
-     }
-     */
-    
-    
-    var flight: Flight?
+    func configureView() {
+        planeView.titleFlight = flight?.flightNumber
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpId()
+        
+        setupView()
         // Do any additional setup after loading the view.
     }
     
 
     func setUpId() {
-        title = "Details Flight"
+   
+        // loading / error / affichage
         
-        view.backgroundColor = UIColor.lightGray
-//        NetworkServiceFlight.shared.getflight{ [weak self] (flight) in
-//            switch flight {
-//            case .success(let flight):
-//                print(flight)
-//                self?.flight = flight
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
+        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210115+AF+1496") { (result) in
+            switch result {
+            case .success(let flight):
+                print("Flight detail: \(flight)")
+                DispatchQueue.main.async {
+                    self.flight = flight
+                }
+            case .failure(let error):
+                print("Error getting flight details: \(error.localizedDescription)")
+            }
+        }
     }
 
 }
+
+extension DetailsFlightViewController {
+    
+    private func setupView() {
+        title = "Rechercher un vol"
+
+        view.backgroundColor = UIColor.lightGray
+
+        planeView.titleFlight = "\(flight?.identifiantPlane)"
+        
+        if let imageName = plane.image {
+            planeView.image = UIImage(named: imageName)
+        }
+        
+        
+        
+////        let myButton = ActionButton()
+//        myButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
+//       // myButton.addTarget(self, selector: #selector)
+//        myButton.title = "My button"
+//
+        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView, planeView, infoPlaneView, departTerminalView, arrivalTerminalView, arrivalView, notificationCalendarView])
+        
+        contentStackView.axis = .vertical
+        contentStackView.alignment = .fill
+        contentStackView.spacing = UIStackView.spacingUseSystem
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        view.addSubview(contentStackView)
+        
+        // setup les views(
+        let scrollView = UIScrollView()
+        scrollView.addSubview(contentStackView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+        
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            contentStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5),
+
+            
+            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
+            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0)
+
+            
+        ])
+        
+//
+//        // Debug colors
+//        text.backgroundColor = .red
+//
+//        // Current Location
+//
+//
+//    }
+//
+//    @objc
+//    func submitSearch() {
+//        let testFlight = Flight(code: "ABC", name: "COMPANY")
+//        let flights: [Flight] = [testFlight, testFlight,testFlight]
+//        coordinator?.showListResultController(with: flights)
+    }
+}
+
+//extension Flight {
+//    init(code: String?, name: String?) {
+//        self.company = Airline(code: code, name: name)
+//        self.flightNumber = nil
+//        self.departureDate = nil
+//        self.identifiantPlane = nil
+//        self.flightType = .long
+//        self.flightStatus = nil
+//        self.flightInformations = nil
+//    }
+//}
+
+//extension DetailsFlightViewController: UITextFieldDelegate {
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        text.isHidden = true
+//    }
+//}
+
+

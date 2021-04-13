@@ -39,9 +39,9 @@ final class PlaneView: UIView  {
 
     
 
-    init(title: String?) {
-        super.init(frame: .zero)
-        setupView(withTitle: title)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +49,7 @@ final class PlaneView: UIView  {
         setupView()
     }
     
-    func setupView(withTitle title: String? = nil) {
+    func setupView() {
         
 //        let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
 //
@@ -66,7 +66,7 @@ final class PlaneView: UIView  {
 //        imageTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 //        imageTitleLabel.contentMode = UIView.ContentMode.scaleAspectFill
         
-        titleLabel.text = title
+//        titleLabel.text = title
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont
             .preferredFont(forTextStyle: .largeTitle)

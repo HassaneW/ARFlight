@@ -33,8 +33,15 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(listResultViewController, animated: true)
     }
 
+    // flightId
+    func showFlightDetailsFor(flightId: String?) {
+        // Pour plus tard
+    }
     func showFlightDetailFor(flight: Flight?) {
-        //TODO
+        let flightDetailViewController = DetailsFlightViewController()
+        flightDetailViewController.coordinator = self
+        flightDetailViewController.flight = flight
+        navigationController.pushViewController(flightDetailViewController, animated: true)
     }
     
 }
