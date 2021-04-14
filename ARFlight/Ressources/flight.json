@@ -1,0 +1,170 @@
+{
+    "flightNumber": 1496,
+    "flightScheduleDate": "2021-01-15",
+    "id": "20210115+AF+1496",
+    "haul": "MEDIUM",
+    "route": [
+        "CDG",
+        "CMN"
+    ],
+    "airline": {
+        "code": "AF",
+        "name": "AIR FRANCE"
+    },
+    "codeShareRelations": [
+        {
+            "marketingFlightNumber": 9188,
+            "code": "F",
+            "type": "PASSENGER",
+            "airline": {
+                "code": "DL",
+                "name": "DELTA AIR LINES INC."
+            }
+        },
+        {
+            "marketingFlightNumber": 2116,
+            "code": "F",
+            "type": "PASSENGER",
+            "airline": {
+                "code": "KL",
+                "name": "KLM ROYAL DUTCH AIRLINES"
+            }
+        }
+    ],
+    "flightStatusPublic": "ARRIVED",
+    "flightStatusPublicLangTransl": "Arrivé",
+    "flightLegs": [
+        {
+            "status": "S",
+            "statusName": "Scheduled",
+            "publishedStatus": "ARRIVED",
+            "departureInformation": {
+                "airport": {
+                    "code": "CDG",
+                    "name": "CHARLES DE GAULLE AIRPORT",
+                    "nameLangTranl": "Charles De Gaulle",
+                    "city": {
+                        "code": "PAR",
+                        "name": "PARIS",
+                        "nameLangTranl": "Paris",
+                        "country": {
+                            "areaCode": "E",
+                            "code": "FR",
+                            "name": "FRANCE",
+                            "nameLangTranl": "France",
+                            "euroCountry": "Y",
+                            "euCountry": "Y"
+                        }
+                    },
+                    "location": {
+                        "latitude": 49.0097,
+                        "longitude": 2.5486
+                    },
+                    "places": {
+                        "aerogareCode": "2",
+                        "gateNumber": [
+                            "K57"
+                        ],
+                        "parkingPosition": "E10",
+                        "terminalCode": "2E",
+                        "boardingPier": "K",
+                        "boardingTerminal": "2E",
+                        "checkInZone": [
+                            "E04",
+                            "E05"
+                        ],
+                        "boardingContactType": "C",
+                        "parkingPositionType": "C",
+                        "departureTerminal": "K",
+                        "parkingPositionCustomStatus": "I",
+                        "checkInAerogare": "2"
+                    }
+                },
+                "times": {
+                    "actual": "2021-01-15T18:38:00.000+01:00",
+                    "scheduled": "2021-01-15T18:30:00.000+01:00",
+                    "latestPublished": "2021-01-15T18:38:00.000+01:00",
+                    "actualTakeOffTime": "2021-01-15T18:51:00.000+01:00"
+                }
+            },
+            "arrivalInformation": {
+                "airport": {
+                    "code": "CMN",
+                    "name": "MOHAMMED V AIRPORT",
+                    "nameLangTranl": "Mohamed V",
+                    "city": {
+                        "code": "CAS",
+                        "name": "CASABLANCA",
+                        "nameLangTranl": "Casablanca",
+                        "country": {
+                            "areaCode": "I",
+                            "code": "MA",
+                            "name": "MOROCCO",
+                            "nameLangTranl": "Maroc",
+                            "euroCountry": "N",
+                            "euCountry": "N"
+                        }
+                    },
+                    "location": {
+                        "latitude": 33.3667,
+                        "longitude": -7.5867
+                    },
+                    "places": {
+                        "aerogareCode": "2",
+                        "gateNumber": [
+                            ""
+                        ],
+                        "terminalCode": "2",
+                        "baggageBelt": [
+                            ""
+                        ],
+                        "arrivalPositionTerminal": "2",
+                        "disembarkingAerogare": "2"
+                    }
+                },
+                "times": {
+                    "actual": "2021-01-15T21:23:00.000+01:00",
+                    "scheduled": "2021-01-15T21:40:00.000+01:00",
+                    "latestPublished": "2021-01-15T21:23:00.000+01:00",
+                    "estimated": {
+                        "value": "2021-01-15T21:23:00.000+01:00"
+                    },
+                    "actualTouchDownTime": "2021-01-15T21:19:00.000+01:00"
+                }
+            },
+            "legStatusPublic": "ARRIVED",
+            "legStatusPublicLangTransl": "Arrivé",
+            "passengerCustomsStatus": "NOT SCHENGEN",
+            "serviceType": "J",
+            "serviceTypeName": "Normal Service",
+            "scheduledFlightDuration": "PT3H10M",
+            "departureDateTimeDifference": "PT8M",
+            "arrivalDateTimeDifference": "PT-17M",
+            "timeToArrival": "PT0S",
+            "completionPercentage": "100",
+            "timeZoneDifference": "+0000",
+            "aircraft": {
+                "registration": "FGRXC",
+                "typeCode": "319",
+                "typeName": "AIRBUS INDUSTRIE A319",
+                "subFleetCodeId": "EC",
+                "ownerAirlineCode": "AF",
+                "ownerAirlineName": "AIR FRANCE",
+                "physicalPaxConfiguration": "C072Y071",
+                "operationalConfiguration": "C008Y131",
+                "cockpitCrewEmployer": "AF",
+                "cabinCrewEmployer": "AF",
+                "wifiEnabled": "Y",
+                "satelliteConnectivityOnBoard": "Y"
+            },
+            "irregularity": {
+                "cancelled": "N"
+            },
+            "otherFlightLegStatuses": {
+                "boardingStatus": "Closed"
+            },
+            "internalLegStatusArrFocus": false
+        }
+    ],
+    "internalStatusArrFocus": false
+}
