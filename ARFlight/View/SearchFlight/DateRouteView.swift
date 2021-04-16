@@ -28,56 +28,135 @@ final class DateRouteView: UIView  {
         
         let titleLabelDepart = UILabel()
         titleLabelDepart.text = "Date entre le "
-        titleLabelDepart.numberOfLines = 0
-        titleLabelDepart.font = UIFont.preferredFont(forTextStyle: .headline)
+        
+        titleLabelDepart.textAlignment = .center
+        titleLabelDepart.numberOfLines = 1
+        titleLabelDepart.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        titleLabelDepart.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        titleLabelDepart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         titleLabelDepart.textColor = .cyan
         titleLabelDepart.adjustsFontForContentSizeCategory = true
         titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
         
+//        titleLabelDepart.numberOfLines = 0
+//        titleLabelDepart.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabelDepart.textColor = .cyan
+//        titleLabelDepart.adjustsFontForContentSizeCategory = true
+//        titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
+        
+        /*
+         let cityLabel = UILabel()
+         cityLabel.text = "Ville : "
+         cityLabel.textAlignment = .center
+         cityLabel.numberOfLines = 1
+         cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+         cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+         cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+         cityLabel.textColor = .cyan
+         cityLabel.adjustsFontForContentSizeCategory = true
+         cityLabel.translatesAutoresizingMaskIntoConstraints = false
+         */
+        
+        
+        
         let textFieldDepart = UITextField()
-        textFieldDepart.textAlignment = .center
+//        textFieldDepart.textAlignment = .center
         textFieldDepart.placeholder = "Date de Depart"
+        
+        textFieldDepart.font = UIFont
+             .preferredFont(forTextStyle: .largeTitle)
+        textFieldDepart.font = UIFont(name: "HelveticaNeue", size: 30)
+        textFieldDepart.adjustsFontSizeToFitWidth = true
+        textFieldDepart.textAlignment = .center
+        textFieldDepart.textColor = .label
+        textFieldDepart.adjustsFontForContentSizeCategory = true
+        textFieldDepart.translatesAutoresizingMaskIntoConstraints = false
+         
+        
         
         let dateDepartStackView = UIStackView(arrangedSubviews: [titleLabelDepart,textFieldDepart])
         
+//        let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
         dateDepartStackView.axis = .horizontal
-        dateDepartStackView.alignment = .fill
+        dateDepartStackView.alignment = .center
+        dateDepartStackView.spacing = 20
         dateDepartStackView.distribution = .fill
-        dateDepartStackView.spacing = UIStackView.spacingUseSystem
         dateDepartStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        dateDepartStackView.axis = .horizontal
+//        dateDepartStackView.alignment = .fill
+//        dateDepartStackView.distribution = .fill
+//        dateDepartStackView.spacing = UIStackView.spacingUseSystem
+//        dateDepartStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
  
-//        // hugging ressitance priperoty
-//        //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 
         let titleLabelArrive = UILabel()
         titleLabelArrive.text = "Et le "
-        titleLabelArrive.numberOfLines = 0
-        titleLabelArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+        
+        titleLabelArrive.textAlignment = .center
+        titleLabelArrive.numberOfLines = 1
+        titleLabelArrive.font = UIFont.preferredFont(forTextStyle: .title1)
+        titleLabelArrive.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        titleLabelArrive.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         titleLabelArrive.textColor = .cyan
         titleLabelArrive.adjustsFontForContentSizeCategory = true
         titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
         
+        
+//        titleLabelArrive.numberOfLines = 0
+//        titleLabelArrive.font = UIFont.preferredFont(forTextStyle: .headline)
+//        titleLabelArrive.textColor = .cyan
+//        titleLabelArrive.adjustsFontForContentSizeCategory = true
+//        titleLabelArrive.translatesAutoresizingMaskIntoConstraints = false
+        
         // TextField
         let textFieldDateArrive = UITextField()
-        textFieldDateArrive.textAlignment = .center
+//        textFieldDateArrive.textAlignment = .center
         textFieldDateArrive.placeholder = "Date d'arrivee"
+        
+        textFieldDateArrive.font = UIFont
+             .preferredFont(forTextStyle: .largeTitle)
+        textFieldDateArrive.font = UIFont(name: "HelveticaNeue", size: 30)
+        textFieldDateArrive.adjustsFontSizeToFitWidth = true
+        textFieldDateArrive.textAlignment = .center
+        textFieldDateArrive.textColor = .label
+        textFieldDateArrive.adjustsFontForContentSizeCategory = true
+        textFieldDateArrive.translatesAutoresizingMaskIntoConstraints = false
         
         // StackView Ville Depart
         let dateArriveStackView = UIStackView(arrangedSubviews: [titleLabelArrive, textFieldDateArrive])
+        
         dateArriveStackView.axis = .horizontal
-        dateArriveStackView.alignment = .fill
-        dateArriveStackView.spacing = UIStackView.spacingUseSystem
+        dateArriveStackView.alignment = .center
+        dateArriveStackView.spacing = 20
+        dateArriveStackView.distribution = .fill
         dateArriveStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+//        dateArriveStackView.axis = .horizontal
+//        dateArriveStackView.alignment = .fill
+//        dateArriveStackView.spacing = UIStackView.spacingUseSystem
+//        dateArriveStackView.translatesAutoresizingMaskIntoConstraints = false
         
     let contentView = UIStackView(arrangedSubviews: [dateDepartStackView,dateArriveStackView])
     
-    contentView.axis = .vertical
-    contentView.alignment = .fill
-    contentView.spacing = UIStackView.spacingUseSystem
-    contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.axis = .vertical
+        contentView.alignment = .fill
+            contentView.distribution = .fill
+        contentView.spacing = 30
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+            
+            addSubview(contentView)
         
-        addSubview(contentView)
+        
+//    contentView.axis = .vertical
+//    contentView.alignment = .fill
+//    contentView.spacing = UIStackView.spacingUseSystem
+//    contentView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        addSubview(contentView)
         
         // Debug colors
         titleLabelDepart.backgroundColor = .tertiaryLabel
@@ -97,50 +176,43 @@ final class DateRouteView: UIView  {
     }
 }
 
-
 /*
- // StackView Date Depart
+ let cityLabel = UILabel()
+ cityLabel.text = "Ville : "
+ cityLabel.textAlignment = .center
+ cityLabel.numberOfLines = 1
+ cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+ cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+ cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+ cityLabel.textColor = .cyan
+ cityLabel.adjustsFontForContentSizeCategory = true
+ cityLabel.translatesAutoresizingMaskIntoConstraints = false
  
- // Label Ville
- let titleLabelDateDepart = UILabel()
- titleLabelDateDepart.text = "Date entre le "
- titleLabelDateDepart.numberOfLines = 0
- titleLabelDateDepart.font = UIFont.preferredFont(forTextStyle: .headline)
- titleLabelDateDepart.textColor = .cyan
- titleLabelDateDepart.adjustsFontForContentSizeCategory = true
- titleLabelDateDepart.translatesAutoresizingMaskIntoConstraints = false
+ // Textfield
  
- // TextField
- let textFieldDateDepart = UITextField()
- textFieldDateDepart.placeholder = "Date"
  
- // StackView Ville Depart
- let contentStackViewDateDepart = UIStackView(arrangedSubviews: [titleLabelDateDepart, textFieldDateDepart])
- contentStackViewDateDepart.axis = .horizontal
- contentStackViewDateDepart.alignment = .fill
- contentStackViewDateDepart.spacing = UIStackView.spacingUseSystem
- contentStackViewDateDepart.translatesAutoresizingMaskIntoConstraints = false
  
- // StackView Date Arrive
+ textField.font = UIFont
+     .preferredFont(forTextStyle: .largeTitle)
+ textField.font = UIFont(name: "HelveticaNeue", size: 30)
+ textField.adjustsFontSizeToFitWidth = true
+ textField.textAlignment = .center
+ textField.textColor = .label
+ textField.adjustsFontForContentSizeCategory = true
+ textField.translatesAutoresizingMaskIntoConstraints = false
  
- // Label Ville
- let titleLabelDateArrive = UILabel()
- titleLabelDateArrive.text = "Et le "
- titleLabelDateArrive.numberOfLines = 0
- titleLabelDateArrive.font = UIFont.preferredFont(forTextStyle: .headline)
- titleLabelDateArrive.textColor = .cyan
- titleLabelDateArrive.adjustsFontForContentSizeCategory = true
- titleLabelDateArrive.translatesAutoresizingMaskIntoConstraints = false
- 
- // TextField
- let textFieldDateArrive = UITextField()
- textFieldDateArrive.placeholder = "Date"
+ // hugging ressitance priperoty
+ //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+ //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+
+ //cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+// textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
  
  // StackView Ville Depart
- let contentStackViewDateArrive = UIStackView(arrangedSubviews: [titleLabelDateArrive, textFieldDateArrive])
- contentStackViewDateArrive.axis = .horizontal
- contentStackViewDateArrive.alignment = .fill
- contentStackViewDateArrive.spacing = UIStackView.spacingUseSystem
- contentStackViewDateArrive.translatesAutoresizingMaskIntoConstraints = false
- 
+ let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
+ citystackView.axis = .horizontal
+ citystackView.alignment = .center
+ citystackView.spacing = 20
+ citystackView.distribution = .fill
+ citystackView.translatesAutoresizingMaskIntoConstraints = false
  */

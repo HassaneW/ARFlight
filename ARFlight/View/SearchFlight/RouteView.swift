@@ -40,10 +40,12 @@ final class RouteView: UIView  {
 //        myImagePlane.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 //        myImagePlane.setContentCompressionResistancePriority(.required, for: .horizontal)
         titleLabel.text = title
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 1
         titleLabel.font = UIFont
             .preferredFont(forTextStyle: .largeTitle)
-        titleLabel.textAlignment = .left
+        titleLabel.font = UIFont(name: "HelveticaNeue", size: 50)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textAlignment = .center
         titleLabel.textColor = .label
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -52,19 +54,32 @@ final class RouteView: UIView  {
         routeStackView.axis = .horizontal
         routeStackView.alignment = .center
         routeStackView.distribution = .equalSpacing
-        routeStackView.spacing = UIStackView.spacingUseSystem
+        routeStackView.spacing = 30
         routeStackView.translatesAutoresizingMaskIntoConstraints = false
 
         // Label Ville
 
         let cityLabel = UILabel()
-        cityLabel.text = "Ville"
+        cityLabel.text = "Ville : "
         cityLabel.textAlignment = .center
-        cityLabel.numberOfLines = 0
-        cityLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        cityLabel.numberOfLines = 1
+        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         cityLabel.textColor = .cyan
         cityLabel.adjustsFontForContentSizeCategory = true
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Textfield
+  
+        textField.font = UIFont
+            .preferredFont(forTextStyle: .largeTitle)
+        textField.font = UIFont(name: "HelveticaNeue", size: 30)
+        textField.adjustsFontSizeToFitWidth = true
+        textField.textAlignment = .center
+        textField.textColor = .label
+        textField.adjustsFontForContentSizeCategory = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         // hugging ressitance priperoty
         //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -76,16 +91,17 @@ final class RouteView: UIView  {
         // StackView Ville Depart
         let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
         citystackView.axis = .horizontal
-        citystackView.alignment = .leading
-        citystackView.spacing = UIStackView.spacingUseSystem
+        citystackView.alignment = .center
+        citystackView.spacing = 20
+        citystackView.distribution = .fill
         citystackView.translatesAutoresizingMaskIntoConstraints = false
     
     let contentView = UIStackView(arrangedSubviews: [routeStackView, citystackView])
-    
+            
     contentView.axis = .vertical
     contentView.alignment = .fill
         contentView.distribution = .fill
-    contentView.spacing = 50
+    contentView.spacing = 30
     contentView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(contentView)
@@ -99,7 +115,10 @@ final class RouteView: UIView  {
         NSLayoutConstraint.activate([
 
             myImagePlane.widthAnchor.constraint(equalToConstant: 50),
+            myImagePlane.heightAnchor.constraint(equalToConstant: 50),
             
+            titleLabel.widthAnchor.constraint(equalToConstant: 150),
+            titleLabel.heightAnchor.constraint(equalToConstant: 80),
             
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             

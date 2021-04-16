@@ -13,16 +13,15 @@ class SearchFlightViewController: UIViewController {
     weak var coordinator: MainCoordinator?
   
     let myButton = ActionButton()
-    let stateViewDepart = RouteView(title: "Depart")
-    let stateViewArrive = RouteView(title: "Arrive")
+    let routeViewDepart = RouteView(title: "Depart")
+    let routeViewArrive = RouteView(title: "Arrive")
     let dateRouteView = DateRouteView()
     let currentLocationView = CurrentLocationView()
     let calendarView = CalendarView()
     
     private let text = UILabel()
     
-    var flight : Flight?
-    var flightArray : [Flight]?
+    private var flights : [Flight]?
     
     //MARK: - View lifecycle
     
@@ -38,6 +37,28 @@ class SearchFlightViewController: UIViewController {
     }
     
     //MARK: - Private methods
+    
+    private func fetchFlights() {
+        guard let departureCity = routeViewDepart.textField.text else {
+            // departure / arrival / date depart arrive
+            // afficher alerte veuillez choisir une ville depart
+            // start range = departureDate
+            print("missing departure city")
+            return
+        }
+        
+        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] result in
+            switch result {
+            case .success(let flights):
+                print("Flights found: \(flights.count)")
+                self?.flights = flights
+                self?.coordinator?.showListResultController(with: flights)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
     
     private func setUp() {
         
@@ -59,44 +80,38 @@ class SearchFlightViewController: UIViewController {
 //            }
 //        }
         
-        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] (resultflight) in
-            switch resultflight {
-            case .success(let flights):
-                print("Flights found: \(flights)")
-                self?.flightArray = flights
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        
     }
 }
 
 extension SearchFlightViewController {
     
     private func setupView() {
-        title = "Rechercher un vol"
+        
+        title = "RECHERCHER UN VOL"
         
         view.backgroundColor = UIColor.lightGray
         
         // 1) StackView Depart
 
-        stateViewDepart.textField.delegate = self
-        stateViewDepart.textField.textAlignment = .center
-        stateViewDepart.textField.placeholder = "Depart"
+        routeViewDepart.textField.delegate = self
+        routeViewDepart.textField.textAlignment = .center
+        routeViewDepart.textField.placeholder = "Depart"
 
         // 3) text OR
         text.text = "OR"
         text.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         text.textColor = .black
         text.textAlignment = .center
+        text.font =  UIFont (name: "Helvetica Neue", size:30)
         text.adjustsFontForContentSizeCategory = true
         text.translatesAutoresizingMaskIntoConstraints = false
          
         // 3 StackView Current Location
 
-        stateViewArrive.textField.delegate = self
-        stateViewArrive.textField.textAlignment = .center
-        stateViewArrive.textField.placeholder = "Arrive"
+        routeViewArrive.textField.delegate = self
+        routeViewArrive.textField.textAlignment = .center
+        routeViewArrive.textField.placeholder = "Arrive"
  
         // StackView Calendar
         
@@ -111,7 +126,7 @@ extension SearchFlightViewController {
        // myButton.addTarget(self, selector: #selector)
         myButton.title = "My button"
         
-        let contentStackView = UIStackView(arrangedSubviews: [stateViewDepart, text, currentLocationView, stateViewArrive , calendarView, dateRouteView, myButton])
+        let contentStackView = UIStackView(arrangedSubviews: [routeViewDepart, text, currentLocationView, routeViewArrive , calendarView, dateRouteView, myButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem
@@ -154,11 +169,37 @@ extension SearchFlightViewController {
     
     @objc
     func submitSearch() {
-        let flights = Bundle.main.decode([Flight].self, from: "flight_search.json")
+        fetchFlights()
+//        let formatter = DateFormatter()
+//        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .custom({ decoder -> Date in
+//            let container = try decoder.singleValueContainer()
+//            let dateString = try container.decode(String.self)
+//
+//            // Date format for departure date
+//            formatter.dateFormat = "yyyy-MM-dd"
+//            if let date = formatter.date(from: dateString) {
+//                return date
+//            }
+//            // Date format for flight informations
+//            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+//            if let date = formatter.date(from: dateString) {
+//                return date
+//            }
+//            throw DateError.invalidDateFormat
+//        })
+//
+//        let flightsResponse = Bundle.main.decode(Flights.self, from: "flights.json", dateDecodingStrategy: dateDecodingStrategy)
+//            //.decode(Flights.self, from: "flights.json")
+//
+//        print(flightsResponse.flights.first)
+//
+//
 //        let testFlight = Flight(code: "ABC", name: "COMPANY")
 //        let flights: [Flight] = [testFlight, testFlight,testFlight]
-        coordinator?.showListResultController(with: flights)
+        
     }
+    
+    
 }
 
 extension Flight {

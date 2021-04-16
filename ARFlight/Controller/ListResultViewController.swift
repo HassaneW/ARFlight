@@ -9,64 +9,9 @@ import Foundation
 import MapKit
 
 
-// A)
-// Créer un MapView et un TableView dans un seul fichier avec des controller qui s'adapte (pb, UIViewController et UItableViewController)
-
-// B)
-// Créer mapview et tableview dans une stackview
-//
-// C) Mapkit :
-// a) Créer une carte
-// b) Connecté : object location et Mapkit
-// c) Créer annotation dans la mapview : Location (Depart, Arrivé)
-// d) le rendre dynamique
-
-// Modele :
-/*
- Depart:
- FlightLegs -> departure -> Airport Location -> latitude, longitude
- 
- Arrive:
- FlightLegs -> arrival -> Airport Location -> latitude, longitude
-*/
-
-// D)
-// Créer tableview
-// Créer CustomCell avec les infos du voyage du modele de donnée : Code vol, Code Company, Airport Depart, Airport Arrivée, Heure Départ, Heure Arrvivé
-
-// Modele :
-
-/*
-1)
- Code vol (Identifiant vol) :
- Flight -> flightNumber;
- 
-2)
- Code Company:
- Flight -> company -> code
- 
-3)
- Airport Depart:
- FlightLegs -> departure -> Airport Location -> latitude, longitude
- 
- Airport Arrivée:
- FlightLegs -> arrival -> Airport Location -> latitude, longitude
- 
-4)
- Heure Départ
- Flight -> departureDate
- 
- 5)
- Flight -> FlightLegs -> arrival -> times -> scheduled
- 
- */
-
-
-
 class ListResultViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
-
     var flights: [Flight]?
 
     let tableView = UITableView()

@@ -22,6 +22,8 @@ class DetailsFlightViewController: UIViewController {
 
  
     let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: nil, cruisingSpeed: "", image: "a330-200")
+    
+    private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
     var flight: Flight? {
         didSet {
             configureView()
@@ -30,6 +32,12 @@ class DetailsFlightViewController: UIViewController {
     
     func configureView() {
         planeView.titleFlight = flight?.flightNumber
+        departView.titleHour = flight?.departureDateTime?.timeString()
+//        let plane = planes.first { (plane) -> Bool in
+//            flight?.planeId == plane.id
+//        }
+        let plane = planes.first { $0.id == flight?.planeId }
+        infoPlaneView.titleLongeur = plane?.cruisingSpeed
     }
     
     override func viewDidLoad() {

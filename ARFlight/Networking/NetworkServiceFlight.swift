@@ -7,14 +7,15 @@
 
 import Foundation
 import UIKit
+enum DateError: String, Error {
+    case invalidDateFormat
+}
 
 class NetworkServiceFlight {
     static var shared = NetworkServiceFlight()
     private init() {}
     
-    private enum DateError: String, Error {
-        case invalidDateFormat
-    }
+   
     private var jsonDecoder: JSONDecoder {
         let decoder = JSONDecoder()
         

@@ -77,6 +77,10 @@ extension Flight {
     var arrivalAirportName: String? {
         lastFlightLeg?.arrivalAirportName
     }
+    
+    var planeId: String? {
+        firstFlightLeg?.aircraft?.model// construire le plane id depuis 
+    }
 }
 //
 extension Flight: CustomStringConvertible {

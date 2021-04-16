@@ -31,20 +31,44 @@ final class CalendarView: UIView  {
         
         // Title Label Current
         let labelCalendar = UILabel()
-        labelCalendar.text = "Calendar "
-        labelCalendar.numberOfLines = 0
+        labelCalendar.text = "Calendar"
+        labelCalendar.numberOfLines = 1
         labelCalendar.font = UIFont
             .preferredFont(forTextStyle: .largeTitle)
         labelCalendar.textAlignment = .center
-        labelCalendar.textColor = .black
+        labelCalendar.font =  UIFont (name: "Helvetica Neue", size: 50)
+        labelCalendar.adjustsFontSizeToFitWidth = true
+        labelCalendar.textColor = .label
         labelCalendar.adjustsFontForContentSizeCategory = true
+        labelCalendar.translatesAutoresizingMaskIntoConstraints = false
         
-        let contentView = UIStackView(arrangedSubviews: [myImageCalendar, labelCalendar])
-        contentView.axis = .horizontal
-        contentView.alignment = .leading
-        contentView.distribution = .fillProportionally
+//        labelCalendar.numberOfLines = 0
+//        labelCalendar.font = UIFont
+//            .preferredFont(forTextStyle: .largeTitle)
+//        labelCalendar.textAlignment = .center
+//        labelCalendar.textColor = .black
+//        labelCalendar.adjustsFontForContentSizeCategory = true
+        
+        let contentView = UIStackView(arrangedSubviews: [UIView(),myImageCalendar, labelCalendar, UIView()])
+        
+                contentView.axis = .horizontal
+                contentView.alignment = .center
+                contentView.distribution = .equalSpacing
         contentView.spacing = UIStackView.spacingUseSystem
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+                contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        contentView.axis = .horizontal
+//        contentView.alignment = .leading
+//        contentView.distribution = .fillProportionally
+//        contentView.spacing = UIStackView.spacingUseSystem
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let routeStackView = UIStackView(arrangedSubviews: [UIView(),myImagePlane, titleLabel, UIView()])
+//        routeStackView.axis = .horizontal
+//        routeStackView.alignment = .center
+//        routeStackView.distribution = .equalSpacing
+//        routeStackView.spacing = UIStackView.spacingUseSystem
+//        routeStackView.translatesAutoresizingMaskIntoConstraints = false
         
         
         addSubview(contentView)
@@ -55,6 +79,12 @@ final class CalendarView: UIView  {
         
         
         NSLayoutConstraint.activate([
+            
+            myImageCalendar.widthAnchor.constraint(equalToConstant: 50),
+            myImageCalendar.heightAnchor.constraint(equalToConstant: 50),
+            
+            labelCalendar.widthAnchor.constraint(equalToConstant: 150),
+            labelCalendar.heightAnchor.constraint(equalToConstant: 80),
 
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             

@@ -17,7 +17,9 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        showSearchFlightController()//showListResultController()
+        showSearchFlightController()
+        
+//        showListResultController(with: <#T##[Flight]#>)
     }
 
     func showSearchFlightController() {
@@ -26,7 +28,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(searchFlightViewController, animated: false)
     }
 
-    func showListResultController(with flights: [Flight]) {
+    func showListResultController(with flights:[Flight]) {
         let listResultViewController = ListResultViewController()
         listResultViewController.coordinator = self
         listResultViewController.flights = flights

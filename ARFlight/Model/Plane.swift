@@ -16,6 +16,7 @@ struct Plane : Decodable {
     let length: Double?
     let cruisingSpeed: String?
     let image: String?
+
 }
 
 extension Plane: CustomStringConvertible {

@@ -10,6 +10,11 @@ import UIKit
 
 final class InfoPlaneView: UIView  {
 
+    var plane: Plane? {
+        didSet {
+            
+        }
+    }
     
     var titleTypeMoteur: String? {
         didSet {
