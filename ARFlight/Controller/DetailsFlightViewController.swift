@@ -88,7 +88,7 @@ extension DetailsFlightViewController {
 //       // myButton.addTarget(self, selector: #selector)
 //        myButton.title = "My button"
 //
-        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView, planeView, infoPlaneView, departTerminalView, arrivalTerminalView, arrivalView, notificationCalendarView])
+        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,planeView, infoPlaneView, arrivalTerminalView, arrivalView, notificationCalendarView])
         
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill

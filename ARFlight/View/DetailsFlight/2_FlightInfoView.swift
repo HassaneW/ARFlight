@@ -65,9 +65,11 @@ final class FlightInfoView: UIView  {
         
         let statusStackView = UIStackView(arrangedSubviews: [labelStatusFlight, labelDureeFlight])
         statusStackView.axis = .horizontal
-        statusStackView.alignment = .fill
+        statusStackView.alignment = .leading
+        statusStackView.distribution = .equalSpacing
         statusStackView.spacing = UIStackView.spacingUseSystem
-        statusStackView.translatesAutoresizingMaskIntoConstraints = false
+//        titleStackView.translatesAutoresizingMaskIntoConstraints = false
+        
   
         resultStatus.text = title
         resultStatus.numberOfLines = 0
@@ -102,11 +104,14 @@ final class FlightInfoView: UIView  {
         
         addSubview(contentView)
         
-        // Debug colors
-//        titleLabel.backgroundColor = .yellow
-//        labelCodeFlight.backgroundColor = .tertiaryLabel
-//        labelFlightType.backgroundColor = .brown
-//
+        // Debug colors label status
+        labelStatusFlight.backgroundColor = .yellow
+        labelDureeFlight.backgroundColor = .tertiaryLabel
+        
+        // Debug colors result
+        labelDureeFlight.backgroundColor = .blue
+        resultDuree.backgroundColor = .green
+        
         NSLayoutConstraint.activate([
 
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),

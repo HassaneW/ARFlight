@@ -57,20 +57,6 @@ final class CalendarView: UIView  {
         contentView.spacing = UIStackView.spacingUseSystem
                 contentView.translatesAutoresizingMaskIntoConstraints = false
         
-//        contentView.axis = .horizontal
-//        contentView.alignment = .leading
-//        contentView.distribution = .fillProportionally
-//        contentView.spacing = UIStackView.spacingUseSystem
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-//        let routeStackView = UIStackView(arrangedSubviews: [UIView(),myImagePlane, titleLabel, UIView()])
-//        routeStackView.axis = .horizontal
-//        routeStackView.alignment = .center
-//        routeStackView.distribution = .equalSpacing
-//        routeStackView.spacing = UIStackView.spacingUseSystem
-//        routeStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         addSubview(contentView)
         
         // Debug colors

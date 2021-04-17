@@ -13,7 +13,7 @@ final class CompanyView: UIView  {
 
     var titleCompany: String? {
         didSet {
-            titleLabel.text = titleCompany
+            resultTitleLabel.text = titleCompany
         }
     }
     
@@ -30,7 +30,7 @@ final class CompanyView: UIView  {
     }
     
 
-    private let titleLabel = UILabel()
+    private let resultTitleLabel = UILabel()
     private let resultCodeFlight = UILabel()
     private let resultFlightType = UILabel()
 
@@ -48,9 +48,10 @@ final class CompanyView: UIView  {
         
         let labelCompanyName = UILabel()
         labelCompanyName.text = "Company Name"
-        labelCompanyName.numberOfLines = 0
+        labelCompanyName.numberOfLines = 2
         labelCompanyName.font = UIFont
             .preferredFont(forTextStyle: .headline)
+        labelCompanyName.adjustsFontSizeToFitWidth = true
         labelCompanyName.textAlignment = .center
         labelCompanyName.textColor = .black
         labelCompanyName.adjustsFontForContentSizeCategory = true
@@ -62,6 +63,7 @@ final class CompanyView: UIView  {
         labelCodeFlight.font = UIFont
             .preferredFont(forTextStyle: .headline)
         labelCodeFlight.textAlignment = .center
+        labelCodeFlight.adjustsFontSizeToFitWidth = true
         labelCodeFlight.textColor = .black
         labelCodeFlight.adjustsFontForContentSizeCategory = true
         
@@ -72,23 +74,26 @@ final class CompanyView: UIView  {
         labelFlightType.font = UIFont
             .preferredFont(forTextStyle: .headline)
         labelFlightType.textAlignment = .center
+        labelFlightType.adjustsFontSizeToFitWidth = true
         labelFlightType.textColor = .black
         labelFlightType.adjustsFontForContentSizeCategory = true
 
         let titleStackView = UIStackView(arrangedSubviews: [labelCompanyName, labelCodeFlight,labelFlightType])
         titleStackView.axis = .horizontal
-        titleStackView.alignment = .fill
+        titleStackView.alignment = .leading
+        titleStackView.distribution = .equalSpacing
         titleStackView.spacing = UIStackView.spacingUseSystem
         titleStackView.translatesAutoresizingMaskIntoConstraints = false
-       
-        titleLabel.text = title
-        titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont
+        
+        resultTitleLabel.text = title
+        resultTitleLabel.numberOfLines = 0
+        resultTitleLabel.font = UIFont
             .preferredFont(forTextStyle: .headline)
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = .label
-        titleLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        resultTitleLabel.textAlignment = .center
+        resultTitleLabel.textColor = .label
+        resultTitleLabel.adjustsFontSizeToFitWidth = true
+        resultTitleLabel.adjustsFontForContentSizeCategory = true
+        resultTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         resultCodeFlight.text = title
         resultCodeFlight.numberOfLines = 0
@@ -96,6 +101,7 @@ final class CompanyView: UIView  {
             .preferredFont(forTextStyle: .headline)
         resultCodeFlight.textAlignment = .center
         resultCodeFlight.textColor = .label
+        resultCodeFlight.adjustsFontSizeToFitWidth = true
         resultCodeFlight.adjustsFontForContentSizeCategory = true
         resultCodeFlight.translatesAutoresizingMaskIntoConstraints = false
         
@@ -105,10 +111,11 @@ final class CompanyView: UIView  {
             .preferredFont(forTextStyle: .headline)
         resultFlightType.textAlignment = .center
         resultFlightType.textColor = .label
+        resultFlightType.adjustsFontSizeToFitWidth = true
         resultFlightType.adjustsFontForContentSizeCategory = true
         resultFlightType.translatesAutoresizingMaskIntoConstraints = false
         
-        let resultStackView = UIStackView(arrangedSubviews: [titleLabel, resultCodeFlight,resultFlightType])
+        let resultStackView = UIStackView(arrangedSubviews: [resultTitleLabel, resultCodeFlight,resultFlightType])
         resultStackView.axis = .horizontal
         resultStackView.alignment = .fill
         resultStackView.spacing = UIStackView.spacingUseSystem
@@ -120,14 +127,19 @@ final class CompanyView: UIView  {
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        
         addSubview(contentView)
         
-        // Debug colors
-//        titleLabel.backgroundColor = .yellow
-//        labelCodeFlight.backgroundColor = .tertiaryLabel
-//        labelFlightType.backgroundColor = .brown
-//        
+        // Debug colors label
+        labelCompanyName.backgroundColor = .yellow
+        labelFlightType.backgroundColor = .tertiaryLabel
+        labelCodeFlight.backgroundColor = .brown
+        
+        // Debug colors Result
+//        [resultTitleLabel, resultCodeFlight,resultFlightType])
+        resultTitleLabel.backgroundColor = .tertiaryLabel
+        resultCodeFlight.backgroundColor = .yellow
+        resultFlightType.backgroundColor = .brown
+            
         NSLayoutConstraint.activate([
 
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
