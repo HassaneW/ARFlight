@@ -22,13 +22,8 @@ final class NotificationCalendarView: UIView  {
     
     private func setupView(withTitle title: String? = nil) {
         
-        let imageNotification = UIImage(systemName: "bell.circle.fill")
-        let myImageNotification:UIImageView = UIImageView()
-        myImageNotification.contentMode = UIView.ContentMode.left
-        myImageNotification.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageNotification.image = imageNotification
-        
-        // Title Label Current
+      
+        // Title Label Notification
         let labelNotification = UILabel()
         labelNotification.text = "Notification "
         labelNotification.numberOfLines = 0
@@ -38,21 +33,54 @@ final class NotificationCalendarView: UIView  {
         labelNotification.textColor = .black
         labelNotification.adjustsFontForContentSizeCategory = true
         
+        // Title Label Calendar
+        let labelCalendar = UILabel()
+        labelCalendar.text = "Add Calendar"
+        labelCalendar.numberOfLines = 0
+        labelCalendar.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        labelCalendar.textAlignment = .center
+        labelCalendar.textColor = .black
+        labelCalendar.adjustsFontForContentSizeCategory = true
+        
+        let titleStackView = UIStackView(arrangedSubviews: [labelNotification, labelCalendar])
+        titleStackView.axis = .horizontal
+        titleStackView.alignment = .fill
+        titleStackView.spacing = UIStackView.spacingUseSystem
+        titleStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        // Image Notification
+        let imageNotification = UIImage(systemName: "bell.circle.fill")
+        let myImageNotification:UIImageView = UIImageView()
+        myImageNotification.contentMode = UIView.ContentMode.left
+        myImageNotification.contentMode = UIView.ContentMode.scaleAspectFit
+        myImageNotification.image = imageNotification
+        
+        // Button Calendar
         let buttonAddCalendar = UIButton()
-        buttonAddCalendar.clipsToBounds = true
+        buttonAddCalendar.setImage(UIImage(systemName: "calendar.badge.plus"), for: .normal);        buttonAddCalendar.clipsToBounds = true
         buttonAddCalendar.layer.cornerRadius = 12
         buttonAddCalendar.layer.borderWidth = 1.0
-        buttonAddCalendar.layer.borderColor = UIColor.red.cgColor
+        buttonAddCalendar.layer.borderColor = UIColor.blue.cgColor
         backgroundColor = UIColor.purple
         
+        let resultStackView = UIStackView(arrangedSubviews: [myImageNotification,buttonAddCalendar])
         
-        let contentView = UIStackView(arrangedSubviews: [myImageNotification, labelNotification,buttonAddCalendar])
-        contentView.axis = .horizontal
+        resultStackView.axis = .horizontal
+        resultStackView.alignment = .fill
+        resultStackView.distribution = .fillProportionally
+        resultStackView.spacing = UIStackView.spacingUseSystem
+        resultStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        let contentView = UIStackView(arrangedSubviews: [titleStackView, resultStackView])
+        
+        contentView.axis = .vertical
         contentView.alignment = .fill
+        contentView.distribution = .fillProportionally
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         addSubview(contentView)
         
         // Debug colors

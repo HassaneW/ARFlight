@@ -15,6 +15,7 @@ class DetailsFlightViewController: UIViewController {
     let departView = DepartView()
     let planeView = PlaneView() // Flight id
     let infoPlaneView = InfoPlaneView()
+    let infoPlaneViewVL = InfoPlaneViewVitesseLongeur()
     let departTerminalView = DepartTerminalView()
     let arrivalTerminalView = ArrivalTerminalView()
     let arrivalView = ArrivalView()
@@ -37,7 +38,7 @@ class DetailsFlightViewController: UIViewController {
 //            flight?.planeId == plane.id
 //        }
         let plane = planes.first { $0.id == flight?.planeId }
-        infoPlaneView.titleLongeur = plane?.cruisingSpeed
+        infoPlaneViewVL.titleLongeur = plane?.cruisingSpeed
     }
     
     override func viewDidLoad() {
@@ -88,7 +89,7 @@ extension DetailsFlightViewController {
 //       // myButton.addTarget(self, selector: #selector)
 //        myButton.title = "My button"
 //
-        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,planeView, infoPlaneView, arrivalTerminalView, arrivalView, notificationCalendarView])
+        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,planeView, infoPlaneView, infoPlaneViewVL,arrivalView, arrivalTerminalView, notificationCalendarView])
         
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill

@@ -55,7 +55,7 @@ final class ArrivalView: UIView  {
         labelAirportArrival.adjustsFontForContentSizeCategory = true
         
         let labelHeureArrival = UILabel()
-        labelHeureArrival.text = "Heure Depart"
+        labelHeureArrival.text = "Heure Arrivee"
         labelHeureArrival.numberOfLines = 0
         labelHeureArrival.font = UIFont
             .preferredFont(forTextStyle: .headline)
@@ -94,14 +94,22 @@ final class ArrivalView: UIView  {
         resultStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let contentView = UIStackView(arrangedSubviews: [arrivalStackView, resultStackView])
-        contentView.axis = .horizontal
+        
+        contentView.axis = .vertical
         contentView.alignment = .fill
-        contentView.spacing = UIStackView.spacingUseSystem
+            contentView.distribution = .fill
+        contentView.spacing = 30
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         addSubview(contentView)
-        
+//        contentView.axis = .horizontal
+//        contentView.alignment = .fill
+//        contentView.spacing = UIStackView.spacingUseSystem
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        addSubview(contentView)
+//
         // Debug colors
 //        titleLabel.backgroundColor = .yellow
 //        labelCodeFlight.backgroundColor = .tertiaryLabel

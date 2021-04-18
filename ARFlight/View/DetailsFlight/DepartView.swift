@@ -102,7 +102,6 @@ final class DepartView: UIView  {
             contentView.spacing = 30
             contentView.translatesAutoresizingMaskIntoConstraints = false
                 
-                addSubview(contentView)
             
             addSubview(contentView)
             

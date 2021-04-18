@@ -28,24 +28,24 @@ final class InfoPlaneView: UIView  {
         }
     }
     
-    var titleVitesse: String? {
-        didSet {
-            resultvitesse.text = titleVitesse
-        }
-    }
-    
-    var titleLongeur: String? {
-        didSet {
-            resultLongeur.text = titleLongeur
-        }
-    }
+//    var titleVitesse: String? {
+//        didSet {
+//            resultvitesse.text = titleVitesse
+//        }
+//    }
+//
+//    var titleLongeur: String? {
+//        didSet {
+//            resultLongeur.text = titleLongeur
+//        }
+//    }
     
 
 //    private let titleLabel = UILabel()
     private let resultTypeDeMoteur = UILabel()
     private let resultNombreDeSiege = UILabel()
-    private let resultvitesse = UILabel()
-    private let resultLongeur = UILabel()
+//    private let resultvitesse = UILabel()
+//    private let resultLongeur = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,57 +112,57 @@ final class InfoPlaneView: UIView  {
         
         // 2
         
+//
+//        let labelVitesseDeCroisiere = UILabel()
+//        labelVitesseDeCroisiere.text = "Vitesse de Croisiere"
+//        labelVitesseDeCroisiere.numberOfLines = 0
+//        labelVitesseDeCroisiere.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        labelVitesseDeCroisiere.textAlignment = .center
+//        labelVitesseDeCroisiere.textColor = .black
+//        labelVitesseDeCroisiere.adjustsFontForContentSizeCategory = true
+//
+//
+//        let labelLongeurPlane = UILabel()
+//        labelLongeurPlane.text = "Longeur Plane"
+//        labelLongeurPlane.numberOfLines = 0
+//        labelLongeurPlane.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        labelLongeurPlane.textAlignment = .center
+//        labelLongeurPlane.textColor = .black
+//        labelLongeurPlane.adjustsFontForContentSizeCategory = true
+//
+//        let vitesseLongeurStackView = UIStackView(arrangedSubviews: [labelVitesseDeCroisiere,labelLongeurPlane])
+//        vitesseLongeurStackView.axis = .horizontal
+//        vitesseLongeurStackView.alignment = .fill
+//        vitesseLongeurStackView.spacing = UIStackView.spacingUseSystem
+//        vitesseLongeurStackView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        resultvitesse.text = title
+//        resultvitesse.numberOfLines = 0
+//        resultvitesse.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        resultvitesse.textAlignment = .center
+//        resultvitesse.textColor = .label
+//        resultvitesse.adjustsFontForContentSizeCategory = true
+//        resultvitesse.translatesAutoresizingMaskIntoConstraints = false
+//
+//        resultLongeur.text = title
+//        resultLongeur.numberOfLines = 0
+//        resultLongeur.font = UIFont
+//            .preferredFont(forTextStyle: .headline)
+//        resultLongeur.textAlignment = .center
+//        resultLongeur.textColor = .label
+//        resultLongeur.adjustsFontForContentSizeCategory = true
+//        resultLongeur.translatesAutoresizingMaskIntoConstraints = false
         
-        let labelVitesseDeCroisiere = UILabel()
-        labelVitesseDeCroisiere.text = "Vitesse de Croisiere"
-        labelVitesseDeCroisiere.numberOfLines = 0
-        labelVitesseDeCroisiere.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        labelVitesseDeCroisiere.textAlignment = .center
-        labelVitesseDeCroisiere.textColor = .black
-        labelVitesseDeCroisiere.adjustsFontForContentSizeCategory = true
+//        let resultVitesseLongeurStackView = UIStackView(arrangedSubviews: [resultvitesse, resultLongeur])
+//        resultVitesseLongeurStackView.axis = .horizontal
+//        resultVitesseLongeurStackView.alignment = .fill
+//        resultVitesseLongeurStackView.spacing = UIStackView.spacingUseSystem
+//        resultVitesseLongeurStackView.translatesAutoresizingMaskIntoConstraints = false
         
-       
-        let labelLongeurPlane = UILabel()
-        labelLongeurPlane.text = "Longeur Plane"
-        labelLongeurPlane.numberOfLines = 0
-        labelLongeurPlane.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        labelLongeurPlane.textAlignment = .center
-        labelLongeurPlane.textColor = .black
-        labelLongeurPlane.adjustsFontForContentSizeCategory = true
-
-        let vitesseLongeurStackView = UIStackView(arrangedSubviews: [labelVitesseDeCroisiere,labelLongeurPlane])
-        vitesseLongeurStackView.axis = .horizontal
-        vitesseLongeurStackView.alignment = .fill
-        vitesseLongeurStackView.spacing = UIStackView.spacingUseSystem
-        vitesseLongeurStackView.translatesAutoresizingMaskIntoConstraints = false
- 
-        resultvitesse.text = title
-        resultvitesse.numberOfLines = 0
-        resultvitesse.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        resultvitesse.textAlignment = .center
-        resultvitesse.textColor = .label
-        resultvitesse.adjustsFontForContentSizeCategory = true
-        resultvitesse.translatesAutoresizingMaskIntoConstraints = false
-        
-        resultLongeur.text = title
-        resultLongeur.numberOfLines = 0
-        resultLongeur.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        resultLongeur.textAlignment = .center
-        resultLongeur.textColor = .label
-        resultLongeur.adjustsFontForContentSizeCategory = true
-        resultLongeur.translatesAutoresizingMaskIntoConstraints = false
-        
-        let resultVitesseLongeurStackView = UIStackView(arrangedSubviews: [resultvitesse, resultLongeur])
-        resultVitesseLongeurStackView.axis = .horizontal
-        resultVitesseLongeurStackView.alignment = .fill
-        resultVitesseLongeurStackView.spacing = UIStackView.spacingUseSystem
-        resultVitesseLongeurStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let contentView = UIStackView(arrangedSubviews: [titleStackView, resultStackView, vitesseLongeurStackView,resultVitesseLongeurStackView])
+        let contentView = UIStackView(arrangedSubviews: [titleStackView, resultStackView])
         contentView.axis = .horizontal
         contentView.alignment = .fill
         contentView.spacing = UIStackView.spacingUseSystem

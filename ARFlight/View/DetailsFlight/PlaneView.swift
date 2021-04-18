@@ -77,7 +77,7 @@ final class PlaneView: UIView  {
     
        
 
-    let contentView = UIStackView(arrangedSubviews: [imageView, titleLabel])
+    let contentView = UIStackView(arrangedSubviews: [titleLabel,imageView])
     
     contentView.axis = .vertical
     contentView.alignment = .fill
