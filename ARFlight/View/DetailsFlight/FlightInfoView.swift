@@ -96,7 +96,7 @@ final class FlightInfoView: UIView  {
         resultStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let contentView = UIStackView(arrangedSubviews: [statusStackView, resultStackView])
-        contentView.axis = .horizontal
+        contentView.axis = .vertical
         contentView.alignment = .fill
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false

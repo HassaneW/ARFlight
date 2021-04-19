@@ -62,21 +62,43 @@ extension Flight {
         flightInformations?.last
     }
     
+    // Depart
+    
     var departureDateTime: Date? {
         firstFlightLeg?.departureDateTime
     }
     
-    var arrivalDateTime: Date? {
-        lastFlightLeg?.arrivalDateTime
+    var departureCodeAirport: String? {
+        firstFlightLeg?.departure?.airport?.code
+    }
+
+    var departureTerminalAirport: String? {
+        firstFlightLeg?.departPlacesTerminal
     }
     
     var departureAirportName: String? {
         firstFlightLeg?.departureAirportName
     }
     
+    // Arrival
+    
+    var arrivalTerminalAirport: String? {
+        firstFlightLeg?.arrivalPlacesTerminal
+    }
+    
+    var arrivalCodeAirport: String? {
+        firstFlightLeg?.arrival?.airport?.code
+    }
+    
+    var arrivalDateTime: Date? {
+        lastFlightLeg?.arrivalDateTime
+    }
+    
     var arrivalAirportName: String? {
         lastFlightLeg?.arrivalAirportName
     }
+    
+    
     
     var planeId: String? {
         firstFlightLeg?.aircraft?.model// construire le plane id depuis 

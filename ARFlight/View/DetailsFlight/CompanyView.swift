@@ -122,7 +122,7 @@ final class CompanyView: UIView  {
         resultStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let contentView = UIStackView(arrangedSubviews: [titleStackView, resultStackView])
-        contentView.axis = .horizontal
+        contentView.axis = .vertical
         contentView.alignment = .fill
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false

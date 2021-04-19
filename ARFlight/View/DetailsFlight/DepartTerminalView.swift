@@ -10,7 +10,13 @@ import UIKit
 
 final class DepartTerminalView: UIView  {
 
-    let textField = UITextField()
+//    var textField = UITextField()
+    
+    var titleDepartTerminalAirport: String? {
+        didSet {
+            titleLabelDepart.text = titleDepartTerminalAirport
+        }
+    }
 
     private let titleLabelDepart = UILabel()
 
@@ -34,14 +40,24 @@ final class DepartTerminalView: UIView  {
         LabelTerminalDepart.adjustsFontForContentSizeCategory = true
         LabelTerminalDepart.translatesAutoresizingMaskIntoConstraints = false
         
-        let textFieldTerminalDepart = UITextField()
-        textFieldTerminalDepart.placeholder = "Terminal de Départ"
+//        let textFieldTerminalDepart = UITextField()
+//        textFieldTerminalDepart.placeholder = "Terminal de Départ"
  
+        titleLabelDepart.text = title
+        titleLabelDepart.numberOfLines = 0
+        titleLabelDepart.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        titleLabelDepart.textAlignment = .center
+        titleLabelDepart.textColor = .label
+        titleLabelDepart.adjustsFontForContentSizeCategory = true
+        titleLabelDepart.translatesAutoresizingMaskIntoConstraints = false
+        
+        
 //        // hugging ressitance priperoty
 //        //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 //        //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 
-    let contentView = UIStackView(arrangedSubviews: [LabelTerminalDepart,textFieldTerminalDepart])
+    let contentView = UIStackView(arrangedSubviews: [LabelTerminalDepart,titleLabelDepart])
     
     contentView.axis = .vertical
     contentView.alignment = .fill

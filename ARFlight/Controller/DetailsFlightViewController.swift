@@ -12,16 +12,19 @@ class DetailsFlightViewController: UIViewController {
     
     let companyView = CompanyView()
     let flightInfoView = FlightInfoView()
+    
     let departView = DepartView()
+    let departTerminalView = DepartTerminalView()
+    
+    let arrivalView = ArrivalView()
+    let arrivalTerminalView = ArrivalTerminalView()
+   
     let planeView = PlaneView() // Flight id
     let infoPlaneView = InfoPlaneView()
     let infoPlaneViewVL = InfoPlaneViewVitesseLongeur()
-    let departTerminalView = DepartTerminalView()
-    let arrivalTerminalView = ArrivalTerminalView()
-    let arrivalView = ArrivalView()
+    
     let notificationCalendarView = NotificationCalendarView()
 
- 
     let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: nil, cruisingSpeed: "", image: "a330-200")
     
     private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
@@ -31,12 +34,48 @@ class DetailsFlightViewController: UIViewController {
         }
     }
     
+    /*
+     company, identifiantPlane, flightType
+     */
+    
     func configureView() {
-        planeView.titleFlight = flight?.flightNumber
+
+        
+        // Company
+        companyView.titleCompany = flight?.company?.name
+        
+        companyView.titleCodeFlight = flight?.identifiantPlane
+        
+        companyView.titleFlightType = flight?.flightType.rawValue
+            
+        // Status, Duree
+        
+        flightInfoView.titleStatus = flight?.flightStatus
+        
+//        flightInfoView.titleDuree = flight
+        
+        // Depart
+        departView.titleDepartAirport = flight?.departureCodeAirport
+        
         departView.titleHour = flight?.departureDateTime?.timeString()
-//        let plane = planes.first { (plane) -> Bool in
+        
+        departTerminalView.titleDepartTerminalAirport = flight?.departureTerminalAirport
+ 
+        // Arrival
+        arrivalView.titleArrivalAirport = flight?.arrivalCodeAirport
+        
+        arrivalView.titleHour = flight?.arrivalDateTime?.timeString()
+        
+        arrivalTerminalView.titleArrivalTerminalAirport = flight?.arrivalTerminalAirport ?? " - "
+        
+        
+ // PlaneView
+        
+        planeView.titleFlight = flight?.flightNumber
+       
+        //        let plane = planes.first { (plane) -> Bool in
 //            flight?.planeId == plane.id
-//        }
+        //        }
         let plane = planes.first { $0.id == flight?.planeId }
         infoPlaneViewVL.titleLongeur = plane?.cruisingSpeed
     }
@@ -89,7 +128,7 @@ extension DetailsFlightViewController {
 //       // myButton.addTarget(self, selector: #selector)
 //        myButton.title = "My button"
 //
-        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,planeView, infoPlaneView, infoPlaneViewVL,arrivalView, arrivalTerminalView, notificationCalendarView])
+        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,arrivalView, arrivalTerminalView,planeView, infoPlaneView, infoPlaneViewVL, notificationCalendarView])
         
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill

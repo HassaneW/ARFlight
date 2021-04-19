@@ -10,7 +10,13 @@ import UIKit
 
 final class ArrivalTerminalView: UIView  {
 
-    let textField = UITextField()
+//    let textField = UITextField()
+    
+    var titleArrivalTerminalAirport: String? {
+        didSet {
+            titleLabelArrival.text = titleArrivalTerminalAirport
+        }
+    }
 
     private let titleLabelArrival = UILabel()
 
@@ -34,14 +40,23 @@ final class ArrivalTerminalView: UIView  {
         LabelTerminalArrival.adjustsFontForContentSizeCategory = true
         LabelTerminalArrival.translatesAutoresizingMaskIntoConstraints = false
         
-        let textFieldTerminalArrival = UITextField()
-        textFieldTerminalArrival.placeholder = "Terminal d'Arrival'"
+        titleLabelArrival.text = title
+        titleLabelArrival.numberOfLines = 0
+        titleLabelArrival.font = UIFont
+            .preferredFont(forTextStyle: .headline)
+        titleLabelArrival.textAlignment = .center
+        titleLabelArrival.textColor = .label
+        titleLabelArrival.adjustsFontForContentSizeCategory = true
+        titleLabelArrival.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let textFieldTerminalArrival = UITextField()
+//        textFieldTerminalArrival.placeholder = "Terminal d'Arrival'"
  
 //        // hugging ressitance priperoty
 //        //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 //        //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 
-    let contentView = UIStackView(arrangedSubviews: [LabelTerminalArrival,textFieldTerminalArrival])
+    let contentView = UIStackView(arrangedSubviews: [LabelTerminalArrival,titleLabelArrival])
     
     contentView.axis = .vertical
     contentView.alignment = .fill

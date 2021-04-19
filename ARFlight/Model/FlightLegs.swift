@@ -28,8 +28,16 @@ struct FlightLegs: Decodable {
         arrival?.airport?.name
     }
     
+    var departPlacesTerminal: String? {
+        departure?.airport?.places?.gateNumbers
+    }
+    
     var departureDateTime: Date? {
         departure?.times?.scheduled
+    }
+    
+    var arrivalPlacesTerminal: String? {
+        arrival?.airport?.places?.gateNumbers
     }
     
     var arrivalDateTime: Date? {

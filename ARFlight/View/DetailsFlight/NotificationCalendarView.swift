@@ -49,7 +49,6 @@ final class NotificationCalendarView: UIView  {
         titleStackView.spacing = UIStackView.spacingUseSystem
         titleStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        
         // Image Notification
         let imageNotification = UIImage(systemName: "bell.circle.fill")
         let myImageNotification:UIImageView = UIImageView()
