@@ -25,7 +25,7 @@ class DetailsFlightViewController: UIViewController {
     
     let notificationCalendarView = NotificationCalendarView()
 
-    let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: nil, cruisingSpeed: "", image: "a330-200")
+    let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: 0.0, cruisingSpeed: "", image: "a330-200")
     
     private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
     var flight: Flight? {
@@ -33,6 +33,7 @@ class DetailsFlightViewController: UIViewController {
             configureView()
         }
     }
+    
     
     /*
      company, identifiantPlane, flightType
@@ -52,7 +53,8 @@ class DetailsFlightViewController: UIViewController {
         
         flightInfoView.titleStatus = flight?.flightStatus
         
-//        flightInfoView.titleDuree = flight
+        flightInfoView.titleDuree = flight?.durationFlight
+        
         
         // Depart
         departView.titleDepartAirport = flight?.departureCodeAirport
@@ -68,7 +70,6 @@ class DetailsFlightViewController: UIViewController {
         
         arrivalTerminalView.titleArrivalTerminalAirport = flight?.arrivalTerminalAirport ?? " - "
         
-        
  // PlaneView
         
         planeView.titleFlight = flight?.flightNumber
@@ -76,8 +77,21 @@ class DetailsFlightViewController: UIViewController {
         //        let plane = planes.first { (plane) -> Bool in
 //            flight?.planeId == plane.id
         //        }
-        let plane = planes.first { $0.id == flight?.planeId }
-        infoPlaneViewVL.titleLongeur = plane?.cruisingSpeed
+        let plane = planes.first {
+            $0.id == flight?.planeId
+            
+        }
+        
+        infoPlaneView.titleTypeMoteur = planes.first?.motorType
+
+        
+        infoPlaneView.titleNombreDeSiege = planes.first?.numberOfSeats
+        
+        infoPlaneViewVL.titleLongeur = "\(planes.first!.length)"
+        
+        infoPlaneViewVL.titleVitesse = planes.first?.cruisingSpeed
+        
+
     }
     
     override func viewDidLoad() {
@@ -99,6 +113,7 @@ class DetailsFlightViewController: UIViewController {
                 print("Flight detail: \(flight)")
                 DispatchQueue.main.async {
                     self.flight = flight
+                    
                 }
             case .failure(let error):
                 print("Error getting flight details: \(error.localizedDescription)")
@@ -117,9 +132,9 @@ extension DetailsFlightViewController {
 
         planeView.titleFlight = "\(flight?.identifiantPlane)"
         
-        if let imageName = plane.image {
-            planeView.image = UIImage(named: imageName)
-        }
+//        if imageName = plane.image {
+        planeView.image = UIImage(named: plane.image)
+//        }
         
         
         

@@ -17,27 +17,15 @@ final class PlaneView: UIView  {
         }
     }
     
-//    var plane: Plane? {
-//        didSet {
-//
-//            imageTitleLabel.text = plane?.image
-//        }
-//    }
     
     var image: UIImage? {
         didSet {
             imageView.image = image
         }
     }
-    
-    
-//    let textField = UITextField()
 
     private let titleLabel = UILabel()
-    private let imageTitleLabel = UILabel()
     private let imageView = UIImageView()
-
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -62,6 +62,10 @@ extension Flight {
         flightInformations?.last
     }
     
+    var durationFlight : String? {
+        firstFlightLeg?.duration
+    }
+    
     // Depart
     
     var departureDateTime: Date? {

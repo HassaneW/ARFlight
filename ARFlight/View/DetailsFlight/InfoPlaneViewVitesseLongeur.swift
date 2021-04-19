@@ -164,7 +164,7 @@ final class InfoPlaneViewVitesseLongeur: UIView  {
         resultVitesseLongeurStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let contentView = UIStackView(arrangedSubviews: [vitesseLongeurStackView,resultVitesseLongeurStackView])
-        contentView.axis = .horizontal
+        contentView.axis = .vertical
         contentView.alignment = .fill
         contentView.spacing = UIStackView.spacingUseSystem
         contentView.translatesAutoresizingMaskIntoConstraints = false
