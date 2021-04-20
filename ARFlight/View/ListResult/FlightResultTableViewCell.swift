@@ -7,62 +7,6 @@
 
 import UIKit
 
-/*
- 
- // Modele :
- 
- /*
- 1)
- Code vol (Identifiant vol) :
- Flight -> flightNumber;
- 
- 2)
- Code Company:
- Flight -> company -> code
- 
- 3)
- Airport Depart:
- FlightLegs -> departure -> Airport Location -> latitude, longitude
- 
- Airport Arrivée:
- FlightLegs -> arrival -> Airport Location -> latitude, longitude
- 
- 4)
- Heure Départ
- Flight -> departureDate
- 
- 5)
- Flight -> FlightLegs -> arrival -> times -> scheduled
- 
- */
- 
- // Modele :
- 
- /*
- 1)
- Code vol (Identifiant vol) :
- Flight -> flightNumber;
- 
- 2)
- Code Company:
- Flight -> company -> code
- 
- 3)
- Airport Depart:
- FlightLegs -> departure -> Airport Location -> latitude, longitude
- 
- Airport Arrivée:
- FlightLegs -> arrival -> Airport Location -> latitude, longitude
- 
- 4)
- Heure Départ
- Flight -> departureDate
- 
- 5)
- Flight -> FlightLegs -> arrival -> times -> scheduled
- 
- */
- */
 import Foundation
 
 extension Date {

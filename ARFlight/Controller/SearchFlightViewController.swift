@@ -220,3 +220,52 @@ extension SearchFlightViewController: UITextFieldDelegate {
     }
 }
 
+/*
+ Textfield :
+ 1)
+ 
+ func setUpTextField() {
+     moneyTextField.delegate = self
+     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+     moneyTextField.inputAccessoryView = toolbar
+     addToolbar()
+ }
+ 
+ 2)
+ func addToolbar() {
+     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
+     let clear = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clikedClear))
+     let convert = UIBarButtonItem(title: "Convert", style: .plain, target: self, action: #selector(clikedConvert))
+     let spaceBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+     toolbar.setItems([clear, spaceBtn, convert], animated: true)
+     self.moneyTextField.inputAccessoryView = toolbar
+ }
+ @objc func clikedClear() {
+     moneyTextField.text = ""
+ }
+ @objc func clikedConvert() {
+     updateMoney()
+     moneyTextField.resignFirstResponder()
+ }
+}
+ 
+ 3)
+ extension ExchangeRateViewController: UITextFieldDelegate {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         print(#function)
+         return true
+     }
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         self.view.endEditing(true)
+     }
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         if string == "." && (textField.text?.contains(".") == true) {
+             return false
+         }
+         return true
+     }
+ }
+
+
+ */
+

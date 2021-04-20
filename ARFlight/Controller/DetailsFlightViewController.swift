@@ -21,7 +21,7 @@ class DetailsFlightViewController: UIViewController {
    
     let planeView = PlaneView() // Flight id
     let infoPlaneView = InfoPlaneView()
-    let infoPlaneViewVL = InfoPlaneViewVitesseLongeur()
+//    let infoPlaneViewVL = InfoPlaneViewVitesseLongeur()
     
     let notificationCalendarView = NotificationCalendarView()
 
@@ -82,14 +82,19 @@ class DetailsFlightViewController: UIViewController {
             
         }
         
-        infoPlaneView.titleTypeMoteur = planes.first?.motorType
+        infoPlaneView.titleTypeMoteur = planes[0].motorType
 
         
         infoPlaneView.titleNombreDeSiege = planes.first?.numberOfSeats
         
-        infoPlaneViewVL.titleLongeur = "\(planes.first!.length)"
         
-        infoPlaneViewVL.titleVitesse = planes.first?.cruisingSpeed
+        infoPlaneView.titleLongeur = "\(planes.first!.length)"
+        
+        infoPlaneView.titleVitesse = planes.first?.cruisingSpeed
+        
+//        infoPlaneViewVL.titleLongeur = "\(planes.first!.length)"
+//
+//        infoPlaneViewVL.titleVitesse = planes.first?.cruisingSpeed
         
 
     }
@@ -143,11 +148,13 @@ extension DetailsFlightViewController {
 //       // myButton.addTarget(self, selector: #selector)
 //        myButton.title = "My button"
 //
-        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,arrivalView, arrivalTerminalView,planeView, infoPlaneView, infoPlaneViewVL, notificationCalendarView])
+        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,arrivalView, arrivalTerminalView,planeView, infoPlaneView])
+        
+//        notificationCalendarView
         
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
-        contentStackView.spacing = UIStackView.spacingUseSystem
+        contentStackView.spacing = 20
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
 //        view.addSubview(contentStackView)

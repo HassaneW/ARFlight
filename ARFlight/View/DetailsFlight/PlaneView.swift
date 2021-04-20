@@ -9,8 +9,6 @@ import UIKit
 
 final class PlaneView: UIView  {
     
-
-    
     var titleFlight: String? {
         didSet {
             titleLabel.text = titleFlight
@@ -23,6 +21,37 @@ final class PlaneView: UIView  {
             imageView.image = image
         }
     }
+    
+    
+    var titleTypeMoteur: String? {
+        didSet {
+            resultTypeDeMoteur.text = titleTypeMoteur
+        }
+    }
+    
+    var titleNombreDeSiege: String? {
+        didSet {
+            resultNombreDeSiege.text = titleNombreDeSiege
+        }
+    }
+    
+    var titleVitesse: String? {
+        didSet {
+            resultvitesse.text = titleVitesse
+        }
+    }
+    
+    var titleLongeur: String? {
+        didSet {
+            resultLongeur.text = titleLongeur
+        }
+    }
+    
+    private let resultvitesse = UILabel()
+    private let resultLongeur = UILabel()
+ 
+    private let resultTypeDeMoteur = UILabel()
+    private let resultNombreDeSiege = UILabel()
 
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
@@ -84,5 +113,6 @@ final class PlaneView: UIView  {
             contentView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
             trailingAnchor.constraint(equalToSystemSpacingAfter: contentView.trailingAnchor, multiplier: 1.0),
         ])
+
     }
 }

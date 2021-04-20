@@ -10,6 +10,8 @@ import UIKit
 
 final class RouteView: UIView  {
     
+    let customUILabelVille = CustomUILabel(title: "Ville : ")
+    
     var titleFlight: String? {
         didSet {
             titleLabel.text = titleFlight
@@ -59,16 +61,16 @@ final class RouteView: UIView  {
 
         // Label Ville
 
-        let cityLabel = UILabel()
-        cityLabel.text = "Ville : "
-        cityLabel.textAlignment = .center
-        cityLabel.numberOfLines = 1
-        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        cityLabel.textColor = .cyan
-        cityLabel.adjustsFontForContentSizeCategory = true
-        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+//        let cityLabel = UILabel()
+//        cityLabel.text = "Ville : "
+//        cityLabel.textAlignment = .center
+//        cityLabel.numberOfLines = 1
+//        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+//        cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+//        cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        cityLabel.textColor = .cyan
+//        cityLabel.adjustsFontForContentSizeCategory = true
+//        cityLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Textfield
   
@@ -89,7 +91,7 @@ final class RouteView: UIView  {
        // textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         // StackView Ville Depart
-        let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
+        let citystackView = UIStackView(arrangedSubviews: [customUILabelVille, textField])
         citystackView.axis = .horizontal
         citystackView.alignment = .center
         citystackView.spacing = 20
@@ -107,7 +109,7 @@ final class RouteView: UIView  {
         addSubview(contentView)
         
         // Debug colors
-        cityLabel.backgroundColor = .red
+//        cityLabel.backgroundColor = .red
         myImagePlane.backgroundColor = .yellow
         titleLabel.backgroundColor = .tertiaryLabel
         textField.backgroundColor = .brown
