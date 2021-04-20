@@ -32,13 +32,28 @@ class CustomLabelTitle: UILabel {
     }
     private func sharedInit() {
         titleLabel.text = title
-        titleLabel.numberOfLines = 1
+        titleLabel.numberOfLines = 2
         titleLabel.font = UIFont
             .preferredFont(forTextStyle: .largeTitle)
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 50)
-        titleLabel.adjustsFontSizeToFitWidth = true
+   
+        //titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
         titleLabel.textColor = .label
         titleLabel.adjustsFontForContentSizeCategory = true
+    }
+}
+
+extension UILabel {
+    
+    convenience init(text: String?) {
+        self.init()
+        self.text = text
+    }
+    
+    convenience init(text: String? = nil, font: UIFont) {
+        self.init()
+        self.font = font
+        self.text = text
+        self.adjustsFontForContentSizeCategory = true
     }
 }

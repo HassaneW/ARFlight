@@ -18,38 +18,38 @@ final class RouteView: UIView  {
         }
     }
     
+    
     let textField = UITextField()
 
-    private let titleLabel = UILabel()
+    private let titleLabel = UILabel(font: UIFont
+                                        .preferredFont(forTextStyle: .largeTitle))
 
-    init(title: String?) {
+    init(title: String?, image: UIImage?) {
         super.init(frame: .zero)
-        setupView(withTitle: title)
+        setupViewWith(title: title, image: image)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupView(withTitle title: String? = nil) {
-        
-        let imagePlane = UIImage(systemName: "airplane")
-        let myImagePlane = UIImageView(image: imagePlane)
+    private func setupViewWith(title: String? = nil, image: UIImage? = nil) {
+
+        let myImagePlane = UIImageView(image: image)
         myImagePlane.clipsToBounds = true
         myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
         
 //        myImagePlane.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 //        myImagePlane.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
         titleLabel.text = title
         titleLabel.numberOfLines = 1
-        titleLabel.font = UIFont
-            .preferredFont(forTextStyle: .largeTitle)
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 50)
-        titleLabel.adjustsFontSizeToFitWidth = true
+        //titleLabel.font = UIFont
+            //.preferredFont(forTextStyle: .largeTitle)
+        
+        //titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
         titleLabel.textColor = .label
-        titleLabel.adjustsFontForContentSizeCategory = true
+        //titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
         let routeStackView = UIStackView(arrangedSubviews: [UIView(),myImagePlane, titleLabel, UIView()])
@@ -61,11 +61,11 @@ final class RouteView: UIView  {
 
         // Label Ville
 
-//        let cityLabel = UILabel()
-//        cityLabel.text = "Ville : "
-//        cityLabel.textAlignment = .center
-//        cityLabel.numberOfLines = 1
-//        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        let cityLabel = UILabel()
+        cityLabel.text = "Ville : "
+        cityLabel.textAlignment = .center
+        cityLabel.numberOfLines = 1
+        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
 //        cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 //        cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 //        cityLabel.textColor = .cyan
@@ -91,7 +91,7 @@ final class RouteView: UIView  {
        // textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         // StackView Ville Depart
-        let citystackView = UIStackView(arrangedSubviews: [customUILabelVille, textField])
+        let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
         citystackView.axis = .horizontal
         citystackView.alignment = .center
         citystackView.spacing = 20
@@ -162,7 +162,7 @@ final class RouteView: UIView  {
  
  
      // 2) StackView Ville Depart
-     // Label Ville
+      Label Ville
      let titleLabel = UILabel()
      titleLabel.text = "Ville"
      titleLabel.numberOfLines = 0

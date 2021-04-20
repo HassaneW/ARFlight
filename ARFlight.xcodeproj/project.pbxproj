@@ -230,6 +230,7 @@
 				FB48F8E0262EB614008354F0 /* CustomUIImage.swift */,
 				FB48F8E5262EBA32008354F0 /* CustomTextfield.swift */,
 				FB48F8EA262EBEC4008354F0 /* CustomStackView.swift */,
+				FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -364,7 +365,6 @@
 		FBE9B65E2620D13B00F197A4 /* ListResult */ = {
 			isa = PBXGroup;
 			children = (
-				FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */,
 			);
 			path = ListResult;
 			sourceTree = "<group>";

@@ -12,13 +12,14 @@ import MapKit
 class SearchFlightViewController: UIViewController {
     weak var coordinator: MainCoordinator?
   
-    let myButton = ActionButton()
-    let routeViewDepart = RouteView(title: "Depart")
-    let routeViewArrive = RouteView(title: "Arrive")
+    private let myButton = ActionButton()
+   
     let dateRouteView = DateRouteView()
     let currentLocationView = CurrentLocationView()
     let calendarView = CalendarView()
     
+    let routeViewDepart = RouteView(title: "Depart", image: UIImage(systemName: "airplane"))
+    let routeViewArrive = RouteView(title: "Arrive", image: UIImage(systemName: "airplane"))
     private let text = UILabel()
     
     private var flights : [Flight]?

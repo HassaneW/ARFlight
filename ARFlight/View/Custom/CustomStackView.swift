@@ -29,6 +29,16 @@ class CustomStackView : UIStackView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
             
             addSubview(contentView)
-    }
+        
+        NSLayoutConstraint.activate([
 
+            contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
+            
+            bottomAnchor.constraint(equalToSystemSpacingBelow: contentView.bottomAnchor, multiplier: 1.0),
+            contentView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: contentView.trailingAnchor, multiplier: 1.0),
+        ])
+        
+    }
+    
 }
