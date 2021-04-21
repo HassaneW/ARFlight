@@ -1,5 +1,5 @@
 //
-//  CurrentLocationView.swift
+//  LocationView.swift
 //  ARFlight
 //
 //  Created by Wandianga hassane on 2021-04-09.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class CurrentLocationView: UIView  {
+final class LocationView: UIView  {
 
 //    private let titleLabelDepart = UILabel()
 

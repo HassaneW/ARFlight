@@ -9,17 +9,17 @@ import UIKit
 import MapKit
 
 
-class SearchFlightViewController: UIViewController {
+class SearchFlightViewController: UIViewController{
     weak var coordinator: MainCoordinator?
   
     private let myButton = ActionButton()
    
-    let dateRouteView = DateRouteView()
-    let currentLocationView = CurrentLocationView()
+    let dateRouteView = DateTripView()
+    let currentLocationView = LocationView()
     let calendarView = CalendarView()
     
-    let routeViewDepart = RouteView(title: "Depart", image: UIImage(systemName: "airplane"))
-    let routeViewArrive = RouteView(title: "Arrive", image: UIImage(systemName: "airplane"))
+    let routeViewDepart = TripCityView(title: "Depart", image: UIImage(systemName: "airplane"))
+    let routeViewArrive = TripCityView(title: "Arrive", image: UIImage(systemName: "airplane"))
     private let text = UILabel()
     
     private var flights : [Flight]?
@@ -218,6 +218,19 @@ extension Flight {
 extension SearchFlightViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         text.isHidden = true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(#function)
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "." && (textField.text?.contains(".") == true) {
+            return false
+        }
+        return true
     }
 }
 

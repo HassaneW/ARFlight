@@ -1,5 +1,5 @@
 //
-//  DateRouteView.swift
+//  DateTripView.swift
 //  ARFlight
 //
 //  Created by Wandianga hassane on 2021-04-09.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class DateRouteView: UIView  {
+final class DateTripView: UIView  {
 
     let textField = UITextField()
 

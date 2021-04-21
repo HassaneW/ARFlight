@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RouteView: UIView  {
+final class TripCityView: UIView  {
     
     let customUILabelVille = CustomUILabel(title: "Ville : ")
     
