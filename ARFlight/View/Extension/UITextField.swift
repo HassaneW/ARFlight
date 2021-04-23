@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-//Ajouter Le Bouton Terminé Sur InputAccessoryView De TextField
-// Ajouter le bouton clear
 
 extension UITextField {
     @IBInspectable var doneAccessory: Bool{

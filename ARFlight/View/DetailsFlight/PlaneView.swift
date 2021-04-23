@@ -7,6 +7,7 @@
 
 import UIKit
 
+// PlaneInformationsView
 final class PlaneView: UIView  {
     
     var titleFlight: String? {
@@ -94,8 +95,9 @@ final class PlaneView: UIView  {
     
        
 
-    let contentView = UIStackView(arrangedSubviews: [titleLabel,imageView])
+   // let contentView = UIStackView(arrangedSubviews: [titleLabel,imageView])
     
+        let contentView = UIStackView(arrangedSubviews: [titleLabel,titleLabel, titleLabel])
     contentView.axis = .vertical
     contentView.alignment = .fill
     contentView.spacing = UIStackView.spacingUseSystem
@@ -107,6 +109,7 @@ final class PlaneView: UIView  {
         
         NSLayoutConstraint.activate([
 
+           // imageView.heightAnchor.constraint(equalToConstant: 80),
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             
             bottomAnchor.constraint(equalToSystemSpacingBelow: contentView.bottomAnchor, multiplier: 1.0),

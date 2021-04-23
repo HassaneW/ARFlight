@@ -10,7 +10,7 @@ import UIKit
 
 final class TripCityView: UIView  {
     
-    let customUILabelVille = CustomUILabel(title: "Ville : ")
+   // let customUILabelVille = CustomUILabel(title: "Ville : ")
     
     var titleFlight: String? {
         didSet {

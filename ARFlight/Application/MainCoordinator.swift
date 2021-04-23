@@ -40,9 +40,9 @@ class MainCoordinator: Coordinator {
         // Pour plus tard
     }
     func showFlightDetailFor(flight: Flight?) {
-        let flightDetailViewController = DetailsFlightViewController()
+        let flightDetailViewController = DetailsFlightViewController(flight: flight)
         flightDetailViewController.coordinator = self
-        flightDetailViewController.flight = flight
+        //flightDetailViewController.flight = flight
         navigationController.pushViewController(flightDetailViewController, animated: true)
     }
     

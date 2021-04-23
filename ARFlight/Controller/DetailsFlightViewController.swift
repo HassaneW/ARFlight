@@ -19,27 +19,29 @@ class DetailsFlightViewController: UIViewController {
     let arrivalView = ArrivalView()
     let arrivalTerminalView = ArrivalTerminalView()
    
+    // PlaneInformationsView
     let planeView = PlaneView() // Flight id
     let infoPlaneView = InfoPlaneView()
 //    let infoPlaneViewVL = InfoPlaneViewVitesseLongeur()
     
     let notificationCalendarView = NotificationCalendarView()
-
-    let plane = Plane(flightType: "", id: "", motorType: "", numberOfSeats: "", length: 0.0, cruisingSpeed: "", image: "a330-200")
     
     private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
-    var flight: Flight? {
-        didSet {
-            configureView()
-        }
-    }
     
+//    var flight: Flight? {
+//        didSet {
+//            print("Flight detail: \(flight)")
+//            configureView()
+//        }
+//    }
+    
+    private let flight: Flight?
     
     /*
      company, identifiantPlane, flightType
      */
     
-    func configureView() {
+    func setupFlightInformations() {
 
         
         // Company
@@ -77,55 +79,64 @@ class DetailsFlightViewController: UIViewController {
         //        let plane = planes.first { (plane) -> Bool in
 //            flight?.planeId == plane.id
         //        }
-        let plane = planes.first {
-            $0.id == flight?.planeId
+        //let plane = planes.first { $0.id == flight?.planeId }
+        
+        print("Plane Id \(flight?.planeId ?? "Missing")")
+        
+        if let flightPlane = planes.first(where: { $0.id == flight?.planeId }) {
+            //infoPlaneView.isHidden = false
+            infoPlaneView.plane = flightPlane
             
-        }
-        
-        infoPlaneView.titleTypeMoteur = planes[0].motorType
-
-        
-        infoPlaneView.titleNombreDeSiege = planes.first?.numberOfSeats
-        
-        
-        infoPlaneView.titleLongeur = "\(planes.first!.length)"
-        
-        infoPlaneView.titleVitesse = planes.first?.cruisingSpeed
-        
-//        infoPlaneViewVL.titleLongeur = "\(planes.first!.length)"
+//            planeView.titleFlight = flightPlane.id
 //
-//        infoPlaneViewVL.titleVitesse = planes.first?.cruisingSpeed
-        
+//            planeView.image = UIImage(named: flightPlane.image)
+        }
+       
+       
 
+
+    }
+    
+    init(flight: Flight?) {
+        self.flight = flight
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpId()
         
+        setupFlightInformations()
         setupView()
-        // Do any additional setup after loading the view.
     }
     
 
-    func setUpId() {
+    /*
+    func fetchFlightDetails() {
    
+        guard let flightId = flight?.identifiantPlane else {
+            print("Missing flight Id")
+            return
+        }
         // loading / error / affichage
         
-        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: "20210115+AF+1496") { (result) in
+        NetworkServiceFlight.shared.getFlightDetailsFor(flightId: flightId) { (result) in
             switch result {
             case .success(let flight):
                 print("Flight detail: \(flight)")
                 DispatchQueue.main.async {
                     self.flight = flight
-                    
+
                 }
             case .failure(let error):
                 print("Error getting flight details: \(error.localizedDescription)")
             }
         }
     }
-
+*/
 }
 
 extension DetailsFlightViewController {
@@ -135,14 +146,10 @@ extension DetailsFlightViewController {
 
         view.backgroundColor = UIColor.lightGray
 
-        planeView.titleFlight = "\(flight?.identifiantPlane)"
-        
-//        if imageName = plane.image {
-        planeView.image = UIImage(named: plane.image)
-//        }
+      
         
         
-        
+      //  infoPlaneView.isHidden = true
 ////        let myButton = ActionButton()
 //        myButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
 //       // myButton.addTarget(self, selector: #selector)

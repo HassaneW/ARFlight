@@ -48,7 +48,7 @@ class SearchFlightViewController: UIViewController{
             return
         }
         
-        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "DSS", destination: "CDG") { [weak self] result in
+        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "YUL", destination: "CDG") { [weak self] result in
             switch result {
             case .success(let flights):
                 print("Flights found: \(flights.count)")

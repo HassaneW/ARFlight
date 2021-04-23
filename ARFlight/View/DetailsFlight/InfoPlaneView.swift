@@ -13,32 +13,12 @@ final class InfoPlaneView: UIView  {
 
     var plane: Plane? {
         didSet {
-//            resultTypeDeMoteur.text = plane?.motorType
-//            resultNombreDeSiege.text = plane?.numberOfSeats
-        }
-    }
-    
-    var titleTypeMoteur: String? {
-        didSet {
-            resultTypeDeMoteur.text = titleTypeMoteur
-        }
-    }
-    
-    var titleNombreDeSiege: String? {
-        didSet {
-            resultNombreDeSiege.text = titleNombreDeSiege
-        }
-    }
-    
-    var titleVitesse: String? {
-        didSet {
-            resultvitesse.text = titleVitesse
-        }
-    }
-    
-    var titleLongeur: String? {
-        didSet {
-            resultLongeur.text = titleLongeur
+            resultTypeDeMoteur.text = plane?.motorType
+            resultNombreDeSiege.text = plane?.numberOfSeats
+            resultvitesse.text = plane?.cruisingSpeed
+            if let planeLength = plane?.length {
+                resultLongeur.text = "\(planeLength)"
+            }
         }
     }
     
@@ -169,7 +149,6 @@ final class InfoPlaneView: UIView  {
             resultvitesse.adjustsFontForContentSizeCategory = true
             resultvitesse.translatesAutoresizingMaskIntoConstraints = false
             
-            resultLongeur.text = title
             resultLongeur.numberOfLines = 0
             resultLongeur.font = UIFont
                 .preferredFont(forTextStyle: .headline)
