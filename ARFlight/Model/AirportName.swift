@@ -27,8 +27,6 @@ struct Countries: Decodable {
     var code: String
     var name: String
     let cities: [Cities]
-
-//    let stopovers: [Stopovers]
     
     enum CodingKeys : String, CodingKey {
         case code
@@ -67,7 +65,6 @@ extension Countries: CustomStringConvertible {
         return description
     }
 }
-
 struct Cities: Decodable {
     let code: String
     let name: String
@@ -92,7 +89,6 @@ struct Stopovers: Decodable {
         case name = "label"
     }
 }
-
 extension Cities: CustomStringConvertible {
     var description: String {
 
@@ -104,7 +100,6 @@ extension Cities: CustomStringConvertible {
         return description
     }
 }
-
 extension Stopovers: CustomStringConvertible {
     var description: String {
 

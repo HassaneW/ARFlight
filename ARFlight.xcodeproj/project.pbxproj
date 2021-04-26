@@ -45,7 +45,6 @@
 		FB98702325E17B57000CF44A /* ARFlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702225E17B57000CF44A /* ARFlightTests.swift */; };
 		FB98702E25E17B57000CF44A /* ARFlightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98702D25E17B57000CF44A /* ARFlightUITests.swift */; };
 		FB9F241C25FB719500EC9104 /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F241B25FB719500EC9104 /* Flights.swift */; };
-		FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */; };
 		FBD5FCA72600CFFD00DE519E /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5FCA62600CFFD00DE519E /* Bundle-Decodable.swift */; };
 		FBE9B64C26209ED100F197A4 /* DateTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B64B26209ED100F197A4 /* DateTripView.swift */; };
 		FBE9B6512620A54A00F197A4 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE9B6502620A54A00F197A4 /* LocationView.swift */; };
@@ -133,7 +132,6 @@
 		FB98702D25E17B57000CF44A /* ARFlightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFlightUITests.swift; sourceTree = "<group>"; };
 		FB98702F25E17B57000CF44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB9F241B25FB719500EC9104 /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
-		FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthmaneNetworkServiceFlight.swift; sourceTree = "<group>"; };
 		FBD5FCA62600CFFD00DE519E /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		FBE9B64B26209ED100F197A4 /* DateTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTripView.swift; sourceTree = "<group>"; };
 		FBE9B6502620A54A00F197A4 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				FB35860B25E5328D005C60EF /* Config.swift */,
 				FB35860C25E5328D005C60EF /* FlightParameters.swift */,
 				FB35860925E5328D005C60EF /* NetworkServiceFlight.swift */,
-				FB9F243625FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift */,
 				FB35860A25E5328D005C60EF /* NetworkError.swift */,
 			);
 			path = Networking;
@@ -641,7 +638,6 @@
 				FBE9B6812620ECE200F197A4 /* DepartTerminalView.swift in Sources */,
 				FBE9B6862620EE4200F197A4 /* ArrivalView.swift in Sources */,
 				FB316128261F9BD60004387D /* TripCityView.swift in Sources */,
-				FB9F243725FBA05E00EC9104 /* OthmaneNetworkServiceFlight.swift in Sources */,
 				FB3793D02602AA710043888F /* AirportName.swift in Sources */,
 				FBE9B67C2620EAB800F197A4 /* DepartView.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,

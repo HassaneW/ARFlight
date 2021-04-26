@@ -12,10 +12,8 @@ enum ConfigNetworkingService {
     
     enum AirFranceKlm {
         static let baseUrl = "https://api.airfranceklm.com/opendata/flightstatus"
-   
         static let apiKey = APIKey.airFranceKlm
     }
-  
 }
 
 

@@ -14,8 +14,4 @@ struct FlightParameters {
     let endRange: String
     let departureCity: String
     let arrivalCity: String
-//    let origin: String
-//    let destination: String
-//    let pageSize: String
-//    let pageNumber: String
 }

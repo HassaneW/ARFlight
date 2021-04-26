@@ -8,7 +8,7 @@
 import Foundation
 
 
-// ModelFlight OK
+
 struct Places: Decodable {
     let terminalCode: String?
     let gateNumbers: String?
@@ -36,22 +36,3 @@ extension Places: CustomStringConvertible {
     }
 }
 
-
-/*
- Places Flights (Array) : OK
- 
- struct Places: Decodable {
-     let terminalCode: String?
-     let gateNumber: [String]?
- }
- 
- extension Places: CustomStringConvertible {
-     var description: String {
-         guard let terminalCode = terminalCode else { return "Missing infos for TerminalCode"}
-         let result = "Terminal: \(terminalCode)"
-         guard let gateNumber = gateNumber else { return result }
-         return "\(result), gate numbers: \(gateNumber)"
-     }
- }
- 
- */

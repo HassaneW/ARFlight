@@ -20,31 +20,26 @@ struct FlightLegs: Decodable {
         case aircraft
     }
     
+    // MARK: - Helper properties
     var departureAirportName: String? {
         departure?.airport?.name
     }
-    
     var arrivalAirportName: String? {
         arrival?.airport?.name
     }
-    
     var departPlacesTerminal: String? {
         departure?.airport?.places?.gateNumbers
     }
-    
     var departureDateTime: Date? {
         departure?.times?.scheduled
     }
-    
     var arrivalPlacesTerminal: String? {
         arrival?.airport?.places?.gateNumbers
     }
-    
     var arrivalDateTime: Date? {
         arrival?.times?.scheduled
     }
 }
-
 extension FlightLegs: CustomStringConvertible {
     var description: String {
         guard let departure = departure, let arrival = arrival, let duration = duration, let aircraft = aircraft else { return "Missing infos for aircraft"}
