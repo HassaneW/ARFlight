@@ -12,6 +12,7 @@
 		AACB3CDEF30584BB91C894F0 /* Pods_ARFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7CAB421FDD1E7304954C6 /* Pods_ARFlight.framework */; };
 		FB0855AF25EE59D400DDA5F6 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0855AE25EE59D400DDA5F6 /* Plane.swift */; };
 		FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB289A77260DF52700F55F07 /* ListResultViewController.swift */; };
+		FB2D2531263715AB00DFDC4E /* planeInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2D2530263715AB00DFDC4E /* planeInformationView.swift */; };
 		FB301CC125E55C6400BC433F /* DetailsFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */; };
 		FB301CCC25E55D9700BC433F /* aircraft-details.json in Resources */ = {isa = PBXBuildFile; fileRef = FB301CCB25E55D9700BC433F /* aircraft-details.json */; };
 		FB316128261F9BD60004387D /* TripCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB316127261F9BD60004387D /* TripCityView.swift */; };
@@ -93,6 +94,7 @@
 		F22FE2B59E0499A1427D25D9 /* Pods-ARFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlight.debug.xcconfig"; path = "Target Support Files/Pods-ARFlight/Pods-ARFlight.debug.xcconfig"; sourceTree = "<group>"; };
 		FB0855AE25EE59D400DDA5F6 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		FB289A77260DF52700F55F07 /* ListResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResultViewController.swift; sourceTree = "<group>"; };
+		FB2D2530263715AB00DFDC4E /* planeInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = planeInformationView.swift; sourceTree = "<group>"; };
 		FB301CC025E55C6400BC433F /* DetailsFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFlightViewController.swift; sourceTree = "<group>"; };
 		FB301CCB25E55D9700BC433F /* aircraft-details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "aircraft-details.json"; sourceTree = "<group>"; };
 		FB316127261F9BD60004387D /* TripCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCityView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				FBE9B6762620DAE600F197A4 /* FlightInfoView.swift */,
 				FBE9B67B2620EAB800F197A4 /* DepartView.swift */,
 				FBE9B6922620F06A00F197A4 /* PlaneView.swift */,
+				FB2D2530263715AB00DFDC4E /* planeInformationView.swift */,
 				FBE9B6972621C70200F197A4 /* InfoPlaneView.swift */,
 				FB5E0938262C75FB00EA6EC5 /* InfoPlaneViewVitesseLongeur.swift */,
 				FBE9B6802620ECE200F197A4 /* DepartTerminalView.swift */,
@@ -617,6 +620,7 @@
 				FB4EEBA725E196C300B85423 /* Aircraft.swift in Sources */,
 				FBE9B6562620AAA800F197A4 /* CalendarView.swift in Sources */,
 				FBF2C4E6261C821500D8DB5E /* FlightResultTableViewCell.swift in Sources */,
+				FB2D2531263715AB00DFDC4E /* planeInformationView.swift in Sources */,
 				FB4EEB9325E1963A00B85423 /* Information.swift in Sources */,
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
 				FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */,

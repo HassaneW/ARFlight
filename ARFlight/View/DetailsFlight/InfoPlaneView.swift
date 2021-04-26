@@ -100,11 +100,6 @@ final class InfoPlaneView: UIView  {
         
         addSubview(contentView)
         
-        // Debug colors
-//        titleLabel.backgroundColor = .yellow
-//        labelCodeFlight.backgroundColor = .tertiaryLabel
-//        labelFlightType.backgroundColor = .brown
-//
         NSLayoutConstraint.activate([
 
             contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
@@ -114,7 +109,6 @@ final class InfoPlaneView: UIView  {
             trailingAnchor.constraint(equalToSystemSpacingAfter: contentView.trailingAnchor, multiplier: 1.0),
         ])
         
-//        {
       
             let labelVitesseDeCroisiere = UILabel()
             labelVitesseDeCroisiere.text = "Vitesse de Croisiere"
@@ -192,7 +186,7 @@ final class InfoPlaneView: UIView  {
         
         }
     }
-//}
+
 
 
 

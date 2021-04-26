@@ -9,14 +9,7 @@
 import UIKit
 
 final class DepartView: UIView  {
-    
-    
-    //    var titleCompany: String? {
-    //        didSet {
-    //            titleLabel.text = titleCompany
-    //        }
-    //    }
-        
+
         var titleDepartAirport: String? {
             didSet {
                 resultDepartAirport.text = titleDepartAirport
@@ -104,12 +97,7 @@ final class DepartView: UIView  {
                 
             
             addSubview(contentView)
-            
-            // Debug colors
-    //        titleLabel.backgroundColor = .yellow
-    //        labelCodeFlight.backgroundColor = .tertiaryLabel
-    //        labelFlightType.backgroundColor = .brown
-    //
+
             NSLayoutConstraint.activate([
 
                 contentView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),

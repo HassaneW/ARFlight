@@ -100,6 +100,7 @@ extension DetailsFlightViewController {
         contentStackView.alignment = .fill
         contentStackView.spacing = 20
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         let scrollView = UIScrollView()
         scrollView.addSubview(contentStackView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
