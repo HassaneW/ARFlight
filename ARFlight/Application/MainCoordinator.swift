@@ -15,26 +15,20 @@ class MainCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
     func start() {
         showSearchFlightController()
-        
-//        showListResultController(with: <#T##[Flight]#>)
     }
-
     func showSearchFlightController() {
         let searchFlightViewController = SearchFlightViewController()
         searchFlightViewController.coordinator = self
         navigationController.pushViewController(searchFlightViewController, animated: false)
     }
-
     func showListResultController(with flights:[Flight]) {
         let listResultViewController = ListResultViewController()
         listResultViewController.coordinator = self
         listResultViewController.flights = flights
         navigationController.pushViewController(listResultViewController, animated: true)
     }
-
     // flightId
     func showFlightDetailsFor(flightId: String?) {
         // Pour plus tard

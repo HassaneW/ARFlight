@@ -8,8 +8,12 @@
 import UIKit
 
 class DetailsFlightViewController: UIViewController {
+    
+    
+    // MARK: - coordinator
     weak var coordinator: MainCoordinator?
     
+    // MARK: - property
     let companyView = CompanyView()
     let flightInfoView = FlightInfoView()
     

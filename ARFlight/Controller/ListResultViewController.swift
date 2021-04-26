@@ -10,20 +10,21 @@ import MapKit
 
 
 class ListResultViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
     
+    // MARK: - Property
+    weak var coordinator: MainCoordinator?
     var flights: [Flight]?
-
     let tableView = UITableView()
     let mapView = MKMapView()
-
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         tableView.reloadData()
     }
     
+    // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let airport = Airport(name: "Super airport", code: "CMN", latitude: 123.34, longitude: 345.3)
@@ -32,28 +33,23 @@ class ListResultViewController: UIViewController {
         centerMapAroundAnnotation()
     }
     
+    // MARK: -  centerMapAroundAnnotation
     private func centerMapAroundAnnotation() {
         guard !mapView.annotations.isEmpty else { return }
-        
         var mapRect = MKMapRect.null
-        
         mapView.annotations.forEach { annotation in
             let mapPoint = MKMapPoint(annotation.coordinate)
             let annotationRect = MKMapRect(x: mapPoint.x, y: mapPoint.y, width: 0.1, height: 0.1)
-            
             if mapRect.isNull {
                 mapRect = annotationRect
             } else {
                 mapRect = mapRect.union(annotationRect)
             }
         }
-        
         mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets.zero, animated: true)
     }
 }
-
 // MARK: - UI Configuration
-
 extension ListResultViewController {
     private enum Constant {
         static let mapHeight: CGFloat = 300
@@ -61,8 +57,8 @@ extension ListResultViewController {
         static let airportAnnotation = "airportAnnotation"
     }
     
+    // MARK: - mapView
     private func setupView() {
-        
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.isZoomEnabled = false
@@ -77,18 +73,16 @@ extension ListResultViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         
-        // tableview config
-        
+        // MARK: - tableview config
         tableView.delegate = self
         tableView.dataSource = self
         //resultTableView.isHidden = true
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        
         tableView.register(FlightResultTableViewCell.self, forCellReuseIdentifier: Constant.flightCellId)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
-        
+        // MARK: - Constraints
         NSLayoutConstraint.activate([
             mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -103,6 +97,7 @@ extension ListResultViewController {
     }
 }
 
+// MARK: - Extension MapView
 extension ListResultViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView: MKAnnotationView?
@@ -119,6 +114,7 @@ extension ListResultViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: - Extension TableView
 extension ListResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flights?.count ?? 0
@@ -142,30 +138,7 @@ extension ListResultViewController: UITableViewDelegate {
     }
 }
 
-
-//class ResultFlightsTableViewController: UITableViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
-//
-//    // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-//
-//}
-//
-//class AirportAnnotationView: MK
-
+// MARK: - AirportAnnotation
 class AirportAnnotation: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D {
