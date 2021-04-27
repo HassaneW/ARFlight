@@ -9,15 +9,14 @@ import UIKit
 
 class DetailsFlightViewController: UIViewController {
     
-    
     // MARK: - coordinator
     weak var coordinator: MainCoordinator?
     
     // MARK: - property View
     let companyView = CompanyView()
     let flightInfoView = FlightInfoView()
-    let departView = DepartView()
-    let departTerminalView = DepartTerminalView()
+    let departView = AirportDetailView(flightLeg: "Depart") // airportDepartView
+    let departTerminalView = DepartTerminalView() // Todo
     let arrivalView = ArrivalView()
     let arrivalTerminalView = ArrivalTerminalView()
     let planeView = PlaneView() // Flight id
@@ -37,9 +36,7 @@ class DetailsFlightViewController: UIViewController {
         flightInfoView.titleStatus = flight?.flightStatus
         flightInfoView.titleDuree = flight?.durationFlight
         
-        departView.titleDepartAirport = flight?.departureCodeAirport
-        departView.titleHour = flight?.departureDateTime?.timeString()
-        departTerminalView.titleDepartTerminalAirport = flight?.departureTerminalAirport
+        departView.airportDetailInfo = (flight?.departureCodeAirport, flight?.departureDateTime?.timeString(), flight?.departureTerminalAirport )
         
         arrivalView.titleArrivalAirport = flight?.arrivalCodeAirport
         arrivalView.titleHour = flight?.arrivalDateTime?.timeString()
@@ -63,29 +60,6 @@ class DetailsFlightViewController: UIViewController {
         setupFlightInformations()
         setupView()
     }
-    /*
-     func fetchFlightDetails() {
-     
-     guard let flightId = flight?.identifiantPlane else {
-     print("Missing flight Id")
-     return
-     }
-     // loading / error / affichage
-     
-     NetworkServiceFlight.shared.getFlightDetailsFor(flightId: flightId) { (result) in
-     switch result {
-     case .success(let flight):
-     print("Flight detail: \(flight)")
-     DispatchQueue.main.async {
-     self.flight = flight
-     
-     }
-     case .failure(let error):
-     print("Error getting flight details: \(error.localizedDescription)")
-     }
-     }
-     }
-     */
 }
 
 // MARK: - setupView
