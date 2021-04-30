@@ -55,7 +55,6 @@ final class CompanyView: UIView  {
         labelCompanyName.textAlignment = .center
         labelCompanyName.textColor = .black
         labelCompanyName.adjustsFontForContentSizeCategory = true
-        
        
         let labelCodeFlight = UILabel()
         labelCodeFlight.text = "Code Flight"
@@ -66,7 +65,6 @@ final class CompanyView: UIView  {
         labelCodeFlight.adjustsFontSizeToFitWidth = true
         labelCodeFlight.textColor = .black
         labelCodeFlight.adjustsFontForContentSizeCategory = true
-        
        
         let labelFlightType = UILabel()
         labelFlightType.text = "Flight Type"

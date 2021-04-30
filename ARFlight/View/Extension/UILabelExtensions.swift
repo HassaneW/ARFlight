@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: Initializers
+
 extension UILabel {
     
     convenience init(text: String?) {
@@ -19,5 +21,24 @@ extension UILabel {
         self.font = font
         self.text = text
         self.adjustsFontForContentSizeCategory = true
+    }
+}
+
+// MARK: - Methods
+
+extension UILabel {
+    
+    func configureFlightDetailsTitleLabel() {
+        
+    }
+
+    func configureFlightDetailsInformationLabel() {
+        numberOfLines = 0
+        font = .preferredFont(forTextStyle: .body)
+        textAlignment = .center
+        textColor = .label
+        adjustsFontSizeToFitWidth = true
+        adjustsFontForContentSizeCategory = true
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }

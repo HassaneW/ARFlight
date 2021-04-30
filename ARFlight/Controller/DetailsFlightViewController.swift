@@ -7,69 +7,67 @@
 
 import UIKit
 
+
+/*
+ TODO 
+ Remplacer
+ CompanyView par companyFlightInfoView
+ FlightInfoView par companyFlightInfoView
+ PlaneView par planeInformationView ajouter et mettre à jour l'image
+ */
+
 class DetailsFlightViewController: UIViewController {
     
     // MARK: - coordinator
     weak var coordinator: MainCoordinator?
     
     // MARK: - property View
-    let companyView = CompanyView()
-    let flightInfoView = FlightInfoView()
-    let departView = AirportDetailView(flightLeg: "Depart") // airportDepartView
-    let departTerminalView = DepartTerminalView() // Todo
-    let arrivalView = ArrivalView()
-    let arrivalTerminalView = ArrivalTerminalView()
-    let planeView = PlaneView() // Flight id
-    let infoPlaneView = InfoPlaneView()
-    let notificationCalendarView = NotificationCalendarView()
-    
+    let companyFlightInfoView = CompanyFlightInfoView()
+    let departView = AirportDetailView(flightLeg: "Depart")
+    let arrivalView = AirportDetailView(flightLeg: "Arrived")
+    let planeInformationView = PlaneInformationView()
+    let notificationCalendarView = NotificationCalendarView() // ?
     
     private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
-    private let flight: Flight?
+    private let flight: Flight
     
     // MARK: - SetUp
-    func setupFlightInformations() {
-        companyView.titleCompany = flight?.company?.name
-        companyView.titleCodeFlight = flight?.identifiantPlane
-        companyView.titleFlightType = flight?.flightType.rawValue
-        
-        flightInfoView.titleStatus = flight?.flightStatus
-        flightInfoView.titleDuree = flight?.durationFlight
-        
-        departView.airportDetailInfo = (flight?.departureCodeAirport, flight?.departureDateTime?.timeString(), flight?.departureTerminalAirport )
-        
-        arrivalView.titleArrivalAirport = flight?.arrivalCodeAirport
-        arrivalView.titleHour = flight?.arrivalDateTime?.timeString()
-        arrivalTerminalView.titleArrivalTerminalAirport = flight?.arrivalTerminalAirport ?? " - "
-        
-        planeView.titleFlight = flight?.flightNumber
-        print("Plane Id \(flight?.planeId ?? "Missing")")
-        if let flightPlane = planes.first(where: { $0.id == flight?.planeId }) {
-            infoPlaneView.plane = flightPlane
-        }
-    }
-    init(flight: Flight?) {
+
+    init(flight: Flight) {
         self.flight = flight
         super.init(nibName: nil, bundle: nil)
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFlightInformations()
         setupView()
     }
 }
 
-// MARK: - setupView
+// MARK: - View Configuration
+
 extension DetailsFlightViewController {
+    
     private func setupView() {
         title = "Rechercher un vol"
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.systemBackground
         
-        // MARK: - contentStackView
-        let contentStackView = UIStackView(arrangedSubviews: [companyView, flightInfoView, departView,departTerminalView,arrivalView, arrivalTerminalView,planeView, infoPlaneView, notificationCalendarView])
+        companyFlightInfoView.flight = flight
+        
+        departView.airportDetailInfo = (flight.departureCodeAirport, flight.departureDateTime?.timeString(), flight.departureTerminalAirport )
+        arrivalView.airportDetailInfo = (flight.arrivalCodeAirport, flight.arrivalDateTime?.timeString(), flight.arrivalTerminalAirport)
+ 
+        print("Plane Id \(flight.planeId ?? "Missing")")
+        if let flightPlane = planes.first(where: { $0.id == flight.planeId }) {
+            planeInformationView.plane = flightPlane
+        }
+        
+        let contentStackView = UIStackView(arrangedSubviews: [companyFlightInfoView, departView,arrivalView, planeInformationView])
+//        notificationCalendarView
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 20
@@ -79,17 +77,18 @@ extension DetailsFlightViewController {
         scrollView.addSubview(contentStackView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
+        
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
-            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
             
             contentStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
-            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5)      
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5),
+            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
+            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
         ])
     }
 }

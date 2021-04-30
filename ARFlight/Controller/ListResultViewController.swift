@@ -132,8 +132,10 @@ extension ListResultViewController: UITableViewDataSource {
 extension ListResultViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedFlight = flights?[indexPath.row]
-        let selectedFlightId = selectedFlight?.flightNumber
+        guard let selectedFlight = flights?[indexPath.row]  else {
+            //TODO: handle error
+            return 
+        }
         coordinator?.showFlightDetailFor(flight: selectedFlight)
     }
 }

@@ -12,25 +12,12 @@ import UIKit
 
 
 
-final class planeInformationView: UIView  {
-    
+final class PlaneInformationView: UIView  {
     
     var plane: Plane? {
         didSet {
-            
-            if let planeImage = plane?.image {
-                imageView.image = UIImage(named: planeImage)
-            }
-            imageView.image = UIImage(named: plane!.image)
-            
-            titleLabel.text = plane?.id
-            resultTypeDeMoteur.text = plane?.motorType
-            resultNombreDeSiege.text = plane?.numberOfSeats
-            resultvitesse.text = plane?.cruisingSpeed
-            if let planeLength = plane?.length {
-                resultLongeur.text = "\(planeLength)"
-            }
-            
+            guard let plane = plane else { return }
+            configureViewWithPlane(plane)
         }
     }
     
@@ -101,7 +88,6 @@ final class planeInformationView: UIView  {
         resultTypeDeMoteur.adjustsFontForContentSizeCategory = true
         resultTypeDeMoteur.translatesAutoresizingMaskIntoConstraints = false
         
-        resultNombreDeSiege.text = title
         resultNombreDeSiege.numberOfLines = 0
         resultNombreDeSiege.font = UIFont
             .preferredFont(forTextStyle: .headline)
@@ -116,7 +102,7 @@ final class planeInformationView: UIView  {
         resultStackView.spacing = UIStackView.spacingUseSystem
         resultStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let titleContentView = UIStackView(arrangedSubviews: [titleStackView], axis: .vertical)
+        let titleContentView = UIStackView(arrangedSubviews: [titleStackView, resultStackView], axis: .vertical)
         
         // View InfoplaneView2
         
@@ -144,7 +130,7 @@ final class planeInformationView: UIView  {
             spacing: UIStackView.spacingUseSystem,
             alignment: .fill,
             distribution: .fill)
-
+        
         resultvitesse.text = title
         resultvitesse.numberOfLines = 0
         resultvitesse.font = UIFont
@@ -178,30 +164,57 @@ final class planeInformationView: UIView  {
         
         
         // MARK: - contentStackView
-        let contentStackView = UIStackView(arrangedSubviews: [titleStackView, titleContentView, vitesseLongeurStackView, contentViewVL])
+        //        let contentStackView = UIStackView(arrangedSubviews: [titleStackView, titleContentView, vitesseLongeurStackView, contentViewVL])
+        //        contentStackView.axis = .vertical
+        //        contentStackView.alignment = .fill
+        //        contentStackView.spacing = 20
+        //        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        //
+        //        let scrollView = UIScrollView()
+        //        scrollView.addSubview(contentStackView)
+        //        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        //        contentStackView.addSubview(scrollView)
+        //
+        //        NSLayoutConstraint.activate([
+        //            scrollView.leadingAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.leadingAnchor),
+        //            scrollView.trailingAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.trailingAnchor),
+        //            scrollView.topAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.topAnchor),
+        //            scrollView.bottomAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.bottomAnchor),
+        //            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
+        //            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
+        //
+        //            contentStackView.centerXAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.centerXAnchor),
+        //            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
+        //            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5)
+        //        ])
+        
+        let contentStackView = UIStackView(arrangedSubviews: [titleStackView, titleContentView, vitesseLongeurStackView, contentViewVL, imageView])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 20
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let scrollView = UIScrollView()
-        scrollView.addSubview(contentStackView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.addSubview(scrollView)
+        addSubview(contentStackView)
         
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
-            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
+            imageView.widthAnchor.constraint(equalToConstant: 150),
+            imageView.heightAnchor.constraint(equalToConstant: 150),
             
-            contentStackView.centerXAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.centerXAnchor),
-            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 2),
-            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5)
+            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
+            
+            bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
         ])
         
+    }
+    
+    private  func configureViewWithPlane(_ plane: Plane) {
+        titleLabel.text = plane.id
+        resultTypeDeMoteur.text = plane.motorType
+        resultNombreDeSiege.text = plane.numberOfSeats
+        resultvitesse.text = plane.cruisingSpeed
+        resultLongeur.text = "\(plane.length)"
+        imageView.image = UIImage(named: plane.image)
     }
 }
 

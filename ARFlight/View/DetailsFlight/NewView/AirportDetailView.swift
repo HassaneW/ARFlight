@@ -30,19 +30,23 @@ class AirportDetailView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
+     ajuster toutes les stacks views des 3 views
+     ajuster les noms xxxxTitleLabe / xxxLabel
+     
+     
+     */
+    
     private func setupViewWith(flightLeg: String) {
         
-        let airportNameTitleLabel = UILabel(text: "Airport \(flightLeg)", font: .preferredFont(forTextStyle: .headline))
+        var airportNameTitleLabel = UILabel(text: "Airport \(flightLeg)", font: .preferredFont(forTextStyle: .headline))
         airportNameTitleLabel.textColor = .label
         airportNameTitleLabel.numberOfLines = 0
         airportNameTitleLabel.textAlignment = .center
         airportNameTitleLabel.adjustsFontForContentSizeCategory = true
         
-        airportNameLabel.numberOfLines = 0
-        airportNameLabel.textColor = .label
-        airportNameLabel.textAlignment = .center
-        airportNameLabel.font = .preferredFont(forTextStyle: .subheadline)
-        airportNameLabel.adjustsFontForContentSizeCategory = true
+        airportNameLabel.configureFlightDetailsInformationLabel()
+        
         
         let airportNameStackView = UIStackView(
             arrangedSubviews: [airportNameTitleLabel, airportNameLabel],
@@ -64,9 +68,7 @@ class AirportDetailView : UIView {
             arrangedSubviews: [timeTitleLabel, timeLabel],
             axis: .vertical)
         
-        let airportNameAndTimeStackView = UIStackView(
-            arrangedSubviews: [airportNameStackView, timeStackView],
-            axis: .horizontal)
+        let airportNameAndTimeStackView = UIStackView(arrangedSubviews:  [airportNameStackView, timeStackView], axis: .horizontal, spacing: 40, alignment: .center, distribution: .fillEqually)
         
         let terminalTitleLabel = UILabel(text: "Terminal \(flightLeg)", font: .preferredFont(forTextStyle: .headline))
         terminalTitleLabel.textColor = .label
@@ -82,14 +84,14 @@ class AirportDetailView : UIView {
         
         let terminalStackView = UIStackView(
             arrangedSubviews: [terminalTitleLabel, terminalNumberLabel],
-            axis: .horizontal)
+            axis: .vertical)
         
         let contentStackView = UIStackView(
             arrangedSubviews: [airportNameAndTimeStackView, terminalStackView],
             axis: .vertical,
-            spacing: 20,
-            alignment: .fill,
-            distribution: .fill)
+            spacing: 8,
+            alignment: .leading,
+            distribution: .fillProportionally)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         
@@ -99,5 +101,14 @@ class AirportDetailView : UIView {
             trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
             bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
         ])
+        
+//        text.backgroundColor = .red
+        
+        airportNameTitleLabel.backgroundColor = .red
+        airportNameLabel.backgroundColor = .yellow
+        timeTitleLabel.backgroundColor = .orange
+        timeLabel.backgroundColor = .green
+        terminalTitleLabel.backgroundColor = .blue
+        terminalNumberLabel.backgroundColor = .brown
     }
 }

@@ -33,7 +33,7 @@ class MainCoordinator: Coordinator {
     func showFlightDetailsFor(flightId: String?) {
         // Pour plus tard
     }
-    func showFlightDetailFor(flight: Flight?) {
+    func showFlightDetailFor(flight: Flight) {
         let flightDetailViewController = DetailsFlightViewController(flight: flight)
         flightDetailViewController.coordinator = self
         //flightDetailViewController.flight = flight
