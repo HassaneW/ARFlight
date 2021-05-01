@@ -13,20 +13,19 @@ import UIKit
 
 class CompanyFlightInfoView: UIView {
     
-    
     var flight: Flight? {
         didSet {
-            resultTitleLabel.text =  flight?.company?.name
+            resultCompanyLabel.text =  flight?.company?.name
             resultCodeFlight.text = flight?.identifiantPlane
             resultFlightType.text = flight?.flightType.rawValue
             resultStatus.text = flight?.flightStatus
             resultDuree.text = flight?.durationFlight
         }
     }
-
+    
     private let resultStatus = UILabel()
     private let resultDuree = UILabel()
-    private let resultTitleLabel = UILabel()
+    private let resultCompanyLabel = UILabel()
     private let resultCodeFlight = UILabel()
     private let resultFlightType = UILabel()
     
@@ -42,100 +41,78 @@ class CompanyFlightInfoView: UIView {
     
     private func setupView() {
         
-        // 1
         let labelCompanyName = UILabel(text: "Company Name")
-
-        // 2
         configureTitleLabel(labelCompanyName)
-
+        labelCompanyName.numberOfLines = 1
+        resultCompanyLabel.configureFlightDetailsInformationLabel()
+        
+        let companyStackView = UIStackView(arrangedSubviews: [labelCompanyName, resultCompanyLabel],
+                                                axis: .vertical,
+                                                spacing: UIStackView.spacingUseSystem,
+                                                alignment: .center,
+                                                distribution: .equalSpacing)
+        
         let labelCodeFlight = UILabel(text: "Code Flight")
         configureTitleLabel(labelCodeFlight)
+        resultCodeFlight.configureFlightDetailsInformationLabel()
+        
+        let codeFlightStackView = UIStackView(arrangedSubviews: [labelCodeFlight, resultCodeFlight],
+                                                axis: .vertical,
+                                                spacing: UIStackView.spacingUseSystem,
+                                                alignment: .center,
+                                                distribution: .equalSpacing)
         
         let labelFlightType = UILabel(text: "Flight Type")
         configureTitleLabel(labelFlightType)
-        
-        let titleStackView = UIStackView(arrangedSubviews: [labelCompanyName, labelCodeFlight,labelFlightType])
-        titleStackView.axis = .horizontal
-        titleStackView.alignment = .leading
-        titleStackView.distribution = .equalSpacing
-        titleStackView.spacing = UIStackView.spacingUseSystem
-        titleStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        resultTitleLabel.configureFlightDetailsInformationLabel()
-        resultCodeFlight.configureFlightDetailsInformationLabel()
         resultFlightType.configureFlightDetailsInformationLabel()
         
-        let resultStackView = UIStackView(arrangedSubviews: [resultTitleLabel, resultCodeFlight,resultFlightType])
-        resultStackView.axis = .horizontal
-        resultStackView.alignment = .fill
-        resultStackView.spacing = UIStackView.spacingUseSystem
-        resultStackView.translatesAutoresizingMaskIntoConstraints = false
+        let flightTypeStackView = UIStackView(arrangedSubviews: [labelFlightType, resultFlightType],
+                                               axis: .vertical,
+                                               spacing: UIStackView.spacingUseSystem,
+                                               alignment: .center,
+                                               distribution: .equalSpacing)
         
-        let contentViewCompanyView = UIStackView(arrangedSubviews: [titleStackView, resultStackView])
-        contentViewCompanyView.axis = .vertical
-        contentViewCompanyView.alignment = .fill
-        contentViewCompanyView.spacing = UIStackView.spacingUseSystem
-        contentViewCompanyView.translatesAutoresizingMaskIntoConstraints = false
+        let infoCompanyStackView = UIStackView(arrangedSubviews: [companyStackView, codeFlightStackView, flightTypeStackView],
+                                               axis: .horizontal,
+                                               spacing: UIStackView.spacingUseSystem,
+                                               alignment: .firstBaseline,
+                                               distribution: .fillEqually)
+        addSubview(infoCompanyStackView)
         
-        let labelStatusFlight = UILabel()
-        labelStatusFlight.text = "Status"
-        labelStatusFlight.numberOfLines = 0
-        labelStatusFlight.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        labelStatusFlight.textAlignment = .center
-        labelStatusFlight.textColor = .black
-        labelStatusFlight.adjustsFontForContentSizeCategory = true
+        let labelStatusFlight = UILabel(text: "Status")
+        configureTitleLabel(labelStatusFlight)
+        resultStatus.configureFlightDetailsInformationLabel()
         
-        let labelDureeFlight = UILabel()
-        labelDureeFlight.text = "Duree"
-        labelDureeFlight.numberOfLines = 0
-        labelDureeFlight.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        labelDureeFlight.textAlignment = .center
-        labelDureeFlight.textColor = .black
-        labelDureeFlight.adjustsFontForContentSizeCategory = true
+        let statusFlightStackView = UIStackView(arrangedSubviews: [labelStatusFlight, resultStatus],
+                                                axis: .vertical,
+                                                spacing: UIStackView.spacingUseSystem,
+                                                alignment: .center,
+                                                distribution: .fillProportionally)
         
-        let statusStackView = UIStackView(arrangedSubviews: [labelStatusFlight, labelDureeFlight])
-        statusStackView.axis = .horizontal
-        statusStackView.alignment = .leading
-        statusStackView.distribution = .equalSpacing
-        statusStackView.spacing = UIStackView.spacingUseSystem
+        let labelDureeFlight = UILabel(text: "Duree")
+        configureTitleLabel(labelStatusFlight)
+        resultDuree.configureFlightDetailsInformationLabel()
         
-        resultStatus.numberOfLines = 0
-        resultStatus.font = UIFont
-            .preferredFont(forTextStyle: .headline)
-        resultStatus.textAlignment = .center
-        resultStatus.textColor = .label
-        resultStatus.adjustsFontForContentSizeCategory = true
-        resultStatus.translatesAutoresizingMaskIntoConstraints = false
+        let dureeFlightStackView = UIStackView(arrangedSubviews: [labelDureeFlight, resultDuree],
+                                               axis: .vertical,
+                                               spacing: UIStackView.spacingUseSystem,
+                                               alignment: .center,
+                                               distribution: .equalSpacing)
         
-        resultDuree.numberOfLines = 0
-        resultDuree.font = UIFont.preferredFont(forTextStyle: .headline)
-        resultDuree.textAlignment = .center
-        resultDuree.textColor = .label
-        resultDuree.adjustsFontForContentSizeCategory = true
-        resultDuree.translatesAutoresizingMaskIntoConstraints = false
+        let dureeStatusStackView = UIStackView(arrangedSubviews: [statusFlightStackView, dureeFlightStackView],
+                                               axis: .horizontal,
+                                               spacing: 8,
+                                               alignment: .center,
+                                               distribution: .fillProportionally)
+        addSubview(dureeStatusStackView)
         
-        let resultStackViewFlight = UIStackView(arrangedSubviews: [resultStatus,resultDuree])
-        resultStackViewFlight.axis = .horizontal
-        resultStackViewFlight.alignment = .fill
-        resultStackViewFlight.spacing = UIStackView.spacingUseSystem
-        resultStackViewFlight.translatesAutoresizingMaskIntoConstraints = false
-        
-        let contentViewFlightInfo = UIStackView(arrangedSubviews: [statusStackView, resultStackView])
-        contentViewFlightInfo.axis = .vertical
-        contentViewFlightInfo.alignment = .fill
-        contentViewFlightInfo.spacing = UIStackView.spacingUseSystem
-        contentViewFlightInfo.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        let contentStackView = UIStackView(arrangedSubviews: [contentViewCompanyView, contentViewFlightInfo])
+        let contentStackView = UIStackView(arrangedSubviews: [infoCompanyStackView, dureeStatusStackView])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 20
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
-                
+        
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.leadingAnchor, multiplier: 1.5),
@@ -144,8 +121,12 @@ class CompanyFlightInfoView: UIView {
         ])
     }
     
+    // DebugColor
+//    cityLabel.backgroundColor = .red
+    
+    
     func configureTitleLabel(_ label: UILabel) {
-//        label.text = title
+        //        label.text = title
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .label
