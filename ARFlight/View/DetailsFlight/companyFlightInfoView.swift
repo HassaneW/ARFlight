@@ -90,7 +90,7 @@ class CompanyFlightInfoView: UIView {
                                                 distribution: .fillProportionally)
         
         let labelDureeFlight = UILabel(text: "Duree")
-        configureTitleLabel(labelStatusFlight)
+        configureTitleLabel(labelDureeFlight)
         resultDuree.configureFlightDetailsInformationLabel()
         
         let dureeFlightStackView = UIStackView(arrangedSubviews: [labelDureeFlight, resultDuree],

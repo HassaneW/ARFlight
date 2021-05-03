@@ -26,7 +26,7 @@ class DetailsFlightViewController: UIViewController {
     let departView = AirportDetailView(flightLeg: "Depart")
     let arrivalView = AirportDetailView(flightLeg: "Arrived")
     let planeInformationView = PlaneInformationView()
-    let notificationCalendarView = NotificationCalendarView() // ?
+//    let notificationCalendarView = NotificationCalendarView() // ?
     
     private let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
     private let flight: Flight
