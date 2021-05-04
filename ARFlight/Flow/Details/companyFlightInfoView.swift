@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-
-
-
 class CompanyFlightInfoView: UIView {
     
     var flight: Flight? {

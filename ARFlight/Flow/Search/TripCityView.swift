@@ -8,6 +8,26 @@
 
 import UIKit
 
+/*
+ comme dans AirportDetailView -> init(flightLeg: String)
+ 
+SearchSectionHeader ou SEctionHeader
+-> UIImageView* <-> UILabel*
+ 
+ SearchTextField
+ UILabel -> UITextField* (passer le title placeholder)
+    Exploration:    Heriter de UItextField (leftView) version plus simple
+ 
+ 
+ 
+ SearchCurrentLocationButton (heirter de UIButton)
+ UIButton (utiliser UIButton image property sinon UIImageView
+ 
+ SearchDatePicker (Inspiration de L'app calendar quand ont selectionne une date)
+ UIlabel(Depart/ Arrive) <-> UILabel (jour)
+ UIDatePicker (isHidden true vers false)
+ */
+
 final class TripCityView: UIView  {
     
    // let customUILabelVille = CustomUILabel(title: "Ville : ")
@@ -38,18 +58,10 @@ final class TripCityView: UIView  {
         myImagePlane.clipsToBounds = true
         myImagePlane.contentMode = UIView.ContentMode.scaleAspectFit
         
-//        myImagePlane.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        myImagePlane.setContentCompressionResistancePriority(.required, for: .horizontal)
-        
         titleLabel.text = title
         titleLabel.numberOfLines = 1
-        //titleLabel.font = UIFont
-            //.preferredFont(forTextStyle: .largeTitle)
-        
-        //titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
         titleLabel.textColor = .label
-        //titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
         let routeStackView = UIStackView(arrangedSubviews: [UIView(),myImagePlane, titleLabel, UIView()])
@@ -66,11 +78,7 @@ final class TripCityView: UIView  {
         cityLabel.textAlignment = .center
         cityLabel.numberOfLines = 1
         cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-//        cityLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-//        cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        cityLabel.textColor = .cyan
-//        cityLabel.adjustsFontForContentSizeCategory = true
-//        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+
         
         // Textfield
   
@@ -82,14 +90,7 @@ final class TripCityView: UIView  {
         textField.textColor = .label
         textField.adjustsFontForContentSizeCategory = true
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        // hugging ressitance priperoty
-        //titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        //titleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-    
-        //cityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-       // textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
+
         // StackView Ville Depart
         let citystackView = UIStackView(arrangedSubviews: [cityLabel, textField])
         citystackView.axis = .horizontal

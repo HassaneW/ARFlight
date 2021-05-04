@@ -37,7 +37,7 @@ final class PlaneInformationView: UIView  {
         setupView()
     }
     
-    private func setupView(withTitle title: String? = nil) {
+    private func setupView() {
         
         titlePlane.configureFlightDetailsInformationLabel()
         titlePlane.font = .preferredFont(forTextStyle: .largeTitle)
