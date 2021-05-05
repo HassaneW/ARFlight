@@ -10,7 +10,7 @@ import UIKit
 final class SearchSectionHeader: UIView {
 
     private enum Constant {
-        static let padding: CGFloat = 10
+        static let padding: CGFloat = 20
         static let imageWidth: CGFloat = 40
     }
 
@@ -36,8 +36,8 @@ final class SearchSectionHeader: UIView {
             arrangedSubviews: [UIView(), leadingImageView, titleLabel, UIView()],
             axis: .horizontal,
             spacing: Constant.padding,
-            alignment: .fill,
-            distribution: .equalSpacing)
+            alignment: .center,
+            distribution: .equalCentering)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         

@@ -14,8 +14,8 @@ class SearchFlightViewController: UIViewController{
     private let myButton = ActionButton()
     let dateRouteView = DateTripView()
     let currentLocationView = LocationView()
-    let calendarView = CalendarView()
-    let tripViewArrive = TripCityView(title: "Arrive", image: UIImage(systemName: "airplane"))
+//    let calendarView = CalendarView()
+//    let tripViewArrive = TripCityView(title: "Arrive", image: UIImage(systemName: "airplane"))
     private let text = UILabel()
     private var flights : [Flight]?
     
@@ -116,31 +116,37 @@ extension SearchFlightViewController {
         
         let startSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "airplane"), title: "Depart")
         
-        //let orLabel = UILabel()
-        text.text = "OR"
-        text.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        text.textColor = .black
-        text.textAlignment = .center
-        text.font =  UIFont (name: "Helvetica Neue", size:30)
-        text.adjustsFontForContentSizeCategory = true
-        text.translatesAutoresizingMaskIntoConstraints = false
+        let arriveSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "airplane"), title: "Arrive")
         
-        // MARK: - textField Arrive
-        tripViewArrive.textField.delegate = self
-        tripViewArrive.textField.textAlignment = .center
-        tripViewArrive.textField.placeholder = "Arrive"
+        let calendarSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "calendar.circle"), title: "Calendar")
         
-        //        let mapView = MKMapKit() // tiale fixe
-        //        let tableView = UITableView() // le tout dans stackView
-        // custom cell
-        //
+        let startTown = UITextField()
+        let startTextField = TownView(textfield: startTown)
+        startTextField.searchPlaceHolder = "Depart"
+        self.view.addSubview(startTextField)
+        
+        let arriveTown = UITextField()
+        let arriveTownTextField = TownView(textfield: arriveTown)
+        arriveTownTextField.searchPlaceHolder = "Arrive"
+        self.view.addSubview(arriveTownTextField)
+
+        let searchCurrentLocationButton = SearchCurrentLocationButton()
+        
+        let orLabel = UILabel()
+        orLabel.text = "OR"
+        orLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        orLabel.textColor = .black
+        orLabel.textAlignment = .center
+        orLabel.font =  UIFont (name: "Helvetica Neue", size:30)
+        orLabel.adjustsFontForContentSizeCategory = true
+        orLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // MARK: -  Button
         myButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
         myButton.title = "My button"
         
         // MARK: - ContentStackView
-        let contentStackView = UIStackView(arrangedSubviews: [startSectionHeader, text, currentLocationView, tripViewArrive , calendarView, dateRouteView, myButton])
+        let contentStackView = UIStackView(arrangedSubviews: [startSectionHeader,startTextField, orLabel, searchCurrentLocationButton, arriveSectionHeader,arriveTownTextField, calendarSectionHeader, dateRouteView, myButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem

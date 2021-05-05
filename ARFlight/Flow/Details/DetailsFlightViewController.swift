@@ -7,15 +7,6 @@
 
 import UIKit
 
-
-/*
- TODO 
- Remplacer
- CompanyView par companyFlightInfoView
- FlightInfoView par companyFlightInfoView
- PlaneView par planeInformationView ajouter et mettre à jour l'image
- */
-
 class DetailsFlightViewController: UIViewController {
     
     // MARK: - coordinator

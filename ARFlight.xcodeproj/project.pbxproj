@@ -25,6 +25,8 @@
 		FB3793D02602AA710043888F /* AirportName.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3793CF2602AA710043888F /* AirportName.swift */; };
 		FB4641672630358B00818F18 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4641662630358B00818F18 /* UILabelExtensions.swift */; };
 		FB46417126303E0000818F18 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46417026303E0000818F18 /* UITextFieldExtensions.swift */; };
+		FB4673A22642A64F00F7F855 /* TownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4673A12642A64F00F7F855 /* TownView.swift */; };
+		FB4673A72642B64700F7F855 /* SearchCurrentLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4673A62642B64700F7F855 /* SearchCurrentLocationButton.swift */; };
 		FB48E6D226416975000025DA /* SearchSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48E6D126416975000025DA /* SearchSectionHeader.swift */; };
 		FB4EDC78261F261A00BF94B5 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EDC77261F261A00BF94B5 /* ActionButton.swift */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
@@ -100,6 +102,8 @@
 		FB3793CF2602AA710043888F /* AirportName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportName.swift; sourceTree = "<group>"; };
 		FB4641662630358B00818F18 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		FB46417026303E0000818F18 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		FB4673A12642A64F00F7F855 /* TownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownView.swift; sourceTree = "<group>"; };
+		FB4673A62642B64700F7F855 /* SearchCurrentLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrentLocationButton.swift; sourceTree = "<group>"; };
 		FB48E6D126416975000025DA /* SearchSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeader.swift; sourceTree = "<group>"; };
 		FB4EDC77261F261A00BF94B5 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				FBE9B6552620AAA800F197A4 /* CalendarView.swift */,
 				FBE9B64B26209ED100F197A4 /* DateTripView.swift */,
 				FB316127261F9BD60004387D /* TripCityView.swift */,
+				FB4673A62642B64700F7F855 /* SearchCurrentLocationButton.swift */,
+				FB4673A12642A64F00F7F855 /* TownView.swift */,
 				FB48E6D126416975000025DA /* SearchSectionHeader.swift */,
 			);
 			path = Search;
@@ -612,6 +618,7 @@
 				FB4EEB9325E1963A00B85423 /* Information.swift in Sources */,
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
 				FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */,
+				FB4673A22642A64F00F7F855 /* TownView.swift in Sources */,
 				FB4EEB8425E195A700B85423 /* Airline.swift in Sources */,
 				FB0855AF25EE59D400DDA5F6 /* Plane.swift in Sources */,
 				FB35861025E5328D005C60EF /* Config.swift in Sources */,
@@ -624,6 +631,7 @@
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB4641672630358B00818F18 /* UILabelExtensions.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
+				FB4673A72642B64700F7F855 /* SearchCurrentLocationButton.swift in Sources */,
 				FB316128261F9BD60004387D /* TripCityView.swift in Sources */,
 				FB3793D02602AA710043888F /* AirportName.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,
