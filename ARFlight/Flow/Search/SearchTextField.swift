@@ -13,7 +13,7 @@ import UIKit
     Exploration:    Heriter de UItextField (leftView) version plus simple
  */
 
-final class TownView: UIView {
+final class SearchTextField: UIView {
     
     
     var searchPlaceHolder: String? {
@@ -37,11 +37,14 @@ final class TownView: UIView {
     
     private func setupView(textfield: UITextField) {
     
+//        textfield.placeholder = searchPlaceHolder
+//        textfield.text = searchPlaceHolder
         textfield.textAlignment = .center
         textfield.textColor = .black
         textfield.borderStyle = .roundedRect
+        textfield.layer.borderWidth = 2
         textfield.font = .preferredFont(forTextStyle: .headline)
-        textfield.leftView = UILabel(text: "Ville : ", font: .preferredFont(forTextStyle: .title3))
+        textfield.leftView = UILabel(text: " Ville : ", font: .preferredFont(forTextStyle: .title3))
         textfield.leftViewMode = .always
         textfield.adjustsFontSizeToFitWidth = true
         textfield.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +59,6 @@ final class TownView: UIView {
         addSubview(contentStackView)
         
         NSLayoutConstraint.activate([
-//            leadingImageView.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
-//            leadingImageView.heightAnchor.constraint(equalTo: leadingImageView.widthAnchor),
             
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),

@@ -10,13 +10,9 @@ import MapKit
 
 class SearchFlightViewController: UIViewController{
     weak var coordinator: MainCoordinator?
-    
     private let myButton = ActionButton()
     let dateRouteView = DateTripView()
     let currentLocationView = LocationView()
-//    let calendarView = CalendarView()
-//    let tripViewArrive = TripCityView(title: "Arrive", image: UIImage(systemName: "airplane"))
-    private let text = UILabel()
     private var flights : [Flight]?
     
     //MARK: - View lifecycle
@@ -121,12 +117,12 @@ extension SearchFlightViewController {
         let calendarSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "calendar.circle"), title: "Calendar")
         
         let startTown = UITextField()
-        let startTextField = TownView(textfield: startTown)
+        let startTextField = SearchTextField(textfield: startTown)
         startTextField.searchPlaceHolder = "Depart"
         self.view.addSubview(startTextField)
         
         let arriveTown = UITextField()
-        let arriveTownTextField = TownView(textfield: arriveTown)
+        let arriveTownTextField = SearchTextField(textfield: arriveTown)
         arriveTownTextField.searchPlaceHolder = "Arrive"
         self.view.addSubview(arriveTownTextField)
 
@@ -134,24 +130,27 @@ extension SearchFlightViewController {
         
         let orLabel = UILabel()
         orLabel.text = "OR"
-        orLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        orLabel.font = .preferredFont(forTextStyle: .title3)
         orLabel.textColor = .black
         orLabel.textAlignment = .center
-        orLabel.font =  UIFont (name: "Helvetica Neue", size:30)
+//        orLabel.font =  UIFont (name: "Helvetica Neue", size:30)
         orLabel.adjustsFontForContentSizeCategory = true
         orLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let startDatePicker = SearchDatePicker(title: "Date Depart")
+        let arriveDatePicker = SearchDatePicker(title: "Date Arrive")
         
         // MARK: -  Button
         myButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
         myButton.title = "My button"
         
         // MARK: - ContentStackView
-        let contentStackView = UIStackView(arrangedSubviews: [startSectionHeader,startTextField, orLabel, searchCurrentLocationButton, arriveSectionHeader,arriveTownTextField, calendarSectionHeader, dateRouteView, myButton])
+        let contentStackView = UIStackView(arrangedSubviews: [startSectionHeader,startTextField, orLabel, searchCurrentLocationButton, arriveSectionHeader,arriveTownTextField, calendarSectionHeader, startDatePicker, arriveDatePicker, myButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = UIStackView.spacingUseSystem
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.setCustomSpacing(20, after: text)
+        contentStackView.setCustomSpacing(20, after: orLabel)
         contentStackView.setCustomSpacing(20, after: currentLocationView)
         
         // MARK: - scrollView
@@ -173,7 +172,7 @@ extension SearchFlightViewController {
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 1.5)
         ])
         // Debug colors
-        text.backgroundColor = .red
+//        orLabel.backgroundColor = .red
     }
 }
 // asupprimer ?
@@ -190,7 +189,7 @@ extension Flight {
 }
 extension SearchFlightViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        text.isHidden = true
+        textField.isHidden = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(#function)

@@ -31,9 +31,10 @@ class SearchCurrentLocationButton: UIButton {
     private func setupViewWith() {
         
         let button = UIButton()
-        button.backgroundColor = UIColor.lightGray
+        button.backgroundColor = UIColor.black
         button.setTitle("Current Location", for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.layer.cornerRadius = 10.0
         
         let image = UIImage(systemName: "magnifyingglass.circle.fill")
         button.setImage(image, for: .normal)
@@ -60,9 +61,9 @@ class SearchCurrentLocationButton: UIButton {
             //            leadingImageView.heightAnchor.constraint(equalTo: leadingImageView.widthAnchor),
             
             buttonStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
-            buttonStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
+            buttonStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4.0),
             bottomAnchor.constraint(equalToSystemSpacingBelow: buttonStackView.bottomAnchor, multiplier: 1.0),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStackView.trailingAnchor, multiplier: 1.0),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStackView.trailingAnchor, multiplier: 4.0),
         ])
     }
     
