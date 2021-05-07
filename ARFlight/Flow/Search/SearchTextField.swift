@@ -13,58 +13,37 @@ import UIKit
     Exploration:    Heriter de UItextField (leftView) version plus simple
  */
 
-final class SearchTextField: UIView {
-    
-    
-    var searchPlaceHolder: String? {
-        didSet {
-            textField.placeholder = searchPlaceHolder
-        }
-    }
-    
-    
-    let textField = UITextField()
-    
-    
-    init(textfield: UITextField) {
-        super.init(frame: .zero)
-        setupView(textfield: textfield)
+final class SearchTextField: UITextField {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        sharedInit()
     }
     
-    private func setupView(textfield: UITextField) {
-    
-//        textfield.placeholder = searchPlaceHolder
-//        textfield.text = searchPlaceHolder
-        textfield.textAlignment = .center
-        textfield.textColor = .black
-        textfield.borderStyle = .roundedRect
-        textfield.layer.borderWidth = 2
-        textfield.font = .preferredFont(forTextStyle: .headline)
-        textfield.leftView = UILabel(text: " Ville : ", font: .preferredFont(forTextStyle: .title3))
-        textfield.leftViewMode = .always
-        textfield.adjustsFontSizeToFitWidth = true
-        textfield.translatesAutoresizingMaskIntoConstraints = false
+    private func sharedInit() {
+        borderStyle = .roundedRect
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.label.cgColor
         
-        let contentStackView = UIStackView(
-            arrangedSubviews: [textfield],
-            axis: .horizontal,
-            spacing: UIStackView.spacingUseSystem,
-            alignment: .fill,
-            distribution: .fillEqually)
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(contentStackView)
+        leftViewMode = .always
+        leftView = UILabel(text: " Ville : ", font: .preferredFont(forTextStyle: .title3))
         
-        NSLayoutConstraint.activate([
-            
-            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
-            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
-            bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
-        ])
+        textColor = .label
+        textAlignment = .center
+        font = .preferredFont(forTextStyle: .headline)
+        adjustsFontForContentSizeCategory = true
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        spellCheckingType = .no
+        autocorrectionType = .no
+        autocapitalizationType = .words
+        clearButtonMode = .whileEditing
+        enablesReturnKeyAutomatically = true
+        textContentType = .addressCity
     }
-
 }

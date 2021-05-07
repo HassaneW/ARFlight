@@ -15,63 +15,35 @@ import UIKit
 class SearchCurrentLocationButton: UIButton {
     
     private enum Constant {
-        static let padding: CGFloat = 10
-        static let imageWidth: CGFloat = 40
+        static let spacing: CGFloat = 20
+        static let cornerRadius: CGFloat = 10
     }
     
     init() {
         super.init(frame: .zero)
-        setupViewWith()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViewWith() {
+    private func setupView() {
+        layer.cornerRadius = Constant.cornerRadius
         
-        let button = UIButton()
-        button.backgroundColor = UIColor.black
-        button.setTitle("Current Location", for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.layer.cornerRadius = 10.0
+        tintColor = .label
+        setTitle("Current Location", for: .normal)
+        setTitleColor(UIColor.label, for: .normal)
+        setTitleColor(UIColor.systemGray3, for: .highlighted)
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel?.adjustsFontForContentSizeCategory = true
         
-        let image = UIImage(systemName: "magnifyingglass.circle.fill")
-        button.setImage(image, for: .normal)
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
+        setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
+        contentHorizontalAlignment = .center
+        contentVerticalAlignment = .center
 
-        let spacing: CGFloat = 20
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
-        
-        button.tintColor = .systemBackground
-        button.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
-        
-        let buttonStackView = UIStackView(
-            arrangedSubviews: [button],
-            axis: .horizontal,
-            spacing: UIStackView.spacingUseSystem,
-            alignment: .fill,
-            distribution: .fillProportionally)
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(buttonStackView)
-        
-        NSLayoutConstraint.activate([
-            //            leadingImageView.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
-            //            leadingImageView.heightAnchor.constraint(equalTo: leadingImageView.widthAnchor),
-            
-            buttonStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
-            buttonStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4.0),
-            bottomAnchor.constraint(equalToSystemSpacingBelow: buttonStackView.bottomAnchor, multiplier: 1.0),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStackView.trailingAnchor, multiplier: 4.0),
-        ])
+        titleEdgeInsets = UIEdgeInsets(top: 10, left: Constant.spacing, bottom: 10, right: 0)
     }
-    
-    @objc func buttonAction(_ sender:UIButton!)
-    {
-        print("Button tapped")
-    }
-    
 }
 //
 //    override init(frame: CGRect) {

@@ -15,17 +15,27 @@ UIDatePicker (isHidden true vers false)
  */
 
 class SearchDatePicker: UIView {
-    
+
+    var selectedDate: String? {
+        dateFormatter.string(from: datePicker.date)
+    }
+
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }
+
     private enum Constant {
         static let padding: CGFloat = 20
         static let imageWidth: CGFloat = 40
     }
-    
-    let textfield = UITextField()
 
+    private let datePicker = UIDatePicker()
+    
     init(title: String) {
         super.init(frame: .zero)
-        
         setupViewWith(title: title)
     }
     
@@ -41,48 +51,24 @@ class SearchDatePicker: UIView {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.adjustsFontForContentSizeCategory = true
         
-        
-        // Create textfield
-//        let textfield = UITextField()
-        textfield.textAlignment = .center
-        textfield.textColor = .black
-        textfield.borderStyle = .roundedRect
-        textfield.layer.borderWidth = 2
-        textfield.font = .preferredFont(forTextStyle: .body)
-        textfield.adjustsFontSizeToFitWidth = true
-        textfield.translatesAutoresizingMaskIntoConstraints = false
-        
-        // CreateDatePicker
-        let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        textfield.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(self.valuechanged), for: .valueChanged)
-        
+        datePicker.minimumDate = Date()
+
         let contentStackView = UIStackView(
-            arrangedSubviews: [titleLabel, textfield],
+            arrangedSubviews: [titleLabel, datePicker],
             axis: .horizontal,
-            spacing: 8,
+            spacing: UIStackView.spacingUseSystem,
             alignment: .fill,
             distribution: .fill)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         
         NSLayoutConstraint.activate([
-//            leadingImageView.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
-//            leadingImageView.heightAnchor.constraint(equalTo: leadingImageView.widthAnchor),
-            
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1.0),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1.0),
             bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
             trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
         ])
-        
-    }
-    @objc func valuechanged(sender: UIDatePicker) {
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .long
-        dateFormat.timeStyle = .none
-        self.textfield.text = dateFormat.string(from: sender.date)
         
     }
 }
