@@ -35,7 +35,7 @@ class SearchFlightViewController: UIViewController{
             // Afficher une alerte qui dit que les donnes sont incompletes
             return
         }
-        print(pickupDate) // "2021-01-14T10:00:00Z" ISO8601
+        print(dateConvert(input: pickupDate)) // "2021-01-14T10:00:00Z" ISO8601
         NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "YUL", destination: "CDG") { [weak self] result in
             switch result {
             case .success(let flights):
@@ -54,12 +54,30 @@ class SearchFlightViewController: UIViewController{
         print(codeAirport)
     }
     
+    private func dateConvert(input: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter.string(from: Date())
+    }
+    
+    private func airportName(nameAiport: String) -> String {
+        
+//        let searchTextField = SearchTextField()
+//        searchTextField.text =
+        // StopOversLabel -> StopoversCode
+        // searchTextField -> Network
+        
+        return ""
+    }
+    
     // MARK: - Actions
     
     @objc
     func searchForCurrentLocation(_ sender: UIButton) {
         print("search for current location tapped")
     }
+    
+    
 }
 
 // MARK: - Set up View
@@ -92,8 +110,6 @@ extension SearchFlightViewController {
         orLabel.textAlignment = .center
         orLabel.adjustsFontForContentSizeCategory = true
         orLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         
         searchButton.title = "My button"
         searchButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
@@ -148,6 +164,18 @@ extension SearchFlightViewController: UITextFieldDelegate {
         return true
     }
 }
+
+/*
+ Code dateformatter :
+ 
+ let formatter = DateFormatter()
+ formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+ guard let date = formatter.date(from: pickupDate) else { return  }
+ let dateDepart = formatter.string(from: date)
+ print(dateDepart) // "2021-01-14T10:00:00Z" ISO8601
+ */
+
+
 
 
 /*
