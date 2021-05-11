@@ -79,11 +79,11 @@ class AirportDetailView : UIView {
             axis: .vertical)
         
         let contentStackView = UIStackView(
-            arrangedSubviews: [airportNameAndTimeStackView, terminalStackView],
+            arrangedSubviews: [airportNameAndTimeStackView, UIView(), UIView(),terminalStackView],
             axis: .vertical,
             spacing: 8,
-            alignment: .leading,
-            distribution: .fillProportionally)
+            alignment: .center,
+            distribution: .equalSpacing)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         

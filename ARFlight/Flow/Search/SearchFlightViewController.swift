@@ -10,7 +10,6 @@ import MapKit
 
 class SearchFlightViewController: UIViewController{
     weak var coordinator: MainCoordinator?
-    
     private let searchButton = ActionButton()
     let startDatePicker = SearchDatePicker(title: "Date Depart")
     let arriveDatePicker = SearchDatePicker(title: "Date Arrive")
@@ -62,11 +61,15 @@ class SearchFlightViewController: UIViewController{
     
     private func airportName(nameAiport: String) -> String {
         
-//        let searchTextField = SearchTextField()
-//        searchTextField.text =
-        // StopOversLabel -> StopoversCode
-        // searchTextField -> Network
         
+        // 1) Récupérer le fichier Airport
+        let codeAirport = Bundle.main.decode(AirportName.self, from: "code-airport.json")
+        // 2) Récupérer les informations rentrer dans la vue
+        let searchTextField = SearchTextField()
+        // 3) Transformer le nom de la ville présent le fichier en code Airport pour le Network
+        // StopOversLabel -> StopoversCode
+        // 4) Retourner la valuer est l'inscrire dans origin et destination
+
         return ""
     }
     
