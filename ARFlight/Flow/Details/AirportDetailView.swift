@@ -59,7 +59,8 @@ class AirportDetailView : UIView {
         
         let airportNameAndTimeStackView = UIStackView(arrangedSubviews:  [airportNameStackView, timeStackView],
             axis: .horizontal,
-            spacing: UIStackView.spacingUseSystem, alignment: .center,
+            spacing: 40,
+            alignment: .center,
             distribution: .fillEqually)
         
         let terminalTitleLabel = UILabel(text: "Terminal \(flightLeg)", font: .preferredFont(forTextStyle: .headline))
@@ -76,7 +77,8 @@ class AirportDetailView : UIView {
         
         let terminalStackView = UIStackView(
             arrangedSubviews: [terminalTitleLabel, terminalNumberLabel],
-            axis: .vertical)
+            axis: .vertical,
+            alignment: .center)
         
         let contentStackView = UIStackView(
             arrangedSubviews: [airportNameAndTimeStackView, UIView(), UIView(),terminalStackView],

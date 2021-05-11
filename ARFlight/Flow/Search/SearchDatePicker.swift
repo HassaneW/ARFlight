@@ -16,16 +16,16 @@ UIDatePicker (isHidden true vers false)
 
 class SearchDatePicker: UIView {
 
-    var selectedDate: String? {
-        dateFormatter.string(from: datePicker.date)
+    var selectedDate: Date {
+        datePicker.date
     }
 
-    private var dateFormatter: DateFormatter {
+    private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
         return formatter
-    }
+    }()
 
     private enum Constant {
         static let padding: CGFloat = 20
@@ -55,11 +55,11 @@ class SearchDatePicker: UIView {
         datePicker.minimumDate = Date()
 
         let contentStackView = UIStackView(
-            arrangedSubviews: [titleLabel, datePicker],
+            arrangedSubviews: [titleLabel,UIView(), datePicker],
             axis: .horizontal,
             spacing: UIStackView.spacingUseSystem,
             alignment: .fill,
-            distribution: .fill)
+            distribution: .equalCentering)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         

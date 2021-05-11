@@ -59,6 +59,13 @@ extension ListResultViewController {
     
     // MARK: - mapView
     private func setupView() {
+        
+        if flights?.count != 0 {
+            title = "Count Flight : \(flights?.count)" 
+        }
+        
+    
+        
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.isZoomEnabled = false

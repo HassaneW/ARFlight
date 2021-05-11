@@ -10,9 +10,24 @@ import MapKit
 
 class SearchFlightViewController: UIViewController{
     weak var coordinator: MainCoordinator?
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }()
+    
+    private lazy var countries: [Countries] = {
+        let airportName = Bundle.main.decode(AirportName.self, from: "code-airport.json")
+        return airportName.countries
+    }()
+    
     private let searchButton = ActionButton()
-    let startDatePicker = SearchDatePicker(title: "Date Depart")
-    let arriveDatePicker = SearchDatePicker(title: "Date Arrive")
+    private let startDatePicker = SearchDatePicker(title: "Date Depart") // departur RENAME START TO DEPARTURe
+    private let arrivalDatePicker = SearchDatePicker(title: "Date Arrive")
+    private let departureCityTextField = SearchTextField()
+    private let arrivalCityTextField = SearchTextField()
+    
     private var flights : [Flight]?
     
     //MARK: - View lifecycle
@@ -22,20 +37,52 @@ class SearchFlightViewController: UIViewController{
         //                configureDelegates()
         setUp()
     }
+    
     // MARK: - Action methods
+    
     @objc
     func submitSearch() {
         fetchFlights()
     }
+    
     //MARK: - Private methods
     
     private func fetchFlights() {
-        guard let pickupDate = startDatePicker.selectedDate else {
-            // Afficher une alerte qui dit que les donnes sont incompletes
+        let pickupDate = startDatePicker.selectedDate
+        let arrivalDate = arrivalDatePicker.selectedDate
+        // Validation:
+        // arrival date > pickup date (pas le meme jour)
+        guard true else {
+            // Title = "error validating form"
+            // body -
+           // presentError("The arrival date should be after the pickup date")
             return
         }
-        print(dateConvert(input: pickupDate)) // "2021-01-14T10:00:00Z" ISO8601
-        NetworkServiceFlight.shared.searchForFlight(startRange: "2021-01-14T10:00:00Z", endRange: "2021-01-20T23:59:00Z", origin: "YUL", destination: "CDG") { [weak self] result in
+        let pickupDateString = "\(dateFormatter.string(from: pickupDate))Z"
+        let arrivalDateString = "\(dateFormatter.string(from: arrivalDate))Z"
+        
+        // 2nd verification
+        // nom de city pas vide
+        
+        let departureCity = departureCityTextField.text
+        let arrivalCity = arrivalCityTextField.text
+//        guard let pickupDate = startDatePicker.selectedDate else {
+//            // Afficher une alerte qui dit que les donnes sont incompletes
+//            return
+//        }
+//        let mapped = countries.map { (country) -> [Cities] in
+//            return country.ma
+//        }
+//        let result = countries.first { country -> Bool in
+//            return country.cities.first { (city) -> Bool in
+//                return city.stopovers.first { $0.name == arrivalCity } != nil
+//            } != nil
+//        }
+       // print(dateConvert(input: pickupDate)) // "2021-01-14T10:00:00Z" ISO8601
+        //"2021-01-20T23:59:00Z"
+        //2021-05-11T11:45:14Z
+        //"2021-05-23T11:30:00+0000"
+        NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: "YMQ", destination: "CDG") { [weak self] result in
             switch result {
             case .success(let flights):
                 print("Flights found: \(flights.count)")
@@ -46,6 +93,8 @@ class SearchFlightViewController: UIViewController{
             }
         }
     }
+    
+    
     private func setUp() {
         let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
         print(planes.first)
@@ -53,14 +102,7 @@ class SearchFlightViewController: UIViewController{
         print(codeAirport)
     }
     
-    private func dateConvert(input: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return dateFormatter.string(from: Date())
-    }
-    
     private func airportName(nameAiport: String) -> String {
-        
         
         // 1) Récupérer le fichier Airport
         let codeAirport = Bundle.main.decode(AirportName.self, from: "code-airport.json")
@@ -94,14 +136,12 @@ extension SearchFlightViewController {
         let arriveSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "airplane"), title: "Arrive")
        
         let calendarSectionHeader = SearchSectionHeader(leadingImage: UIImage(systemName: "calendar.circle"), title: "Calendar")
-
-        let startTextField = SearchTextField()
-        startTextField.delegate = self
-        startTextField.placeholder = "Depart"
        
-        let arriveTownTextField = SearchTextField()
-        arriveTownTextField.delegate = self
-        arriveTownTextField.placeholder = "Arrive"
+        departureCityTextField.delegate = self
+        departureCityTextField.placeholder = "Depart"
+
+        arrivalCityTextField.delegate = self
+        arrivalCityTextField.placeholder = "Arrive"
 
         let searchCurrentLocationButton = SearchCurrentLocationButton()
         searchCurrentLocationButton.addTarget(self, action: #selector(searchForCurrentLocation), for: .touchUpInside)
@@ -114,19 +154,19 @@ extension SearchFlightViewController {
         orLabel.adjustsFontForContentSizeCategory = true
         orLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        searchButton.title = "My button"
+        searchButton.title = "Search"
         searchButton.addTarget(self, action: #selector(submitSearch), for: .touchUpInside)
         
         let contentStackView = UIStackView(
             arrangedSubviews: [startSectionHeader,
-                               startTextField,
+                               departureCityTextField,
                                orLabel,
                                searchCurrentLocationButton,
                                arriveSectionHeader,
-                               arriveTownTextField,
+                               arrivalCityTextField,
                                calendarSectionHeader,
                                startDatePicker,
-                               arriveDatePicker,
+                               arrivalDatePicker,
                                searchButton])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
@@ -134,7 +174,7 @@ extension SearchFlightViewController {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.setCustomSpacing(20, after: orLabel)
         contentStackView.setCustomSpacing(20, after: searchCurrentLocationButton)
-        contentStackView.setCustomSpacing(30, after: arriveDatePicker)
+        contentStackView.setCustomSpacing(30, after: arrivalDatePicker)
         
         let scrollView = UIScrollView()
         scrollView.addSubview(contentStackView)

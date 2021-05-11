@@ -164,13 +164,12 @@ class FlightResultTableViewCell: UITableViewCell {
                                                spacing: UIStackView.spacingUseSystem,
                                                alignment: .center,
                                                distribution: .equalSpacing)
-        addSubview(arrivedTimeStackView)
         
         let arrivedAirportTimeStackView = UIStackView(arrangedSubviews: [arrivaleAirporteStackView, arrivedTimeStackView],
                                                       axis: .horizontal,
                                                       spacing: UIStackView.spacingUseSystem,
                                                       alignment: .firstBaseline,
-                                                      distribution: .fillEqually)        
+                                                      distribution: .fillEqually)
         
         let contentStackView = UIStackView(arrangedSubviews: [codeFlightCompanyStackView,departureAirportTimeStackView, arrivedAirportTimeStackView])
         contentStackView.alignment = .fill
@@ -187,6 +186,22 @@ class FlightResultTableViewCell: UITableViewCell {
             contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ])
+        
+        // Debug Color
+        
+        labelCompanyCode.backgroundColor = .red
+        companyCode.backgroundColor = .yellow
+        labelFlightCode.backgroundColor = .blue
+        flightCode.backgroundColor = .purple
+        labelDepartureAirport.backgroundColor = .brown
+        departureAirport.backgroundColor = .darkGray
+        labelDepartureTime.backgroundColor = .green
+        departureTime.backgroundColor = .magenta
+        labelairportArrival.backgroundColor = .orange
+        airportArrival.backgroundColor = .blue
+        labeltimeArrived.backgroundColor = .cyan
+        timeArrived.backgroundColor = .red
+        
     }
     
     required init?(coder: NSCoder) {
