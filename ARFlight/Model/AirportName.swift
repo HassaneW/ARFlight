@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
+/*
 
 struct AirportName : Decodable {
     let market: String
@@ -110,3 +112,131 @@ extension Stopovers: CustomStringConvertible {
         return description
     }
 }
+ */
+
+// GOOD CODE Change
+
+
+ struct AirportObject {
+     let name: String
+     let code: String
+ }
+
+extension AirportObject: CustomStringConvertible {
+    var description: String {
+
+        let description = """
+            - Code: \(code)
+            - Name:\(name)\n
+"""
+        return description
+    }
+}
+
+ struct AirportName : Decodable {
+//     var airportArray: [AirportObject]
+     var airportsCityCode: [String: String]
+     
+     enum CodingKeys: String, CodingKey {
+         case countries
+     }
+     
+
+     init(from decoder: Decoder) throws {
+         let container = try decoder.container(keyedBy: CodingKeys.self)
+         let countries = try container.decode([Countries].self, forKey: .countries)
+//         airportArray = []
+         airportsCityCode = [:]
+         
+         for country in countries {
+             let cities = country.cities
+             for city in cities {
+                 if let firstStopoverCode = city.stopovers.first?.code {
+                     let cityName = city.label.lowercased()
+                     let airportObject = AirportObject(name: city.label, code: firstStopoverCode)
+//                     airportArray.append(airportObject)
+                     airportsCityCode[cityName] = firstStopoverCode
+                 }
+             }
+         }
+     }
+ }
+
+//extension AirportName: CustomStringConvertible {
+//    var description: String {
+//
+//        let description = """
+//
+//    - airportsCityCode:\n \(airportsCityCode)\n
+//"""
+//        return description
+//    }
+//}
+
+private struct Countries: Decodable {
+    let cities: [Cities]
+}
+
+//extension Countries: CustomStringConvertible {
+//    var description: String {
+//
+//        let description = """
+//    - Cities:\n \(cities)
+//"""
+//        return description
+//    }
+//}
+
+private struct Cities: Decodable {
+    let label: String
+    let stopovers: [Stopovers]
+}
+
+//extension Cities: CustomStringConvertible {
+//    var description: String {
+//
+//        let description = """
+//            - Stopovers:\n\(stopovers)
+//"""
+//        return description
+//    }
+//}
+
+private struct Stopovers: Decodable {
+    let code: String
+}
+
+//extension Stopovers: CustomStringConvertible {
+//    var description: String {
+//
+//        let description = """
+//                - Code:\(code)
+//"""
+//        return description
+//    }
+//}
+
+
+
+
+//
+//
+// let decoder = JSONDecoder()
+//
+// do {
+//     let airportDecode = try decoder.decode(Airport.self, from: jsonData!)
+//     print(airportDecode)
+//
+//     let paris = airportDecode.airportArray.first { $0.name == "Paris" }
+//     print(paris?.code ?? "introuvable")
+//
+//     let departureCity = "paris"
+//     let bordCode = airportDecode.airportsCityCode[departureCity]
+//     print(bordCode ?? "introuvable")
+// } catch let error as DecodingError {
+//     print(error.prettyDescription)
+// } catch {
+//     print(error)
+// }
+//
+// */

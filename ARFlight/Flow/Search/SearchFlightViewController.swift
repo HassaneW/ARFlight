@@ -17,10 +17,10 @@ class SearchFlightViewController: UIViewController{
         return formatter
     }()
     
-    private lazy var countries: [Countries] = {
-        let airportName = Bundle.main.decode(AirportName.self, from: "code-airport.json")
-        return airportName.countries
-    }()
+//    private lazy var countries: [Countries] = {
+//        let airportName = Bundle.main.decode(AirportName.self, from: "code-airport.json")
+//        return airportName.countries
+//    }()
     
     private let searchButton = ActionButton()
     private let startDatePicker = SearchDatePicker(title: "Date Depart") // departur RENAME START TO DEPARTURe
@@ -61,11 +61,31 @@ class SearchFlightViewController: UIViewController{
         let pickupDateString = "\(dateFormatter.string(from: pickupDate))Z"
         let arrivalDateString = "\(dateFormatter.string(from: arrivalDate))Z"
         
+        
         // 2nd verification
         // nom de city pas vide
         
-        let departureCity = departureCityTextField.text
-        let arrivalCity = arrivalCityTextField.text
+        //        guard let departureCity = departureCityTextField.text else { return <#default value#> } ?? <#default value#>!
+//        let arrivalCity = arrivalCityTextField.text
+        
+        
+        guard let departureCity = departureCityTextField.text  else  { return }
+        guard departureCity.isEmpty else { return }
+        
+        guard let arrivalCity = arrivalCityTextField.text else  { return }
+        
+        // Decoder
+        let airportDecode = Bundle.main.decode(AirportName.self, from: "aircraft-details.json")
+        
+        guard let codeAirportDepart = airportDecode.airportsCityCode[departureCity] else  { return }
+        guard let codeAirportArrival = airportDecode.airportsCityCode[arrivalCity] else  { return }
+        
+//            let airportDecode = Bundle.main.decode(AirportName.self, from: "aircraft-details.json")
+//            print(airportDecode)
+//            let bordCode = airportDecode.airportsCityCode[departureCity ?? "Error"]
+//            print(bordCode ?? "introuvable")
+//
+        
 //        guard let pickupDate = startDatePicker.selectedDate else {
 //            // Afficher une alerte qui dit que les donnes sont incompletes
 //            return
@@ -82,7 +102,7 @@ class SearchFlightViewController: UIViewController{
         //"2021-01-20T23:59:00Z"
         //2021-05-11T11:45:14Z
         //"2021-05-23T11:30:00+0000"
-        NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: "YMQ", destination: "CDG") { [weak self] result in
+        NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: codeAirportDepart, destination: codeAirportArrival) { [weak self] result in
             switch result {
             case .success(let flights):
                 print("Flights found: \(flights.count)")
