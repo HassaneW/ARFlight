@@ -34,7 +34,6 @@ class SearchFlightViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        //                configureDelegates()
         setUp()
     }
     
@@ -47,11 +46,35 @@ class SearchFlightViewController: UIViewController{
     
     //MARK: - Private methods
     
+    private func indicator() {
+        //Create Activity Indicator
+        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+             
+             // Position Activity Indicator in the center of the main view
+             myActivityIndicator.center = view.center
+             
+             // If needed, you can prevent Acivity Indicator from hiding when stopAnimating() is called
+             myActivityIndicator.hidesWhenStopped = false
+             
+             // Start Activity Indicator
+             myActivityIndicator.startAnimating()
+             
+             // Call stopAnimating() when need to stop activity indicator
+             //myActivityIndicator.stopAnimating()
+             
+             
+             view.addSubview(myActivityIndicator)
+        
+        myActivityIndicator.stopAnimating()
+    }
+    
     private func fetchFlights() {
+        
+        indicator()
+        
         let departureDate = startDatePicker.selectedDate
         let arrivalDate = arrivalDatePicker.selectedDate
-        // Validation:
-        // arrival date > pickup date (pas le meme jour)
+    
         guard departureDate != arrivalDate else {
             print("departure date must be different than arrival date")
             // presentAlertForError("pick up date must be different than arrival date")
@@ -77,28 +100,6 @@ class SearchFlightViewController: UIViewController{
             return
         }
 
-//            let airportDecode = Bundle.main.decode(AirportName.self, from: "aircraft-details.json")
-//            print(airportDecode)
-//            let bordCode = airportDecode.airportsCityCode[departureCity ?? "Error"]
-//            print(bordCode ?? "introuvable")
-//
-        
-//        guard let pickupDate = startDatePicker.selectedDate else {
-//            // Afficher une alerte qui dit que les donnes sont incompletes
-//            return
-//        }
-//        let mapped = countries.map { (country) -> [Cities] in
-//            return country.ma
-//        }
-//        let result = countries.first { country -> Bool in
-//            return country.cities.first { (city) -> Bool in
-//                return city.stopovers.first { $0.name == arrivalCity } != nil
-//            } != nil
-//        }
-       // print(dateConvert(input: pickupDate)) // "2021-01-14T10:00:00Z" ISO8601
-        //"2021-01-20T23:59:00Z"
-        //2021-05-11T11:45:14Z
-        //"2021-05-23T11:30:00+0000"
         NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: departureCityAirportCode, destination: arrivalCityAirportCode) { [weak self] result in
             switch result {
             case .success(let flights):
@@ -113,8 +114,6 @@ class SearchFlightViewController: UIViewController{
             }
         }
     }
-    
-    
     private func setUp() {
         let planes = Bundle.main.decode([Plane].self, from: "aircraft-details.json")
         print(planes.first)
@@ -123,14 +122,9 @@ class SearchFlightViewController: UIViewController{
     }
     
     private func airportName(nameAiport: String) -> String {
-        
-        // 1) Récupérer le fichier Airport
         let codeAirport = Bundle.main.decode(AirportName.self, from: "code-airport.json")
-        // 2) Récupérer les informations rentrer dans la vue
         let searchTextField = SearchTextField()
-        // 3) Transformer le nom de la ville présent le fichier en code Airport pour le Network
-        // StopOversLabel -> StopoversCode
-        // 4) Retourner la valuer est l'inscrire dans origin et destination
+
 
         return ""
     }
