@@ -56,47 +56,48 @@ class FlightResultTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // CompanyCode
-//        let labelCompanyCode = UILabel(text: "Company Code")
-//        labelCompanyCode.configureFlightDetailsInformationLabel()
-//
         companyCode.font = UIFont.preferredFont(forTextStyle: .headline)
         companyCode.textColor = UIColor.label
         companyCode.adjustsFontForContentSizeCategory = true
         companyCode.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let companyCodeStackView = UIStackView(arrangedSubviews: [labelCompanyCode, companyCode],
-//                                               axis: .vertical,
-//                                               spacing: UIStackView.spacingUseSystem,
-//                                               alignment: .center,
-//                                               distribution: .equalSpacing)
+
+        let airportImage = UIImage(systemName: "airplane.circle.fill")
+        let leadingAirportImageView = UIImageView(image: airportImage)
+        leadingAirportImageView.contentMode = .scaleAspectFit
         
-        // CodeVol
-//        let labelFlightCode = UILabel(text: "Flight Code")
-//        labelFlightCode.configureFlightDetailsInformationLabel()
-//
-//        flightCode.font = UIFont.preferredFont(forTextStyle: .body)
-//        flightCode.textColor = UIColor.label
-//        flightCode.adjustsFontForContentSizeCategory = true
-//        flightCode.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let flightCodeStackView = UIStackView(arrangedSubviews: [labelFlightCode, flightCode],
-//                                              axis: .vertical,
-//                                              spacing: UIStackView.spacingUseSystem,
-//                                              alignment: .center,
-//                                              distribution: .equalSpacing)
+        let timeImage = UIImage(systemName: "alarm.fill")
+        let leadingTimeImageView = UIImageView(image: timeImage)
+        leadingTimeImageView.contentMode = .scaleAspectFit
         
-        // StackView Company + Flight
-//        let codeFlightCompanyStackView = UIStackView(arrangedSubviews: [companyCodeStackView, flightCodeStackView],
-//                                                     axis: .horizontal,
-//                                                     spacing: UIStackView.spacingUseSystem,
-//                                                     alignment: .firstBaseline,
-//                                                     distribution: .fillEqually)
+        let imageStackView = UIStackView(arrangedSubviews: [leadingAirportImageView, leadingTimeImageView],
+                                                      axis: .vertical,
+                                                      spacing: UIStackView.spacingUseSystem,
+                                                      alignment: .leading,
+                                                      distribution: .fill)
+               
+        addSubview(imageStackView)
         
-        // airport Depart
-//        let labelDepartureAirport = UILabel(text: "Departure Airport")
-//        labelDepartureAirport.configureFlightDetailsInformationLabel()
+        departureAirport.font = UIFont.preferredFont(forTextStyle: .body)
+        departureAirport.numberOfLines = 1
+        departureAirport.textColor = UIColor.label
+        departureAirport.allowsDefaultTighteningForTruncation = true
+        departureAirport.adjustsFontForContentSizeCategory = true
+        departureAirport.translatesAutoresizingMaskIntoConstraints = false
         
+        departureTime.font = UIFont.preferredFont(forTextStyle: .body)
+        departureTime.textColor = UIColor.label
+        departureTime.allowsDefaultTighteningForTruncation = true
+        departureTime.adjustsFontForContentSizeCategory = true
+        departureTime.translatesAutoresizingMaskIntoConstraints = false
+        
+        let departStackView = UIStackView(arrangedSubviews: [departureAirport, departureTime],
+                                                      axis: .vertical,
+                                                      spacing: UIStackView.spacingUseSystem,
+                                                      alignment: .leading,
+                                                      distribution: .fill)
+        
+        
+        addSubview(departStackView)
         
         let labelTextTo = UILabel(text: "TO")
         labelTextTo.textColor = UIColor.label
@@ -109,17 +110,14 @@ class FlightResultTableViewCell: UITableViewCell {
         let arrowshapeImage = UIImage(systemName: "arrowshape.zigzag.forward.fill")
         let arrowshapeImageView = UIImageView(image: arrowshapeImage)
         arrowshapeImageView.contentMode = .scaleAspectFit
- 
-        let airportImage = UIImage(systemName: "airplane.circle.fill")
-        let leadingAirportImageView = UIImageView(image: airportImage)
-        leadingAirportImageView.contentMode = .scaleAspectFit
         
-        departureAirport.font = UIFont.preferredFont(forTextStyle: .body)
-        departureAirport.numberOfLines = 0
-        departureAirport.textColor = UIColor.label
-        departureAirport.allowsDefaultTighteningForTruncation = true
-        departureAirport.adjustsFontForContentSizeCategory = true
-        departureAirport.translatesAutoresizingMaskIntoConstraints = false
+        let imageLabelStackView = UIStackView(arrangedSubviews: [labelTextTo, arrowshapeImageView],
+                                                      axis: .vertical,
+                                                      spacing: UIStackView.spacingUseSystem,
+                                                      alignment: .leading,
+                                                      distribution: .fill)
+        
+        addSubview(imageLabelStackView)
         
         airportArrival.font = UIFont.preferredFont(forTextStyle: .body)
         airportArrival.textColor = UIColor.label
@@ -128,99 +126,29 @@ class FlightResultTableViewCell: UITableViewCell {
         airportArrival.adjustsFontForContentSizeCategory = true
         airportArrival.translatesAutoresizingMaskIntoConstraints = false
         
-        
-//        labelDepartureAirport,
-        let nameAirportTripStackView = UIStackView(arrangedSubviews: [leadingAirportImageView, departureAirport,labelTextTo,airportArrival],
-                                                   axis: .horizontal,
-                                                   spacing: 8,
-                                                   alignment: .firstBaseline,
-                                                   distribution: .equalSpacing)
-       //
-        
-        // Hour Depart
-        
-//        let labelDepartureTime = UILabel(text: "Departure Time")
-//        labelDepartureTime.configureFlightDetailsInformationLabel()
-        
-        let timeImage = UIImage(systemName: "timer")
-        let leadingTimeImageView = UIImageView(image: timeImage)
-        leadingTimeImageView.contentMode = .scaleAspectFit
-        
-        departureTime.font = UIFont.preferredFont(forTextStyle: .body)
-        departureTime.textColor = UIColor.label
-        departureTime.allowsDefaultTighteningForTruncation = true
-        departureTime.adjustsFontForContentSizeCategory = true
-        departureTime.translatesAutoresizingMaskIntoConstraints = false
-        
         timeArrived.font = UIFont.preferredFont(forTextStyle: .body)
         timeArrived.textColor = UIColor.label
         timeArrived.allowsDefaultTighteningForTruncation = true
         timeArrived.adjustsFontForContentSizeCategory = true
         timeArrived.translatesAutoresizingMaskIntoConstraints = false
         
-//        labelDepartureTime,
-        let timeTripStackView = UIStackView(arrangedSubviews: [leadingTimeImageView, timeArrived,arrowshapeImageView, departureTime],
-                                            axis: .horizontal,
-                                            spacing: UIStackView.spacingUseSystem,
-                                            alignment: .firstBaseline,
-                                            distribution: .equalSpacing)
-//
-//        let departureAirportTimeStackView = UIStackView(arrangedSubviews: [NameAirportTripStackView, timeTripStackView],
-//                                                        axis: .horizontal,
-//                                                        spacing: UIStackView.spacingUseSystem,
-//                                                        alignment: .firstBaseline,
-//                                                        distribution: .fillEqually)
         
-        // Aiport Arrive
-//        let labelairportArrival = UILabel(text: "Arrival Airport")
-//        labelairportArrival.configureFlightDetailsInformationLabel()
+        let arrivalStackView = UIStackView(arrangedSubviews: [airportArrival, timeArrived],
+                                                      axis: .vertical,
+                                                      spacing: UIStackView.spacingUseSystem,
+                                                      alignment: .leading,
+                                                      distribution: .fill)
         
-//        airportArrival.font = UIFont.preferredFont(forTextStyle: .body)
-//        airportArrival.textColor = UIColor.label
-//        airportArrival.numberOfLines = 0
-//        airportArrival.allowsDefaultTighteningForTruncation = true
-//        airportArrival.adjustsFontForContentSizeCategory = true
-//        airportArrival.translatesAutoresizingMaskIntoConstraints = false
-        
-//        labelairportArrival,
-//        let arrivaleAirporteStackView = UIStackView(arrangedSubviews: [airportArrival],
-//                                                    axis: .vertical,
-//                                                    spacing: UIStackView.spacingUseSystem,
-//                                                    alignment: .center,
-//                                                    distribution: .equalSpacing)
-        
-        // scheduled
-//        let labeltimeArrived = UILabel(text: "Arrival Time")
-//        labeltimeArrived.configureFlightDetailsInformationLabel()
-        
-//        timeArrived.font = UIFont.preferredFont(forTextStyle: .body)
-//        timeArrived.textColor = UIColor.label
-//        timeArrived.allowsDefaultTighteningForTruncation = true
-//        timeArrived.adjustsFontForContentSizeCategory = true
-//        timeArrived.translatesAutoresizingMaskIntoConstraints = false
-        
-//        labeltimeArrived
-//        let arrivedTimeStackView = UIStackView(arrangedSubviews: [timeArrived],
-//                                               axis: .vertical,
-//                                               spacing: UIStackView.spacingUseSystem,
-//                                               alignment: .center,
-//                                               distribution: .equalSpacing)
-//
-//        let arrivedAirportTimeStackView = UIStackView(arrangedSubviews: [arrivaleAirporteStackView, arrivedTimeStackView],
-//                                                      axis: .horizontal,
-//                                                      spacing: UIStackView.spacingUseSystem,
-//                                                      alignment: .firstBaseline,
-//                                                      distribution: .fillEqually)
-        
-//         codeFlightCompanyStackView,departureAirportTimeStackView, arrivedAirportTimeStackView
-        let contentStackView = UIStackView(arrangedSubviews: [companyCode, nameAirportTripStackView, timeTripStackView])
-        contentStackView.alignment = .fill
+        addSubview(arrivalStackView)
+    
+        let contentStackView = UIStackView(arrangedSubviews: [companyCode, imageStackView,departStackView, imageLabelStackView, arrivalStackView])
+        contentStackView.alignment = .firstBaseline
         contentStackView.spacing = UIStackView.spacingUseSystem
-        contentStackView.distribution = .equalSpacing
-        contentStackView.axis = .vertical
+        contentStackView.distribution = .equalCentering
+        contentStackView.axis = .horizontal
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(contentStackView)
-        
+      
         NSLayoutConstraint.activate([
             contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -231,19 +159,19 @@ class FlightResultTableViewCell: UITableViewCell {
         
         // Debug Color
         
-        labelTextTo.backgroundColor = .yellow
+//        labelTextTo.backgroundColor = .yellow
 //        labelCompanyCode.backgroundColor = .red
 //        companyCode.backgroundColor = .yellow
 //        labelFlightCode.backgroundColor = .blue
-        flightCode.backgroundColor = .purple
+//        flightCode.backgroundColor = .purple
 //        labelDepartureAirport.backgroundColor = .brown
-        departureAirport.backgroundColor = .darkGray
+//        departureAirport.backgroundColor = .darkGray
 //        labelDepartureTime.backgroundColor = .green
-        departureTime.backgroundColor = .magenta
+//        departureTime.backgroundColor = .magenta
 //        labelairportArrival.backgroundColor = .orange
-        airportArrival.backgroundColor = .blue
+//        airportArrival.backgroundColor = .blue
 //        labeltimeArrived.backgroundColor = .cyan
-        timeArrived.backgroundColor = .red
+//        timeArrived.backgroundColor = .red
         
     }
     

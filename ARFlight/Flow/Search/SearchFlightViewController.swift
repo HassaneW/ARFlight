@@ -65,6 +65,7 @@ class SearchFlightViewController: UIViewController{
              view.addSubview(myActivityIndicator)
         
         myActivityIndicator.stopAnimating()
+        myActivityIndicator.isHidden = true
     }
     
     private func fetchFlights() {
