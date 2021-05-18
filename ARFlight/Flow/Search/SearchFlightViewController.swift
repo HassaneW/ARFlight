@@ -23,7 +23,7 @@ class SearchFlightViewController: UIViewController{
     }()
     
     private let searchButton = ActionButton()
-    private let startDatePicker = SearchDatePicker(title: "Date Depart") // departur RENAME START TO DEPARTURe
+    private let startDatePicker = SearchDatePicker(title: "Date Depart")
     private let arrivalDatePicker = SearchDatePicker(title: "Date Arrive")
     private let departureCityTextField = SearchTextField()
     private let arrivalCityTextField = SearchTextField()
@@ -62,7 +62,6 @@ class SearchFlightViewController: UIViewController{
              // Call stopAnimating() when need to stop activity indicator
              //myActivityIndicator.stopAnimating()
              
-             
              view.addSubview(myActivityIndicator)
         
         myActivityIndicator.stopAnimating()
@@ -78,10 +77,11 @@ class SearchFlightViewController: UIViewController{
         guard departureDate != arrivalDate else {
             print("departure date must be different than arrival date")
             // presentAlertForError("pick up date must be different than arrival date")
+            factorisationErrorMessage(messageError: "pick up date must be different than arrival date")
             return
         }
         guard departureDate < arrivalDate else {
-            print("arrival date must be after departure date")
+            factorisationErrorMessage(messageError:"arrival date must be after departure date")
             return
         }
         
@@ -136,6 +136,11 @@ class SearchFlightViewController: UIViewController{
         print("search for current location tapped")
     }
     
+    private func factorisationErrorMessage(messageError: String) {
+        let alertVC = UIAlertController(title: "ERROR!", message: messageError, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
 }
 
