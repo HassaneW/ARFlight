@@ -14,6 +14,7 @@ enum NetworkError: Error {
     case invalidData
     case requestError(String)
     case invalidUrl
+    case afError(AFError)
 }
 extension NetworkError: LocalizedError {
     var errorDescription: String? {
@@ -30,6 +31,8 @@ extension NetworkError: LocalizedError {
             return "Invalid Url"
         case .invalidResponse:
             return "Invalid Response"
+        case .afError(let error):
+            return "API Error \(error.error?.description ?? "Unknown")"
         }
     }
 }

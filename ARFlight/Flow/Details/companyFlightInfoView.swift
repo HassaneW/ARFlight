@@ -14,7 +14,7 @@ class CompanyFlightInfoView: UIView {
         didSet {
             resultCompanyLabel.text =  flight?.company?.name
             resultCodeFlight.text = flight?.identifiantPlane
-            resultFlightType.text = flight?.flightType.rawValue
+            resultFlightType.text = flight?.flightType?.rawValue
             resultStatus.text = flight?.flightStatus
             resultDuree.text = flight?.durationFlight
         }

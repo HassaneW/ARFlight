@@ -17,10 +17,10 @@ class SearchFlightViewController: UIViewController{
         return formatter
     }()
     
-//    private lazy var countries: [Countries] = {
-//        let airportName = Bundle.main.decode(AirportName.self, from: "code-airport.json")
-//        return airportName.countries
-//    }()
+    private lazy var cityCodeDictionary: [String: String] = {
+        let airportName = Bundle.main.decode(AirportName.self, from: "code-airport.json")
+        return airportName.cityCode
+    }()
     
     private let searchButton = ActionButton()
     private let startDatePicker = SearchDatePicker(title: "Date Depart") // departur RENAME START TO DEPARTURe
@@ -48,38 +48,35 @@ class SearchFlightViewController: UIViewController{
     //MARK: - Private methods
     
     private func fetchFlights() {
-        let pickupDate = startDatePicker.selectedDate
+        let departureDate = startDatePicker.selectedDate
         let arrivalDate = arrivalDatePicker.selectedDate
         // Validation:
         // arrival date > pickup date (pas le meme jour)
-        guard true else {
-            // Title = "error validating form"
-            // body -
-           // presentError("The arrival date should be after the pickup date")
+        guard departureDate != arrivalDate else {
+            print("departure date must be different than arrival date")
+            // presentAlertForError("pick up date must be different than arrival date")
             return
         }
-        let pickupDateString = "\(dateFormatter.string(from: pickupDate))Z"
+        guard departureDate < arrivalDate else {
+            print("arrival date must be after departure date")
+            return
+        }
+        
+        let pickupDateString = "\(dateFormatter.string(from: departureDate))Z"
         let arrivalDateString = "\(dateFormatter.string(from: arrivalDate))Z"
         
+        guard let departureCity = departureCityTextField.text?.lowercased(),
+              let departureCityAirportCode = cityCodeDictionary[departureCity] else {
+            print("Cant find the departure city airport please check for typo")
+            return
+        }
         
-        // 2nd verification
-        // nom de city pas vide
-        
-        //        guard let departureCity = departureCityTextField.text else { return <#default value#> } ?? <#default value#>!
-//        let arrivalCity = arrivalCityTextField.text
-        
-        
-        guard let departureCity = departureCityTextField.text  else  { return }
-        guard departureCity.isEmpty else { return }
-        
-        guard let arrivalCity = arrivalCityTextField.text else  { return }
-        
-        // Decoder
-        let airportDecode = Bundle.main.decode(AirportName.self, from: "aircraft-details.json")
-        
-        guard let codeAirportDepart = airportDecode.airportsCityCode[departureCity] else  { return }
-        guard let codeAirportArrival = airportDecode.airportsCityCode[arrivalCity] else  { return }
-        
+        guard let arrivalCity = arrivalCityTextField.text?.lowercased(),
+              let arrivalCityAirportCode = cityCodeDictionary[arrivalCity] else {
+            print("Cant find the arrival city airport please check for typo")
+            return
+        }
+
 //            let airportDecode = Bundle.main.decode(AirportName.self, from: "aircraft-details.json")
 //            print(airportDecode)
 //            let bordCode = airportDecode.airportsCityCode[departureCity ?? "Error"]
@@ -102,12 +99,15 @@ class SearchFlightViewController: UIViewController{
         //"2021-01-20T23:59:00Z"
         //2021-05-11T11:45:14Z
         //"2021-05-23T11:30:00+0000"
-        NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: codeAirportDepart, destination: codeAirportArrival) { [weak self] result in
+        NetworkServiceFlight.shared.searchForFlight(startRange: pickupDateString, endRange: arrivalDateString, origin: departureCityAirportCode, destination: arrivalCityAirportCode) { [weak self] result in
             switch result {
             case .success(let flights):
                 print("Flights found: \(flights.count)")
                 self?.flights = flights
                 self?.coordinator?.showListResultController(with: flights)
+            case .failure(.afError(let errors)):
+                print("Title: \(errors.error?.name?.localizedLowercase ?? "We're sorry")")
+                print("Body \(errors.error?.description ?? "something wrong happened")")
             case .failure(let error):
                 print(error.localizedDescription)
             }

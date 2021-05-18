@@ -36,16 +36,16 @@ struct Airport: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AirportKeys.self)
         
-        code = try container.decode(String.self, forKey: .code)
-        name = try container.decode(String.self, forKey: .name)
-        location = try container.decode(Location.self, forKey: .location)
-        places = try container.decode(Places.self, forKey: .places)
+        code = try? container.decode(String.self, forKey: .code)
+        name = try? container.decode(String.self, forKey: .name)
+        location = try? container.decode(Location.self, forKey: .location)
+        places = try? container.decode(Places.self, forKey: .places)
         
-        let cityContainer = try container.nestedContainer(keyedBy: AirportKeys.CityKeys.self, forKey: .city)
-        city = try cityContainer.decode(String.self, forKey: .cityName)
+        let cityContainer = try? container.nestedContainer(keyedBy: AirportKeys.CityKeys.self, forKey: .city)
+        city = try? cityContainer?.decode(String.self, forKey: .cityName)
         
-        let countryContainer = try cityContainer.nestedContainer(keyedBy: AirportKeys.CityKeys.CountryKeys.self, forKey: .country)
-        country = try countryContainer.decode(String.self, forKey: .countryName)
+        let countryContainer = try? cityContainer?.nestedContainer(keyedBy: AirportKeys.CityKeys.CountryKeys.self, forKey: .country)
+        country = try? countryContainer?.decode(String.self, forKey: .countryName)
         
     }
 }

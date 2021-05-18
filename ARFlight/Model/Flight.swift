@@ -11,13 +11,18 @@ import Foundation
 enum FlightType: String, Decodable {
     case medium = "MEDIUM"
     case long = "LONG"
+    case unknown
+    
+    init(from decoder: Decoder) throws {
+        self = try FlightType(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+    }
 }
 
 struct Flight: Decodable {
     let flightNumber: String?
     var departureDate: Date?
     let identifiantPlane : String?
-    let flightType: FlightType
+    let flightType: FlightType?
     let company : Airline?
     let flightStatus : String?
     let flightInformations : [FlightLegs]?
@@ -34,7 +39,7 @@ struct Flight: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        flightType = try container.decode(FlightType.self, forKey: .flightType)
+        flightType = try? container.decode(FlightType.self, forKey: .flightType)
         
         departureDate = try container.decode(Date.self, forKey: .departureDate)
         

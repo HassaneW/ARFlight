@@ -133,33 +133,43 @@ extension AirportObject: CustomStringConvertible {
     }
 }
 
- struct AirportName : Decodable {
+ struct AirportName: Decodable {
 //     var airportArray: [AirportObject]
-     var airportsCityCode: [String: String]
+     var cityCode: [String: String]
      
      enum CodingKeys: String, CodingKey {
          case countries
      }
-     
+    
+    private struct Countries: Decodable {
+        let cities: [Cities]
+    }
 
-     init(from decoder: Decoder) throws {
-         let container = try decoder.container(keyedBy: CodingKeys.self)
-         let countries = try container.decode([Countries].self, forKey: .countries)
-//         airportArray = []
-         airportsCityCode = [:]
-         
-         for country in countries {
-             let cities = country.cities
-             for city in cities {
-                 if let firstStopoverCode = city.stopovers.first?.code {
-                     let cityName = city.label.lowercased()
-                     let airportObject = AirportObject(name: city.label, code: firstStopoverCode)
-//                     airportArray.append(airportObject)
-                     airportsCityCode[cityName] = firstStopoverCode
-                 }
-             }
-         }
-     }
+    private struct Cities: Decodable {
+        let label: String
+        let stopovers: [Stopovers]
+    }
+
+    private struct Stopovers: Decodable {
+        let code: String
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let countries = try container.decode([Countries].self, forKey: .countries)
+
+        cityCode = [:]
+        
+        for country in countries {
+            let cities = country.cities
+            for city in cities {
+                if let firstStopoverCode = city.stopovers.first?.code {
+                    let cityName = city.label.lowercased()
+                    cityCode[cityName] = firstStopoverCode
+                }
+            }
+        }
+    }
  }
 
 //extension AirportName: CustomStringConvertible {

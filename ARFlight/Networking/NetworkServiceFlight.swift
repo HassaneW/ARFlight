@@ -73,25 +73,35 @@ class NetworkServiceFlight {
         urlRequest.addValue("application/hal+json", forHTTPHeaderField: "Accept")
         urlRequest.addValue("en-EN", forHTTPHeaderField: "Accept-Language")
         
+        print("Request: \(urlRequest)")
         flightSession.dataTask(with: urlRequest) { (data, response, error) in
             
             DispatchQueue.main.async {
                 if let error = error {
                     completion(.failure(.requestError(error.localizedDescription)))
                 }
+                
                 guard let response = response as? HTTPURLResponse else {
                     completion(.failure(.invalidResponse))
                     return
                 }
+                
                 let status = response.statusCode
                 guard (200...299).contains(status) else {
-                    completion(.failure(.errorStatusCode(status)))
+                    guard let errorData = data,
+                          let afError = try? self.jsonDecoder.decode(AFError.self, from: errorData) else {
+                        completion(.failure(.errorStatusCode(status)))
+                        return
+                    }
+                    completion(.failure(.afError(afError)))
                     return
                 }
+                
                 guard let data = data else {
                     completion(.failure(.invalidData))
                     return
                 }
+                
                 do {
                     let flights = try self.jsonDecoder.decode(Flights.self, from: data)
                     completion(.success(flights.flights))
