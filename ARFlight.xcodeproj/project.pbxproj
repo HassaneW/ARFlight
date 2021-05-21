@@ -22,6 +22,8 @@
 		FB35861025E5328D005C60EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860B25E5328D005C60EF /* Config.swift */; };
 		FB35861125E5328D005C60EF /* FlightParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35860C25E5328D005C60EF /* FlightParameters.swift */; };
 		FB3793D02602AA710043888F /* AirportName.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3793CF2602AA710043888F /* AirportName.swift */; };
+		FB43EB792656D6AC004CD169 /* MapFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43EB782656D6AC004CD169 /* MapFlightViewController.swift */; };
+		FB43EB7E2656D988004CD169 /* TestMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43EB7D2656D988004CD169 /* TestMap.swift */; };
 		FB4641672630358B00818F18 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4641662630358B00818F18 /* UILabelExtensions.swift */; };
 		FB46417126303E0000818F18 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46417026303E0000818F18 /* UITextFieldExtensions.swift */; };
 		FB4673A22642A64F00F7F855 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4673A12642A64F00F7F855 /* SearchTextField.swift */; };
@@ -97,6 +99,8 @@
 		FB35860B25E5328D005C60EF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FB35860C25E5328D005C60EF /* FlightParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightParameters.swift; sourceTree = "<group>"; };
 		FB3793CF2602AA710043888F /* AirportName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportName.swift; sourceTree = "<group>"; };
+		FB43EB782656D6AC004CD169 /* MapFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFlightViewController.swift; sourceTree = "<group>"; };
+		FB43EB7D2656D988004CD169 /* TestMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMap.swift; sourceTree = "<group>"; };
 		FB4641662630358B00818F18 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		FB46417026303E0000818F18 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		FB4673A12642A64F00F7F855 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			children = (
 				FBF2C4E5261C821500D8DB5E /* FlightResultTableViewCell.swift */,
 				FB289A77260DF52700F55F07 /* ListResultViewController.swift */,
+				FB43EB782656D6AC004CD169 /* MapFlightViewController.swift */,
+				FB43EB7D2656D988004CD169 /* TestMap.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				FBF2C4E6261C821500D8DB5E /* FlightResultTableViewCell.swift in Sources */,
 				FB2D2531263715AB00DFDC4E /* planeInformationView.swift in Sources */,
 				FB4EEB9325E1963A00B85423 /* Information.swift in Sources */,
+				FB43EB7E2656D988004CD169 /* TestMap.swift in Sources */,
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
 				FB289A78260DF52700F55F07 /* ListResultViewController.swift in Sources */,
 				FB4673A22642A64F00F7F855 /* SearchTextField.swift in Sources */,
@@ -632,6 +639,7 @@
 				FBF962C3263317B400B8B50E /* UIStackViewExtensions.swift in Sources */,
 				FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */,
 				FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */,
+				FB43EB792656D6AC004CD169 /* MapFlightViewController.swift in Sources */,
 				FB4EEB8E25E195C900B85423 /* Places.swift in Sources */,
 				FB4EEBA225E1968700B85423 /* Location.swift in Sources */,
 				FBB6AE5A2643DE9200D1DD90 /* SearchDatePicker.swift in Sources */,

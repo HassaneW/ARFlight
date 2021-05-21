@@ -45,8 +45,7 @@ class FlightResultTableViewCell: UITableViewCell {
     
     
     private let companyCode = UILabel()
-    private let
-        flightCode = UILabel()
+    private let flightCode = UILabel()
     private let departureTime = UILabel()
     private let departureAirport = UILabel()
     private let airportArrival = UILabel()
@@ -69,14 +68,13 @@ class FlightResultTableViewCell: UITableViewCell {
         let leadingTimeImageView = UIImageView(image: timeImage)
         leadingTimeImageView.contentMode = .scaleAspectFit
         
-        let imageStackView = UIStackView(arrangedSubviews: [leadingAirportImageView, leadingTimeImageView],
-                                                      axis: .vertical,
-                                                      spacing: UIStackView.spacingUseSystem,
-                                                      alignment: .leading,
-                                                      distribution: .fill)
+        let imageStackView = UIStackView(
+            arrangedSubviews: [leadingAirportImageView, leadingTimeImageView],
+            axis: .vertical,
+            spacing: UIStackView.spacingUseSystem,
+            alignment: .leading,
+            distribution: .fill)
                
-        addSubview(imageStackView)
-        
         departureAirport.font = UIFont.preferredFont(forTextStyle: .body)
         departureAirport.numberOfLines = 1
         departureAirport.textColor = UIColor.label
@@ -90,14 +88,12 @@ class FlightResultTableViewCell: UITableViewCell {
         departureTime.adjustsFontForContentSizeCategory = true
         departureTime.translatesAutoresizingMaskIntoConstraints = false
         
-        let departStackView = UIStackView(arrangedSubviews: [departureAirport, departureTime],
-                                                      axis: .vertical,
-                                                      spacing: UIStackView.spacingUseSystem,
-                                                      alignment: .leading,
-                                                      distribution: .fill)
-        
-        
-        addSubview(departStackView)
+        let departStackView = UIStackView(
+            arrangedSubviews: [departureAirport, departureTime],
+            axis: .vertical,
+            spacing: UIStackView.spacingUseSystem,
+            alignment: .leading,
+            distribution: .fill)
         
         let labelTextTo = UILabel(text: "TO")
         labelTextTo.textColor = UIColor.label
@@ -106,22 +102,20 @@ class FlightResultTableViewCell: UITableViewCell {
         labelTextTo.adjustsFontForContentSizeCategory = true
         labelTextTo.translatesAutoresizingMaskIntoConstraints = false
         
-        
         let arrowshapeImage = UIImage(systemName: "arrowshape.zigzag.forward.fill")
         let arrowshapeImageView = UIImageView(image: arrowshapeImage)
         arrowshapeImageView.contentMode = .scaleAspectFit
         
-        let imageLabelStackView = UIStackView(arrangedSubviews: [labelTextTo, arrowshapeImageView],
-                                                      axis: .vertical,
-                                                      spacing: UIStackView.spacingUseSystem,
-                                                      alignment: .leading,
-                                                      distribution: .fill)
-        
-        addSubview(imageLabelStackView)
-        
+        let imageLabelStackView = UIStackView(
+            arrangedSubviews: [labelTextTo, arrowshapeImageView],
+            axis: .vertical,
+            spacing: UIStackView.spacingUseSystem,
+            alignment: .leading,
+            distribution: .fill)
+
         airportArrival.font = UIFont.preferredFont(forTextStyle: .body)
         airportArrival.textColor = UIColor.label
-        airportArrival.numberOfLines = 0
+        airportArrival.numberOfLines = 1
         airportArrival.allowsDefaultTighteningForTruncation = true
         airportArrival.adjustsFontForContentSizeCategory = true
         airportArrival.translatesAutoresizingMaskIntoConstraints = false
@@ -132,16 +126,19 @@ class FlightResultTableViewCell: UITableViewCell {
         timeArrived.adjustsFontForContentSizeCategory = true
         timeArrived.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        let arrivalStackView = UIStackView(arrangedSubviews: [airportArrival, timeArrived],
-                                                      axis: .vertical,
-                                                      spacing: UIStackView.spacingUseSystem,
-                                                      alignment: .leading,
-                                                      distribution: .fill)
-        
-        addSubview(arrivalStackView)
-    
-        let contentStackView = UIStackView(arrangedSubviews: [companyCode, imageStackView,departStackView, imageLabelStackView, arrivalStackView])
+        let arrivalStackView = UIStackView(
+            arrangedSubviews: [airportArrival, timeArrived],
+            axis: .vertical,
+            spacing: UIStackView.spacingUseSystem,
+            alignment: .leading,
+            distribution: .fill)
+
+        let contentStackView = UIStackView(
+            arrangedSubviews: [companyCode,
+                               imageStackView,
+                               departStackView,
+                               imageLabelStackView,
+                               arrivalStackView])
         contentStackView.alignment = .firstBaseline
         contentStackView.spacing = UIStackView.spacingUseSystem
         contentStackView.distribution = .equalCentering
@@ -150,11 +147,10 @@ class FlightResultTableViewCell: UITableViewCell {
         contentView.addSubview(contentStackView)
       
         NSLayoutConstraint.activate([
-            contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
+            contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
+            contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.safeAreaLayoutGuide.leadingAnchor, multiplier: 1.0),
+            contentView.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
+            contentView.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0)
         ])
         
         // Debug Color
