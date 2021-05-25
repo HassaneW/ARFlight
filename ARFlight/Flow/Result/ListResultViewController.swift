@@ -22,16 +22,26 @@ class ListResultViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         tableView.reloadData()
+        
+        let firstFlight = flights?.first
+        let departureAirport = firstFlight?.firstFlightLeg?.departure?.airport // juste airport
+        let arrivalAirport = firstFlight?.firstFlightLeg?.arrival?.airport
+        let annotation = AirportAnnotation(airport: departureAirport!)
+        let annotation2 = AirportAnnotation(airport: arrivalAirport!)
+        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(annotation2)
+        centerMapAroundAnnotation()
+        
     }
     
     // MARK: - viewWillAppear
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let airport = Airport(name: "Super airport", code: "CMN", latitude: 123.34, longitude: 345.3)
-        let annotation = AirportAnnotation(airport: airport)
-        mapView.addAnnotation(annotation)
-        centerMapAroundAnnotation()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let airport = Airport(name: "Super airport", code: "CMN", latitude: 123.34, longitude: 345.3)
+//        let annotation = AirportAnnotation(airport: airport)
+//        mapView.addAnnotation(annotation)
+//        centerMapAroundAnnotation()
+//    }
     
     // MARK: -  centerMapAroundAnnotation
     private func centerMapAroundAnnotation() {
@@ -59,13 +69,6 @@ extension ListResultViewController {
     
     // MARK: - mapView
     private func setupView() {
-        
-        if flights?.count != 0 {
-            title = "Count Flight : \(flights?.count)" 
-        }
-        
-    
-        
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.isZoomEnabled = false

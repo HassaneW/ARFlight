@@ -28,7 +28,6 @@ class SearchFlightViewController: UIViewController  {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.pausesLocationUpdatesAutomatically = true
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         return locationManager
     }()
@@ -133,7 +132,53 @@ class SearchFlightViewController: UIViewController  {
     @objc
     func searchForCurrentLocation(_ sender: UIButton) {
         print("search for current location tapped")
-        locationManager.requestLocation()
+
+        guard CLLocationManager.locationServicesEnabled() else {
+            print("Location services are disabled")
+            return
+        }
+        
+        let authorizationStatus: CLAuthorizationStatus?
+        
+        if #available(iOS 14.0, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        
+        switch authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            print("Location service are not available")
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
+        case .none:
+            print("Authorization status is nil")
+        @unknown default:
+            print("Authorization status not handled")
+        }
+    }
+    
+    private func reverseGeocodeLocation(_ location: CLLocation) {
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Reverse geocode location error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let placemark = placemarks?.first,
+                  let city = placemark.locality,
+                  let country = placemark.country,
+                  let isoCountryCode = placemark.isoCountryCode else {
+                print("Cant find a suitable placemark")
+                return
+            }
+
+            print("Placemark found: \(city) - \(country) - \(isoCountryCode)")
+            
+            self.departureCityTextField.text = city
+        }
     }
     
     private func presentAlert(title: String, message: String?, completion: (() -> Void)? = nil) {
@@ -245,18 +290,54 @@ extension SearchFlightViewController: UITextFieldDelegate {
 
 extension SearchFlightViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        // gerer que l utilisateur a bien chois
+        
+        let authorizationStatus: CLAuthorizationStatus?
+        if #available(iOS 14.0, *) {
+            authorizationStatus = manager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        
+        switch authorizationStatus {
+        case .notDetermined:
+            return
+        case .denied, .restricted:
+            print("Location service are not available")
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
+        case .none:
+            print("Authorization status is nil")
+        @unknown default:
+            print("Authorization status not handled")
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("New location found \(locations.first)")
-        // Convertir en ville
+        guard let latestLocation = locations.first else {
+            print("Can't find a suitable location object")
+            return
+        }
+        reverseGeocodeLocation(latestLocation)
+        manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location manager error \(error.localizedDescription)")
         presentErrorAlert(errorMessage: "Can't find current user location")
     }
+}
+
+
+///////
+
+extension CLLocationManager {
+    var currentLocation: CLLocation? {
+        return location
+    }
+    
+//    var authorizationGranted: Bool {
+//        return CLLocationManager().authorizationGranted
+//    }
 }
 
 // 1) Recuperer Position de l'utilisateur

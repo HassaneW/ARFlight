@@ -9,8 +9,6 @@ import UIKit
 
 final class SearchSectionHeader: UIView {
     
-    
-
     private enum Constant {
         static let padding: CGFloat = 20
         static let imageWidth: CGFloat = 40
