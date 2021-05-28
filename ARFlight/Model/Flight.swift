@@ -70,8 +70,11 @@ extension Flight {
     var departureDateTime: Date? {
         firstFlightLeg?.departureDateTime
     }
+    var departureAirport: Airport? {
+        firstFlightLeg?.departure?.airport
+    }
     var departureCodeAirport: String? {
-        firstFlightLeg?.departure?.airport?.code
+        departureAirport?.code
     }
     var departureTerminalAirport: String? {
         firstFlightLeg?.departPlacesTerminal
@@ -82,8 +85,11 @@ extension Flight {
     var arrivalTerminalAirport: String? {
         firstFlightLeg?.arrivalPlacesTerminal
     }
+    var arrivalAirport: Airport? {
+        firstFlightLeg?.arrival?.airport
+    }
     var arrivalCodeAirport: String? {
-        firstFlightLeg?.arrival?.airport?.code
+        arrivalAirport?.code
     }
     var arrivalDateTime: Date? {
         lastFlightLeg?.arrivalDateTime

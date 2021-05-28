@@ -5,94 +5,45 @@
 //  Created by Wandianga hassane on 2021-03-26.
 //
 
-import Foundation
-import MapKit
-
+import UIKit
 
 class ListResultViewController: UIViewController {
     
     // MARK: - Property
     weak var coordinator: MainCoordinator?
     var flights: [Flight]?
-    let tableView = UITableView()
-    let mapView = MKMapView()
     
-    // MARK: - viewDidLoad
+    private let tableView = UITableView()
+    private let mapView = AirportMapView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         tableView.reloadData()
         
-        let firstFlight = flights?.first
-        let departureAirport = firstFlight?.firstFlightLeg?.departure?.airport // juste airport
-        let arrivalAirport = firstFlight?.firstFlightLeg?.arrival?.airport
-        let annotation = AirportAnnotation(airport: departureAirport!)
-        let annotation2 = AirportAnnotation(airport: arrivalAirport!)
-        mapView.addAnnotation(annotation)
-        mapView.addAnnotation(annotation2)
-        centerMapAroundAnnotation()
-        
-    }
-    
-    // MARK: - viewWillAppear
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        let airport = Airport(name: "Super airport", code: "CMN", latitude: 123.34, longitude: 345.3)
-//        let annotation = AirportAnnotation(airport: airport)
-//        mapView.addAnnotation(annotation)
-//        centerMapAroundAnnotation()
-//    }
-    
-    // MARK: -  centerMapAroundAnnotation
-    private func centerMapAroundAnnotation() {
-        guard !mapView.annotations.isEmpty else { return }
-        var mapRect = MKMapRect.null
-        mapView.annotations.forEach { annotation in
-            let mapPoint = MKMapPoint(annotation.coordinate)
-            let annotationRect = MKMapRect(x: mapPoint.x, y: mapPoint.y, width: 0.1, height: 0.1)
-            if mapRect.isNull {
-                mapRect = annotationRect
-            } else {
-                mapRect = mapRect.union(annotationRect)
-            }
-        }
-        mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets.zero, animated: true)
+        mapView.flight = flights?.first
     }
 }
+
 // MARK: - UI Configuration
 extension ListResultViewController {
     private enum Constant {
         static let mapHeight: CGFloat = 300
         static let flightCellId = "flightCellId"
-        static let airportAnnotation = "airportAnnotation"
     }
     
     // MARK: - mapView
     private func setupView() {
-        mapView.delegate = self
-        mapView.mapType = .standard
-        mapView.isZoomEnabled = false
-        mapView.isScrollEnabled = false
-        mapView.isPitchEnabled = false
-        mapView.isRotateEnabled = false
-        mapView.showsScale = false
-        mapView.showsCompass = false
-        mapView.showsUserLocation = false
-        mapView.isAccessibilityElement = false
-        mapView.pointOfInterestFilter = .excludingAll
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         
-        // MARK: - tableview config
         tableView.delegate = self
         tableView.dataSource = self
-        //resultTableView.isHidden = true
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(FlightResultTableViewCell.self, forCellReuseIdentifier: Constant.flightCellId)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
-        // MARK: - Constraints
         NSLayoutConstraint.activate([
             mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -107,24 +58,7 @@ extension ListResultViewController {
     }
 }
 
-// MARK: - Extension MapView
-extension ListResultViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView: MKAnnotationView?
-        
-        if let reusedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Constant.airportAnnotation) {
-            annotationView = reusedAnnotationView
-        } else {
-            // TEST
-            
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: Constant.airportAnnotation)
-        }
-        
-        return annotationView
-    }
-}
-
-// MARK: - Extension TableView
+// MARK: - TableView Data source
 extension ListResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flights?.count ?? 0
@@ -139,6 +73,7 @@ extension ListResultViewController: UITableViewDataSource {
         return cell
     }
 }
+
 extension ListResultViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,32 +84,6 @@ extension ListResultViewController: UITableViewDelegate {
         coordinator?.showFlightDetailFor(flight: selectedFlight)
     }
 }
-
-// MARK: - AirportAnnotation
-class AirportAnnotation: NSObject, MKAnnotation {
-    
-    var coordinate: CLLocationCoordinate2D {
-        guard let latitude = airport.location?.latitude, let longitude = airport.location?.longitude else {
-            return kCLLocationCoordinate2DInvalid
-        }
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
-    
-    var title: String? {
-        return airport.name
-    }
-    
-    var subtitle: String? {
-        return airport.code
-    }
-    
-    let airport: Airport
-    
-    init(airport: Airport) {
-        self.airport = airport
-    }
-}
-
 
 /*
  class ViewController: UIViewController {

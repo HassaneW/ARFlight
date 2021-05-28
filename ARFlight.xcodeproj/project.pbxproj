@@ -28,6 +28,8 @@
 		FB46417126303E0000818F18 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46417026303E0000818F18 /* UITextFieldExtensions.swift */; };
 		FB4673A22642A64F00F7F855 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4673A12642A64F00F7F855 /* SearchTextField.swift */; };
 		FB4673A72642B64700F7F855 /* SearchCurrentLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4673A62642B64700F7F855 /* SearchCurrentLocationButton.swift */; };
+		FB4836AE266114F00099C4D1 /* AirportAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4836AD266114F00099C4D1 /* AirportAnnotation.swift */; };
+		FB4836B72661151B0099C4D1 /* AirportMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4836B62661151B0099C4D1 /* AirportMapView.swift */; };
 		FB48E6D226416975000025DA /* SearchSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48E6D126416975000025DA /* SearchSectionHeader.swift */; };
 		FB4EDC78261F261A00BF94B5 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EDC77261F261A00BF94B5 /* ActionButton.swift */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
@@ -105,6 +107,8 @@
 		FB46417026303E0000818F18 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		FB4673A12642A64F00F7F855 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		FB4673A62642B64700F7F855 /* SearchCurrentLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrentLocationButton.swift; sourceTree = "<group>"; };
+		FB4836AD266114F00099C4D1 /* AirportAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAnnotation.swift; sourceTree = "<group>"; };
+		FB4836B62661151B0099C4D1 /* AirportMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportMapView.swift; sourceTree = "<group>"; };
 		FB48E6D126416975000025DA /* SearchSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeader.swift; sourceTree = "<group>"; };
 		FB4EDC77261F261A00BF94B5 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 				FB289A77260DF52700F55F07 /* ListResultViewController.swift */,
 				FB43EB782656D6AC004CD169 /* MapFlightViewController.swift */,
 				FB43EB7D2656D988004CD169 /* TestMap.swift */,
+				FB4836AD266114F00099C4D1 /* AirportAnnotation.swift */,
+				FB4836B62661151B0099C4D1 /* AirportMapView.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				FBFE208B263827320000BA21 /* companyFlightInfoView.swift in Sources */,
 				FBF2C4E6261C821500D8DB5E /* FlightResultTableViewCell.swift in Sources */,
 				FB2D2531263715AB00DFDC4E /* planeInformationView.swift in Sources */,
+				FB4836B72661151B0099C4D1 /* AirportMapView.swift in Sources */,
 				FB4EEB9325E1963A00B85423 /* Information.swift in Sources */,
 				FB43EB7E2656D988004CD169 /* TestMap.swift in Sources */,
 				FB35860E25E5328D005C60EF /* NetworkServiceFlight.swift in Sources */,
@@ -632,6 +639,7 @@
 				FB35860F25E5328D005C60EF /* NetworkError.swift in Sources */,
 				FB4641672630358B00818F18 /* UILabelExtensions.swift in Sources */,
 				FB35860D25E5328D005C60EF /* APIKey.swift in Sources */,
+				FB4836AE266114F00099C4D1 /* AirportAnnotation.swift in Sources */,
 				FB4673A72642B64700F7F855 /* SearchCurrentLocationButton.swift in Sources */,
 				FB3793D02602AA710043888F /* AirportName.swift in Sources */,
 				FB9F241C25FB719500EC9104 /* Flights.swift in Sources */,

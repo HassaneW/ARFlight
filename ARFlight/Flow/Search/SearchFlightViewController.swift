@@ -43,6 +43,7 @@ class SearchFlightViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        activityIndicatorView.isHidden = true
     }
     
     // MARK: - Action methods
@@ -108,7 +109,7 @@ class SearchFlightViewController: UIViewController  {
     }
 
     private func startLoading() {
-        activityIndicatorView.isHidden = false
+      
         activityIndicatorView.startAnimating()
         searchButton.isEnabled = false
         startDatePicker.isUserInteractionEnabled = false
