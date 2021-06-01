@@ -36,6 +36,7 @@ class NetworkServiceFlight {
         })
         return decoder
     }
+
     private var apiUrl = ConfigNetworkingService.AirFranceKlm.baseUrl
     private var task: URLSessionDataTask?
     private var flightSession = URLSession(configuration: .default)

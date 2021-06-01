@@ -21,7 +21,7 @@ enum FlightType: String, Decodable {
 struct Flight: Decodable {
     let flightNumber: String?
     var departureDate: Date?
-    let identifiantPlane : String?
+    let identifiantPlane : String? // planeId
     let flightType: FlightType?
     let company : Airline?
     let flightStatus : String?
