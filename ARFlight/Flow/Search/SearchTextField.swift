@@ -7,11 +7,6 @@
 
 import UIKit
 
-/*
- SearchTextField
- UILabel -> UITextField* (passer le title placeholder)
-    Exploration:    Heriter de UItextField (leftView) version plus simple
- */
 
 final class SearchTextField: UITextField {
 

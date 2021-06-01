@@ -7,11 +7,6 @@
 
 import UIKit
 
-/*
- SearchCurrentLocationButton (heirter de UIButton)
- UIButton (utiliser UIButton image property sinon UIImageView
- */
-
 class SearchCurrentLocationButton: UIButton {
     
     private enum Constant {

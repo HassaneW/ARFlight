@@ -59,7 +59,7 @@ class FlightResultTableViewCell: UITableViewCell {
         companyCode.textColor = UIColor.label
         companyCode.adjustsFontForContentSizeCategory = true
         companyCode.translatesAutoresizingMaskIntoConstraints = false
-
+        
         let airportImage = UIImage(systemName: "airplane.circle.fill")
         let leadingAirportImageView = UIImageView(image: airportImage)
         leadingAirportImageView.contentMode = .scaleAspectFit
@@ -74,7 +74,7 @@ class FlightResultTableViewCell: UITableViewCell {
             spacing: UIStackView.spacingUseSystem,
             alignment: .leading,
             distribution: .fill)
-               
+        
         departureAirport.font = UIFont.preferredFont(forTextStyle: .body)
         departureAirport.numberOfLines = 1
         departureAirport.textColor = UIColor.label
@@ -112,7 +112,7 @@ class FlightResultTableViewCell: UITableViewCell {
             spacing: UIStackView.spacingUseSystem,
             alignment: .leading,
             distribution: .fill)
-
+        
         airportArrival.font = UIFont.preferredFont(forTextStyle: .body)
         airportArrival.textColor = UIColor.label
         airportArrival.numberOfLines = 1
@@ -132,7 +132,7 @@ class FlightResultTableViewCell: UITableViewCell {
             spacing: UIStackView.spacingUseSystem,
             alignment: .leading,
             distribution: .fill)
-
+        
         let contentStackView = UIStackView(
             arrangedSubviews: [companyCode,
                                imageStackView,
@@ -145,32 +145,14 @@ class FlightResultTableViewCell: UITableViewCell {
         contentStackView.axis = .horizontal
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(contentStackView)
-      
+        
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.safeAreaLayoutGuide.leadingAnchor, multiplier: 1.0),
             contentView.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
             contentView.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0)
         ])
-        
-        // Debug Color
-        
-//        labelTextTo.backgroundColor = .yellow
-//        labelCompanyCode.backgroundColor = .red
-//        companyCode.backgroundColor = .yellow
-//        labelFlightCode.backgroundColor = .blue
-//        flightCode.backgroundColor = .purple
-//        labelDepartureAirport.backgroundColor = .brown
-//        departureAirport.backgroundColor = .darkGray
-//        labelDepartureTime.backgroundColor = .green
-//        departureTime.backgroundColor = .magenta
-//        labelairportArrival.backgroundColor = .orange
-//        airportArrival.backgroundColor = .blue
-//        labeltimeArrived.backgroundColor = .cyan
-//        timeArrived.backgroundColor = .red
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

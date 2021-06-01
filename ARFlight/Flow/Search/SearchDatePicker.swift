@@ -7,13 +7,6 @@
 
 import UIKit
 
-/*
-SearchDatePicker (Inspiration de L'app calendar quand ont selectionne une date)
-UIlabel(Depart/ Arrive) <-> UILabel (jour)
-UIDatePicker (isHidden true vers false)
- 
- */
-
 class SearchDatePicker: UIView {
 
     var selectedDate: Date {
