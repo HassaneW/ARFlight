@@ -28,6 +28,7 @@
 		FB4836AE266114F00099C4D1 /* AirportAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4836AD266114F00099C4D1 /* AirportAnnotation.swift */; };
 		FB4836B72661151B0099C4D1 /* AirportMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4836B62661151B0099C4D1 /* AirportMapView.swift */; };
 		FB48E6D226416975000025DA /* SearchSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48E6D126416975000025DA /* SearchSectionHeader.swift */; };
+		FB4940172667EE9C004A0EBD /* plane.json in Resources */ = {isa = PBXBuildFile; fileRef = FB4940162667EE9C004A0EBD /* plane.json */; };
 		FB4EDC78261F261A00BF94B5 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EDC77261F261A00BF94B5 /* ActionButton.swift */; };
 		FB4EEB7F25E1955700B85423 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB7E25E1955700B85423 /* Flight.swift */; };
 		FB4EEB8425E195A700B85423 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4EEB8325E195A700B85423 /* Airline.swift */; };
@@ -44,8 +45,6 @@
 		FB6C3353266639CC000F2CDD /* flights.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C3352266639CC000F2CDD /* flights.json */; };
 		FB6C336326664953000F2CDD /* ModelFlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C336226664953000F2CDD /* ModelFlightTests.swift */; };
 		FB6C336E26665183000F2CDD /* XCTestCaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C336D26665183000F2CDD /* XCTestCaseHelpers.swift */; };
-		FB74ABEC2627067A00840914 /* flights.json in Resources */ = {isa = PBXBuildFile; fileRef = FB74ABEB2627067A00840914 /* flights.json */; };
-		FB74AC0A2627078B00840914 /* flight.json in Resources */ = {isa = PBXBuildFile; fileRef = FB74AC092627078B00840914 /* flight.json */; };
 		FB98700925E17B52000CF44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700825E17B52000CF44A /* AppDelegate.swift */; };
 		FB98700B25E17B52000CF44A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700A25E17B52000CF44A /* SceneDelegate.swift */; };
 		FB98700D25E17B52000CF44A /* SearchFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98700C25E17B52000CF44A /* SearchFlightViewController.swift */; };
@@ -109,6 +108,7 @@
 		FB4836AD266114F00099C4D1 /* AirportAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportAnnotation.swift; sourceTree = "<group>"; };
 		FB4836B62661151B0099C4D1 /* AirportMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportMapView.swift; sourceTree = "<group>"; };
 		FB48E6D126416975000025DA /* SearchSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeader.swift; sourceTree = "<group>"; };
+		FB4940162667EE9C004A0EBD /* plane.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = plane.json; sourceTree = "<group>"; };
 		FB4EDC77261F261A00BF94B5 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		FB4EEB7E25E1955700B85423 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		FB4EEB8325E195A700B85423 /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
@@ -125,8 +125,6 @@
 		FB6C3352266639CC000F2CDD /* flights.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flights.json; sourceTree = "<group>"; };
 		FB6C336226664953000F2CDD /* ModelFlightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFlightTests.swift; sourceTree = "<group>"; };
 		FB6C336D26665183000F2CDD /* XCTestCaseHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseHelpers.swift; sourceTree = "<group>"; };
-		FB74ABEB2627067A00840914 /* flights.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flights.json; sourceTree = "<group>"; };
-		FB74AC092627078B00840914 /* flight.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flight.json; sourceTree = "<group>"; };
 		FB98700525E17B52000CF44A /* ARFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB98700825E17B52000CF44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB98700A25E17B52000CF44A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -274,8 +272,6 @@
 				FB301CCB25E55D9700BC433F /* aircraft-details.json */,
 				FB3585CE25E51E1E005C60EF /* code-airport.json */,
 				FB98701425E17B57000CF44A /* Assets.xcassets */,
-				FB74ABEB2627067A00840914 /* flights.json */,
-				FB74AC092627078B00840914 /* flight.json */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -324,6 +320,7 @@
 				FB6C334A266638BF000F2CDD /* NetworkFlightTests.swift */,
 				FB6C336226664953000F2CDD /* ModelFlightTests.swift */,
 				FB6C3352266639CC000F2CDD /* flights.json */,
+				FB4940162667EE9C004A0EBD /* plane.json */,
 			);
 			path = ARFlight_Test;
 			sourceTree = "<group>";
@@ -519,12 +516,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB74ABEC2627067A00840914 /* flights.json in Resources */,
 				FB98701825E17B57000CF44A /* LaunchScreen.storyboard in Resources */,
 				FB98701525E17B57000CF44A /* Assets.xcassets in Resources */,
 				FB301CCC25E55D9700BC433F /* aircraft-details.json in Resources */,
 				FB3585D025E51E1E005C60EF /* code-airport.json in Resources */,
-				FB74AC0A2627078B00840914 /* flight.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +527,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB4940172667EE9C004A0EBD /* plane.json in Resources */,
 				FB6C3353266639CC000F2CDD /* flights.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
