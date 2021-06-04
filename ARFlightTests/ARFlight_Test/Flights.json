@@ -1,0 +1,295 @@
+{
+    "operationalFlights": [
+        {
+            "flightNumber": 718,
+            "flightScheduleDate": "2021-06-01",
+            "id": "20210601+AF+0718",
+            "haul": "LONG",
+            "route": [
+                "CDG",
+                "DSS"
+            ],
+            "airline": {
+                "code": "AF",
+                "name": "AIR FRANCE"
+            },
+            "codeShareRelations": [
+                {
+                    "marketingFlightNumber": 8410,
+                    "code": "F",
+                    "type": "PASSENGER",
+                    "airline": {
+                        "code": "DL",
+                        "name": "DELTA AIR LINES INC."
+                    }
+                },
+                {
+                    "marketingFlightNumber": 2278,
+                    "code": "F",
+                    "type": "PASSENGER",
+                    "airline": {
+                        "code": "KL",
+                        "name": "KLM ROYAL DUTCH AIRLINES"
+                    }
+                }
+            ],
+            "flightStatusPublic": "ON_TIME",
+            "flightStatusPublicLangTransl": "On time",
+            "flightLegs": [
+                {
+                    "status": "S",
+                    "statusName": "Scheduled",
+                    "publishedStatus": "ONTIME",
+                    "departureInformation": {
+                        "airport": {
+                            "code": "CDG",
+                            "name": "CHARLES DE GAULLE AIRPORT",
+                            "nameLangTranl": "Charles De Gaulle Airport",
+                            "city": {
+                                "code": "PAR",
+                                "name": "PARIS",
+                                "nameLangTranl": "Paris",
+                                "country": {
+                                    "areaCode": "E",
+                                    "code": "FR",
+                                    "name": "FRANCE",
+                                    "nameLangTranl": "France",
+                                    "euroCountry": "Y",
+                                    "euCountry": "Y"
+                                }
+                            },
+                            "location": {
+                                "latitude": 49.0097,
+                                "longitude": 2.5486
+                            },
+                            "places": {
+                                "aerogareCode": "2",
+                                "gateNumber": [
+                                    "K35"
+                                ],
+                                "parkingPosition": "E30",
+                                "terminalCode": "2E",
+                                "boardingPier": "K",
+                                "boardingTerminal": "2E",
+                                "checkInZone": [
+                                    "E12",
+                                    "E13"
+                                ],
+                                "boardingContactType": "C",
+                                "parkingPositionType": "C",
+                                "departureTerminal": "K",
+                                "parkingPositionCustomStatus": "I",
+                                "checkInAerogare": "2"
+                            }
+                        },
+                        "times": {
+                            "scheduled": "2021-06-01T16:45:00.000+02:00",
+                            "latestPublished": "2021-06-01T16:45:00.000+02:00"
+                        },
+                        "boardingTimes": {
+                            "plannedBoardingTime": "2021-06-01T15:50:00.000+02:00",
+                            "gateCloseTime": "2021-06-01T16:25:00.000+02:00"
+                        }
+                    },
+                    "arrivalInformation": {
+                        "airport": {
+                            "code": "DSS",
+                            "name": "BLAISE DIAGNE INTERNATIONAL AIRPORT",
+                            "nameLangTranl": "Blaise Diagne Intl",
+                            "city": {
+                                "code": "DKR",
+                                "name": "DAKAR",
+                                "nameLangTranl": "Dakar",
+                                "country": {
+                                    "areaCode": "I",
+                                    "code": "SN",
+                                    "name": "SENEGAL",
+                                    "nameLangTranl": "Senegal",
+                                    "euroCountry": "N",
+                                    "euCountry": "N"
+                                }
+                            },
+                            "location": {
+                                "latitude": 14.6711,
+                                "longitude": -17.0669
+                            },
+                            "places": {
+                                "gateNumber": [
+                                    ""
+                                ],
+                                "baggageBelt": [
+                                    ""
+                                ]
+                            }
+                        },
+                        "times": {
+                            "scheduled": "2021-06-01T20:30:00.000Z",
+                            "latestPublished": "2021-06-01T20:30:00.000Z",
+                            "estimated": {
+                                "value": "2021-06-01T20:30:00.000Z"
+                            }
+                        }
+                    },
+                    "legStatusPublic": "ON_TIME",
+                    "legStatusPublicLangTransl": "On time",
+                    "passengerCustomsStatus": "NOT SCHENGEN",
+                    "serviceType": "J",
+                    "serviceTypeName": "Normal Service",
+                    "restricted": false,
+                    "scheduledFlightDuration": "PT5H45M",
+                    "completionPercentage": "0",
+                    "timeZoneDifference": "-0200",
+                    "aircraft": {
+                        "registration": "FGSQE",
+                        "typeCode": "77W",
+                        "typeName": "BOEING 777-300ER",
+                        "subFleetCodeId": "XB",
+                        "ownerAirlineCode": "AF",
+                        "ownerAirlineName": "AIR FRANCE",
+                        "physicalPaxConfiguration": "J042W024Y315",
+                        "physicalFreightConfiguration": "PP008LL020",
+                        "operationalConfiguration": "J042W024Y315",
+                        "cockpitCrewEmployer": "AF",
+                        "cabinCrewEmployer": "AF",
+                        "wifiEnabled": "Y",
+                        "satelliteConnectivityOnBoard": "Y"
+                    },
+                    "irregularity": {
+                        "cancelled": "N"
+                    },
+                    "internalLegStatusArrFocus": false
+                }
+            ],
+            "internalStatusArrFocus": false
+        },
+        {
+            "flightNumber": 404,
+            "flightScheduleDate": "2021-06-02",
+            "id": "20210602+HC+0404",
+            "haul": "LONG",
+            "route": [
+                "CDG",
+                "DSS"
+            ],
+            "airline": {
+                "code": "HC",
+                "name": "AIR SENEGAL S.A."
+            },
+            "flightStatusPublic": "ON_TIME",
+            "flightStatusPublicLangTransl": "On time",
+            "flightLegs": [
+                {
+                    "status": "S",
+                    "statusName": "Scheduled",
+                    "publishedStatus": "ONTIME",
+                    "departureInformation": {
+                        "airport": {
+                            "code": "CDG",
+                            "name": "CHARLES DE GAULLE AIRPORT",
+                            "nameLangTranl": "Charles De Gaulle Airport",
+                            "city": {
+                                "code": "PAR",
+                                "name": "PARIS",
+                                "nameLangTranl": "Paris",
+                                "country": {
+                                    "areaCode": "E",
+                                    "code": "FR",
+                                    "name": "FRANCE",
+                                    "nameLangTranl": "France",
+                                    "euroCountry": "Y",
+                                    "euCountry": "Y"
+                                }
+                            },
+                            "location": {
+                                "latitude": 49.0097,
+                                "longitude": 2.5486
+                            },
+                            "places": {
+                                "aerogareCode": "2",
+                                "terminalCode": "2E",
+                                "boardingTerminal": "2E",
+                                "checkInZone": [
+                                    "E09"
+                                ],
+                                "checkInAerogare": "2"
+                            }
+                        },
+                        "times": {
+                            "scheduled": "2021-06-02T10:45:00.000+02:00",
+                            "latestPublished": "2021-06-02T10:45:00.000+02:00"
+                        }
+                    },
+                    "arrivalInformation": {
+                        "airport": {
+                            "code": "DSS",
+                            "name": "BLAISE DIAGNE INTERNATIONAL AIRPORT",
+                            "nameLangTranl": "Blaise Diagne Intl",
+                            "city": {
+                                "code": "DKR",
+                                "name": "DAKAR",
+                                "nameLangTranl": "Dakar",
+                                "country": {
+                                    "areaCode": "I",
+                                    "code": "SN",
+                                    "name": "SENEGAL",
+                                    "nameLangTranl": "Senegal",
+                                    "euroCountry": "N",
+                                    "euCountry": "N"
+                                }
+                            },
+                            "location": {
+                                "latitude": 14.6711,
+                                "longitude": -17.0669
+                            },
+                            "places": {
+                                "gateNumber": [
+                                    ""
+                                ],
+                                "baggageBelt": [
+                                    ""
+                                ]
+                            }
+                        },
+                        "times": {
+                            "scheduled": "2021-06-02T14:30:00.000Z",
+                            "latestPublished": "2021-06-02T14:30:00.000Z",
+                            "estimated": {
+                                "value": "2021-06-02T14:30:00.000Z"
+                            }
+                        }
+                    },
+                    "legStatusPublic": "ON_TIME",
+                    "legStatusPublicLangTransl": "On time",
+                    "passengerCustomsStatus": "NOT SCHENGEN",
+                    "serviceType": "J",
+                    "serviceTypeName": "Normal Service",
+                    "restricted": false,
+                    "scheduledFlightDuration": "PT5H45M",
+                    "completionPercentage": "0",
+                    "timeZoneDifference": "-0200",
+                    "aircraft": {
+                        "typeCode": "339",
+                        "typeName": "AIRBUS A330-900 NEO",
+                        "ownerAirlineCode": "HC",
+                        "ownerAirlineName": "AIR SENEGAL S.A.",
+                        "physicalPaxConfiguration": "J032W021Y237",
+                        "physicalFreightConfiguration": "PP000LL000",
+                        "operationalConfiguration": "J016Y149"
+                    },
+                    "irregularity": {
+                        "cancelled": "N"
+                    },
+                    "internalLegStatusArrFocus": false
+                }
+            ],
+            "internalStatusArrFocus": false
+        }
+    ],
+    "page": {
+        "pageSize": 2,
+        "pageNumber": 0,
+        "fullCount": 2,
+        "pageCount": 2,
+        "totalPages": 1
+    }
+}

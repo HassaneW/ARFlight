@@ -1,0 +1,6 @@
+framework module Pods_ARFlight {
+  umbrella header "Pods-ARFlight-umbrella.h"
+
+  export *
+  module * { export * }
+}
