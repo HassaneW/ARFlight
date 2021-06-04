@@ -137,7 +137,8 @@ final class PlaneInformationView: UIView  {
         buttonAddCalendar.clipsToBounds = true
         buttonAddCalendar.layer.cornerRadius = 12
         buttonAddCalendar.layer.borderWidth = 1.0
-        buttonAddCalendar.layer.borderColor = UIColor.blue.cgColor
+        buttonAddCalendar.addTarget(self, action: #selector(addNotificationReminderTapped), for: .touchUpInside)
+        buttonAddCalendar.layer.borderColor = UIColor.systemBlue.cgColor
         backgroundColor = UIColor.purple
         
         let calendarStackView = UIStackView(arrangedSubviews: [labelCalendar, buttonAddCalendar],
@@ -196,5 +197,62 @@ final class PlaneInformationView: UIView  {
         label.adjustsFontSizeToFitWidth = true
         label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(forTextStyle: .headline)
+    }
+    
+    // de[deplacer detail flight
+    
+    @objc
+    func addToCalendar() {
+        
+    }
+    
+    @objc
+    func addNotificationReminderTapped() {
+        shouldRequestNotificationPermission { (shouldRequestAuthorization) in
+            if shouldRequestAuthorization {
+                self.requestNotificationPermission()
+            } else {
+                self.addNotificationReminder()
+            }
+        }
+    }
+    
+    private func shouldRequestNotificationPermission(_ completion: @escaping ((Bool)-> Void)) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            let isNotificationNotDetermined = settings.authorizationStatus == .notDetermined
+            completion(isNotificationNotDetermined)
+        }
+    }
+    
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                debugPrint("Error requesting user notification permission \(error.localizedDescription)")
+            }
+            debugPrint("User notification permissions status \(granted)")
+            if granted {
+                self.addNotificationReminder()
+            }
+        }
+    }
+    
+    private func addNotificationReminder() {
+       // let trigger = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: <#T##Bool#>)
+        
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Your upcoming flight"
+        notificationContent.body = "Flight from X to Y is coming soon"
+        notificationContent.sound = UNNotificationSound.default
+        
+        let identifier = "flightNumber"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                debugPrint("Error adding notification \(error.localizedDescription)")
+                return
+            }
+            debugPrint("New notification request successfully added")
+        }
     }
 }

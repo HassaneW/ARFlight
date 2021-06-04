@@ -77,6 +77,7 @@ extension ListResultViewController: UITableViewDataSource {
 extension ListResultViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let selectedFlight = flights?[indexPath.row]  else {
             //TODO: handle error
             return 
