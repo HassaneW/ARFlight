@@ -50,54 +50,15 @@ class ModelFlightTests: XCTestCase {
         XCTAssertEqual(flight.flightStatus, "On time")
         
         XCTAssertEqual(flight.durationFlight, "PT5H45M")
-        // A completer
+        XCTAssertEqual(flight.departureDateTime?.description, "2021-06-01 14:45:00 +0000")
+        XCTAssertEqual(flight.departureCodeAirport, "CDG")
+        XCTAssertEqual(flight.departureTerminalAirport, "K35")
+        XCTAssertEqual(flight.departureAirportName, "Charles De Gaulle Airport")
         
-        
-        
-        
-        /*
-         // MARK: - Helper properties
-         extension Flight {
-            
-             var durationFlight : String? {
-                 firstFlightLeg?.duration
-             }
-             var departureDateTime: Date? {
-                 firstFlightLeg?.departureDateTime
-             }
-             var departureAirport: Airport? {
-                 firstFlightLeg?.departure?.airport
-             }
-             var departureCodeAirport: String? {
-                 departureAirport?.code
-             }
-             var departureTerminalAirport: String? {
-                 firstFlightLeg?.departPlacesTerminal
-             }
-             var departureAirportName: String? {
-                 firstFlightLeg?.departureAirportName
-             }
-             var arrivalTerminalAirport: String? {
-                 firstFlightLeg?.arrivalPlacesTerminal
-             }
-             var arrivalAirport: Airport? {
-                 firstFlightLeg?.arrival?.airport
-             }
-             var arrivalCodeAirport: String? {
-                 arrivalAirport?.code
-             }
-             var arrivalDateTime: Date? {
-                 lastFlightLeg?.arrivalDateTime
-             }
-             var arrivalAirportName: String? {
-                 lastFlightLeg?.arrivalAirportName
-             }
-             var planeId: String? {
-                 firstFlightLeg?.aircraft?.model// construire le plane id depuis
-             }
-         }
-         */
-        
+        XCTAssertEqual(flight.arrivalCodeAirport, "DSS")
+        XCTAssertEqual(flight.arrivalDateTime?.description,"2021-06-01 20:30:00 +0000")
+        XCTAssertEqual(flight.arrivalAirportName, "Blaise Diagne Intl")
+        XCTAssertEqual(flight.planeId, "BOEING 777-300ER")
     }
     
     
@@ -138,7 +99,7 @@ class ModelFlightTests: XCTestCase {
         XCTAssertEqual(flightInfo.arrival?.airport?.country,"Senegal")
         XCTAssertEqual(flightInfo.arrival?.airport?.location?.latitude, 14.6711)
         XCTAssertEqual(flightInfo.arrival?.airport?.location?.longitude, -17.0669)
-        XCTAssertEqual(flightInfo.departure?.times?.scheduled?.description,"2021-06-01 20:30:00 +0000")
+        XCTAssertEqual(flightInfo.departure?.times?.scheduled?.description,"2021-06-01 14:45:00 +0000")
     }
     
     func test_plane() throws {
