@@ -19,7 +19,6 @@ class CompanyFlightInfoView: UIView {
             resultDuree.text = flight?.durationFlight
         }
     }
-    
     private let resultStatus = UILabel()
     private let resultDuree = UILabel()
     private let resultCompanyLabel = UILabel()
@@ -38,9 +37,8 @@ class CompanyFlightInfoView: UIView {
     
     private func setupView() {
         
-        let labelCompanyName = UILabel(text: "Company Name")
-        configureTitleLabel(labelCompanyName)
-        labelCompanyName.numberOfLines = 1
+        let labelCompanyName = UILabel(text: "Company")
+        configureTitleLabel(labelCompanyName)        
         resultCompanyLabel.configureFlightDetailsInformationLabel()
         
         let companyStackView = UIStackView(arrangedSubviews: [labelCompanyName, resultCompanyLabel],
@@ -51,6 +49,7 @@ class CompanyFlightInfoView: UIView {
         
         let labelCodeFlight = UILabel(text: "Code Flight")
         configureTitleLabel(labelCodeFlight)
+        labelCodeFlight.numberOfLines = 1
         resultCodeFlight.configureFlightDetailsInformationLabel()
         
         let codeFlightStackView = UIStackView(arrangedSubviews: [labelCodeFlight, resultCodeFlight],
@@ -61,6 +60,7 @@ class CompanyFlightInfoView: UIView {
         
         let labelFlightType = UILabel(text: "Flight Type")
         configureTitleLabel(labelFlightType)
+        labelFlightType.numberOfLines = 1
         resultFlightType.configureFlightDetailsInformationLabel()
         
         let flightTypeStackView = UIStackView(arrangedSubviews: [labelFlightType, resultFlightType],
@@ -74,7 +74,6 @@ class CompanyFlightInfoView: UIView {
                                                spacing: UIStackView.spacingUseSystem,
                                                alignment: .firstBaseline,
                                                distribution: .fillEqually)
-        addSubview(infoCompanyStackView)
         
         let labelStatusFlight = UILabel(text: "Status")
         configureTitleLabel(labelStatusFlight)
@@ -101,7 +100,6 @@ class CompanyFlightInfoView: UIView {
                                                spacing: 8,
                                                alignment: .center,
                                                distribution: .fillProportionally)
-        addSubview(dureeStatusStackView)
         
         let contentStackView = UIStackView(arrangedSubviews: [infoCompanyStackView, dureeStatusStackView])
         contentStackView.axis = .vertical
@@ -117,10 +115,6 @@ class CompanyFlightInfoView: UIView {
             safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0)
         ])
     }
-    
-    // DebugColor
-//    cityLabel.backgroundColor = .red
-    
     
     func configureTitleLabel(_ label: UILabel) {
         //        label.text = title

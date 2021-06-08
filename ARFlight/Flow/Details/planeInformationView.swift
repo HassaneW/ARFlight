@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 
-
 final class PlaneInformationView: UIView  {
     
     var plane: Plane? {
@@ -18,10 +17,8 @@ final class PlaneInformationView: UIView  {
             configureViewWithPlane(plane)
         }
     }
-    
     private let titlePlane = UILabel()
     private let imageView = UIImageView()
-    
     private let resultvitesse = UILabel()
     private let resultLongeur = UILabel()
     private let resultTypeDeMoteur = UILabel()
@@ -50,7 +47,6 @@ final class PlaneInformationView: UIView  {
                                               spacing: UIStackView.spacingUseSystem,
                                               alignment: .center,
                                               distribution: .equalSpacing)
-        addSubview(titlePlaneStackView)
         
         let labelTypeDeMoteur = UILabel(text: "Type de Moteur")
         configureTitleLabel(labelTypeDeMoteur)
@@ -61,7 +57,6 @@ final class PlaneInformationView: UIView  {
                                               spacing: UIStackView.spacingUseSystem,
                                               alignment: .center,
                                               distribution: .equalSpacing)
-        addSubview(typeMoteurStackView)
         
         let labelNombreDeSiege = UILabel(text: "Nombre de sieges")
         configureTitleLabel(labelNombreDeSiege)
@@ -72,14 +67,12 @@ final class PlaneInformationView: UIView  {
                                                  spacing: UIStackView.spacingUseSystem,
                                                  alignment: .center,
                                                  distribution: .equalSpacing)
-        addSubview(nombreDeSiegeStackView)
         
         let moteurSiegeStackView = UIStackView(arrangedSubviews: [typeMoteurStackView, nombreDeSiegeStackView],
                                                axis: .horizontal,
                                                spacing: UIStackView.spacingUseSystem,
                                                alignment: .firstBaseline,
                                                distribution: .fillEqually)
-        addSubview(moteurSiegeStackView)
         
         let labelVitesseDeCroisiere = UILabel(text: "Vitesse de Croisiere")
         configureTitleLabel(labelVitesseDeCroisiere)
@@ -90,7 +83,6 @@ final class PlaneInformationView: UIView  {
                                            spacing: UIStackView.spacingUseSystem,
                                            alignment: .center,
                                            distribution: .equalSpacing)
-        addSubview(vitesseStackView)
         
         let labelLongeurPlane = UILabel(text: "Longeur Plane")
         configureTitleLabel(labelLongeurPlane)
@@ -102,62 +94,13 @@ final class PlaneInformationView: UIView  {
                                                 alignment: .center,
                                                 distribution: .equalSpacing)
         
-        addSubview(longeurPlaneStackView)
-        
         let longeurVitesseeStackView = UIStackView(arrangedSubviews: [vitesseStackView, longeurPlaneStackView],
                                                    axis: .horizontal,
                                                    spacing: UIStackView.spacingUseSystem,
                                                    alignment: .firstBaseline,
                                                    distribution: .fillEqually)
-        addSubview(longeurVitesseeStackView)
         
-        let labelNotification = UILabel(text: "Notification")
-        configureTitleLabel(labelNotification)
-        resultLongeur.configureFlightDetailsInformationLabel()
-        
-        let imageNotification = UIImage(systemName: "bell.circle.fill")
-        let myImageNotification:UIImageView = UIImageView()
-        myImageNotification.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageNotification.image = imageNotification
-        
-        let notificationStackView = UIStackView(arrangedSubviews: [labelNotification, myImageNotification],
-                                                axis: .vertical,
-                                                spacing: UIStackView.spacingUseSystem,
-                                                alignment: .center,
-                                                distribution: .equalSpacing)
-        
-        addSubview(notificationStackView)
-        
-        let labelCalendar = UILabel(text: "Add Calendar")
-        configureTitleLabel(labelCalendar)
-        
-        // Button Calendar
-        let buttonAddCalendar = UIButton()
-        buttonAddCalendar.setImage(UIImage(systemName: "calendar.badge.plus"), for: .normal);
-        buttonAddCalendar.clipsToBounds = true
-        buttonAddCalendar.layer.cornerRadius = 12
-        buttonAddCalendar.layer.borderWidth = 1.0
-        buttonAddCalendar.addTarget(self, action: #selector(addNotificationReminderTapped), for: .touchUpInside)
-        buttonAddCalendar.layer.borderColor = UIColor.systemBlue.cgColor
-        backgroundColor = UIColor.purple
-        
-        let calendarStackView = UIStackView(arrangedSubviews: [labelCalendar, buttonAddCalendar],
-                                            axis: .vertical,
-                                            spacing: UIStackView.spacingUseSystem,
-                                            alignment: .center,
-                                            distribution: .equalSpacing)
-        
-        addSubview(calendarStackView)
-        
-        let notificationCalendarStackView = UIStackView(arrangedSubviews: [notificationStackView, calendarStackView],
-                                                        axis: .horizontal,
-                                                        spacing: UIStackView.spacingUseSystem,
-                                                        alignment: .firstBaseline,
-                                                        distribution: .fillProportionally)
-        
-        addSubview(notificationCalendarStackView)
-        
-        let contentStackView = UIStackView(arrangedSubviews: [titlePlaneStackView, moteurSiegeStackView, longeurVitesseeStackView, notificationCalendarStackView])
+        let contentStackView = UIStackView(arrangedSubviews: [titlePlaneStackView, moteurSiegeStackView, longeurVitesseeStackView])
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 20
@@ -165,16 +108,6 @@ final class PlaneInformationView: UIView  {
         addSubview(contentStackView)
         
         NSLayoutConstraint.activate([
-            
-            imageView.widthAnchor.constraint(equalToConstant: 150),
-            imageView.heightAnchor.constraint(equalToConstant: 150),
-            
-            myImageNotification.widthAnchor.constraint(equalToConstant: 50),
-            myImageNotification.heightAnchor.constraint(equalToConstant: 50),
-            
-            buttonAddCalendar.widthAnchor.constraint(equalToConstant: 50),
-            buttonAddCalendar.heightAnchor.constraint(equalToConstant: 50),
-            
             contentStackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
             contentStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.leadingAnchor, multiplier: 1.5),
             safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.5),
@@ -190,69 +123,11 @@ final class PlaneInformationView: UIView  {
         imageView.image = UIImage(named: plane.image)
     }
     func configureTitleLabel(_ label: UILabel) {
-        //        label.text = title
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .label
         label.adjustsFontSizeToFitWidth = true
         label.adjustsFontForContentSizeCategory = true
         label.font = .preferredFont(forTextStyle: .headline)
-    }
-    
-    // de[deplacer detail flight
-    
-    @objc
-    func addToCalendar() {
-        
-    }
-    
-    @objc
-    func addNotificationReminderTapped() {
-        shouldRequestNotificationPermission { (shouldRequestAuthorization) in
-            if shouldRequestAuthorization {
-                self.requestNotificationPermission()
-            } else {
-                self.addNotificationReminder()
-            }
-        }
-    }
-    
-    private func shouldRequestNotificationPermission(_ completion: @escaping ((Bool)-> Void)) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            let isNotificationNotDetermined = settings.authorizationStatus == .notDetermined
-            completion(isNotificationNotDetermined)
-        }
-    }
-    
-    private func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if let error = error {
-                debugPrint("Error requesting user notification permission \(error.localizedDescription)")
-            }
-            debugPrint("User notification permissions status \(granted)")
-            if granted {
-                self.addNotificationReminder()
-            }
-        }
-    }
-    
-    private func addNotificationReminder() {
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: <#T##Bool#>)
-        
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Your upcoming flight"
-        notificationContent.body = "Flight from X to Y is coming soon"
-        notificationContent.sound = UNNotificationSound.default
-        
-        let identifier = "flightNumber"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                debugPrint("Error adding notification \(error.localizedDescription)")
-                return
-            }
-            debugPrint("New notification request successfully added")
-        }
     }
 }

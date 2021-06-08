@@ -95,11 +95,11 @@ class AirportDetailView : UIView {
             trailingAnchor.constraint(equalToSystemSpacingAfter: contentStackView.trailingAnchor, multiplier: 1.0),
             bottomAnchor.constraint(equalToSystemSpacingBelow: contentStackView.bottomAnchor, multiplier: 1.0),
         ])
-        airportNameTitleLabel.backgroundColor = .red
-        airportNameLabel.backgroundColor = .yellow
-        timeTitleLabel.backgroundColor = .orange
-        timeLabel.backgroundColor = .green
-        terminalTitleLabel.backgroundColor = .blue
-        terminalNumberLabel.backgroundColor = .brown
+//        airportNameTitleLabel.backgroundColor = .red
+//        airportNameLabel.backgroundColor = .yellow
+//        timeTitleLabel.backgroundColor = .orange
+//        timeLabel.backgroundColor = .green
+//        terminalTitleLabel.backgroundColor = .blue
+//        terminalNumberLabel.backgroundColor = .brown
     }
 }
